@@ -26462,3 +26462,52 @@ TypeError: string indices must be integers
 [2024-12-26 01:50:55,297][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
 [2024-12-26 01:50:55,297][MainThread:263859862414368][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
 [2024-12-26 01:50:55,312][MainThread:263859862414368][task_id:default][q_task.py:15][INFO]- nineteen-batman-burger-wyoming
+[2024-12-26 02:50:48,672][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 02:50:48,673][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 02:50:48,673][MainThread:263859862414368][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 02:51:16,061][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 02:51:16,061][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 02:51:16,061][MainThread:263859862414368][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 02:51:16,072][MainThread:263859862414368][task_id:default][q_task.py:15][INFO]- thirteen-hydrogen-uranus-maryland
+[2024-12-26 03:50:34,431][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 03:50:34,432][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 03:50:34,432][MainThread:263859862414368][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 03:50:56,209][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 03:50:56,209][MainThread:263859862414368][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 03:50:56,210][MainThread:263859862414368][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 03:50:56,220][MainThread:263859862414368][task_id:default][q_task.py:15][INFO]- fix-stream-west-rugby
+[2024-12-26 04:50:49,935][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 04:50:49,935][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 04:50:49,935][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 04:51:14,414][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 04:51:14,414][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 04:51:14,414][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 04:51:14,429][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- kentucky-white-eight-freddie
+[2024-12-26 05:50:33,880][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 05:50:33,880][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 05:50:33,880][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 05:50:59,114][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 05:50:59,114][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 05:50:59,114][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 05:50:59,127][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- speaker-summer-massachusetts-kilo
+[2024-12-26 06:50:53,227][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 06:50:53,227][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 06:50:53,227][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 06:51:18,670][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 06:51:18,670][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 06:51:18,670][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 06:51:18,681][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- fifteen-sixteen-quebec-item
+[2024-12-26 07:50:40,325][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 07:50:40,325][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 07:50:40,325][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 07:51:10,719][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 07:51:10,719][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 07:51:10,719][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 07:51:10,732][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- cup-low-cardinal-saturn
+[2024-12-26 08:25:02,778][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 08:25:02,778][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-26 08:25:02,778][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-26 08:25:28,702][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 08:25:28,702][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-26 08:25:28,702][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-26 08:25:28,715][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- quiet-saturn-failed-dakota

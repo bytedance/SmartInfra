@@ -148,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -216,7 +216,7 @@ LOGGING = {
 
 # 定时刷新minion时间间隔, 以分钟为单位计算. 同时定义时区，防止重复执行. 支持 'UTC', 'Asia/Shanghai', 与数据库时区匹配
 FRESH_INTERVAL = 60
-FRESH_TIMEZONE = 'UTC'
+FRESH_TIMEZONE = 'Asia/Shanghai'
 
 # 文件下载目录
 DOWNLOAD_URL = 'download/'
@@ -228,6 +228,3 @@ TRANSFER_FILE_HOME = 'smartinfra_transfer/'
 # state根目录
 STATE_HOME = 'smartinfra_state/'
 
-# 本地minion名称, 临时保存state文件和分发文件
-# MINION_NAME = ''
-# LOCAL_DIR = ''
