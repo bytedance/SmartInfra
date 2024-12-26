@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">只读策略配置</h1>
+
+        <!-- 确认模态框 -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定要进行此操作吗？该操作无法撤销
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmButton" onclick="del_shell_template()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="modal-body">
+                {% for each_acl in all_acl %}
+                <form>
+                  <div class="form-group d-flex align-items-center">
+                    <label for="input2" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;描述</label>
+                    <input type="text" class="form-control w-75" id="input2" placeholder="请输入内容" value="{{ each_acl.description }}">
+                  </div>
+
+                    <div class="form-group d-flex align-items-center">
+                        <label for="input3" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;只读命令配置(必须以空格间隔)</label>
+                        <textarea class="form-control w-75" id="input3" placeholder="请输入内容" rows="6">{{ each_acl.content }}</textarea>
+                    </div>
+                  <div style="display: none;">
+                    <label for="input6" class="mr-3 w-25"></label>
+                    <input type="text" class="form-control w-75" id="input6" placeholder="" value="{{ each_acl.id }}">
+                  </div>
+                </form>
+                {% endfor %}
+                  <label class="mr-3 w-100"><span id="msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="create_acl()">提交</button>
+              </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            $("#load").show();
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            $("#load").hide();
+        };
+
+        // 移除reminder
+        function reminder_remove() {
+            var reminder_msg = document.getElementById("msg");
+            reminder_msg.innerHTML = '';
+        };
+
+        //创建acl
+        function create_acl() {
+            reminder_remove()
+            var reminder_msg = document.getElementById("msg");
+            $.ajax({
+                type: "post",
+                url: "/create_acl/",
+                dataType: "json",
+                data: {
+                    input2: $("#input2").val(),
+                    input3: $("#input3").val(),
+                    input6: $("#input6").val(),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#aclModal').modal('hide');
+                        location.reload();
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击删除按钮时设置确认按钮的
+        function get_rowid(button) {
+                reminder_remove();
+                // 设置确认按钮的 data-id 属性
+                document.querySelector('#confirmButton').setAttribute('data-id', button.id);
+
+                // 显示确认框
+                $('#confirmModal').modal('show');
+        }
+
+        // 编辑按钮时填充内容
+        function get_rowText(button) {
+                reminder_remove();
+                const rowId = button.getAttribute('data-row-id');
+                const row = document.getElementById(rowId);
+                const name = row.querySelector('td:nth-child(1)').textContent;
+                const description = row.querySelector('td:nth-child(2)').textContent;
+                const content = row.querySelector('td:nth-child(3)').textContent;
+                const id = row.querySelector('td:nth-child(4)').textContent;
+
+                document.querySelector('#input1').value=name;
+                document.querySelector('#input2').value=description;
+                document.querySelector('#input3').value=content;
+                document.querySelector('#input6').value=id;
+
+                // 显示确认框
+                $('#aclModal').modal('show');
+            };
+
+        // 添加时清空内容
+        function clear_rowText() {
+                reminder_remove();
+
+                document.querySelector('#input1').value="";
+                document.querySelector('#input2').value="";
+                document.querySelector('#input3').value="";
+                document.querySelector('#input6').value="";
+
+                // 显示确认框
+                $('#aclModal').modal('show');
+            };
+
+        //删除shell template
+        function del_shell_template() {
+            reminder_remove()
+            var reminder_msg = document.getElementById("confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/del_shell_template/",
+                dataType: "json",
+                data: {
+                    st_id: document.querySelector('#confirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#confirmModal').modal('hide');
+                        location.reload();
+                    } else {
+
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+    </script>
+{% endblock %}

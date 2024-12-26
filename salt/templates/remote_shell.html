@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Shell/State执行</h1>
+
+        <!-- 分组主机模态框 -->
+        <div class="modal fade" id="minionModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="minionModalLabel"><span id="hg_name"></span>&nbsp;命令执行</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+                    <div class="card shadow mb-8">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>主机组名称</th>
+                                            <th>包含主机/Salt Master</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>主机组名称</th>
+                                            <th>包含主机/Salt Master</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table-body">
+                                       <!-- 填充内容 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <button id="execute_shell" class="btn btn-primary btn-sm mr-2" onclick="create_shell_task()"> &nbsp;执 行&nbsp; </button>
+                <span id="msg" class="text-danger"></span>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group d-flex align-items-center">
+                    <label for="task_name" class="mr-4"><span class="text-danger">*</span>&nbsp;名称</label>
+                    <input type="text" class="form-control" style="width: 46%;" id="task_name" placeholder="请输入名称">
+                </div>
+                <div class="form-group">
+                    <label for="inputType2"><span class="text-danger">*</span>&nbsp;选择执行方式:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios2" id="radio3" value="option3" checked onchange="switchInput()">
+                        <label class="form-check-label" for="radio3">命令文本</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios2" id="radio4" value="option4" onchange="switchInput()">
+                        <label class="form-check-label" for="radio4">执行模板</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea id="textarea1" class="form-control" placeholder="请输入命令" style="resize: vertical; width: 50%;"></textarea>
+                    <select id="shelltemplate" class="form-control mt-3" style="width: 50%;display: none;">
+                        <option>请选择执行模板</option>
+                        {% for each_shell in all_shell %}
+                        <option value="{{ each_shell.id }}">{{ each_shell.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <label for="inputType1"><span class="text-danger">*</span>&nbsp;执行方式:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios1" id="radio1" value="option1" checked onchange="switchPolicy()">
+                        <label class="form-check-label" for="radio1">立即执行</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios1" id="radio2" value="option2" onchange="switchPolicy()">
+                        <label class="form-check-label" for="radio2">定时执行</label>
+                    </div>
+                </div>
+                <!-- 定时执行的输入框（初始隐藏） -->
+                <div id="schedule_input" style="display: none" class="mb-3">
+                    <input style="width: 50%;" id="schedule_content" type="text" class="form-control" placeholder="请按照Linux crontab格式的内容，例如:2 3 2 2 2">
+                </div>
+                <br>
+
+                <label for="inputType2"><span class="text-danger">*</span>&nbsp;选择主机组:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <br>
+                <!-- 主机组列表 -->
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>名称</th>
+                                <th>描述</th>
+                                <th>主机数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>选择</th>
+                                <th>名称</th>
+                                <th>描述</th>
+                                <th>主机数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% for each_host_group in all_host_group %}
+                            <tr id="tr-{{ each_host_group.id }}">
+                                <td class="text-center"><input class="form-check-input" type="radio" name="hostgroup1" id="{{ each_host_group.id }}" onclick="get_rowid(this)"></td>
+                                <td>{{ each_host_group.name }}</td>
+                                <td>{{ each_host_group.description }}</td>
+                                <td>{{ each_host_group.host_num }}</td>
+                                <td style="display: none;">{{ each_host_group.id }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm" onclick="show_minions(this)" value="{{ each_host_group.name }}">详情</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+
+        // 设置加载图片
+        function loading() {
+            $("#load").show();
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            $("#load").hide();
+        };
+
+        // 移除reminder
+        function reminder_remove() {
+            var reminder_msg = document.getElementById("msg");
+            reminder_msg.innerHTML = '';
+        };
+
+        // 判断定时执行文本框是否显示
+        function switchPolicy() {
+            const radio1 = document.getElementById('radio1');
+            const radio2 = document.getElementById('radio2');
+            if (radio2.checked) {
+                schedule_input.style.display = 'block';
+            } else {
+                schedule_input.style.display = 'none';
+            }
+        }
+
+        // 判断输入命令方式显示
+        function switchInput() {
+            const radio3 = document.getElementById('radio3');
+            const radio4 = document.getElementById('radio4');
+            if (radio3.checked) {
+                textarea1.style.display = 'block';
+                shelltemplate.style.display = 'none';
+            }
+            if (radio4.checked) {
+                textarea1.style.display = 'none';
+                shelltemplate.style.display = 'block';
+            }
+        }
+
+        // 获取当前被执行的主机组id
+        function get_rowid(radio) {
+            document.querySelector('#execute_shell').setAttribute('data-id', radio.id);
+        }
+
+        //创建 shell task
+        function create_shell_task() {
+          reminder_remove()
+          var reminder_msg = document.getElementById("msg");
+          const hg_id = document.getElementById('execute_shell').getAttribute('data-id');
+          var radio1_checked = "0";
+          var radio2_checked = "0";
+
+          if (radio1.checked) {
+              radio1_checked = "1";
+            }
+          if (radio2.checked) {
+              radio2_checked = $("#schedule_content").val();
+            }
+          if (radio3.checked) {
+              var exec_content = document.getElementById("textarea1").value;
+            }
+          if (radio4.checked) {
+              var exec_shell_template = document.getElementById("shelltemplate").value;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/create_shell_task/",
+                dataType: "json",
+                data: {
+                    exec_content: exec_content,
+                    radio1_checked: radio1_checked,
+                    radio2_checked: radio2_checked,
+                    hg_id: hg_id,
+                    exec_shell_template: exec_shell_template,
+                    task_name: $("#task_name").val(),
+
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        window.location.href = "/list_tasks";
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击详情按钮展示信息
+        function show_minions(button) {
+            document.getElementById("hg_name").innerHTML = button.value;
+            $('#dataTable1').DataTable().destroy();
+            var table = $('#dataTable1').DataTable({
+                searching: true,  // 启用搜索
+                paging: true,     // 启用分页
+                ordering: true,   // 启用排序
+                autoWidth: false, // 禁用自动宽度
+
+            });
+
+            $.ajax({
+                type: "post",
+                url: "/show_selected_host_group/",
+                dataType: "json",
+                data: {
+                    host_group_name: button.value,
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    table.clear();
+                    const data_object = JSON.parse(data.selected_host_group);
+                    data_object.forEach(function(each) {
+                        if (each.minion_name === undefined) {
+                            table.row.add([
+                                each.host_group_name__name,
+                                each.salt_name__name
+                            ]);
+                        } else {
+                            table.row.add([
+                                each.host_group_name__name,
+                                each.minion_name
+                            ]);
+                        }
+
+                    });
+                    table.draw();
+                },
+            });
+
+            $('#minionModal').modal('show');
+        }
+
+        // 定义一个函数来处理填充 selectedOptions
+        function populateSelectedOptions(data, id) {
+            const selectedValues = data[id] || [];
+
+            // 获取 selectedOptions and availableOptions 元素
+            const selectedOptionsElement = document.getElementById('selectedOptions');
+            const availableOptionsElement = document.getElementById('availableOptions');
+
+            // 清空现有的选项
+            selectedOptionsElement.innerHTML = '';
+
+            // 填充 selectedOptions
+            for (const [id, name] of Object.entries(selectedValues)) {
+                const optionElement = document.createElement('option');
+                optionElement.value = id;
+                optionElement.textContent = name;  // 使用字典中的 name 作为选项文本
+
+                selectedOptionsElement.appendChild(optionElement);
+                availableOptionsElement.querySelector(`option[value="${id}"]`).remove();
+            }
+        }
+
+        // 编辑按钮时填充内容
+        function get_rowText(button) {
+                const rowId = button.getAttribute('data-row-id');
+                const row = document.getElementById(rowId);
+                const hg_name = row.querySelector('td:nth-child(1)').textContent;
+                const hg_des = row.querySelector('td:nth-child(2)').textContent;
+
+                document.querySelector('#input1').value=hg_name;
+                document.querySelector('#input5').value=hg_des;
+                document.querySelector('#input6').value=rowId;
+                document.getElementById('availableHostOptions').disabled=true;
+                document.getElementById('radio1').disabled=true;
+                document.getElementById('radio2').disabled=true;
+                document.getElementById('radio3').disabled=true;
+
+                // 显示确认框
+                $('#hostgroupModal').modal('show');
+            };
+
+        // 添加时清空内容
+        function clear_rowText() {
+                reminder_remove();
+                document.querySelector('#input1').value="";
+                document.querySelector('#input5').value="";
+                document.querySelector('#input6').value="";
+                document.getElementById('availableHostOptions').disabled=false;
+                document.getElementById('radio1').disabled=false;
+                document.getElementById('radio2').disabled=false;
+                document.getElementById('radio3').disabled=false;
+
+                // 显示确认框
+                $('#hostgroupModal').modal('show');
+            };
+
+        //删除主机分组
+        function del_host_group() {
+            var reminder_msg = document.getElementById("confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/del_host_group/",
+                dataType: "json",
+                data: {
+                    host_group_name: document.querySelector('#confirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        location.reload();
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        //搜索可用主机
+        function search_host() {
+            var reminder_msg = document.getElementById("msg");
+            reminder_remove();
+
+            $.ajax({
+                type: "post",
+                url: "/search_available_host/",
+                dataType: "json",
+                data: {
+                    searchHostInput: $("#searchHostInput").val(),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        const search_hosts = data.content;
+                        const availableHostOptions = document.getElementById('availableHostOptions');
+                        availableHostOptions.innerHTML = '';
+                        search_hosts.forEach(function(item, index) {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = item["id"];
+                            optionElement.textContent = item["name"];
+                            availableHostOptions.appendChild(optionElement);
+                        });
+
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        //搜索已选主机
+        function search_selected_host() {
+            var searchValue = document.getElementById("searchSelectedHostInput").value.trim().toLowerCase();
+            var selectedHostOptions = document.getElementById("selectedHostOptions");
+            var options = selectedHostOptions.options;
+
+            // 遍历选项进行筛选
+            for (var i = 0; i < options.length; i++) {
+                var optionText = options[i].text.toLowerCase();
+
+                if (searchValue === "" || optionText.includes(searchValue)) {
+                    options[i].style.display = ""; // 显示匹配项
+                } else {
+                    options[i].style.display = "none"; // 隐藏不匹配项
+                }
+            }
+        }
+    </script>
+{% endblock %}

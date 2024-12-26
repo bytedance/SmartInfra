@@ -1,0 +1,2 @@
+{'100.94.64.2-CNDAT06-F09-M-R450-GW01': 'bin\nboot\ndev\netc\nhome\ninitrd.img\ninitrd.img.old\nlib\nlib32\nlib64\nlibx32\nlost+found\nmedia\nmnt\nopt\nproc\nroot\nrun\nsbin\nsrv\nsys\ntmp\nusr\nvar\nvmlinuz\nvmlinuz.old'}
+{'100.94.64.3-CNDAT06-F09-M-R450-GW02': 'bin\nboot\ndev\netc\nhome\ninitrd.img\ninitrd.img.old\nlib\nlib32\nlib64\nlibx32\nlost+found\nmedia\nmnt\nopt\nproc\nroot\nrun\nsbin\nsrv\nsys\ntmp\nusr\nvar\nvmlinuz\nvmlinuz.old'}

@@ -1,0 +1,15 @@
+10.0.85.142-qqq111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 3553, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:54:49.516815', 'duration': 9.226, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.66.17.84-uuu111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 2627, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:54:50.951553', 'duration': 6.891, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.139-test123:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 3756, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:54:51.795051', 'duration': 9.65, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.141-www111:
+['The function "state.sls" is running as PID 133701 and was started at 2024, Dec 16 08:54:51.874492 with jid 20241216085451874492']
+
+10.0.85.144-ttt111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 10784, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:54:52.824396', 'duration': 7.814, '__id__': 'log_no_ntp_or_chrony'}}
+

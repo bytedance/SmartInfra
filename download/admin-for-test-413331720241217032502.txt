@@ -1,0 +1,15 @@
+10.0.85.142-qqq111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log_|-run': {'name': 'echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log', 'changes': {'pid': 11494, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': 'Command "echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log" run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '11:25:03.752176', 'duration': 9.553, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.66.17.84-uuu111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log_|-run': {'name': 'echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log', 'changes': {'pid': 7797, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': 'Command "echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log" run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '11:25:05.239742', 'duration': 8.253, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.139-test123:
+{'cmd_|-log_no_ntp_or_chrony_|-echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log_|-run': {'name': 'echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log', 'changes': {'pid': 16444, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': 'Command "echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log" run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '11:25:06.085888', 'duration': 9.011, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.141-www111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log_|-run': {'name': 'echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log', 'changes': {'pid': 1598043, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': 'Command "echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log" run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '11:25:06.837909', 'duration': 29.756, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.144-ttt111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log_|-run': {'name': 'echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log', 'changes': {'pid': 97248, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': 'Command "echo "Neither NTP nor Chrony configuration found." >> /tmp/salt_ntp_chrony.log" run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '11:25:07.505731', 'duration': 8.042, '__id__': 'log_no_ntp_or_chrony'}}
+

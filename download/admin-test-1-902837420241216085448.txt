@@ -1,0 +1,9 @@
+100.94.64.2-CNDAT06-F09-M-R450-GW01:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 3388174, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:56:08.511102', 'duration': 82.736, '__id__': 'log_no_ntp_or_chrony'}}
+
+100.94.64.3-CNDAT06-F09-M-R450-GW02:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 1663723, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:55:32.613182', 'duration': 43.633, '__id__': 'log_no_ntp_or_chrony'}}
+
+10.0.85.141-www111:
+{'cmd_|-log_no_ntp_or_chrony_|-echo Neither NTP nor Chrony configuration found._|-run': {'name': 'echo Neither NTP nor Chrony configuration found.', 'changes': {'pid': 133717, 'retcode': 0, 'stdout': 'Neither NTP nor Chrony configuration found.', 'stderr': ''}, 'result': True, 'comment': 'Command "echo Neither NTP nor Chrony configuration found." run', '__sls__': 'smartinfra_state/admin_133865920241216045234355', '__run_num__': 0, 'start_time': '16:54:52.347865', 'duration': 12.42, '__id__': 'log_no_ntp_or_chrony'}}
+

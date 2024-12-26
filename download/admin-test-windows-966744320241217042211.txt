@@ -1,0 +1,8 @@
+10.0.85.53-luwanlong:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 7208, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin300102820241213074707', '__run_num__': 0, 'start_time': '12:22:14.147832', 'duration': 517.388, '__id__': 'my-windows-script'}}
+

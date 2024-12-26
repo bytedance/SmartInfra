@@ -1,0 +1,56 @@
+10.0.85.53-luwanlong:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 5356, 'retcode': 0, 'stdout': '', 'stderr': '= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:1 char:2
++  = Get-WmiObject -Class Win32_OperatingSystem | Select-Object Caption
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:3 char:2
++  = "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:4 char:2
++  = Get-ItemProperty -Path  | Select-Object DisplayVersion, ReleaseId, ...
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:5 char:2
++  = (Get-WmiObject Win32_OperatingSystem).LastBootUpTime
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:7 char:2
++  = [PSCustomObject]@{
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+= : The term \'=\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:16 char:2
++  =  | ConvertTo-Json
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+Write-Output : Cannot process command because of one or more missing mandatory parameters: InputObject.
+At C:\\Windows\\TEMP\\__salt.tmp.1m_i1o14.ps1:18 char:1
++ Write-Output
++ ~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Write-Output], ParameterBindingException
+    + FullyQualifiedErrorId : MissingMandatoryParameter,Microsoft.PowerShell.Commands.WriteOutputCommand'}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin300102820241213074707', '__run_num__': 0, 'start_time': '11:03:46.601044', 'duration': 3738.16, '__id__': 'my-windows-script'}}
+

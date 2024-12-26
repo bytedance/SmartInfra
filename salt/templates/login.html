@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SmartInfra - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                    <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center text-center">
+                        <div>
+                            <img src="{% static 'img/smartsalt-logo.jpeg' %}" alt="Brand Icon" style="width: 80px; height: 70px;">
+                            <p class="text-muted"></p>
+                            <h4 class="text-primary">SmartSalt自动化配置平台</h4>
+                            <p class="text-muted">基于SaltStack，实现服务器全生命周期的配置管理</p>
+                        </div>
+                    </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="input_email" aria-describedby="emailHelp"
+                                                placeholder="Enter Username...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="input_password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <label class="mr-3 w-100"><span id="msg" class="text-danger"></span></label>
+                                        <a onclick="authenticate_user()" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a>
+                                        <hr>
+<!--                                        <a href="index.html" class="btn btn-google btn-user btn-block">-->
+<!--                                            <i class="fab fa-google fa-fw"></i> Login with Google-->
+<!--                                        </a>-->
+<!--                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">-->
+<!--                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook-->
+<!--                                        </a>-->
+                                    </form>
+<!--                                    <hr>-->
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" href="forgot-password.html">Forgot Password?</a>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" href="register.html">Create an Account!</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    // 设置加载图片
+    function loading() {
+        $("#load").show();
+    };
+
+    // 移除加载图片
+    function loading_remove() {
+        $("#load").hide();
+    };
+
+    // 移除reminder
+    function reminder_remove() {
+        var reminder_msg = document.getElementById("msg");
+        reminder_msg.innerHTML = '';
+    };
+
+    document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        authenticate_user();
+    }
+    });
+
+    //用户认证
+    function authenticate_user() {
+        reminder_remove()
+        var reminder_msg = document.getElementById("msg");
+        const urlParams = new URLSearchParams(window.location.search);
+        const nextParam = urlParams.get('next');  // 获取 'next' 参数的值
+        console.log(nextParam)
+        if (nextParam) {
+            const newUrl = new URL(nextParam, window.location.origin);
+            } else {
+            const newUrl = new URL(window.location.origin);
+            }
+        $.ajax({
+            type: "post",
+            url: "/authenticate_user/",
+            dataType: "json",
+            data: {
+                input_email: $("#input_email").val(),
+                input_password: $("#input_password").val(),
+            },
+            complete: function () {
+            },
+            success: function (data) {
+
+                if (data.status === 0) {
+                    reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const nextParam = urlParams.get('next');  // 获取 'next' 参数的值
+                    if (nextParam) {
+                        const newUrl = new URL(nextParam, window.location.origin);
+                        window.location.href = newUrl.href
+                        } else {
+                        window.location.href = window.location.origin + "/index";
+                        }
+                } else {
+                    reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">任务列表</h1>
+
+        <!-- 审批模态框 -->
+        <div class="modal fade" id="approveConfirmModal" tabindex="-1" role="dialog" aria-labelledby="approveConfirmModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="approveConfirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定审批通过ID = <span id="task_msg" class="text-danger"></span>的任务么? 请注意: <br><br>
+                  1. 立即执行任务在审批通过后2分钟内执行;<br><br>
+                  2. 定时执行任务按照Cron内容执行
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="approve_confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="approveConfirmButton" onclick="approve_task()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 详情模态框 -->
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">任务执行详情</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>选项</th>
+                      <th>内容</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>执行命令</td>
+                      <td id="execute_shell"></td>
+                    </tr>
+                    <tr>
+                      <td>任务结果</td>
+                      <td id="execute_result">
+                          <label class="mr-3 w-100">执行成功: <span id="count_success" class="text-danger"></span></label>
+                          <label class="mr-3 w-100">执行失败: <span id="count_fail" class="text-danger"></span></label>
+                          <label class="mr-3 w-100">执行结果详见: <a id="detail_file" href="#" onclick="download_execute_result()"></a></label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span class="text-danger">    </span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>任务名称</th>
+                                <th>操作主机组</th>
+                                <th>执行策略</th>
+                                <th>任务状态</th>
+                                <th>创建用户</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>任务名称</th>
+                                <th>操作主机组</th>
+                                <th>执行策略</th>
+                                <th>任务状态</th>
+                                <th>创建用户</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% for each_task in all_tasks %}
+                            <tr id="tr-{{ each_task.id }}">
+                                <td>{{ each_task.id }}</td>
+                                <td>{{ each_task.name }}</td>
+                                <td>{{ each_task.host_group_name.name }}</td>
+                                <td>
+                                    {% if each_task.execute_policy == "1" %}
+                                        立即执行
+                                    {% else %}
+                                        定时执行: {{ each_task.execute_policy }}
+                                    {% endif %}
+                                </td>
+                                <td class="{% if each_task.status == 2 %}text-success{% elif each_task.status == 3 %}text-primary{% elif each_task.status == 0 %}text-warning{% elif each_task.status == 1 %}text-danger{% endif %}">{{ each_task.get_status_display }}</td>
+                                <td>{{ each_task.user.username }}</td>
+                                <td>{{ each_task.create_time }}</td>
+                                <td>{{ each_task.update_time }}</td>
+                                <td style="display: none;">{{ each_task.id }}</td>
+                                <td>
+                                    {% if request.user.is_superuser %}
+                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-warning btn-sm" onclick="get_taskid(this)" id="{{ each_task.id }}">审批</button>
+                                    {% endif %}
+                                    <button type="button" class="btn btn-info btn-sm" onclick="get_task_info(this)" value="{{ each_task.id }}">详情</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            $('#dataTable').DataTable({
+                "order": [[0, 'desc']],
+                "pageLength": 50,
+            });
+        });
+
+        // 设置加载图片
+        function loading() {
+            $("#load").show();
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            $("#load").hide();
+        };
+
+        // 移除reminder
+        function reminder_remove() {
+            var approve_confirm_msg = document.getElementById("approve_confirm_msg");
+            approve_confirm_msg.innerHTML = '';
+        };
+
+        // 弹出刷新确认框
+        function refresh_confirm() {
+            var refresh_confirm_msg = document.getElementById("refresh_confirm_msg");
+            refresh_confirm_msg.innerHTML = '';
+            $('#refreshConfirmModal').modal('show');
+        };
+
+        //下载文件
+        function download_execute_result() {
+            $.ajax({
+                type: "post",
+                url: "/download_execute_result/",
+                data: {
+                    filename: document.querySelector('#detail_file').getAttribute('data-value'),
+                },
+                xhrFields: {
+                    responseType: 'blob'
+                },
+                 success: function(blob, status, xhr) {
+                    // 从响应头中获取后端设置的文件名
+                    const filename = xhr.getResponseHeader('Content-Disposition')
+                        ?.split('filename=')[1]
+                        ?.replace(/"/g, '') || 'downloaded_file.txt';
+
+                    // 创建 Blob 对象的 URL
+                    const url = window.URL.createObjectURL(blob);
+
+                    // 动态创建 <a> 元素进行下载
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                },
+                error: function(xhr, status, error) {
+                    console.log('error:', error);
+                }
+            });
+        }
+
+        // 点击详情按钮时显示任务信息
+        function get_task_info(button) {
+            $.ajax({
+                type: "post",
+                url: "/get_task_info/",
+                dataType: "json",
+                data: {
+                    task_id: button.value,
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        document.getElementById("execute_shell").innerText = data.shell;
+                        document.getElementById("count_success").innerText = data.msg.count_success;
+                        document.getElementById("count_fail").innerText = data.msg.count_fail;
+                        document.getElementById("detail_file").innerText = data.msg.exec_remote_shell_result_filename;
+                        var detail_file = document.getElementById("detail_file");
+                        $('#detail_file').attr('data-value', data.msg.exec_remote_shell_result_filename);
+                    } else {
+                        document.getElementById("count_success").innerText = "";
+                        document.getElementById("count_fail").innerText = "";
+                        document.getElementById("detail_file").innerText = "";
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+
+            // 显示确认框
+            $('#detailModal').modal('show');
+        }
+
+        // 点击审批按钮时设置确认按钮的
+        function get_taskid(button) {
+            // 设置确认按钮的 data-id 属性
+            document.querySelector('#approveConfirmButton').setAttribute('data-id', button.id);
+            document.getElementById("task_msg").innerHTML = button.id;
+
+            // 显示确认框
+            reminder_remove();
+            $('#approveConfirmModal').modal('show');
+        }
+
+        // 审批任务
+        function approve_task() {
+            var approve_confirm_msg = document.getElementById("approve_confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/approve_task/",
+                dataType: "json",
+                data: {
+                    task_id: document.querySelector('#approveConfirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        location.reload();
+                    } else {
+                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+    </script>
+{% endblock %}

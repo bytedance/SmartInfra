@@ -1,0 +1,5 @@
+mysqlclient==2.2.5
+Django==5.1.3
+django-mirage-field==1.4.0
+django-q2==1.7.4
+croniter==5.0.1

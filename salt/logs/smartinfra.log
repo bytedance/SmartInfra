@@ -1,0 +1,444 @@
+[2024-11-18 10:09:25,148][MainThread:278659424392224][task_id:default][hosts_list.py:68][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 47, in register_hosts
+    accepted_minion = hosts.objects.filter(name=each_minion, status=minion_status, salt=salt_master.objects.get(each_salt_master["id"])).first()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1488, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+
+[2024-11-18 10:11:24,469][MainThread:271991590380576][task_id:default][hosts_list.py:69][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 48, in register_hosts
+    accepted_minion = hosts.objects.filter(name=each_minion, status=minion_status, salt=salt_master.objects.get(each_salt_master["id"])).first()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1488, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+
+[2024-11-18 10:13:38,716][MainThread:279214868059168][task_id:default][hosts_list.py:69][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 48, in register_hosts
+    accepted_minion = hosts.objects.filter(name=each_minion, status=minion_status, salt=salt_master.objects.get(each_salt_master["id"])).first()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1488, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+
+[2024-11-18 10:16:04,414][MainThread:269388333917216][task_id:default][hosts_list.py:69][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 54, in register_hosts
+    salt=salt_master.objects.get(each_salt_master["id"]), label=update_label)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1488, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+
+[2024-11-18 10:17:18,953][MainThread:246622934664224][task_id:default][hosts_list.py:69][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+MySQLdb.DataError: (1264, "Out of range value for column 'label' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 53, in register_hosts
+    hosts.objects.create(name=each_minion, status=minion_status,
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 891, in save
+    self.save_base(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 997, in save_base
+    updated = self._save_table(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1160, in _save_table
+    results = self._do_insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1201, in _do_insert
+    return manager._insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+django.db.utils.DataError: (1264, "Out of range value for column 'label' at row 1")
+
+[2024-11-18 10:20:23,751][MainThread:268801461982240][task_id:default][hosts_list.py:69][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+MySQLdb.DataError: (1406, "Data too long for column 'name' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 53, in register_hosts
+    hosts.objects.create(name=each_minion, status=minion_status,
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 891, in save
+    self.save_base(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 997, in save_base
+    updated = self._save_table(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1160, in _save_table
+    results = self._do_insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1201, in _do_insert
+    return manager._insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+django.db.utils.DataError: (1406, "Data too long for column 'name' at row 1")
+
+[2024-11-18 10:21:45,931][MainThread:249144143430688][task_id:default][hosts_list.py:68][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 49, in register_hosts
+    accepted_minion(label=update_label)
+TypeError: 'hosts' object is not callable
+
+[2024-11-18 10:29:19,250][MainThread:249791936287776][task_id:default][hosts_list.py:68][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+MySQLdb.IntegrityError: (1062, "Duplicate entry '10.0.17.5-networkdevops' for key 'name'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 52, in register_hosts
+    hosts.objects.create(name=each_minion, status=minion_status,
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 891, in save
+    self.save_base(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 997, in save_base
+    updated = self._save_table(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1160, in _save_table
+    results = self._do_insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/base.py", line 1201, in _do_insert
+    return manager._insert(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 331, in _query
+    self._do_get_result(db)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 136, in _do_get_result
+    self._result = result = self._get_result()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/MySQLdb/cursors.py", line 363, in _get_result
+    return self._get_db().store_result()
+django.db.utils.IntegrityError: (1062, "Duplicate entry '10.0.17.5-networkdevops' for key 'name'")
+
+[2024-11-18 10:30:37,666][MainThread:259557285815328][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 10:30:37,667][MainThread:259557285815328][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 10:39:29,114][MainThread:262814965007392][task_id:default][hosts_list.py:68][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 38, in register_hosts
+    all_minions = salt_ins.runner_status("status")
+  File "/workdir/devops/smartinfra/salt/common/salt_api.py", line 233, in runner_status
+    content = self.send_req(params)
+  File "/workdir/devops/smartinfra/salt/common/salt_api.py", line 43, in send_req
+    headers = {'X-Auth-Token': self.__token_id, 'Content-type': 'application/json'}
+AttributeError: 'SaltAPI' object has no attribute '_SaltAPI__token_id'
+
+[2024-11-18 10:41:05,180][MainThread:267714914829344][task_id:default][hosts_list.py:68][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/hosts_list.py", line 65, in register_hosts
+    hosts.objects.filter(label!=update_label).delete()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1488, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable bool object
+
+[2024-11-18 10:45:46,568][MainThread:246751874577440][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 10:45:46,568][MainThread:246751874577440][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 10:57:37,370][MainThread:272326674187296][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 10:57:37,370][MainThread:272326674187296][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:01:16,626][MainThread:254181020091424][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:01:16,627][MainThread:254181020091424][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:04:08,862][MainThread:278038942168096][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:04:08,862][MainThread:278038942168096][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:22:18,764][MainThread:261599547184160][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:22:18,764][MainThread:261599547184160][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:25:12,167][MainThread:254536451523616][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:25:12,167][MainThread:254536451523616][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:35:20,265][MainThread:271948754506784][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:35:20,265][MainThread:271948754506784][task_id:default][salt_api.py:32][ERROR]- unknown url type: '12/login'
+[2024-11-18 11:35:20,265][MainThread:271948754506784][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 12 无法有效连接'}
+[2024-11-18 11:35:20,266][MainThread:271948754506784][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'sfsf/login'
+[2024-11-18 11:35:20,266][MainThread:271948754506784][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'sfsf/login'
+[2024-11-18 11:35:20,266][MainThread:271948754506784][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master sfsf 无法有效连接'}
+[2024-11-18 12:00:31,793][MainThread:276677156721696][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-18 12:00:31,793][MainThread:276677156721696][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-18 12:00:31,793][MainThread:276677156721696][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 123 无法有效连接'}
+[2024-11-18 12:00:54,866][MainThread:276677156721696][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-18 12:00:54,866][MainThread:276677156721696][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-18 12:00:54,866][MainThread:276677156721696][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 34534 无法有效连接'}
+[2024-11-18 12:01:27,071][MainThread:270677712364576][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-18 12:01:27,071][MainThread:270677712364576][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-18 12:01:27,071][MainThread:270677712364576][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 123 无法有效连接'}
+[2024-11-18 12:01:52,501][MainThread:270677712364576][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-18 12:01:52,501][MainThread:270677712364576][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-18 12:01:52,501][MainThread:270677712364576][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 34534 无法有效连接'}
+[2024-11-19 01:52:42,601][MainThread:271372579943456][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-19 01:52:42,602][MainThread:271372579943456][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-19 01:52:42,602][MainThread:271372579943456][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 123 无法有效连接'}
+[2024-11-19 01:53:07,921][MainThread:271372579943456][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-19 01:53:07,921][MainThread:271372579943456][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-19 01:53:07,921][MainThread:271372579943456][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 34534 无法有效连接'}
+[2024-11-19 09:28:09,112][MainThread:268128122401824][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-19 09:28:09,112][MainThread:268128122401824][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-11-19 09:28:09,112][MainThread:268128122401824][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 123 无法有效连接'}
+[2024-11-19 09:28:40,951][MainThread:268128122401824][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-19 09:28:40,952][MainThread:268128122401824][task_id:default][salt_api.py:32][ERROR]- unknown url type: '34534/login'
+[2024-11-19 09:28:40,952][MainThread:268128122401824][task_id:default][hosts_list.py:36][ERROR]- {'status': 1, 'msg': 'Salt Master 34534 无法有效连接'}
+[2024-12-10 04:01:19,586][MainThread:247727102661664][task_id:default][exec_task.py:44][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 34, in exec_remote_shell
+    salt_server = salt_master.objects.get(id=hosts.objects.get(name=each_minion["name"]).salt)
+KeyError: 'name'
+
+[2024-12-10 04:04:07,420][MainThread:256179453453344][task_id:default][exec_task.py:45][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 35, in exec_remote_shell
+    salt_server = salt_master.objects.get(id=hosts.objects.get(name=each_minion["name"]).salt)
+KeyError: 'name'
+
+[2024-12-10 04:04:41,184][MainThread:264942062019616][task_id:default][exec_task.py:45][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2123, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'salt_master'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 35, in exec_remote_shell
+    salt_server = salt_master.objects.get(id=hosts.objects.get(name=each_minion["minion_name__name"]).salt)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1385, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/lookups.py", line 369, in get_prep_lookup
+    return super().get_prep_lookup()
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2125, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <salt_master: salt_master object (17)>.
+
+[2024-12-10 04:06:29,425][MainThread:275813761627168][task_id:default][exec_task.py:45][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 40, in exec_remote_shell
+    each_result = all_salt[salt_server.id].execute_remote_shell(each_minion["name"], exec_content)
+KeyError: 'name'
+
+[2024-12-10 04:14:50,410][MainThread:269990262731808][task_id:default][exec_task.py:46][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 26, in exec_remote_shell
+    print(host_group_minion.objects.get(host_group_name=host_group_id))
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/workdir/devops/myproject/salt/lib/python3.10/site-packages/django/db/models/query.py", line 652, in get
+    raise self.model.MultipleObjectsReturned(
+salt.models.host_group_minion.MultipleObjectsReturned: get() returned more than one host_group_minion -- it returned 2!
+
+[2024-12-10 05:20:37,928][MainThread:253841262793760][task_id:default][exec_task.py:56][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 51, in exec_remote_shell
+    ersrf.write(each_result["msg"] + '\n')
+TypeError: unsupported operand type(s) for +: 'dict' and 'str'
+
+[2024-12-10 05:27:02,212][MainThread:262109691061280][task_id:default][exec_task.py:58][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 41, in exec_remote_shell
+    salt_server = salt_master.objects.get(id=hosts.objects.get(name=each_minion["minion_name__name"]).salt_id)
+KeyError: 'minion_name__name'
+
+[2024-12-10 05:27:42,672][MainThread:262137305728032][task_id:default][exec_task.py:58][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 41, in exec_remote_shell
+    salt_server = salt_master.objects.get(id=hosts.objects.get(name=each_minion["minion_name__name"]).salt_id)
+KeyError: 'minion_name__name'
+
+[2024-12-10 06:04:21,836][MainThread:257249466393632][task_id:default][exec_task.py:62][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 41, in exec_remote_shell
+    if each_minion.get["minion_name__name", None] is None:
+TypeError: 'builtin_function_or_method' object is not subscriptable
+
+[2024-12-10 06:05:23,109][MainThread:250981034771488][task_id:default][exec_task.py:62][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 41, in exec_remote_shell
+    if each_minion.get["name", None] is None:
+TypeError: 'builtin_function_or_method' object is not subscriptable
+
+[2024-12-10 06:06:12,280][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:06:26,234][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:14:44,206][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:16:51,503][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:18:15,885][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:18:54,669][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:26:48,382][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:44:24,611][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-10 06:46:55,546][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2024-12-16 09:27:27,836][MainThread:257197904708640][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>

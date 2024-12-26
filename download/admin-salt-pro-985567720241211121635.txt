@@ -1,0 +1,3363 @@
+10.0.87.197-REICMysql1:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+mysql:x:109:115:MySQL Server,,,:/var/lib/mysql:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.87.198-REICMysql2:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+mysql:x:109:115:MySQL Server,,,:/var/lib/mysql:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.88.213-naasclientdep1:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+
+10.0.76.83-machine-mcm4360-171369689549:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+libstoragemgmt:x:997:995:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+cockpit-ws:x:996:993:User for cockpit web service:/nonexisting:/sbin/nologin
+cockpit-wsinstance:x:995:992:User for cockpit-ws instances:/nonexisting:/sbin/nologin
+sssd:x:994:990:User for sssd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+chrony:x:993:989::/var/lib/chrony:/sbin/nologin
+rngd:x:992:988:Random Number Generator Daemon:/var/lib/rngd:/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:991:987:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
+unbound:x:990:986:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+setroubleshoot:x:989:985::/var/lib/setroubleshoot:/sbin/nologin
+kibana:x:988:984:kibana service user:/nonexistent:/sbin/nologin
+wazuh:x:986:982::/var/ossec:/sbin/nologin
+
+10.0.104.100-CNFP008:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.101-CNFP009:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.102-CNFP010:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.103-synctj:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.104-cqcbpovpn02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+
+10.0.104.105-delaytest:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.106-OppoToBXMzhang:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.107-OppoToBzjh:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.109-OppoToBXiaomi:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.11-OppoToBsjn:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.110-smartcanteen:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.111-oppotobzd02:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.112-zbxserver01:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+Debian-snmp:x:105:112::/var/lib/snmp:/bin/false
+
+10.0.104.113-zbxserver02:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+Debian-snmp:x:105:112::/var/lib/snmp:/bin/false
+
+10.0.104.114-zbxdatebase:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+postgres:x:105:113:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+
+10.0.104.115-zbxproxy01:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+postgres:x:105:113:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+
+10.0.104.116-oppotobdev:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.117-ikvmproxy:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+
+10.0.104.118-comcom:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.12-ehsWeek:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+nginx:x:995:993:Nginx web server:/var/lib/nginx:/sbin/nologin
+wazuh:x:994:992::/var/ossec:/sbin/nologin
+redis:x:993:991:Redis Database Server:/var/lib/redis:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false
+
+10.0.104.122-cqcwsus:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.123-bpografana:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+grafana:x:105:112::/usr/share/grafana:/bin/false
+
+10.0.104.124-winpicoartsvn:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.125-feilian:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+
+10.0.104.126-oppotobxmwin99:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.127-aresbuild:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+
+10.0.104.13-OppoToBMI:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.14-fanqieFeilian:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.15-OppoToByijie:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.16-RIZHAOVPN2:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.17-douyinShijzRz:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.19-CQCSEC2RADIUS:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.20-OppoToBxjh:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.22-XingTaiBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.23-UGsjzBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.24-larksentinel:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.25-hfishserver:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.26-tiktokTEST:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.27-ChongQingBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.28-WeifangBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.36-TAIYUANBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.37-YIBINBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.39-SHGAMEBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.40-XiangYang7XBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.41-SUZHOUhejunBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.42-WEIFANGTaiying:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.43-YIBINBPOVPN01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.44-YIBINBPOVPN02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.45-ShangShaBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.46-ChangShaBPO2:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.47-OppoToBDev:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.48-chunkeBPO01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.49-chunkeBPO02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.50-chunkeBPO03:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.51-DOUYINsjz01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.52-DOUYINsjz02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.53-DOUYINsjz03:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+squid:x:23:23::/var/spool/squid:/sbin/nologin
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.54-XIANzijieSH01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.55-XIANzijieSH02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.56-XIANzijieSH03:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.57-CQCRIZHAOvpn3:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.58-bytetestIT01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.59-bytetestIT02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.60-jianyingBPO01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.61-jianyingBPO02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.65-Django:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.104.66-OppoToBHxaXm:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.68-chiantest1:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+mysql:x:1001:1002::/home/mysql:/sbin/nologin
+es:x:1002:1003::/home/es:/sbin/nologin
+redisd:x:1003:1004::/home/redisd:/sbin/nologin
+
+10.0.104.69-sectest12:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.70-bpomeichen0301:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.71-bpomeichen0302:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.72-bposhoupin03No01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.73-bposhoupin03No02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.74-bpobeixing01No01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.75-bpobeixing01No02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.76-bpozhonglian0201:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.77-bpozhonglian0202:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.78-bpodewo03No01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.79-bpodewo03No02:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.80-OppoToBreal:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.81-doccano:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.104.82-feilian0trouble:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.83-bpocaijing100:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.84-Monisigh:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.104.85-BPOAQFK04node:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.87-BPOAQFK05node:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.104.88-OppoToBHxaWin01:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.89-chiantest2:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+tcpdump:x:105:112::/nonexistent:/usr/sbin/nologin
+mysql:x:1001:1002::/home/mysql:/sbin/nologin
+es:x:1002:1003::/home/es:/sbin/nologin
+redisd:x:1003:1004::/home/redisd:/sbin/nologin
+
+10.0.104.90-guangfa:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.91-Gophish:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.94-CNFP002:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.95-CNFP003:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.96-CNFP004:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.97-CNFP005:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.98-CNFP006:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.104.99-CNFP007:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.100-pce2emarvin:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.102-oppotobgjn:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.103-oppotobxmwin:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.104-oppotobzhangdi:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.105-itplanet2024:
+root:x:0:0:root:/root:/bin/sh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+messagebus:x:100:107::/nonexistent:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+juger:x:1000:1000:juger,,,:/home/juger:/bin/bash
+_chrony:x:102:109:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+zabbix:x:103:110::/nonexistent:/usr/sbin/nologin
+wazuh:x:104:111::/var/ossec:/sbin/nologin
+polkitd:x:996:996:polkit:/nonexistent:/usr/sbin/nologin
+redis:x:105:112::/var/lib/redis:/usr/sbin/nologin
+mysql:x:106:113:MySQL Server,,,:/var/lib/mysql:/bin/false
+
+10.0.105.107-pyxis4pico:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+mysql:x:109:115:MySQL Server,,,:/var/lib/mysql:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.109-PicoTransitSRV:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.11-10010511-zhangyiyan:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+squid:x:23:23::/var/spool/squid:/usr/sbin/nologin
+tcpdump:x:72:72::/:/usr/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.110-OppoToBSnail:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.111-OppoToBsdk:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.112-PICOiprefSRV:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.115-OppoToBXR:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.116-taiyuanFeilian:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.118-feilianDEV:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.119-OppoToBsuxu:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.12-hp1:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.202-picovideoartsvn-92ed8b1b690f:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+sentinelone:x:998:998::/opt/sentinelone/home:/sbin/nologin
+
+10.0.105.212-109238219-pmoca:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.216-Win-Server-2019:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.230-p9-ca3af3ce39a9:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.241-OppoToB01:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.242-100105242-T3-Op:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.243-CountEnd01:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.244-CountEnd02:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+mysql:x:109:115:MySQL Server,,,:/nonexistent:/bin/false
+redis:x:110:116::/var/lib/redis:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.248-LuckyDraw01:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.249-LuckyDraw02:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+mysql:x:109:115:MySQL Server,,,:/nonexistent:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.250-OppoToB2:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.31-itseccap01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.36-seal-0bee692eda45:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.38-wiki-cbbd2189dcae:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.44-SampleSrv-2138fae7d1d2:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.50-OppoToBCh:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.51-OppoToBsyq:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.52-OppoCpcQufu3-a0:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.56-SHDoperate:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.60-harmony:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+
+10.0.105.61-feilianxdali-c3ff9029df20:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.62-stg2client:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+
+10.0.105.63-P6PerforceMain-b31a784a8451:
+root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.64-P6PerforceSlave-9b1aaf0b7f92:
+root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.73-OppoToBXMwin02:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.74-REICGameserver:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+www:x:1002:1002::/home/www:/sbin/nologin
+mysql:x:1003:1003::/home/mysql:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.75-oppotobdqj:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.76-cache01:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+squid:x:23:23::/var/spool/squid:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.77-OppoToBycq:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.78-OppoToBArchKy:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.79-netops:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.81-gartnervm:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.82-OppoTobZxy:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.83-oppotob2lt:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.84-SHParking:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.85-ikvmNetVpn:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+strongswan:x:109:65534::/var/lib/strongswan:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.105.86-opposuhan:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.87-oppotobsyq:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.88-OppoToBXiaoMi:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.89-dmzdmz:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.90-OppoToBdemo:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.91-CQCRIZHAO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.92-shijzBPO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.93-OppoToBzyx:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.94-feilianPICO:
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/usr/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/usr/sbin/nologin
+adm:x:3:4:adm:/var/adm:/usr/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/usr/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/usr/sbin/nologin
+operator:x:11:0:operator:/root:/usr/sbin/nologin
+games:x:12:100:games:/usr/games:/usr/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/usr/sbin/nologin
+nobody:x:99:99:Nobody:/:/usr/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+dbus:x:81:81:System message bus:/:/usr/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/usr/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/usr/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/usr/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+zabbix:x:997:995:Zabbix Monitoring System:/var/lib/zabbix:/usr/sbin/nologin
+juger:x:1001:1001::/home/juger:/bin/bash
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+wazuh:x:996:994::/var/ossec:/sbin/nologin
+
+10.0.105.95-mitobarchky:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.97-OppoToBXMwin01:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.98-oppotobgjn:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.105.99-OppoToBganlin:
+'cat' is not recognized as an internal or external command,
+operable program or batch file.
+
+10.0.17.10-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/usr/bin/zsh
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.11-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+grafana:x:109:115::/usr/share/grafana:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.12-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.14-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+influxdb:x:998:997::/var/lib/influxdb:/bin/false
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.15-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+postgres:x:109:116:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+Debian-snmp:x:110:117::/var/lib/snmp:/bin/false
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.18-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.19-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.2-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ossec:x:108:114::/var/ossec:/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+
+10.0.17.21-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+
+10.0.17.22-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+
+10.0.17.23-networkdevops:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+admin:x:1001:1001:,,,:/home/admin:/bin/bash
+zabbix:x:106:112::/var/lib/zabbix/:/usr/sbin/nologin
+_chrony:x:107:113:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+juger:x:1002:1002::/home/juger:/bin/bash
+wazuh:x:108:114::/var/ossec:/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+

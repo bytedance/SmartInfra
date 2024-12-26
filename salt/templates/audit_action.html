@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">审计日志</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <button id="add_salt" class="btn btn-sm mr-2" > </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户</th>
+                                <th>动作</th>
+                                <th>额外信息</th>
+                                <th>创建时间</th>
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户</th>
+                                <th>动作</th>
+                                <th>额外信息</th>
+                                <th>创建时间</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% for each_log in audit_log %}
+                            <tr id="tr-{{ each_master.id }}">
+                                <td>{{ each_log.id }}</td>
+                                <td>{{ each_log.user }}</td>
+                                <td>{{ each_log.action }}</td>
+                                <td>{{ each_log.extra_content }}</td>
+                                <td>{{ each_log.create_time }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+    window.addEventListener('load', function () {
+            $('#dataTable').DataTable({
+                "order": [[0, 'desc']],
+                "pageLength": 25,
+            });
+        });
+    </script>
+{% endblock %}

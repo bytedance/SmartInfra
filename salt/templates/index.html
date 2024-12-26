@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    受管主机总数</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ hosts_num }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    平台用户总数</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ users_num }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    工单总量</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ tasks_num }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-tasks fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Salt Master总数</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ salt_num }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-desktop fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">工单分布</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">主机状态分布</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4 pb-2">
+                            <canvas id="myPieChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-center small">
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-primary"></i> up
+                            </span>
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-success"></i> pending
+                            </span>
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-info"></i> unknown
+                            </span>
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-secondary"></i> denied
+                            </span>
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-warning"></i> rejected
+                            </span>
+                            <span class="mr-2">
+                                <i class="fas fa-circle text-danger"></i> down
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-xl-6 col-lg-7">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">用户使用次数</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area Chart -->
+            <div class="col-xl-6 col-lg-7">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">被操作主机数</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="opsHostsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            $("#load").show();
+        };
+
+        var tasks_tendency = {{ tasks_tendency|safe }};
+        var hosts_status_collect = {{ hosts_status_collect|safe }};
+        var task_user_tendency = {{ task_user_tendency|safe }};
+        var task_execute_result_list = {{ task_execute_result_list|safe }};
+
+        //针对key的三种状态进行处理
+        function setup_host() {
+            var reminder_msg = document.getElementById("confirm_msg");
+            loading()
+            $.ajax({
+                type: "post",
+                url: "/setup_host/",
+                dataType: "json",
+                data: {
+                    setup_type: document.querySelector('#confirmButton').getAttribute('data-id'),
+                    setup_salt: document.querySelector('#confirmButton').getAttribute('value'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#confirmModal').modal('hide');
+                        location.reload();
+                    } else {
+                        loading_remove()
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove()
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+    </script>
+{% endblock %}

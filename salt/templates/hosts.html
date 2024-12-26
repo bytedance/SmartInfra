@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">主机管理</h1>
+        <!-- 刷新确认模态框 -->
+        <div class="modal fade" id="refreshConfirmModal" tabindex="-1" role="dialog" aria-labelledby="refreshConfirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="refreshConfirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定进行此操作吗？点击确认后，后台执行异步刷新操作. 以<span class="text-danger">更新时间</span>为准
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="refresh_confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="refreshConfirmButton" onclick="refresh_minion()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 确认模态框 -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定对<span id="node_msg" class="text-danger"></span>进行此操作吗？
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmButton" onclick="setup_host()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="loadingSpinner" class="d-none text-center mt-3">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">加载中...</span>
+            </div>
+            <p>加载中...</p>
+        </div>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <button id="add_salt" class="btn btn-primary btn-sm mr-2" onclick="refresh_confirm()"> &nbsp;刷 新&nbsp; </button>
+                <span class="text-danger">系统 {{ refrsh_interval }} 分钟自动刷新一次主机列表。非紧急，不需要手动刷新</span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>状态</th>
+                                <th>Salt Master</th>
+                                <th>更新时间</th>
+                                {% if request.user.is_superuser %}
+                                <th>操作</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>名称</th>
+                                <th>状态</th>
+                                <th>Salt Master</th>
+                                <th>更新时间</th>
+                                {% if request.user.is_superuser %}
+                                <th>操作</th>
+                                {% endif %}
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                {% if request.user.is_superuser %}
+                                <td></td>
+                                {% endif %}
+                            </tr>
+                            {% for each_host in all_hosts %}
+                            <tr id="tr-{{ each_host.id }}">
+                                <td>{{ each_host.name }}</td>
+                                <td>{{ each_host.get_status_display }}</td>
+                                <td>{{ each_host.salt.name }}</td>
+                                <td>{{ each_host.update_time }}</td>
+                                <td style="display: none;">{{ each_host.id }}</td>
+                                {% if request.user.is_superuser %}
+                                <td>
+                                    <button style="{% if each_host.get_status_display != 'pending' %}display: none;{% endif %}" type="button" class="btn btn-primary btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="a-{{ each_host.name }}">accept</button>
+                                    <button style="{% if each_host.get_status_display != 'pending' %}display: none;{% endif %}" type="button" class="btn btn-warning btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="r-{{ each_host.name }}">reject</button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="d-{{ each_host.name }}">delete</button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            $("#load").show();
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            $("#load").hide();
+        };
+
+        // 移除reminder
+        function reminder_remove() {
+            var reminder_msg = document.getElementById("confirm_msg");
+            reminder_msg.innerHTML = '';
+        };
+
+        // 弹出刷新确认框
+        function refresh_confirm() {
+            var refresh_confirm_msg = document.getElementById("refresh_confirm_msg");
+            refresh_confirm_msg.innerHTML = '';
+            $('#refreshConfirmModal').modal('show');
+        };
+
+        //刷新 minions
+        function refresh_minion() {
+            var refresh_confirm_msg = document.getElementById("refresh_confirm_msg");
+            loading();
+            $.ajax({
+                type: "post",
+                url: "/refresh_minion/",
+                dataType: "json",
+                data: {
+
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    loading_remove();
+                    if (data.status === 0) {
+                        refresh_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#refreshConfirmModal').modal('hide');
+                    } else {
+
+                        refresh_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
+                    refresh_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击删除按钮时设置确认按钮的
+        function get_rowid(button) {
+                reminder_remove();
+                // 设置确认按钮的 data-id 属性
+                document.querySelector('#confirmButton').setAttribute('data-id', button.id);
+                document.querySelector('#confirmButton').setAttribute('value', button.value);
+                document.getElementById("node_msg").innerHTML = button.id.slice(2);
+
+                // 显示确认框
+                $('#confirmModal').modal('show');
+        }
+
+        //针对key的三种状态进行处理
+        function setup_host() {
+            var reminder_msg = document.getElementById("confirm_msg");
+            loading()
+            $.ajax({
+                type: "post",
+                url: "/setup_host/",
+                dataType: "json",
+                data: {
+                    setup_type: document.querySelector('#confirmButton').getAttribute('data-id'),
+                    setup_salt: document.querySelector('#confirmButton').getAttribute('value'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#confirmModal').modal('hide');
+                        location.reload();
+                    } else {
+                        loading_remove()
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove()
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+10.0.85.53-luwanlong:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 2812, 'retcode': 0, 'stdout': '{
+    "BootTime":  "20241218185000.500000+480",
+    "OSName":  "Microsoft Windows Server 2022 Standard",
+    "DisplayVersion":  "21H2",
+    "ReleaseId":  "2009",
+    "CurrentBuild":  "20348",
+    "UBR":  2762
+}', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin300102820241213074707', '__run_num__': 0, 'start_time': '18:44:26.946623', 'duration': 758.152, '__id__': 'my-windows-script'}}
+

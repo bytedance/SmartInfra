@@ -1,0 +1,15 @@
+10.0.85.142-qqq111:
+cat: /tmp/salt_ntp_chrony.log: No such file or directory
+
+10.66.17.84-uuu111:
+cat: /tmp/salt_ntp_chrony.log: No such file or directory
+
+10.0.85.139-test123:
+cat: /tmp/salt_ntp_chrony.log: No such file or directory
+
+10.0.85.141-www111:
+Neither NTP nor Chrony configuration found.
+
+10.0.85.144-ttt111:
+cat: /tmp/salt_ntp_chrony.log: No such file or directory
+
