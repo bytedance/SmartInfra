@@ -125,8 +125,9 @@ def show_message(request):
     for each_task_message in task_message:
         task_messages.append({each_task_message["create_time"].strftime('%y-%m-%d %H:%M:%S'):each_task_message["name"]})
     count_task_message = task_message.count()
+    authenticate_tag = authenticate_type.objects.get(name="authentication").type
 
-    return HttpResponse(json.dumps({"count_task_message": count_task_message, "task_messages": task_messages}), content_type="application/json")
+    return HttpResponse(json.dumps({"count_task_message": count_task_message, "task_messages": task_messages, "authenticate_tag": authenticate_tag}), content_type="application/json")
 
 @audit_action
 @csrf_exempt
@@ -169,7 +170,7 @@ def authenticate_user(request):
             authenticate_result["msg"] = "错误的用户名或密码，请重新输入"
     else:
         authenticate_result["status"] = 1
-        authenticate_result["msg"] = "请输入完整参数"
+        authenticate_result["msg"] = "请输入完整的用户名和密码"
 
     return HttpResponse(json.dumps(authenticate_result), content_type="application/json")
 
@@ -1190,7 +1191,7 @@ def callback_oauth(request):
             request_resource_data = {"Authorization": user_access_token, "Content-Type": "application/json; charset=utf-8"}
             user_info = requests.get(url=resource_url, headers=request_resource_data)
             json_user_info = json.loads(user_info.content)
-            username = json_user_info["data"]["email"].split("@")[0]
+            username = json_user_info["data"]["email"].split("@")[0] if "@" in json_user_info["data"]["email"] else json_user_info["data"]["email"]
             email = json_user_info["data"]["email"]
 
             # make current user who are from oauth to login automatically

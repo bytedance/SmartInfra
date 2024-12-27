@@ -65,9 +65,9 @@
 
                   <!-- 双向选择框 -->
                   <div class="form-group">
-                    <label for="dualListbox" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;资源组</label>
                     <div class="row">
                       <div class="col">
+                          <label class="mr-3"><span class="text-danger">*</span>&nbsp;可选资源组: </label>
                         <select id="availableOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           {% for each_rg in all_rg %}
                             <option value="{{ each_rg.id }}">{{ each_rg.name }}</option>
@@ -79,6 +79,7 @@
                           <button type="button" class="btn btn-primary w-100 mt-2" id="moveLeft">←</button>
                         </div>
                       <div class="col">
+                          <label class="mr-3"><span class="text-danger">*</span>&nbsp;已选资源组: </label>
                         <select id="selectedOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           <!-- 已选择的项会显示在这里 -->
                         </select>

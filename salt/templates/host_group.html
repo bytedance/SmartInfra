@@ -55,9 +55,9 @@
 
                   <!-- SaltMaster双向选择框 -->
                   <div class="form-group" id="multiSelect" style="display: none;">
-                    <label for="dualListbox" class="mr-3 w-25">Salt Master列表</label>
                     <div class="row">
                       <div class="col">
+                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;可选Salt Master: </label>
                         <select id="availableOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           {% for each_user_salt_info in user_salt_info %}
                             <option value="{{ each_user_salt_info.id }}">{{ each_user_salt_info.name }}</option>
@@ -69,6 +69,7 @@
                           <button type="button" class="btn btn-primary w-100 mt-2" id="moveLeft">←</button>
                         </div>
                       <div class="col">
+                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;已选Salt Master: </label>
                         <select id="selectedOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           <!-- 已选择的项会显示在这里 -->
                         </select>
@@ -325,6 +326,11 @@
         };
 
         window.addEventListener('load', function () {
+            // 检查 DataTable 是否已经初始化
+            if ($.fn.DataTable.isDataTable('#dataTable')) {
+                $('#dataTable').DataTable().destroy(); // 销毁已有实例
+            }
+            // 初始化 DataTable
             $('#dataTable').DataTable({
                 "order": [[3, 'desc']]
             });
