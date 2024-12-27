@@ -61,7 +61,6 @@ def exec_remote_shell(*args, **kwargs):
             for each_salt in host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name"):
                 include_salt.append(each_salt["salt_name"])
             all_minions = hosts.objects.filter(salt__in=include_salt, status=0).values("name")
-        logger.error(all_minions)
 
         for each_minion in all_minions:
             if each_minion.get("name", None) is None:
@@ -89,10 +88,11 @@ def exec_remote_shell(*args, **kwargs):
 
             if each_result["status"] == 0:
                 count_success += 1
+                cleaned_content = str(each_result['msg'][each_minion])
             else:
                 count_fail += 1
+                cleaned_content = str(each_result['msg'])
 
-            cleaned_content = str(each_result['msg'][each_minion])
             if '\\r\\n' in cleaned_content:
                 cleaned_content = cleaned_content.replace('\\r\\n', '\n')
             with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrf:
