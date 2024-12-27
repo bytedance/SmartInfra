@@ -9,7 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import os
+from distutils.command.config import config
+from email.policy import default
+
+from decouple import config
 import os.path
 from pathlib import Path
 import logging
@@ -115,11 +118,11 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "DEFAULT_CHARSET": "utf8mb4",
-        "NAME": "smartinfra",
-        "USER": "root",
-        "PASSWORD": "123456",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        "NAME": config('DB_NAME'),
+        "USER": config('DB_USER'),
+        "PASSWORD": config('DB_PASSWORD'),
+        "HOST": config('DB_HOST'),
+        "PORT": config('DB_PORT'),
     }
 }
 
@@ -215,16 +218,16 @@ LOGGING = {
 }
 
 # 定时刷新minion时间间隔, 以分钟为单位计算. 同时定义时区，防止重复执行. 支持 'UTC', 'Asia/Shanghai', 与数据库时区匹配
-FRESH_INTERVAL = 60
-FRESH_TIMEZONE = 'Asia/Shanghai'
+FRESH_INTERVAL = config('FRESH_INTERVAL', default=60)
+FRESH_TIMEZONE = config('FRESH_TIMEZONE', default='Asia/Shanghai')
 
 # 文件下载目录
-DOWNLOAD_URL = 'download/'
+DOWNLOAD_URL = config('DOWNLOAD_URL', default='download/')
 DOWNLOAD_ROOT = os.path.join(BASE_DIR, DOWNLOAD_URL)
 
 # 分发文件根目录
-TRANSFER_FILE_HOME = 'smartinfra_transfer/'
+TRANSFER_FILE_HOME = config('TRANSFER_FILE_HOME', default='smartinfra_transfer/')
 
 # state根目录
-STATE_HOME = 'smartinfra_state/'
+STATE_HOME = config('STATE_HOME', default='smartinfra_state/')
 

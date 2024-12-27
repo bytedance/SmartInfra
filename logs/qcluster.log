@@ -8089,3 +8089,71 @@ TypeError: 'salt_master' object is not subscriptable
 [2024-12-26 16:25:02,632][Thread-2 (process_request_thread):272372680683808][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2499
 [2024-12-26 08:25:02,745][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-6dd0fb98509948dca210fafdf354a962 processing quiet-saturn-failed-dakota 'salt.tasks.hosts_list.register_hosts'
 [2024-12-26 08:25:28,717][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (quiet-saturn-failed-dakota)
+[2024-12-26 08:50:56,553][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2500
+[2024-12-26 08:50:56,556][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task batman-winner-gee-tango from schedule [3]
+[2024-12-26 08:50:56,747][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 processing batman-winner-gee-tango 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 08:51:19,270][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (batman-winner-gee-tango)
+[2024-12-26 09:50:43,333][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2501
+[2024-12-26 09:50:43,335][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task batman-may-avocado-fillet from schedule [3]
+[2024-12-26 09:50:43,384][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-520a4abcfbf64ef998984526e47471f0 processing batman-may-avocado-fillet 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 09:51:07,080][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (batman-may-avocado-fillet)
+[2024-12-26 10:51:00,301][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2502
+[2024-12-26 10:51:00,305][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task artist-georgia-eleven-ten from schedule [3]
+[2024-12-26 10:51:00,528][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-41578d0062724359b1e565ab21a24bc1 processing artist-georgia-eleven-ten 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 10:51:26,867][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (artist-georgia-eleven-ten)
+[2024-12-26 11:50:46,807][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2503
+[2024-12-26 11:50:46,811][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task potato-echo-butter-jersey from schedule [3]
+[2024-12-26 11:50:46,985][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-09965989492d4acab36bf3140c1c3b06 processing potato-echo-butter-jersey 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 11:51:09,567][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (potato-echo-butter-jersey)
+[2024-12-26 12:50:33,541][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2504
+[2024-12-26 12:50:33,545][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task romeo-blossom-green-skylark from schedule [3]
+[2024-12-26 12:50:33,654][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-3712008b925941ac830ac9fb3c3edf21 processing romeo-blossom-green-skylark 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 12:53:35,415][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (romeo-blossom-green-skylark)
+[2024-12-26 13:52:37,040][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2505
+[2024-12-26 13:52:37,043][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task hawaii-bacon-alpha-quiet from schedule [3]
+[2024-12-26 13:52:37,227][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-ec56413a93e64bd8952b2acfaa3533ca processing hawaii-bacon-alpha-quiet 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 13:52:58,981][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (hawaii-bacon-alpha-quiet)
+[2024-12-26 14:50:36,954][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2506
+[2024-12-26 14:50:36,956][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task salami-tennis-dakota-seven from schedule [3]
+[2024-12-26 14:50:37,160][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-ef4feae83c7b45c19eca6b70a5fab802 processing salami-tennis-dakota-seven 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 14:50:59,168][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (salami-tennis-dakota-seven)
+[2024-12-26 15:50:37,304][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2507
+[2024-12-26 15:50:37,306][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task aspen-butter-cat-skylark from schedule [3]
+[2024-12-26 15:50:37,413][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-6dd0fb98509948dca210fafdf354a962 processing aspen-butter-cat-skylark 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 15:50:59,230][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (aspen-butter-cat-skylark)
+[2024-12-26 16:50:46,310][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2508
+[2024-12-26 16:50:46,313][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task mockingbird-nevada-florida-august from schedule [3]
+[2024-12-26 16:50:46,418][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 processing mockingbird-nevada-florida-august 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 16:51:08,446][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (mockingbird-nevada-florida-august)
+[2024-12-26 17:52:47,105][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2509
+[2024-12-26 17:52:47,108][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task eleven-wolfram-friend-network from schedule [3]
+[2024-12-26 17:52:47,273][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-520a4abcfbf64ef998984526e47471f0 processing eleven-wolfram-friend-network 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 17:53:09,295][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (eleven-wolfram-friend-network)
+[2024-12-26 18:56:08,863][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2510
+[2024-12-26 18:56:08,865][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task sweet-floor-hot-johnny from schedule [3]
+[2024-12-26 18:56:09,090][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-41578d0062724359b1e565ab21a24bc1 processing sweet-floor-hot-johnny 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 18:56:30,929][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (sweet-floor-hot-johnny)
+[2024-12-26 19:50:41,617][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2511
+[2024-12-26 19:50:41,619][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task minnesota-papa-october-washington from schedule [3]
+[2024-12-26 19:50:41,843][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-09965989492d4acab36bf3140c1c3b06 processing minnesota-papa-october-washington 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 19:51:03,711][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (minnesota-papa-october-washington)
+[2024-12-26 20:50:56,055][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2512
+[2024-12-26 20:50:56,057][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task arkansas-earth-william-hotel from schedule [3]
+[2024-12-26 20:50:56,204][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-3712008b925941ac830ac9fb3c3edf21 processing arkansas-earth-william-hotel 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 20:51:18,948][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (arkansas-earth-william-hotel)
+[2024-12-26 21:50:32,179][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2513
+[2024-12-26 21:50:32,181][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task king-hamper-harry-steak from schedule [3]
+[2024-12-26 21:50:32,363][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-ec56413a93e64bd8952b2acfaa3533ca processing king-hamper-harry-steak 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 21:50:54,337][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (king-hamper-harry-steak)
+[2024-12-26 22:52:31,063][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2514
+[2024-12-26 22:52:31,066][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task solar-eighteen-eighteen-comet from schedule [3]
+[2024-12-26 22:52:31,082][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-ef4feae83c7b45c19eca6b70a5fab802 processing solar-eighteen-eighteen-comet 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 22:52:52,714][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (solar-eighteen-eighteen-comet)
+[2024-12-26 23:50:50,508][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2515
+[2024-12-26 23:50:50,510][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task eight-aspen-equal-muppet from schedule [3]
+[2024-12-26 23:50:50,712][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-6dd0fb98509948dca210fafdf354a962 processing eight-aspen-equal-muppet 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-26 23:51:23,415][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (eight-aspen-equal-muppet)
+[2024-12-27 00:50:39,433][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2516
+[2024-12-27 00:50:39,435][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task oklahoma-tennessee-quiet-october from schedule [3]
+[2024-12-27 00:50:39,608][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 processing oklahoma-tennessee-quiet-october 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-27 00:51:02,142][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (oklahoma-tennessee-quiet-october)
