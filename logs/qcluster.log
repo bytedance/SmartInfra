@@ -8185,3 +8185,7 @@ TypeError: 'salt_master' object is not subscriptable
 [2024-12-27 05:50:51,291][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task bluebird-blue-friend-lemon from schedule [3]
 [2024-12-27 05:50:51,404][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-6dd0fb98509948dca210fafdf354a962 processing bluebird-blue-friend-lemon 'salt.tasks.hosts_list.register_hosts' [3]
 [2024-12-27 05:51:15,208][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (bluebird-blue-friend-lemon)
+[2024-12-27 06:50:55,437][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2524
+[2024-12-27 06:50:55,440][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task saturn-fourteen-sierra-red from schedule [3]
+[2024-12-27 06:50:55,484][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 processing saturn-fourteen-sierra-red 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-27 06:51:19,699][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (saturn-fourteen-sierra-red)

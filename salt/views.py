@@ -450,6 +450,8 @@ def list_ro_setup(request):
     :param request:
     :return:
     """
+    if not acl_manage.objects.filter(name="acl"):
+        acl_manage.objects.create(name="acl", description="acl management", content="")
     all_acl = acl_manage.objects.all()
 
     return render(request, "ro_setup.html", {"all_acl": all_acl})

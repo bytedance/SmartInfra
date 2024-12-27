@@ -26681,3 +26681,10 @@ TypeError: string indices must be integers
 [2024-12-27 05:51:15,184][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
 [2024-12-27 05:51:15,185][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
 [2024-12-27 05:51:15,205][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- bluebird-blue-friend-lemon
+[2024-12-27 06:50:55,496][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 06:50:55,496][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 06:50:55,496][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 06:51:19,679][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 06:51:19,680][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 06:51:19,680][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-27 06:51:19,695][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- saturn-fourteen-sierra-red

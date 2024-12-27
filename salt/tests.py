@@ -164,6 +164,10 @@ each_minion = "10.0.85.53-luwanlong"
 # result_dict = {item['user_id']: item['count'] for item in data}
 #
 # print(result_dict)
-import requests
-cc = requests.get("https://accounts.feishu.cn/open-apis/authen/v1/authorize?client_id=cli_a7e0a93868b0d013&redirect_uri=http://172.16.227.129:8080/&&state=12345687")
-print(cc.url)
+# import requests
+# cc = requests.get("https://accounts.feishu.cn/open-apis/authen/v1/authorize?client_id=cli_a7e0a93868b0d013&redirect_uri=http://172.16.227.129:8080/&&state=12345687")
+# print(cc.url)
+from salt.models import hosts
+include_salt = [17]
+all_minions = hosts.objects.filter(salt__in=include_salt, status=0).values("name")
+print(all_minions)

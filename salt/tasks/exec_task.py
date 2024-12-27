@@ -22,8 +22,7 @@ def exec_remote_shell(*args, **kwargs):
     include_salt = []
     all_salt_ins = {}
     count_success = count_fail = 0
-    exec_remote_shell_result_filename = str(current_user) + "-" + host_group.objects.get(
-        id=host_group_id).name + "-" + ''.join(random.choices('0123456789', k=7)) + time.strftime(
+    exec_remote_shell_result_filename = str(current_user) + "-" + ''.join(random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
 
@@ -62,6 +61,7 @@ def exec_remote_shell(*args, **kwargs):
             for each_salt in host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name"):
                 include_salt.append(each_salt["salt_name"])
             all_minions = hosts.objects.filter(salt__in=include_salt, status=0).values("name")
+        logger.error(all_minions)
 
         for each_minion in all_minions:
             if each_minion.get("name", None) is None:
