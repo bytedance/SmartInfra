@@ -4,4 +4,5 @@ django-mirage-field==1.4.0
 django-q2==1.7.4
 croniter==5.0.1
 requests==2.32.3
+python-decouple==3.8
 
