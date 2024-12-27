@@ -26633,3 +26633,20 @@ TypeError: string indices must be integers
 [2024-12-27 00:51:02,128][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
 [2024-12-27 00:51:02,128][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
 [2024-12-27 00:51:02,139][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- oklahoma-tennessee-quiet-october
+[2024-12-27 01:48:10,674][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 01:48:10,677][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: '123/'
+[2024-12-27 01:48:10,678][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: '123/'
+[2024-12-27 01:48:10,678][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: '123/'
+[2024-12-27 01:48:10,679][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: '123/'
+[2024-12-27 01:48:12,332][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 01:48:12,334][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: 'rrr/'
+[2024-12-27 01:48:12,335][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: 'rrr/'
+[2024-12-27 01:48:12,337][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: 'rrr/'
+[2024-12-27 01:48:12,338][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- unknown url type: 'rrr/'
+[2024-12-27 01:50:41,353][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 01:50:41,353][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 01:50:41,354][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 01:51:04,389][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 01:51:04,390][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 01:51:04,390][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-27 01:51:04,404][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- lion-arizona-carbon-illinois

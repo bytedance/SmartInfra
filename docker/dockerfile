@@ -1,0 +1,5 @@
+# 基于 Debian 12 镜像
+FROM ??
+
+# 复制项目文件
+COPY smartinfra/ /workdir/smartinfra
