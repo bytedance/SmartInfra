@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./mysql:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: smartinfra
+      MYSQL_ROOT_PASSWORD: 123456
+
+  smartsalt:
+    image: it-harbor.bytedance.net/probe/smartsalt:v3
+    container_name: smartsalt
+    restart: always
+    ports:
+      - "80:80"
+    env_file:
+      - .env
