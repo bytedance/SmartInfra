@@ -76,7 +76,7 @@ def exec_remote_shell(*args, **kwargs):
                     ersrfa.write(f"{each_minion}:\n{cleaned_content}\n" + '\n')
                 continue
 
-            salt_server = salt_master.objects.get(id=(hosts.objects.get(name=each_minion)).salt_id)
+            salt_server = salt_master.objects.get(id=hosts.objects.filter(name=each_minion).values("salt_id").first()["salt_id"])
             if salt_server.id not in all_salt_ins:
                 salt_ins = SaltAPI(salt_server.host, salt_server.user, salt_server.password)
                 all_salt_ins[salt_server.id] = salt_ins
