@@ -324,13 +324,9 @@
                                     src="{% static 'img/undraw_profile.svg' %}">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <div id="self_mgmt_service" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    修改密码
-                                </a>
-                                <div class="dropdown-divider"></div>
+
                                 <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     退出
@@ -470,7 +466,20 @@
             },
             success: function (data) {
                 document.getElementById("count_task_message").innerHTML = data.count_task_message+"+";
-                // 获取目标父容器
+                // 根据认证模式选择是否显示修改密码功能
+                const self_mgmt_service = document.getElementById("self_mgmt_service");
+                const forget_passwd = `
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        修改密码
+                    </a>
+                    <div class="dropdown-divider"></div>
+                `;
+                if (data.authenticate_tag === 0) {
+                    self_mgmt_service.innerHTML = forget_passwd + self_mgmt_service.innerHTML;
+                }
+
+                // 动态添加当前用户未审批任务信息
                 const dropdownMenu = document.getElementById("dropdownMenu");
                 data.task_messages.forEach(item => {
                     for (const [key, value] of Object.entries(item)) {

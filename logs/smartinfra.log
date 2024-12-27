@@ -26650,3 +26650,34 @@ TypeError: string indices must be integers
 [2024-12-27 01:51:04,390][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
 [2024-12-27 01:51:04,390][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
 [2024-12-27 01:51:04,404][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- lion-arizona-carbon-illinois
+[2024-12-27 02:50:57,226][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 02:50:57,226][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 02:50:57,226][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 02:51:19,592][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 02:51:19,592][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 02:51:19,592][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-27 02:51:19,620][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- sweet-ohio-salami-gee
+[2024-12-27 03:52:19,226][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 03:52:19,226][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 03:52:19,227][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 03:52:41,276][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 03:52:41,276][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 03:52:41,276][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-27 03:52:41,288][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- maine-harry-maine-shade
+[2024-12-27 04:50:49,985][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 04:50:49,985][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 04:50:49,986][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 04:55:58,780][MainThread:281289397933088][task_id:default][salt_api.py:52][ERROR]- The read operation timed out
+[2024-12-27 04:55:58,785][MainThread:281289397933088][task_id:default][hosts_list.py:60][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/hosts_list.py", line 30, in register_hosts
+    minion_up = all_minions["msg"]["up"]
+TypeError: string indices must be integers
+
+[2024-12-27 04:55:58,817][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- grey-louisiana-louisiana-timing
+[2024-12-27 05:50:51,421][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 05:50:51,421][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: '123/login'
+[2024-12-27 05:50:51,421][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master 123 无法有效连接
+[2024-12-27 05:51:15,184][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 05:51:15,184][MainThread:281289397933088][task_id:default][salt_api.py:32][ERROR]- unknown url type: 'rrr/login'
+[2024-12-27 05:51:15,185][MainThread:281289397933088][task_id:default][hosts_list.py:27][ERROR]- Salt Master rrr 无法有效连接
+[2024-12-27 05:51:15,205][MainThread:281289397933088][task_id:default][q_task.py:15][INFO]- bluebird-blue-friend-lemon
