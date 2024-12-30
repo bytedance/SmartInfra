@@ -1,0 +1,408 @@
+10.0.87.197-REICMysql1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:40.681440', 'duration': 51.804, '__id__': 'my-windows-script'}}
+
+10.0.87.198-REICMysql2:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:41.238370', 'duration': 19.703, '__id__': 'my-windows-script'}}
+
+10.0.88.213-naasclientdep1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:41.758531', 'duration': 62.617, '__id__': 'my-windows-script'}}
+
+10.0.76.83-machine-mcm4360-171369689549:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:42.206338', 'duration': 56.771, '__id__': 'my-windows-script'}}
+
+10.0.105.36-seal-0bee692eda45:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:42.767059', 'duration': 78.807, '__id__': 'my-windows-script'}}
+
+10.0.76.122-esnode29-178770873258:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:43.468571', 'duration': 82.788, '__id__': 'my-windows-script'}}
+
+10.0.76.141-CLB:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:32.631604', 'duration': 65.301, '__id__': 'my-windows-script'}}
+
+10.0.76.169-PreachRunner-d09669111927:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:44.642145', 'duration': 76.356, '__id__': 'my-windows-script'}}
+
+10.0.76.173-mysql-server:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:45.354523', 'duration': 67.749, '__id__': 'my-windows-script'}}
+
+10.0.76.57-esnode21-167803509761:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:46.181017', 'duration': 101.733, '__id__': 'my-windows-script'}}
+
+10.0.76.93-xibofaas1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:46.730660', 'duration': 91.755, '__id__': 'my-windows-script'}}
+
+10.0.79.27-machine-mcm858741e4-d1c9-45ae-9e67-5a83653d1b4c:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:47.476370', 'duration': 98.582, '__id__': 'my-windows-script'}}
+
+10.0.83.100-ITSOTestVM-29496e180307:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:50:53.523340', 'duration': 101.626, '__id__': 'my-windows-script'}}
+
+10.0.85.18-naasclient:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:48.943789', 'duration': 115.858, '__id__': 'my-windows-script'}}
+
+10.0.85.33-naastest011:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:49.590409', 'duration': 30.594, '__id__': 'my-windows-script'}}
+
+10.0.88.104-ngredisboe3:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:50.438467', 'duration': 129.655, '__id__': 'my-windows-script'}}
+
+10.69.99.77-f166341611N02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:51.308152', 'duration': 87.503, '__id__': 'my-windows-script'}}
+
+10.69.99.98-bpodewo03N02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:52.053721', 'duration': 80.498, '__id__': 'my-windows-script'}}
+
+10.90.62.175-qibing1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:52.625453', 'duration': 83.741, '__id__': 'my-windows-script'}}
+
+10.92.1.159-10921159-eawebserver:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:50:39.856515', 'duration': 97.252, '__id__': 'my-windows-script'}}
+
+10.92.2.156-10922156-pcOnline7:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:54.074406', 'duration': 77.328, '__id__': 'my-windows-script'}}
+
+10.92.38.109-109238109-centos7:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:54.650325', 'duration': 106.361, '__id__': 'my-windows-script'}}
+
+10.92.38.121-109238121-email:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:55.383584', 'duration': 91.991, '__id__': 'my-windows-script'}}
+
+10.92.39.105-109239105-ganxiangwei:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:56.119810', 'duration': 110.662, '__id__': 'my-windows-script'}}
+
+10.92.5.97-1092597-eabipoctest:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:51:56.783963', 'duration': 80.825, '__id__': 'my-windows-script'}}
+
+10.0.104.100-CNFP008:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 14108, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:00.188548', 'duration': 1204.688, '__id__': 'my-windows-script'}}
+
+10.0.104.102-CNFP010:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 13052, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:04.124630', 'duration': 878.273, '__id__': 'my-windows-script'}}
+
+10.0.104.103-synctj:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 9944, 'retcode': 0, 'stdout': '', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:07.573999', 'duration': 818.061, '__id__': 'my-windows-script'}}
+
+10.0.104.106-OppoToBXMzhang:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 9284, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:11.070661', 'duration': 1138.245, '__id__': 'my-windows-script'}}
+
+10.0.104.109-OppoToBXiaomi:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 11176, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:15.077283', 'duration': 1184.802, '__id__': 'my-windows-script'}}
+
+10.0.104.11-OppoToBsjn:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 5856, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:20.280174', 'duration': 2121.321, '__id__': 'my-windows-script'}}
+
+10.0.104.111-oppotobzd02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 1160, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:26.341347', 'duration': 1369.208, '__id__': 'my-windows-script'}}
+
+10.0.104.112-zbxserver01:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:27.422543', 'duration': 104.027, '__id__': 'my-windows-script'}}
+
+10.0.104.113-zbxserver02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:28.537978', 'duration': 328.241, '__id__': 'my-windows-script'}}
+
+10.0.104.114-zbxdatebase:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:29.511981', 'duration': 112.014, '__id__': 'my-windows-script'}}
+
+10.0.104.115-zbxproxy01:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:30.184536', 'duration': 139.913, '__id__': 'my-windows-script'}}
+
+10.0.104.117-ikvmproxy:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:31.367901', 'duration': 488.329, '__id__': 'my-windows-script'}}
+
+10.0.104.118-comcom:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 10552, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:35.234376', 'duration': 1486.742, '__id__': 'my-windows-script'}}
+
+10.0.104.119-oppotobcyb1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 14260, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:38.462399', 'duration': 1925.607, '__id__': 'my-windows-script'}}
+
+10.0.104.12-ehsWeek:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:41.046581', 'duration': 183.135, '__id__': 'my-windows-script'}}
+
+10.0.104.122-cqcwsus:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 19956, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:43.791241', 'duration': 1496.648, '__id__': 'my-windows-script'}}
+
+10.0.104.123-bpografana:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:46.080173', 'duration': 90.16, '__id__': 'my-windows-script'}}
+
+10.0.104.124-winpicoartsvn:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 8828, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:48.720229', 'duration': 1209.253, '__id__': 'my-windows-script'}}
+
+10.0.104.125-feilian:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:50.656877', 'duration': 77.736, '__id__': 'my-windows-script'}}
+
+10.0.104.13-OppoToBMI:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 9896, 'retcode': 1, 'stdout': '', 'stderr': "At C:\\Windows\\TEMP\\__salt.tmp.6yvd53xs.ps1:6 char:1
++ }
++ ~
+Unexpected token '}' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParseException
+    + FullyQualifiedErrorId : UnexpectedToken"}, 'result': False, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '19:52:53.444581', 'duration': 913.917, '__id__': 'my-windows-script'}}
+
+10.0.104.14-fanqieFeilian:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:49.125868', 'duration': 133.319, '__id__': 'my-windows-script'}}
+
+10.0.104.15-OppoToByijie:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 14652, 'retcode': 1, 'stdout': '', 'stderr': "At C:\\Windows\\TEMP\\__salt.tmp.1x6v0a7i.ps1:6 char:1
++ }
++ ~
+Unexpected token '}' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParseException
+    + FullyQualifiedErrorId : UnexpectedToken"}, 'result': False, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:52:58.318759', 'duration': 798.242, '__id__': 'my-windows-script'}}
+
+10.0.104.16-RIZHAOVPN2:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '16:10:51.356264', 'duration': 116.07, '__id__': 'my-windows-script'}}
+
+10.0.104.17-douyinShijzRz:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '16:05:28.828843', 'duration': 100.081, '__id__': 'my-windows-script'}}
+
+10.0.104.19-CQCSEC2RADIUS:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '16:10:02.921650', 'duration': 45.241, '__id__': 'my-windows-script'}}
+
+10.0.104.20-OppoToBxjh:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 9624, 'retcode': 1, 'stdout': '', 'stderr': "At C:\\Windows\\TEMP\\__salt.tmp.5n0raza2.ps1:6 char:1
++ }
++ ~
+Unexpected token '}' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParseException
+    + FullyQualifiedErrorId : UnexpectedToken"}, 'result': False, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '19:53:03.730181', 'duration': 708.793, '__id__': 'my-windows-script'}}
+
+10.0.104.22-XingTaiBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:05.235303', 'duration': 148.178, '__id__': 'my-windows-script'}}
+
+10.0.104.23-UGsjzBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:06.016797', 'duration': 59.785, '__id__': 'my-windows-script'}}
+
+10.0.104.24-larksentinel:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 14292, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:09.567554', 'duration': 1565.926, '__id__': 'my-windows-script'}}
+
+10.0.104.25-hfishserver:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:10.892375', 'duration': 60.349, '__id__': 'my-windows-script'}}
+
+10.0.104.28-WeifangBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:11.773002', 'duration': 1812.696, '__id__': 'my-windows-script'}}
+
+10.0.104.30-byodbackup:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:14.142112', 'duration': 96.989, '__id__': 'my-windows-script'}}
+
+10.0.104.33-CMD6R001:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:14.930088', 'duration': 114.507, '__id__': 'my-windows-script'}}
+
+10.0.104.37-YIBINBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:15.820815', 'duration': 86.991, '__id__': 'my-windows-script'}}
+
+10.0.104.39-SHGAMEBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:16.756011', 'duration': 139.845, '__id__': 'my-windows-script'}}
+
+10.0.104.43-YIBINBPOVPN01:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:17.682140', 'duration': 115.124, '__id__': 'my-windows-script'}}
+
+10.0.104.44-YIBINBPOVPN02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:18.547860', 'duration': 121.079, '__id__': 'my-windows-script'}}
+
+10.0.104.45-ShangShaBPO:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:19.373106', 'duration': 94.762, '__id__': 'my-windows-script'}}
+
+10.0.104.46-ChangShaBPO2:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:20.148753', 'duration': 75.439, '__id__': 'my-windows-script'}}
+
+10.0.104.47-OppoToBDev:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 17748, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:25.315909', 'duration': 2708.197, '__id__': 'my-windows-script'}}
+
+10.0.104.53-DOUYINsjz03:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:29.033963', 'duration': 141.529, '__id__': 'my-windows-script'}}
+
+10.0.104.57-CQCRIZHAOvpn3:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:30.065011', 'duration': 59.279, '__id__': 'my-windows-script'}}
+
+10.0.104.58-bytetestIT01:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:30.859496', 'duration': 96.53, '__id__': 'my-windows-script'}}
+
+10.0.104.59-bytetestIT02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:32.240883', 'duration': 153.338, '__id__': 'my-windows-script'}}
+
+10.0.104.64-oppotoboppowin:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 13060, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:34.303450', 'duration': 914.104, '__id__': 'my-windows-script'}}
+
+10.0.104.65-Django:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:35.970819', 'duration': 53.739, '__id__': 'my-windows-script'}}
+
+10.0.104.66-OppoToBHxaXm:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 2080, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:39.110050', 'duration': 1297.485, '__id__': 'my-windows-script'}}
+
+10.0.104.68-chiantest1:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:41.338011', 'duration': 108.426, '__id__': 'my-windows-script'}}
+
+10.0.104.69-sectest12:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 6792, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:44.816624', 'duration': 820.05, '__id__': 'my-windows-script'}}
+
+10.0.104.74-bpobeixing01No01:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:45.497013', 'duration': 122.233, '__id__': 'my-windows-script'}}
+
+10.0.104.75-bpobeixing01No02:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:46.486848', 'duration': 155.324, '__id__': 'my-windows-script'}}
+
+10.0.104.76-bpozhonglian0201:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:48.309545', 'duration': 52.403, '__id__': 'my-windows-script'}}
+
+10.0.104.77-bpozhonglian0202:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:49.311374', 'duration': 48.086, '__id__': 'my-windows-script'}}
+
+10.0.104.80-OppoToBreal:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 10456, 'retcode': 0, 'stdout': 'User: admin, Status: Enabled
+User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:52.969693', 'duration': 1725.289, '__id__': 'my-windows-script'}}
+
+10.0.104.81-doccano:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:55.650983', 'duration': 73.817, '__id__': 'my-windows-script'}}
+
+10.0.104.82-feilian0trouble:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:56.409514', 'duration': 57.768, '__id__': 'my-windows-script'}}
+
+10.0.104.83-bpocaijing100:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:57.226248', 'duration': 113.129, '__id__': 'my-windows-script'}}
+
+10.0.104.84-Monisigh:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:57.899999', 'duration': 93.529, '__id__': 'my-windows-script'}}
+
+10.0.104.85-BPOAQFK04node:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:58.662096', 'duration': 92.572, '__id__': 'my-windows-script'}}
+
+10.0.104.87-BPOAQFK05node:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:53:59.496201', 'duration': 140.313, '__id__': 'my-windows-script'}}
+
+10.0.104.89-chiantest2:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {}, 'result': False, 'comment': 'The shell powershell is not available', '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:00.265684', 'duration': 107.211, '__id__': 'my-windows-script'}}
+
+10.0.104.91-Gophish:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 8724, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:03.414236', 'duration': 1157.974, '__id__': 'my-windows-script'}}
+
+10.0.104.93-CNFP001:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 11776, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:07.354388', 'duration': 947.891, '__id__': 'my-windows-script'}}
+
+10.0.104.95-CNFP003:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 5816, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:11.445126', 'duration': 1101.031, '__id__': 'my-windows-script'}}
+
+10.0.104.96-CNFP004:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 3740, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:28.275019', 'duration': 1200.638, '__id__': 'my-windows-script'}}
+
+10.0.104.97-CNFP005:
+{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 900, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
+User: DefaultAccount, Status: Disabled
+User: fp_admin, Status: Enabled
+User: Guest, Status: Disabled
+User: juger, Status: Enabled
+User: opsadmin, Status: Enabled
+User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_716167720241218035322452', '__run_num__': 0, 'start_time': '15:54:34.571825', 'duration': 3078.41, '__id__': 'my-windows-script'}}
+

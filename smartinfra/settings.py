@@ -55,13 +55,13 @@ Q_CLUSTER = {
     'name': 'SmartInfra',
     'workers': 8,
     'recycle': 500,
-    'timeout': 5400,
-    'retry': 6000,
+    'timeout': 172800,
+    'retry': 173000,
     'compress': True,
     'save_limit': 250,
     'queue_limit': 50,
     'label': 'Django Q',
-    'max_attempts': 50,
+    'max_attempts': 3,
     'orm': 'default',  # 使用 Django ORM 作为后端
 }
 

@@ -8189,3 +8189,78 @@ TypeError: 'salt_master' object is not subscriptable
 [2024-12-27 06:50:55,440][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task saturn-fourteen-sierra-red from schedule [3]
 [2024-12-27 06:50:55,484][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 processing saturn-fourteen-sierra-red 'salt.tasks.hosts_list.register_hosts' [3]
 [2024-12-27 06:51:19,699][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (saturn-fourteen-sierra-red)
+[2024-12-27 07:50:36,769][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2525
+[2024-12-27 07:50:36,771][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task berlin-cardinal-apart-ten from schedule [3]
+[2024-12-27 07:50:36,969][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-520a4abcfbf64ef998984526e47471f0 processing berlin-cardinal-apart-ten 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-27 07:51:00,484][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (berlin-cardinal-apart-ten)
+[2024-12-27 07:51:36,944][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2526
+[2024-12-27 07:51:36,945][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task item-mockingbird-high-fish from schedule [114]
+[2024-12-27 07:51:36,970][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-41578d0062724359b1e565ab21a24bc1 processing item-mockingbird-high-fish 'salt.tasks.exec_task.exec_remote_shell' [114]
+[2024-12-27 07:54:43,903][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.exec_task.exec_remote_shell' (item-mockingbird-high-fish)
+[2024-12-27 08:45:22,813][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2527
+[2024-12-27 08:45:22,815][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task jig-glucose-spaghetti-alanine from schedule [115]
+[2024-12-27 08:45:22,859][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-09965989492d4acab36bf3140c1c3b06 processing jig-glucose-spaghetti-alanine 'salt.tasks.exec_task.exec_remote_shell' [115]
+[2024-12-27 08:49:52,543][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.exec_task.exec_remote_shell' (jig-glucose-spaghetti-alanine)
+[2024-12-27 08:50:54,251][MainThread:281289397933088][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2528
+[2024-12-27 08:50:54,253][MainThread:281289397933088][task_id:django-q][scheduler.py:119][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f created task cola-artist-foxtrot-eleven from schedule [3]
+[2024-12-27 08:50:54,349][MainThread:281289397933088][task_id:django-q][worker.py:76][INFO]- Process-3712008b925941ac830ac9fb3c3edf21 processing cola-artist-foxtrot-eleven 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-27 08:51:17,210][MainThread:281289397933088][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (cola-artist-foxtrot-eleven)
+[2024-12-27 08:51:18,990][MainThread:281289397933088][task_id:django-q][cluster.py:83][INFO]- Q Cluster may-snake-mockingbird-jupiter stopping.
+[2024-12-27 08:51:19,353][MainThread:281289397933088][task_id:django-q][cluster.py:346][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f stopping cluster processes
+[2024-12-27 08:51:19,413][MainThread:281289397933088][task_id:django-q][pusher.py:71][INFO]- Process-974f18f7c0454824ad0affc62003c638 stopped pushing tasks
+[2024-12-27 08:51:19,469][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-ef4feae83c7b45c19eca6b70a5fab802 stopped doing work
+[2024-12-27 08:51:19,468][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-ec56413a93e64bd8952b2acfaa3533ca stopped doing work
+[2024-12-27 08:51:19,475][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-6dd0fb98509948dca210fafdf354a962 stopped doing work
+[2024-12-27 08:51:19,480][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-0ca6aa7e5b594cdeb3305bf9ecd81c32 stopped doing work
+[2024-12-27 08:51:19,487][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-09965989492d4acab36bf3140c1c3b06 stopped doing work
+[2024-12-27 08:51:19,487][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-41578d0062724359b1e565ab21a24bc1 stopped doing work
+[2024-12-27 08:51:19,489][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-3712008b925941ac830ac9fb3c3edf21 stopped doing work
+[2024-12-27 08:51:19,484][MainThread:281289397933088][task_id:django-q][worker.py:132][INFO]- Process-520a4abcfbf64ef998984526e47471f0 stopped doing work
+[2024-12-27 08:51:19,974][MainThread:281289397933088][task_id:django-q][cluster.py:371][INFO]- Process-8aabc5584e91424faa41c332a86fdc6f waiting for the monitor.
+[2024-12-27 08:51:19,975][MainThread:281289397933088][task_id:django-q][monitor.py:74][INFO]- Process-dcfa08b79f064e91bdfb54afe2ac369e stopped monitoring results
+[2024-12-27 08:51:20,081][MainThread:281289397933088][task_id:django-q][cluster.py:86][INFO]- Q Cluster may-snake-mockingbird-jupiter has stopped.
+[2024-12-27 16:51:27,738][MainThread:276803027711008][task_id:django-q][cluster.py:75][INFO]- Q Cluster august-stairway-bacon-ack starting.
+[2024-12-27 16:51:27,746][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-428187df398b4f6d8687b71d5a2e7450 ready for work at 461120
+[2024-12-27 16:51:27,747][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-8711c1b9eaa444a283115bd6390db388 ready for work at 461121
+[2024-12-27 16:51:27,748][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-57cdbee720cf4097a9591a44c8f4c8de ready for work at 461122
+[2024-12-27 16:51:27,749][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-de5a4cf12f7748599e96d13da8ad79ec ready for work at 461123
+[2024-12-27 16:51:27,753][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-e8da8a07b1ef4c858b4fa19ca4731b1a ready for work at 461124
+[2024-12-27 16:51:27,754][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-adeff8b9132f441db566a746b3afb428 ready for work at 461125
+[2024-12-27 16:51:27,756][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-f1ccdaddef224c3cb6155e78723e55c7 ready for work at 461126
+[2024-12-27 16:51:27,758][MainThread:276803027711008][task_id:django-q][worker.py:48][INFO]- Process-c7e8c981008546ec9ab6ed60be2d8522 ready for work at 461127
+[2024-12-27 16:51:27,764][MainThread:276803027711008][task_id:django-q][monitor.py:40][INFO]- Process-594a66bd254444d4b44a5023dfdc32ce monitoring at 461128
+[2024-12-27 16:51:27,772][MainThread:276803027711008][task_id:django-q][pusher.py:39][INFO]- Process-9d62409bac6747759dd01feab9a729d2 pushing tasks at 461129
+[2024-12-27 16:51:27,772][MainThread:276803027711008][task_id:django-q][cluster.py:296][INFO]- Process-65e8c2108fe44425a7186f064e15db5c guarding cluster august-stairway-bacon-ack [SmartInfra]
+[2024-12-27 16:51:27,788][MainThread:276803027711008][task_id:django-q][cluster.py:306][INFO]- Q Cluster august-stairway-bacon-ack [SmartInfra] running.
+[2024-12-27 16:54:28,100][MainThread:276803027711008][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2529
+[2024-12-27 16:54:28,102][MainThread:276803027711008][task_id:django-q][scheduler.py:119][INFO]- Process-65e8c2108fe44425a7186f064e15db5c created task whiskey-six-grey-bakerloo from schedule [116]
+[2024-12-27 16:54:28,132][MainThread:276803027711008][task_id:django-q][worker.py:76][INFO]- Process-428187df398b4f6d8687b71d5a2e7450 processing whiskey-six-grey-bakerloo 'salt.tasks.exec_task.exec_remote_shell' [116]
+[2024-12-27 16:54:38,233][MainThread:276803027711008][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.exec_task.exec_remote_shell' (whiskey-six-grey-bakerloo)
+[2024-12-27 17:50:43,361][MainThread:276803027711008][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2530
+[2024-12-27 17:50:43,365][MainThread:276803027711008][task_id:django-q][scheduler.py:119][INFO]- Process-65e8c2108fe44425a7186f064e15db5c created task illinois-spaghetti-timing-alanine from schedule [3]
+[2024-12-27 17:50:43,445][MainThread:276803027711008][task_id:django-q][worker.py:76][INFO]- Process-8711c1b9eaa444a283115bd6390db388 processing illinois-spaghetti-timing-alanine 'salt.tasks.hosts_list.register_hosts' [3]
+[2024-12-27 17:51:06,093][MainThread:276803027711008][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (illinois-spaghetti-timing-alanine)
+[2024-12-27 18:16:27,145][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:27,311][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:27,319][MainThread:276803027711008][task_id:django-q][cluster.py:346][INFO]- Process-65e8c2108fe44425a7186f064e15db5c stopping cluster processes
+[2024-12-27 18:16:27,443][MainThread:276803027711008][task_id:django-q][pusher.py:71][INFO]- Process-9d62409bac6747759dd01feab9a729d2 stopped pushing tasks
+[2024-12-27 18:16:27,479][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:27,524][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-de5a4cf12f7748599e96d13da8ad79ec stopped doing work
+[2024-12-27 18:16:27,526][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-adeff8b9132f441db566a746b3afb428 stopped doing work
+[2024-12-27 18:16:27,527][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-57cdbee720cf4097a9591a44c8f4c8de stopped doing work
+[2024-12-27 18:16:27,525][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-e8da8a07b1ef4c858b4fa19ca4731b1a stopped doing work
+[2024-12-27 18:16:27,530][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-c7e8c981008546ec9ab6ed60be2d8522 stopped doing work
+[2024-12-27 18:16:27,531][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-f1ccdaddef224c3cb6155e78723e55c7 stopped doing work
+[2024-12-27 18:16:27,533][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-8711c1b9eaa444a283115bd6390db388 stopped doing work
+[2024-12-27 18:16:27,533][MainThread:276803027711008][task_id:django-q][worker.py:132][INFO]- Process-428187df398b4f6d8687b71d5a2e7450 stopped doing work
+[2024-12-27 18:16:27,601][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:27,752][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:28,033][MainThread:276803027711008][task_id:django-q][cluster.py:83][INFO]- Q Cluster august-stairway-bacon-ack stopping.
+[2024-12-27 18:16:28,035][MainThread:276803027711008][task_id:django-q][cluster.py:371][INFO]- Process-65e8c2108fe44425a7186f064e15db5c waiting for the monitor.
+[2024-12-27 18:16:28,037][MainThread:276803027711008][task_id:django-q][monitor.py:74][INFO]- Process-594a66bd254444d4b44a5023dfdc32ce stopped monitoring results
+[2024-12-27 18:16:28,142][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
+[2024-12-27 18:16:28,143][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
+[2024-12-27 18:16:28,143][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
+[2024-12-27 18:16:28,143][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
+[2024-12-27 18:16:28,143][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
+[2024-12-27 18:16:28,143][MainThread:276803027711008][task_id:django-q][cluster.py:86][INFO]- Q Cluster august-stairway-bacon-ack has stopped.
