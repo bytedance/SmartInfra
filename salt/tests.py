@@ -167,7 +167,16 @@ each_minion = "10.0.85.53-luwanlong"
 # import requests
 # cc = requests.get("https://accounts.feishu.cn/open-apis/authen/v1/authorize?client_id=cli_a7e0a93868b0d013&redirect_uri=http://172.16.227.129:8080/&&state=12345687")
 # print(cc.url)
-from salt.models import hosts
-include_salt = [17]
-all_minions = hosts.objects.filter(salt__in=include_salt, status=0).values("name")
-print(all_minions)
+# from salt.models import hosts, salt_master
+# each_minion = "10.0.85.53-luwanlong"
+# salt_server = salt_master.objects.get(id=(hosts.objects.get(name=each_minion)).salt_id)
+# s2 = salt_master.objects.get(id=hosts.objects.filter(name=each_minion).values("salt_id").first()["salt_id"])
+# print(salt_server)
+# print(s2)
+# print(hosts.objects.filter(name=each_minion).values("salt_id").first())
+
+def df():
+    ccvv = "system-view,interface Eth-Trunk123,shutdown,quit,interface Eth-Trunk124,shutdown,quit,quit,quit"
+    return ccvv.split(',')
+
+print(df())
