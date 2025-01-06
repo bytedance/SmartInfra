@@ -20,6 +20,13 @@ class salt_master(models.Model):
     )
     minion_name = models.CharField(max_length=300, default="")
     file_roots = models.CharField(max_length=300, default="")
+    sftp_port = models.IntegerField(default=22)
+    sftp_user = fields.EncryptedCharField(
+        max_length=200, default="", blank=True
+    )
+    sftp_password = fields.EncryptedCharField(
+        max_length=300, default="", blank=True
+    )
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
@@ -175,5 +182,15 @@ class authenticate_type(models.Model):
     access_token_url = models.CharField(max_length=300, default="")
     resource_url = models.CharField(max_length=300, default="")
     grant_type = models.CharField(max_length=200, default="")
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    update_time = models.DateTimeField("更新时间", auto_now=True)
+
+class transfer_file(models.Model):
+    """
+    上传分发文件管理
+    """
+    name = models.CharField(max_length=300, default="")
+    dest_dir = models.JSONField(default=dict)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)

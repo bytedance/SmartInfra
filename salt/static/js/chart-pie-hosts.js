@@ -10,9 +10,9 @@ var myPieChart = new Chart(ctx, {
     labels: ["up", "down", "unknown", "pending", "denied", "rejected"],
     datasets: [{
       data: [hosts_status_collect[0], hosts_status_collect[1], hosts_status_collect[2], hosts_status_collect[3], hosts_status_collect[4], hosts_status_collect[5]],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#858796', '#f6c23e', '#e74a3b'],
-      hoverBackgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#858796', '#f6c23e', '#e74a3b'],
-      hoverBorderColor: "rgba(234, 236, 244, 1)",
+      backgroundColor: ['#1cc88a', '#e74a3b', '#36b9cc', '#4e73df', '#858796', '#f6c23e'],
+      hoverBackgroundColor: ['#1cc88a', '#e74a3b', '#36b9cc', '#4e73df', '#858796', '#f6c23e'],
+      hoverBorderColor: "rgba(234, 236, 244, 1, 22, 33)",
     }],
   },
   options: {

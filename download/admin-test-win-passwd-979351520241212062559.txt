@@ -1,4 +1,0 @@
-10.0.105.216-Win-Server-2019:
-'Where-Object' is not recognized as an internal or external command,
-operable program or batch file.
-

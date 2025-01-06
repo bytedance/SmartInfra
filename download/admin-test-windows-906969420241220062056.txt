@@ -1,3 +1,0 @@
-10.0.85.53-luwanlong:
-{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 0, 'retcode': 1, 'stdout': '', 'stderr': '', 'cache_error': True}, 'result': False, 'comment': "Unable to cache script salt://smartinfra_state/admin_599374320241218105546097.ps1 from saltenv 'base'", '__sls__': 'smartinfra_state/admin_599374320241218105546097', '__run_num__': 0, 'start_time': '14:20:58.693277', 'duration': 94.801, '__id__': 'my-windows-script'}}
-

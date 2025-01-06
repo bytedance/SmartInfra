@@ -27,6 +27,8 @@ from django_q.tasks import async_task
 from .tasks.hosts_list import register_hosts
 from .tasks import exec_task
 from django_q.models import Task, Schedule
+from storages.backends.sftpstorage import SFTPStorage
+import paramiko
 
 # Create your views here.
 logger = logging.getLogger("default")
@@ -209,17 +211,22 @@ def create_salt(request):
     minion_name = request.POST.get("input7")
     file_roots = request.POST.get("input8")
     salt_id = request.POST.get("input6")
+    sftp_port = request.POST.get("input9")
+    sftp_user = request.POST.get("input10")
+    sftp_password = request.POST.get("input11")
 
     create_result = {"status":0, "msg":"ok"}
     try:
-        if salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots:
+        if salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots and sftp_port and sftp_user and salt_password:
             if salt_id:
                 salt_master.objects.filter(id=salt_id).update(name=salt_name, description=salt_desp,
                                                               host=salt_host, user=salt_user, password=salt_password,
-                                                              minion_name=minion_name, file_roots=file_roots)
+                                                              minion_name=minion_name, file_roots=file_roots,
+                                                              sftp_port=sftp_port, sftp_user=sftp_user, sftp_password=sftp_password)
             else:
                 salt_master.objects.create(name=salt_name, description=salt_desp, host=salt_host, user=salt_user,
-                                           password=salt_password, minion_name=minion_name, file_roots=file_roots)
+                                           password=salt_password, minion_name=minion_name, file_roots=file_roots,
+                                           sftp_port=sftp_port, sftp_user=sftp_user, sftp_password=sftp_password)
         else:
             create_result["status"]=1
             create_result["msg"]="不完整的输入参数，请补全"
@@ -255,12 +262,60 @@ def check_salt_master(request):
     salt_user = request.POST.get("input4")
     salt_password = request.POST.get("input5")
 
-    check_result = {"status": 0, "msg": "连接正常"}
-    salt_instance = SaltAPI(url=salt_host, user=salt_user, passwd=salt_password)
-    token_id = salt_instance.get_token()
-    if not token_id:
-        check_result["status"]=1
-        check_result["msg"]="Salt Master访问不通，请检查配置"
+    check_result = {"status": 0, "msg": "Salt连接正常"}
+    if salt_host and salt_user and salt_password:
+        salt_instance = SaltAPI(url=salt_host, user=salt_user, passwd=salt_password)
+        token_id = salt_instance.get_token()
+        if not token_id:
+            check_result["status"]=1
+            check_result["msg"]="Salt Master访问不通，请检查配置"
+    else:
+        check_result["status"] = 1
+        check_result["msg"] = "不完整的输入参数，请补全"
+
+    return HttpResponse(json.dumps(check_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def check_sftp(request):
+    sftp_host = request.POST.get("input3")
+    sftp_port = request.POST.get("input9")
+    sftp_user = request.POST.get("input10")
+    sftp_password = request.POST.get("input11")
+    file_roots = request.POST.get("input8")
+
+    check_result = {"status": 0, "msg": "SFTP连接正常"}
+    if not (sftp_host or sftp_port or sftp_user or sftp_password or file_roots):
+        check_result["status"] = 1
+        check_result["msg"] = "不完整的输入参数，请补全"
+        return HttpResponse(json.dumps(check_result), content_type="application/json")
+    if not ("//" in sftp_host and ":" in sftp_host):
+        check_result["status"] = 1
+        check_result["msg"] = "无效的Master API地址, 请检查协议和端口号"
+        return HttpResponse(json.dumps(check_result), content_type="application/json")
+
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    try:
+        client.connect(sftp_host.split("//")[1].split(":")[0], port=sftp_port, username=sftp_user, password=sftp_password, timeout=10)
+        check_cmd = "touch %s/test_permission_file" %(file_roots+'/'+settings.SFTP_STORAGE_ROOT)
+        stdin, stdout, stderr = client.exec_command(check_cmd)
+        stderr_output = stderr.read().decode()
+
+        if stderr_output:
+            check_result["status"] = 1
+            check_result["msg"] = str(stderr_output.strip())
+            return HttpResponse(json.dumps(check_result), content_type="application/json")
+
+        client.exec_command("rm -f %s/test_permission_file" %(file_roots+'/'+settings.SFTP_STORAGE_ROOT))
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        check_result["status"] = 1
+        check_result["msg"] = str(e)
+    finally:
+        client.close()
 
     return HttpResponse(json.dumps(check_result), content_type="application/json")
 
@@ -893,7 +948,6 @@ def show_selected_host_group(request):
                                                                                      "salt_name__name")
             for each_selected_minions_salts in selected_minions_salts:
                 selected_minions_salts_list["content"].append({"id":each_selected_minions_salts["salt_name"], "name":each_selected_minions_salts["salt_name__name"]})
-            print(selected_minions_salts_list)
 
         else:
             selected_host_group = host_group_minion.objects.filter(
@@ -908,7 +962,6 @@ def show_selected_host_group(request):
                 minion_info = hosts.objects.get(name=each_selected_minions_salts["minion_name"])
                 selected_minions_salts_list["content"].append({"id": minion_info.id if minion_info else "",
                                                                "name": each_selected_minions_salts["minion_name"]})
-            print(selected_minions_salts_list)
 
         context = {
             "selected_host_group": json.dumps(list(selected_host_group)),
@@ -978,11 +1031,13 @@ def create_shell_task(request):
 
         if request.user.is_superuser:
             all_shell = shell_template.objects.all().values("id", "name")
+            all_transfer_file = transfer_file.objects.all().values("id", "name")
         else:
             all_shell = shell_template.objects.filter(user=request.user).values("id", "name")
+            all_transfer_file = transfer_file.objects.filter(user=request.user).values("id", "name")
 
         return render(request, "remote_shell.html", {"user_salt_info": user_salt_info, "all_host_group": all_host_group,
-                                                     "hosts_limited": hosts_limited, "all_shell": all_shell})
+                                                     "hosts_limited": hosts_limited, "all_shell": all_shell, "all_transfer_file": all_transfer_file})
 
     # create new task
     if request.method == 'POST':
@@ -991,12 +1046,14 @@ def create_shell_task(request):
         schedule_checked = request.POST.get("radio2_checked")
         hg_id = request.POST.get("hg_id")
         exec_shell_template = request.POST.get("exec_shell_template")
+        exec_transfer_file = request.POST.get("exec_transfer_file")
+        print(exec_content)
         task_name = request.POST.get("task_name")
 
         # Encapsulate exec_content to dict, and 0 stands for int, 1 stands for str
         encap_exec_content = {"content": exec_content, "type": 1}
         try:
-            if (exec_content or exec_shell_template) and (immediate_checked!="0" or schedule_checked!="0") and hg_id and task_name:
+            if (exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0") and hg_id and task_name:
                 # confirm execute type, include immediate and schedule
                 if immediate_checked == "0":
                     if len(schedule_checked.split()) != 5:
@@ -1037,7 +1094,7 @@ def create_shell_task(request):
                                                 )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
 
-                else:
+                elif (exec_content or exec_shell_template) and not exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
                                                  host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user), status=0)
@@ -1049,6 +1106,23 @@ def create_shell_task(request):
                                                 hook="salt.tasks.q_task.remote_shell_task",
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
+                        task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                elif not (exec_content and exec_shell_template) and exec_transfer_file:
+                    with transaction.atomic():
+                        new_task = task_list.objects.create(name=task_name, execute_content='transfer file: '+transfer_file.objects.get(id=exec_transfer_file).name,
+                                                            execute_policy=exec_type,
+                                                            host_group_name=host_group.objects.get(id=hg_id),
+                                                            user=User.objects.get(username=request.user), status=0)
+                        new_schedule = Schedule.objects.create(func="salt.tasks.exec_task.exec_transfer_file",
+                                                               args="(%d, '%s', '%s')" % (
+                                                               int(hg_id), int(exec_transfer_file),
+                                                               str(request.user)),
+                                                               schedule_type=Schedule.CRON,
+                                                               cron="",
+                                                               repeats=0,
+                                                               hook="salt.tasks.q_task.remote_shell_task",
+                                                               kwargs=json.dumps({"new_task_id": new_task.id})
+                                                               )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
 
             else:
@@ -1272,4 +1346,56 @@ def update_authn(request):
 
         return HttpResponse(json.dumps(authenticate_info), content_type="application/json")
 
+@login_required()
+@audit_action
+@csrf_exempt
+def upload_transfer_file(request):
+    if request.method == 'GET':
+        if request.user.is_superuser:
+            all_transfer_files = transfer_file.objects.all()
+        else:
+            all_transfer_files = transfer_file.objects.filter(user=User.objects.get(username=request.user)).all()
+        return render(request, "transfer_file.html", {"all_transfer_files": all_transfer_files})
 
+    upload_result = {"status": 0, "msg": "ok"}
+    if request.method == 'POST':
+        upload_file = request.FILES.get('file')
+        dest_dir = request.POST.get('dest_dir')
+        if upload_file.size > 3 * 1024 * 1024:
+            upload_result["status"] = 1
+            upload_result["msg"] = "文件大小不能超过3Mb, 请检查"
+        else:
+            try:
+                for each_sftp in salt_master.objects.all().values("host", "sftp_port", "sftp_user", "sftp_password", "file_roots"):
+                    sftp_storage = SFTPStorage(
+                        host = each_sftp["host"].split("//")[1].split(":")[0],
+                        root_path = each_sftp["file_roots"]+'/'+settings.SFTP_STORAGE_ROOT,
+                        params ={
+                            'username': each_sftp["sftp_user"],
+                            'password': each_sftp["sftp_password"],
+                            'port': each_sftp["sftp_port"],
+                            'timeout': 60,
+                        },
+                        interactive = settings.SFTP_STORAGE_INTERACTIVE,
+
+                    )
+                    file_name = upload_file.name
+                    sftp_storage.save(file_name, upload_file)
+                    upload_result["msg"] = "文件上传成功"
+                transfer_file.objects.create(name=file_name, dest_dir=dest_dir, user=User.objects.get(username=request.user))
+            except Exception as e:
+                logger.error(traceback.format_exc())
+                upload_result["status"] = 1
+                upload_result["msg"] = str(each_sftp["host"].split("//")[1].split(":")[0])+" SaltMaster主机上传文件发生异常: "+str(e)
+
+        return HttpResponse(json.dumps(upload_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def delete_transfer_file(request):
+    delete_result = {"status": 0, "msg": "ok"}
+
+    file_id = request.POST.get("tf_id")
+    transfer_file.objects.get(id=file_id).delete()
+    return HttpResponse(json.dumps(delete_result), content_type="application/json")

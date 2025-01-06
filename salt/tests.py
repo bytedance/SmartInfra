@@ -1,6 +1,7 @@
 import datetime
 import json
 from datetime import timezone, datetime
+from encodings.utf_7 import encode
 
 import time
 
@@ -70,8 +71,19 @@ iiii = "ls /tmp"
 uuuu = "/tmp/5566"
 # xx = sa.execute_remote_state("10.0.85.141-www111", "smartinfra/admin-000000-2024122444444")
 # xx = sa.execute_remote_shell("10.0.85.141-www111", "echo %s > %s" %(iiii, uuuu))
-# yy = sa.push1_file("10.0.85.141-www111", "salt://smartinfra", "/etc/gai.conf")
-
+yy = sa.transfer_file("10.0.85.53-luwanlong", "salt://smartinfra/111", "C:\\Users")
+print(yy)
+print(sa.get_job_info("20250103111256682314"))
+if sa.get_job_info("20250103111256682314")["msg"]:
+    print(1111)
+else:
+    print(22222)
+# host = "10.0.87.225-useroptvm"
+# print(sa.execute_grains(host)["msg"][host]["kernel"])
+# if isinstance(sa.execute_grains(host)["msg"][host], dict):
+#     print(sa.execute_grains(host)["msg"][host])
+# else:
+#     print(1111111)
 # xx = sa.push_file("10.0.85.141-www111", "/etc/adduser.conf")
 # print(xx["msg"])
 # print(yy)
@@ -117,7 +129,7 @@ sa=SaltAPI(url="https://10.0.77.41:8888/", user="saltapi", passwd="salt2022@Byte
 # print(datetime.datetime.now())
 # # time.sleep(60)
 # print(datetime.datetime.now())
-from salt.models import shell_template, task_list
+from salt.models import shell_template, task_list, transfer_file
 from datetime import timedelta
 from django.db.models.functions import TruncDate
 from django.db.models import Sum
@@ -162,7 +174,7 @@ each_minion = "10.0.85.53-luwanlong"
 #
 # # 转换为字典形式 {user_id: count}
 # result_dict = {item['user_id']: item['count'] for item in data}
-#
+#host_group_id, transfer_file_id, current_user
 # print(result_dict)
 # import requests
 # cc = requests.get("https://accounts.feishu.cn/open-apis/authen/v1/authorize?client_id=cli_a7e0a93868b0d013&redirect_uri=http://172.16.227.129:8080/&&state=12345687")
@@ -175,8 +187,13 @@ each_minion = "10.0.85.53-luwanlong"
 # print(s2)
 # print(hosts.objects.filter(name=each_minion).values("salt_id").first())
 
-def df():
-    ccvv = "system-view,interface Eth-Trunk123,shutdown,quit,interface Eth-Trunk124,shutdown,quit,quit,quit"
-    return ccvv.split(',')
+# from salt.tasks.exec_task import exec_transfer_file
+#
+# host_group_id=42
+# transfer_file_id=17
+# current_user='admin'
+# xx1 = exec_transfer_file(host_group_id, transfer_file_id, current_user, new_task_id=159)
+# print(xx1)
 
-print(df())
+iioo = [('1.1.11.1',22,'admin','admin'), ('1.1.22.1',2222,'admin','admin')]
+print(type(list(iioo)[0][1]))

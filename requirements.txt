@@ -5,4 +5,7 @@ django-q2==1.7.4
 croniter==5.0.1
 requests==2.32.3
 python-decouple==3.8
+django-storages==1.14.4
+paramiko==3.5.0
+
 
