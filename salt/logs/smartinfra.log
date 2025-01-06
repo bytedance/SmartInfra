@@ -442,3 +442,38 @@ TypeError: 'builtin_function_or_method' object is not subscriptable
 [2024-12-10 06:44:24,611][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
 [2024-12-10 06:46:55,546][MainThread:272311401206816][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
 [2024-12-16 09:27:27,836][MainThread:257197904708640][task_id:default][salt_api.py:52][ERROR]- <urlopen error [Errno 104] Connection reset by peer>
+[2025-01-03 20:47:36,614][MainThread:261888021476384][task_id:default][exec_task.py:240][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 222, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel])
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-03 20:49:00,757][MainThread:276473955042336][task_id:default][exec_task.py:242][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 224, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel])
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-03 20:49:33,902][MainThread:276135764939808][task_id:default][exec_task.py:242][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 224, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel])
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-03 20:50:07,901][MainThread:278431359665184][task_id:default][exec_task.py:241][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 224, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel]) %(settings.SFTP_STORAGE_ROOT, file_name))
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-03 20:52:04,368][MainThread:271529212834848][task_id:default][exec_task.py:241][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 224, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel]) %(settings.SFTP_STORAGE_ROOT, file_name))
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-03 20:52:23,934][MainThread:259808582022176][task_id:default][exec_task.py:241][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/tasks/exec_task.py", line 224, in exec_transfer_file
+    each_result = (all_salt_ins[salt_server.id].transfer_file(each_minion, "salt://%s/%s", file_dest_dir[minion_kernel]) %(settings.SFTP_STORAGE_ROOT, file_name))
+TypeError: unsupported operand type(s) for %: 'dict' and 'tuple'
+
+[2025-01-06 09:56:28,808][MainThread:275827170194464][task_id:default][parse_shell.py:34][ERROR]- Traceback (most recent call last):
+  File "/workdir/devops/smartinfra/salt/common/parse_shell.py", line 15, in parse_content
+    if each_charactor1 in shell_content:
+TypeError: argument of type 'NoneType' is not iterable
+

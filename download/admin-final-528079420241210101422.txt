@@ -1,9 +1,0 @@
-{'10.0.85.140-debian12': False}
-{'10.0.85.141-www111': 'systemd-private-ea48b68cf1364d828b5bfd8017b69386-chrony.service-Bq0r7e\nsystemd-private-ea48b68cf1364d828b5bfd8017b69386-systemd-logind.service-UYQcnj\nvmware-root_471-2126461975'}
-{'10.0.85.14-julang': False}
-{'10.0.85.14-CloudTest01-f5362b887562': False}
-{'10.0.85.14-dongfeng': False}
-{'10.0.85.14-caihong': False}
-{'10.0.85.140-zzrx86': False}
-{'10.0.85.14-test01': False}
-{'10.0.85.145-server13': False}

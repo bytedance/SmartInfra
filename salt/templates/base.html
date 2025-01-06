@@ -97,8 +97,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {% if request.resolver_match.view_name == 'salt:list_tasks' %}active{% endif %}" href="/list_tasks">任务列表</a>
-                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">Shell / State </a>
-<!--                        <a class="collapse-item" href="/shell_template">文件分发</a>-->
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">Shell / State / 分发文件 </a>
                     </div>
                 </div>
             </li>
@@ -108,6 +107,11 @@
                 <a class="nav-link" href="/shell_template">
                     <i class="fas fa-fw fa-file"></i>
                     <span>执行模板</span></a>
+            </li>
+            <li class="nav-item {% if request.resolver_match.view_name == 'salt:upload_transfer_file' %}active{% endif %}">
+                <a class="nav-link" href="/upload_transfer_file">
+                    <i class="fas fa-fw fa-reply-all"></i>
+                    <span>上传分发文件</span></a>
             </li>
             <!-- Divider -->
             {% if request.user.is_superuser %}

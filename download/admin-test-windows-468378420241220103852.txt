@@ -1,8 +1,0 @@
-10.0.85.53-luwanlong:
-{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 236, 'retcode': 0, 'stdout': '.
-The Salt Daemon service was stopped successfully.
-
-service uninstall success.', 'stderr': 'panic: service salt-daemon already exists\n\ngoroutine 1 [running]:\nmain.argsParseForWindows({0xe14b5e, 0x4}, {0xeb5568, 0xc00001be60})\n\t/Users/bytedance/GolandProjects/salt-daemon/windows.go:77 +0x545\nmain.main()\n\t/Users/bytedance/GolandProjects/salt-daemon/windows.go:157 +0x259\nSystem error 1058 has occurred.
-
-The service cannot be started, either because it is disabled or because it has no enabled devices associated with it.'}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/admin_599374320241218105546097', '__run_num__': 0, 'start_time': '18:38:55.841396', 'duration': 15946.108, '__id__': 'my-windows-script'}}
-

@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Shell/State执行</h1>
+        <h1 class="h3 mb-2 text-gray-800"> 创建任务</h1>
 
         <!-- 分组主机模态框 -->
         <div class="modal fade" id="minionModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -62,7 +62,7 @@
 
             <div class="card-body">
                 <div class="form-group d-flex align-items-center">
-                    <label for="task_name" class="mr-4"><span class="text-danger">*</span>&nbsp;名称</label>
+                    <label for="task_name" class="mr-4"><span class="text-danger">*</span>&nbsp;名称:</label>
                     <input type="text" class="form-control" style="width: 46%;" id="task_name" placeholder="请输入名称">
                 </div>
                 <div class="form-group">
@@ -75,6 +75,10 @@
                         <input class="form-check-input" type="radio" name="exampleRadios2" id="radio4" value="option4" onchange="switchInput()">
                         <label class="form-check-label" for="radio4">执行模板</label>
                     </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios2" id="radio5" value="option4" onchange="switchInput()">
+                        <label class="form-check-label" for="radio5">分发文件</label>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <textarea id="textarea1" class="form-control" placeholder="请输入命令" style="resize: vertical; width: 50%;"></textarea>
@@ -82,6 +86,12 @@
                         <option>请选择执行模板</option>
                         {% for each_shell in all_shell %}
                         <option value="{{ each_shell.id }}">{{ each_shell.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="transferFile" class="form-control mt-3" style="width: 50%;display: none;">
+                        <option>请选择分发文件</option>
+                        {% for each_transfer_file in all_transfer_file %}
+                        <option value="{{ each_transfer_file.id }}">{{ each_transfer_file.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -193,13 +203,21 @@
         function switchInput() {
             const radio3 = document.getElementById('radio3');
             const radio4 = document.getElementById('radio4');
+            const radio5 = document.getElementById('radio5');
             if (radio3.checked) {
                 textarea1.style.display = 'block';
                 shelltemplate.style.display = 'none';
+                transferFile.style.display = 'none';
             }
             if (radio4.checked) {
                 textarea1.style.display = 'none';
                 shelltemplate.style.display = 'block';
+                transferFile.style.display = 'none';
+            }
+            if (radio5.checked) {
+                textarea1.style.display = 'none';
+                shelltemplate.style.display = 'none';
+                transferFile.style.display = 'block';
             }
         }
 
@@ -228,7 +246,9 @@
           if (radio4.checked) {
               var exec_shell_template = document.getElementById("shelltemplate").value;
             }
-
+            if (radio5.checked) {
+              var exec_transfer_file = document.getElementById("transferFile").value;
+            }
             $.ajax({
                 type: "post",
                 url: "/create_shell_task/",
@@ -239,6 +259,7 @@
                     radio2_checked: radio2_checked,
                     hg_id: hg_id,
                     exec_shell_template: exec_shell_template,
+                    exec_transfer_file: exec_transfer_file,
                     task_name: $("#task_name").val(),
 
                 },

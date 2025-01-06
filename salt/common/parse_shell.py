@@ -6,6 +6,9 @@ import traceback, logging
 logger = logging.getLogger("default")
 
 def parse_content(shell_content):
+    if not shell_content:
+        return {"status": 1, "msg": "invalid input"}
+
     try:
         allow_shell_content = acl_manage.objects.get(name='acl').content.split()
 

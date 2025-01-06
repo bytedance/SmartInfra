@@ -33,8 +33,10 @@ def register_hosts():
                 for each_minion in all_keys["msg"]["minions"]:
                     if each_minion in minion_up:
                         minion_status = 0
-                    else:
+                    elif each_minion in minion_down:
                         minion_status = 1
+                    else:
+                        minion_status = 2
                     accepted_minion = hosts.objects.filter(name=each_minion, status=minion_status, salt=salt_master.objects.get(id=each_salt_master["id"])).first()
                     if accepted_minion:
                         accepted_minion.label=update_label

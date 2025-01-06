@@ -187,14 +187,14 @@ class SaltAPI():
         try:
             opener = urllib.request.urlopen(req, context=context)
             content = json.loads(opener.read())
+            if isinstance(content, dict):
+                jid = content['return'][0]
+                return {"status": 0, "msg": jid}
+            else:
+                return {"status": 1, "msg": content}
         except Exception as e:
             logger.error(e)
-            return str(e)
-        if isinstance(content, dict):
-            jid = content['return'][0]
-            return jid
-        else:
-            return {"status": 1, "message": content}
+            return {"status": 1, "msg": str(e)}
 
     def get_stats(self):
         """
@@ -253,7 +253,7 @@ class SaltAPI():
         """
         src_file = args[0]
         dest_file = args[1]
-        params = {'client': 'local', 'fun': 'cp.get_file', 'tgt': node_name, 'arg': [src_file, dest_file]}
+        params = {'client': 'local_async', 'fun': 'cp.get_file', 'tgt': node_name, 'arg': [src_file, dest_file]}
         content = self.send_req(params)
         if isinstance(content, dict):
             transfer_result = content['return'][0]

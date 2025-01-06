@@ -28,6 +28,7 @@ urlpatterns = [
     path('create_salt/', views.create_salt, name='create_salt'),
     path('del_salt/', views.del_salt, name='del_salt'),
     path('check_salt_master/', views.check_salt_master, name='check_salt_master'),
+    path('check_sftp/', views.check_sftp, name='check_sftp'),
     path('shell_template/', views.list_shell_template, name='shell_template'),
     path('create_shell_template/', views.create_shell_template, name='create_shell_template'),
     path('del_shell_template/', views.del_shell_template, name='del_shell_template'),
@@ -59,5 +60,7 @@ urlpatterns = [
     path('authenticate_mgmt/', views.authenticate_mgmt, name='authenticate_mgmt'),
     path('oauth/callback/', views.callback_oauth, name='callback_oauth'),
     path('update_authn/', views.update_authn, name='update_authn'),
+    path('upload_transfer_file/', views.upload_transfer_file, name='upload_transfer_file'),
+    path('delete_transfer_file/', views.delete_transfer_file, name='delete_transfer_file'),
 
 ]

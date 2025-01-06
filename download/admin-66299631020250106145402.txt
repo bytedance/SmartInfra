@@ -1,0 +1,375 @@
+10.0.85.39-itmdlptest:
+no permission or this minion status is not up
+
+10.0.85.38-majuninfer:
+copy file successfully
+
+10.0.85.59-vul4testwin:
+copy file successfully
+
+10.0.85.14-dongfeng:
+no permission or this minion status is not up
+
+10.0.85.34-netdevops:
+copy file successfully
+
+10.0.85.38-dongfeng02:
+no permission or this minion status is not up
+
+10.0.85.42-filestash01:
+no permission or this minion status is not up
+
+10.0.85.47-dr-k8s-master02:
+no permission or this minion status is not up
+
+10.0.85.44-bnplmodel:
+no permission or this minion status is not up
+
+10.0.85.21-hongqi:
+no permission or this minion status is not up
+
+10.0.85.62-wanyuzhen:
+no permission or this minion status is not up
+
+10.0.85.111-adfstwofactor:
+copy file successfully
+
+10.0.85.20-CloudTest04-6a01ced13223:
+no permission or this minion status is not up
+
+10.0.85.144-ttt111:
+no permission or this minion status is not up
+
+10.0.85.51-bnplfl02:
+no permission or this minion status is not up
+
+10.0.85.69-host01:
+no permission or this minion status is not up
+
+10.0.85.19-chrisdev:
+copy file successfully
+
+10.0.85.83-webrtcturn:
+copy file successfully
+
+10.0.85.36-testwrt:
+no permission or this minion status is not up
+
+10.0.85.27-cncentostest:
+copy file successfully
+
+10.0.85.55-vul4test:
+copy file successfully
+
+10.0.85.118-Windows:
+copy file successfully
+
+10.0.85.26-zhuyongkang:
+no permission or this minion status is not up
+
+10.0.85.74-windows11:
+no permission or this minion status is not up
+
+10.0.85.123-naasclient1:
+copy file successfully
+
+10.0.85.56-naastest012:
+copy file successfully
+
+10.0.85.25-flinkrisk:
+no permission or this minion status is not up
+
+10.0.85.58-inocmysql:
+copy file successfully
+
+10.0.85.139-test123:
+no permission or this minion status is not up
+
+10.0.85.73-yingji:
+no permission or this minion status is not up
+
+10.0.85.67-cloudprinttest:
+no permission or this minion status is not up
+
+10.0.85.72-dongfeng03:
+no permission or this minion status is not up
+
+10.0.85.24-robert:
+no permission or this minion status is not up
+
+10.0.85.12-directorysync:
+no permission or this minion status is not up
+
+10.0.85.38-CloudTest01-e82c23a1b1e9:
+no permission or this minion status is not up
+
+10.0.85.100-duguang240523:
+no permission or this minion status is not up
+
+10.0.85.37-CloudTest06-701de84ae273:
+no permission or this minion status is not up
+
+10.0.85.86-Dazzzzz:
+no permission or this minion status is not up
+
+10.0.85.73-ikvmproxy:
+copy file successfully
+
+10.0.85.78-wazuh2022:
+copy file successfully
+
+10.0.85.41-testsftp:
+copy file successfully
+
+10.0.85.63-icbastion01:
+copy file successfully
+
+10.0.85.45-ndrtestwin02:
+no permission or this minion status is not up
+
+10.0.85.31-elasticsearch02:
+copy file successfully
+
+10.0.85.37-elasticsearch03:
+copy file successfully
+
+10.0.85.14-test01:
+no permission or this minion status is not up
+
+10.0.85.50-sutest:
+no permission or this minion status is not up
+
+10.0.85.89-vector:
+no permission or this minion status is not up
+
+10.0.85.28-bnplfl012:
+no permission or this minion status is not up
+
+10.0.85.71-caihong:
+no permission or this minion status is not up
+
+10.0.85.43-xwjtest1:
+no permission or this minion status is not up
+
+10.0.85.60-sautotest01:
+copy file successfully
+
+10.0.85.48-ndrtestlnx02:
+no permission or this minion status is not up
+
+10.0.85.18-naasclient:
+copy file successfully
+
+10.0.85.77-cwpptest001:
+copy file successfully
+
+10.0.85.99-overeasCcb:
+no permission or this minion status is not up
+
+10.0.85.108-enspdevbox:
+no permission or this minion status is not up
+
+10.0.85.90-LarkNuix03:
+copy file successfully
+
+10.0.85.67-yuetikuer:
+no permission or this minion status is not up
+
+10.0.85.43-filestash02:
+no permission or this minion status is not up
+
+10.0.85.46-sdatabase01:
+no permission or this minion status is not up
+
+10.0.85.11-wuzhao-4120b4dc:
+copy file successfully
+
+10.0.85.53-luwanlong:
+copy file successfully
+
+10.0.85.84-webrtc:
+copy file successfully
+
+10.0.85.140-debian12:
+no permission or this minion status is not up
+
+10.0.85.141-www111:
+copy file successfully
+
+10.0.85.16-tanli20241003:
+no permission or this minion status is not up
+
+10.0.85.128-openvasnode1:
+copy file successfully
+
+10.0.85.23-sectest1:
+no permission or this minion status is not up
+
+10.0.85.126-thplatform:
+copy file successfully
+
+10.0.85.81-cndebiantest:
+copy file successfully
+
+10.0.85.101-yilong:
+no permission or this minion status is not up
+
+10.0.85.132-celery:
+no permission or this minion status is not up
+
+10.0.85.68-VDIAD01:
+copy file successfully
+
+10.0.85.115-scfoffice2:
+no permission or this minion status is not up
+
+10.0.85.49-xingwenjing:
+copy file successfully
+
+10.0.85.112-fireereens:
+no permission or this minion status is not up
+
+10.0.85.64-hidsdrivertest:
+no permission or this minion status is not up
+
+10.0.85.35-za567windows:
+no permission or this minion status is not up
+
+10.0.85.145-server13:
+no permission or this minion status is not up
+
+10.0.85.65-sunpengda:
+no permission or this minion status is not up
+
+10.0.85.91-testplay1:
+copy file successfully
+
+10.0.85.38-dongfeng01:
+no permission or this minion status is not up
+
+10.0.85.21-senor-8708190dba1b:
+no permission or this minion status is not up
+
+10.0.85.71-coturn1:
+copy file successfully
+
+10.0.85.38-wuzhen:
+no permission or this minion status is not up
+
+10.0.85.33-naastest011:
+copy file successfully
+
+10.0.85.54-mitrecaldera:
+no permission or this minion status is not up
+
+10.0.85.108-rocky91:
+no permission or this minion status is not up
+
+10.0.85.14-caihong:
+no permission or this minion status is not up
+
+10.0.85.94-fireeyeepo:
+no permission or this minion status is not up
+
+10.0.85.80-cwppdebian11:
+copy file successfully
+
+10.0.85.70-itkmsdev:
+copy file successfully
+
+10.0.85.140-zzrx86:
+no permission or this minion status is not up
+
+10.0.85.124-naasclient2:
+copy file successfully
+
+10.0.85.142-qqq111:
+copy file successfully
+
+10.0.85.40-nekowin:
+copy file successfully
+
+10.0.85.42-LarkNuix01:
+copy file successfully
+
+10.0.85.14-julang:
+no permission or this minion status is not up
+
+10.0.85.17-bnplfl011:
+no permission or this minion status is not up
+
+10.0.85.76-windowstest:
+no permission or this minion status is not up
+
+10.0.85.110-testabc:
+copy file successfully
+
+10.0.85.71-dongfeng02:
+no permission or this minion status is not up
+
+10.0.85.82-cwpptestcentos:
+copy file successfully
+
+10.0.85.22-AIOpsWindowsVM:
+no permission or this minion status is not up
+
+10.0.85.72-feilong:
+no permission or this minion status is not up
+
+10.0.85.137-zhouchenming2:
+no permission or this minion status is not up
+
+10.0.85.136-zhouchenming1:
+no permission or this minion status is not up
+
+10.0.85.29-wybtest1:
+no permission or this minion status is not up
+
+10.0.85.57-LarkNuix02:
+copy file successfully
+
+10.0.85.30-winserver:
+no permission or this minion status is not up
+
+10.0.85.67-TestingGateway:
+copy file successfully
+
+10.0.85.15-xibotest:
+copy file successfully
+
+10.0.85.43-wazuh2019:
+no permission or this minion status is not up
+
+10.0.85.20-elasticsearch01:
+copy file successfully
+
+10.0.85.47-localhost:
+no permission or this minion status is not up
+
+10.0.85.75-cnrockytest:
+copy file successfully
+
+10.0.85.14-directoryjie:
+no permission or this minion status is not up
+
+10.0.85.102-strictlypc:
+no permission or this minion status is not up
+
+10.0.85.32-testgp:
+no permission or this minion status is not up
+
+10.0.85.105-zhangzhongjun:
+copy file successfully
+
+10.0.85.13-liamwindows:
+no permission or this minion status is not up
+
+10.0.85.14-CloudTest01-f5362b887562:
+no permission or this minion status is not up
+
+10.0.85.129-testfio:
+no permission or this minion status is not up
+
+10.0.85.52-zwchai01:
+copy file successfully
+

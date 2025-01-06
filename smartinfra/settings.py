@@ -104,25 +104,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smartinfra.wsgi.application'
 
+# FTP 配置
+SFTP_STORAGE_ROOT = config('TRANSFER_FILE_HOME')
+SFTP_STORAGE_INTERACTIVE = False
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+# DB 配置
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "DEFAULT_CHARSET": "utf8mb4",
-        "NAME": config('DB_NAME'),
-        "USER": config('DB_USER'),
-        "PASSWORD": config('DB_PASSWORD'),
-        "HOST": config('DB_HOST'),
-        "PORT": config('DB_PORT'),
+        "NAME": config('DB_NAME', default='smartinfra'),
+        "USER": config('DB_USER', default='root'),
+        "PASSWORD": config('DB_PASSWORD', default='123456'),
+        "HOST": config('DB_HOST', default='127.0.0.1'),
+        "PORT": config('DB_PORT', default=3306),
     }
 }
 
@@ -224,9 +219,6 @@ FRESH_TIMEZONE = config('FRESH_TIMEZONE', default='Asia/Shanghai')
 # 文件下载目录
 DOWNLOAD_URL = config('DOWNLOAD_URL', default='download/')
 DOWNLOAD_ROOT = os.path.join(BASE_DIR, DOWNLOAD_URL)
-
-# 分发文件根目录
-TRANSFER_FILE_HOME = config('TRANSFER_FILE_HOME', default='smartinfra_transfer/')
 
 # state根目录
 STATE_HOME = config('STATE_HOME', default='smartinfra_state/')
