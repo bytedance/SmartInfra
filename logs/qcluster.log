@@ -9490,3 +9490,94 @@ json.decoder.JSONDecodeError: Invalid \escape: line 1 column 30 (char 29)
 [2025-01-06 19:50:50,062][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task nebraska-oxygen-table-paris from schedule [3]
 [2025-01-06 19:50:50,189][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-7de58e858eb645a18838c743984c8b29 processing nebraska-oxygen-table-paris 'salt.tasks.hosts_list.register_hosts' [3]
 [2025-01-06 19:51:14,051][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (nebraska-oxygen-table-paris)
+[2025-01-06 20:50:49,406][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2788
+[2025-01-06 20:50:49,408][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task glucose-ceiling-eighteen-salami from schedule [3]
+[2025-01-06 20:50:49,629][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-a7fad1449641449bbe1cb2a6973b38b3 processing glucose-ceiling-eighteen-salami 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-06 20:51:12,007][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (glucose-ceiling-eighteen-salami)
+[2025-01-06 21:51:34,700][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2789
+[2025-01-06 21:51:34,703][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task foxtrot-iowa-early-timing from schedule [3]
+[2025-01-06 21:51:34,775][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-d1f874f552c84c7692b78570d5a1d2b6 processing foxtrot-iowa-early-timing 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-06 21:51:56,596][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (foxtrot-iowa-early-timing)
+[2025-01-06 22:50:54,917][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2790
+[2025-01-06 22:50:54,920][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task lion-california-lima-potato from schedule [3]
+[2025-01-06 22:50:55,133][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-3b8970f458fb42d3b40d3304e7a91f0f processing lion-california-lima-potato 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-06 22:51:17,061][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (lion-california-lima-potato)
+[2025-01-06 23:51:54,300][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2791
+[2025-01-06 23:51:54,302][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task failed-hawaii-carpet-six from schedule [3]
+[2025-01-06 23:51:54,361][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-e1a2f10bd1954bc2bcf6f553dbf497ad processing failed-hawaii-carpet-six 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-06 23:52:17,741][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (failed-hawaii-carpet-six)
+[2025-01-07 00:50:56,189][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2792
+[2025-01-07 00:50:56,191][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task bravo-tennessee-tennis-yellow from schedule [3]
+[2025-01-07 00:50:56,217][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-415fa199f2ed4d6ebb10f8ebd5171ddd processing bravo-tennessee-tennis-yellow 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 00:51:18,866][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (bravo-tennessee-tennis-yellow)
+[2025-01-07 01:52:52,383][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2793
+[2025-01-07 01:52:52,386][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task lemon-lamp-tango-tennis from schedule [3]
+[2025-01-07 01:52:52,599][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-ea5153f0681749bcbcad98fa2f544ab7 processing lemon-lamp-tango-tennis 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 01:53:14,777][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (lemon-lamp-tango-tennis)
+[2025-01-07 02:50:59,761][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2794
+[2025-01-07 02:50:59,763][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task jupiter-pennsylvania-fifteen-blue from schedule [3]
+[2025-01-07 02:50:59,796][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-31087512d1644e0d851c0ae869ec439f processing jupiter-pennsylvania-fifteen-blue 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 02:51:21,545][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (jupiter-pennsylvania-fifteen-blue)
+[2025-01-07 03:50:55,781][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2795
+[2025-01-07 03:50:55,783][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task yellow-oxygen-alpha-july from schedule [3]
+[2025-01-07 03:50:56,000][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-7de58e858eb645a18838c743984c8b29 processing yellow-oxygen-alpha-july 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 03:51:17,701][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (yellow-oxygen-alpha-july)
+[2025-01-07 04:50:43,841][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2796
+[2025-01-07 04:50:43,844][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task four-spaghetti-carbon-two from schedule [3]
+[2025-01-07 04:50:43,880][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-a7fad1449641449bbe1cb2a6973b38b3 processing four-spaghetti-carbon-two 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 04:51:09,006][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (four-spaghetti-carbon-two)
+[2025-01-07 05:50:36,413][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2797
+[2025-01-07 05:50:36,415][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task blossom-georgia-indigo-early from schedule [3]
+[2025-01-07 05:50:36,572][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-d1f874f552c84c7692b78570d5a1d2b6 processing blossom-georgia-indigo-early 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 05:50:58,561][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (blossom-georgia-indigo-early)
+[2025-01-07 06:50:47,348][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2798
+[2025-01-07 06:50:47,351][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task grey-edward-delta-california from schedule [3]
+[2025-01-07 06:50:47,448][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-3b8970f458fb42d3b40d3304e7a91f0f processing grey-edward-delta-california 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 06:51:09,266][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (grey-edward-delta-california)
+[2025-01-07 07:50:57,059][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2799
+[2025-01-07 07:50:57,064][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task river-nitrogen-lemon-mexico from schedule [3]
+[2025-01-07 07:50:57,155][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-e1a2f10bd1954bc2bcf6f553dbf497ad processing river-nitrogen-lemon-mexico 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 07:51:22,301][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (river-nitrogen-lemon-mexico)
+[2025-01-07 08:50:41,632][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2800
+[2025-01-07 08:50:41,634][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task apart-arizona-west-march from schedule [3]
+[2025-01-07 08:50:41,808][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-415fa199f2ed4d6ebb10f8ebd5171ddd processing apart-arizona-west-march 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 08:51:06,768][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (apart-arizona-west-march)
+[2025-01-07 09:50:54,370][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2801
+[2025-01-07 09:50:54,372][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task leopard-single-mars-hot from schedule [3]
+[2025-01-07 09:50:54,538][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-ea5153f0681749bcbcad98fa2f544ab7 processing leopard-single-mars-hot 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 09:51:18,963][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (leopard-single-mars-hot)
+[2025-01-07 10:50:41,486][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2802
+[2025-01-07 10:50:41,489][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task hawaii-vermont-arkansas-ceiling from schedule [3]
+[2025-01-07 10:50:41,513][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-31087512d1644e0d851c0ae869ec439f processing hawaii-vermont-arkansas-ceiling 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 10:51:05,919][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (hawaii-vermont-arkansas-ceiling)
+[2025-01-07 11:50:58,389][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2803
+[2025-01-07 11:50:58,391][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task sink-carpet-vermont-washington from schedule [3]
+[2025-01-07 11:50:58,480][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-7de58e858eb645a18838c743984c8b29 processing sink-carpet-vermont-washington 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 11:51:20,274][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (sink-carpet-vermont-washington)
+[2025-01-07 12:50:47,212][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2804
+[2025-01-07 12:50:47,216][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task alaska-vegan-pizza-music from schedule [3]
+[2025-01-07 12:50:47,273][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-a7fad1449641449bbe1cb2a6973b38b3 processing alaska-vegan-pizza-music 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 12:51:10,848][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (alaska-vegan-pizza-music)
+[2025-01-07 13:50:51,247][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2805
+[2025-01-07 13:50:51,250][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task nine-princess-shade-two from schedule [3]
+[2025-01-07 13:50:51,323][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-d1f874f552c84c7692b78570d5a1d2b6 processing nine-princess-shade-two 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 13:51:13,546][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (nine-princess-shade-two)
+[2025-01-07 14:50:41,306][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2806
+[2025-01-07 14:50:41,309][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task vermont-beryllium-jig-angel from schedule [3]
+[2025-01-07 14:50:41,366][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-3b8970f458fb42d3b40d3304e7a91f0f processing vermont-beryllium-jig-angel 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 14:51:03,137][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (vermont-beryllium-jig-angel)
+[2025-01-07 15:50:53,771][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2807
+[2025-01-07 15:50:53,773][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task robert-leopard-equal-jig from schedule [3]
+[2025-01-07 15:50:53,934][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-e1a2f10bd1954bc2bcf6f553dbf497ad processing robert-leopard-equal-jig 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 15:51:19,632][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (robert-leopard-equal-jig)
+[2025-01-07 16:22:22,310][Thread-62 (process_request_thread):252284409803040][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2808
+[2025-01-07 16:22:22,482][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-415fa199f2ed4d6ebb10f8ebd5171ddd processing emma-edward-winter-robin 'salt.tasks.hosts_list.register_hosts'
+[2025-01-07 16:22:45,824][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (emma-edward-winter-robin)
+[2025-01-07 16:50:38,417][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2809
+[2025-01-07 16:50:38,418][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task friend-moon-london-twelve from schedule [3]
+[2025-01-07 16:50:38,599][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-ea5153f0681749bcbcad98fa2f544ab7 processing friend-moon-london-twelve 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 16:51:00,585][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (friend-moon-london-twelve)
+[2025-01-07 17:50:53,578][MainThread:263945426629664][task_id:django-q][tasks.py:76][INFO]- Enqueued [SmartInfra] 2810
+[2025-01-07 17:50:53,580][MainThread:263945426629664][task_id:django-q][scheduler.py:119][INFO]- Process-9d98908aa7d6462dad91ff683a34e0c6 created task freddie-snake-lake-batman from schedule [3]
+[2025-01-07 17:50:53,789][MainThread:263945426629664][task_id:django-q][worker.py:76][INFO]- Process-31087512d1644e0d851c0ae869ec439f processing freddie-snake-lake-batman 'salt.tasks.hosts_list.register_hosts' [3]
+[2025-01-07 17:50:53,849][MainThread:263945426629664][task_id:django-q][monitor.py:60][INFO]- Processed 'salt.tasks.hosts_list.register_hosts' (freddie-snake-lake-batman)
