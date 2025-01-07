@@ -181,7 +181,7 @@ def exec_transfer_file(*args, **kwargs):
     # get the relevant file attr
     transfer_file_object = transfer_file.objects.get(id=transfer_file_id)
     file_name = transfer_file_object.name
-    file_dest_dir = transfer_file_object.dest_dir
+    file_dest_dir = json.loads(transfer_file_object.dest_dir)
 
     try:
         if host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()[
@@ -227,6 +227,12 @@ def exec_transfer_file(*args, **kwargs):
                     else:
                         count_fail += 1
                         cleaned_content = "failed to copy file"
+                    with open(settings.DOWNLOAD_ROOT + exec_transfer_file_result_filename, 'a+',
+                              encoding="utf-8") as etfrf:
+                        etfrf.write(f"{each_minion}:\n{cleaned_content}\n" + '\n')
+                else:
+                    count_fail += 1
+                    cleaned_content = "The minion kernel does not match the transfer directory"
                     with open(settings.DOWNLOAD_ROOT + exec_transfer_file_result_filename, 'a+',
                               encoding="utf-8") as etfrf:
                         etfrf.write(f"{each_minion}:\n{cleaned_content}\n" + '\n')
