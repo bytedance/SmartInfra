@@ -16,6 +16,7 @@ def audit_action(func):
         'create_salt': '创建/修改新的SaltMaster',
         'del_salt': '删除已纳管的SaltMaster',
         'check_salt_master': '检查SaltMaster是否正常',
+        'check_sftp': '检查SFTP是否正常',
         'shell_template': '查看所有执行模板',
         'create_shell_template': '创建/修改执行模板',
         'del_shell_template': '删除执行模板',
@@ -47,6 +48,8 @@ def audit_action(func):
         'authenticate_mgmt': '查看系统认证方式',
         'oauth/callback': 'oauth回调接口',
         'update_authn': '更新系统认证方式',
+        'upload_transfer_file': '上传分发文件',
+        'delete_transfer_file': '删除分发文件',
 
     }
     @wraps(func)

@@ -189,7 +189,7 @@ class transfer_file(models.Model):
     """
     上传分发文件管理
     """
-    name = models.CharField(max_length=300, default="")
+    name = models.CharField(max_length=300, default="", unique=True)
     dest_dir = models.JSONField(default=dict)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)

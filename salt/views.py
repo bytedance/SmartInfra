@@ -1361,28 +1361,42 @@ def upload_transfer_file(request):
     if request.method == 'POST':
         upload_file = request.FILES.get('file')
         dest_dir = request.POST.get('dest_dir')
+
+        try:
+            json.loads(dest_dir)
+        except Exception as e:
+            logger.error(traceback.format_exc())
+            upload_result["status"] = 1
+            upload_result["msg"] = "分发目录格式有错误: " + str(e)
+            return HttpResponse(json.dumps(upload_result), content_type="application/json")
+
         if upload_file.size > 3 * 1024 * 1024:
             upload_result["status"] = 1
             upload_result["msg"] = "文件大小不能超过3Mb, 请检查"
         else:
             try:
-                for each_sftp in salt_master.objects.all().values("host", "sftp_port", "sftp_user", "sftp_password", "file_roots"):
-                    sftp_storage = SFTPStorage(
-                        host = each_sftp["host"].split("//")[1].split(":")[0],
-                        root_path = each_sftp["file_roots"]+'/'+settings.SFTP_STORAGE_ROOT,
-                        params ={
-                            'username': each_sftp["sftp_user"],
-                            'password': each_sftp["sftp_password"],
-                            'port': each_sftp["sftp_port"],
-                            'timeout': 60,
-                        },
-                        interactive = settings.SFTP_STORAGE_INTERACTIVE,
+                file_name = upload_file.name
+                file_name = ''.join(random.choices('0123456789', k=7)) + time.strftime(
+                "%Y%m%d%H%M%S", time.localtime())+'_'+file_name
+                with transaction.atomic():
+                    transfer_file.objects.create(name=file_name, dest_dir=dest_dir, user=User.objects.get(username=request.user))
 
-                    )
-                    file_name = upload_file.name
-                    sftp_storage.save(file_name, upload_file)
-                    upload_result["msg"] = "文件上传成功"
-                transfer_file.objects.create(name=file_name, dest_dir=dest_dir, user=User.objects.get(username=request.user))
+                    for each_sftp in salt_master.objects.all().values("host", "sftp_port", "sftp_user", "sftp_password", "file_roots"):
+                        sftp_storage = SFTPStorage(
+                            host = each_sftp["host"].split("//")[1].split(":")[0],
+                            root_path = each_sftp["file_roots"]+'/'+settings.SFTP_STORAGE_ROOT,
+                            params ={
+                                'username': each_sftp["sftp_user"],
+                                'password': each_sftp["sftp_password"],
+                                'port': each_sftp["sftp_port"],
+                                'timeout': 60,
+                            },
+                            interactive = settings.SFTP_STORAGE_INTERACTIVE,
+
+                        )
+                        sftp_storage.save(file_name, upload_file)
+                        upload_result["msg"] = "文件上传成功"
+
             except Exception as e:
                 logger.error(traceback.format_exc())
                 upload_result["status"] = 1
