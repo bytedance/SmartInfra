@@ -223,3 +223,6 @@ DOWNLOAD_ROOT = os.path.join(BASE_DIR, DOWNLOAD_URL)
 # state根目录
 STATE_HOME = config('STATE_HOME', default='smartinfra_state/')
 
+# 上传文件大小
+UPLOAD_FILE_SIZE=config('UPLOAD_FILE_SIZE', default=3)
+
