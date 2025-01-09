@@ -30,7 +30,7 @@ def exec_remote_shell(*args, **kwargs):
     # confirm that exec_content is command or template
     encap_exec_content = json.loads(encap_exec_content)
     if encap_exec_content["type"] == 1:
-        exec_content = encap_exec_content["content"]
+        exec_content = base64.b64decode(encap_exec_content["content"]).decode()
     elif encap_exec_content["type"] == 0:
         current_st = shell_template.objects.get(id=encap_exec_content["content"])
         if current_st.type == 0:
