@@ -959,8 +959,8 @@ def show_selected_host_group(request):
                 host_group_name=host_group.objects.get(name=host_group_name)).values("minion_name")
             for each_selected_minions_salts in selected_minions_salts:
                 selected_minions_salts_list["type"] = 1
-                minion_info = hosts.objects.get(name=each_selected_minions_salts["minion_name"])
-                selected_minions_salts_list["content"].append({"id": minion_info.id if minion_info else "",
+                # minion_info = hosts.objects.get(name=each_selected_minions_salts["minion_name"])
+                selected_minions_salts_list["content"].append({"id": "",
                                                                "name": each_selected_minions_salts["minion_name"]})
 
         context = {
