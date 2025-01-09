@@ -1370,7 +1370,7 @@ def upload_transfer_file(request):
             upload_result["msg"] = "分发目录格式有错误: " + str(e)
             return HttpResponse(json.dumps(upload_result), content_type="application/json")
 
-        if upload_file.size > settings.UPLOAD_FILE_SIZE * 1024 * 1024:
+        if upload_file.size > int(settings.UPLOAD_FILE_SIZE) * 1024 * 1024:
             upload_result["status"] = 1
             upload_result["msg"] = "文件大小不能超过3Mb, 请检查"
         else:
