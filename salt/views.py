@@ -4,7 +4,7 @@ import random
 from datetime import timedelta
 from .common.audit_action import audit_action
 
-import time, os, requests
+import time, os, requests, base64
 
 from django.http import HttpResponse, Http404, FileResponse, HttpResponseRedirect
 import json, logging, traceback
@@ -1047,13 +1047,13 @@ def create_shell_task(request):
         hg_id = request.POST.get("hg_id")
         exec_shell_template = request.POST.get("exec_shell_template")
         exec_transfer_file = request.POST.get("exec_transfer_file")
-        print(exec_content)
         task_name = request.POST.get("task_name")
 
-        # Encapsulate exec_content to dict, and 0 stands for int, 1 stands for str
-        encap_exec_content = {"content": exec_content, "type": 1}
         try:
             if (exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0") and hg_id and task_name:
+                # Encapsulate exec_content to dict, and 0 stands for int, 1 stands for str
+                encap_exec_content = {"content": base64.b64encode(exec_content.encode()).decode() if exec_content is not None else exec_content, "type": 1}
+
                 # confirm execute type, include immediate and schedule
                 if immediate_checked == "0":
                     if len(schedule_checked.split()) != 5:
