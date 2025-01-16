@@ -794,7 +794,7 @@ def create_host_group(request):
                     host_group_minion.objects.filter(host_group_name=host_group.objects.get(id=host_group_id[3:])).delete()
                     for each_host in selected_host:
                         host_group_minion.objects.create(host_group_name=host_group.objects.get(id=host_group_id[3:]),
-                                                         minion_name=hosts.objects.get(id=each_host).name)
+                                                         minion_name=hosts.objects.get(id=each_host).name if each_host.isnumeric() else each_host)
 
         elif name and description and (selected_salt or selected_host or (selected_host_with_upload[0]!='0' and selected_host_with_upload[0]!="")):
             # create new one
@@ -960,7 +960,7 @@ def show_selected_host_group(request):
             for each_selected_minions_salts in selected_minions_salts:
                 selected_minions_salts_list["type"] = 1
                 # minion_info = hosts.objects.get(name=each_selected_minions_salts["minion_name"])
-                selected_minions_salts_list["content"].append({"id": "",
+                selected_minions_salts_list["content"].append({"id": each_selected_minions_salts["minion_name"],
                                                                "name": each_selected_minions_salts["minion_name"]})
 
         context = {
