@@ -62,5 +62,8 @@ urlpatterns = [
     path('update_authn/', views.update_authn, name='update_authn'),
     path('upload_transfer_file/', views.upload_transfer_file, name='upload_transfer_file'),
     path('delete_transfer_file/', views.delete_transfer_file, name='delete_transfer_file'),
+    path('get_audit_info/', views.get_audit_info, name='get_audit_info'),
+    path('get_hosts/', views.get_hosts, name='get_hosts'),
+    path('reject_task/', views.reject_task, name='reject_task'),
 
 ]

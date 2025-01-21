@@ -38,23 +38,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr style="display: none;">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            {% for each_log in audit_log %}
-                            <tr id="tr-{{ each_master.id }}">
-                                <td>{{ each_log.id }}</td>
-                                <td>{{ each_log.user }}</td>
-                                <td>{{ each_log.action }}</td>
-                                <td>{{ each_log.extra_content }}</td>
-                                <td>{{ each_log.create_time }}</td>
 
-                            </tr>
-                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -67,15 +51,26 @@
 {% endblock content %}
 {% block js %}
     <script type="text/javascript">
-        // 检查 DataTable 是否已经初始化
-        if ($.fn.DataTable.isDataTable('#dataTable')) {
-            $('#dataTable').DataTable().destroy(); // 销毁已有实例
-        }
         // 初始化 DataTable
-        window.addEventListener('load', function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检查 DataTable 是否已经初始化
+            if ($.fn.DataTable.isDataTable('#dataTable')) {
+                $('#dataTable').DataTable().destroy(); // 销毁已有实例
+            }
+
             $('#dataTable').DataTable({
                 "order": [[0, 'desc']],
                 "pageLength": 25,
+                "processing": true,
+                "serverSide": true,
+                "ajax": "/get_audit_info/",
+                "columns": [
+                    { "data": "id" },
+                    { "data": "user__username" },
+                    { "data": "action" },
+                    { "data": "extra_content" },
+                    { "data": "create_time" },
+                ]
             });
         });
     </script>
