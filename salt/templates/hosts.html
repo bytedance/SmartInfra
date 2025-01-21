@@ -100,31 +100,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr style="display: none;">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                {% if request.user.is_superuser %}
-                                <td></td>
-                                {% endif %}
-                            </tr>
-                            {% for each_host in all_hosts %}
-                            <tr id="tr-{{ each_host.id }}">
-                                <td>{{ each_host.name }}</td>
-                                <td>{{ each_host.get_status_display }}</td>
-                                <td>{{ each_host.salt.name }}</td>
-                                <td>{{ each_host.update_time }}</td>
-                                <td style="display: none;">{{ each_host.id }}</td>
-                                {% if request.user.is_superuser %}
-                                <td>
-                                    <button style="{% if each_host.get_status_display != 'pending' %}display: none;{% endif %}" type="button" class="btn btn-primary btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="a-{{ each_host.name }}">accept</button>
-                                    <button style="{% if each_host.get_status_display != 'pending' %}display: none;{% endif %}" type="button" class="btn btn-warning btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="r-{{ each_host.name }}">reject</button>
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="get_rowid(this)" value="{{ each_host.salt.name }}" id="d-{{ each_host.name }}">delete</button>
-                                </td>
-                                {% endif %}
-                            </tr>
-                            {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
@@ -232,5 +208,52 @@
                 }
             });
         }
+
+        // 初始化 DataTable
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检查 DataTable 是否已经初始化
+            if ($.fn.DataTable.isDataTable('#dataTable')) {
+                $('#dataTable').DataTable().destroy(); // 销毁已有实例
+            }
+
+            // 定义 DataTable 的基础列
+            var columns = [
+                { "data": "name" },
+                { "data": "status_display" },
+                { "data": "salt__name" },
+                { "data": "update_time" }
+            ];
+
+            is_superuser = {{ request.user.is_superuser|yesno:"true,false" }}
+            // 如果用户是超级管理员，则添加操作按钮列
+            if (is_superuser) {
+                columns.push({
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        return `
+                            <td>
+                                <button style="${row.status_display != 'pending' ? 'display: none;' : ''}"
+                                    type="button" class="btn btn-primary btn-sm"
+                                    onclick="get_rowid(this)" value="${row.salt__name}" id="a-${row.name}">accept</button>
+                                <button style="${row.status_display != 'pending' ? 'display: none;' : ''}"
+                                    type="button" class="btn btn-warning btn-sm"
+                                    onclick="get_rowid(this)" value="${row.salt__name}" id="r-${row.name}">reject</button>
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="get_rowid(this)" value="${row.salt__name}" id="d-${row.name}">delete</button>
+                            </td>
+                        `;
+                    }
+                });
+            }
+
+            // 初始化 DataTable
+            $('#dataTable').DataTable({
+                "pageLength": 25,
+                "processing": true,
+                "serverSide": true,
+                "ajax": "/get_hosts/",
+                "columns": columns  // 直接传入动态列
+            });
+        });
     </script>
 {% endblock %}

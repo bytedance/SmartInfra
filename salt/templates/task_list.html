@@ -10,7 +10,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">任务列表</h1>
 
-        <!-- 审批模态框 -->
+        <!-- 审批通过模态框 -->
         <div class="modal fade" id="approveConfirmModal" tabindex="-1" role="dialog" aria-labelledby="approveConfirmModal" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -39,6 +39,34 @@
           </div>
         </div>
 
+        <!-- 审批拒绝模态框 -->
+        <div class="modal fade" id="rejectConfirmModal" tabindex="-1" role="dialog" aria-labelledby="approveConfirmModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="rejectConfirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定拒绝通过ID = <span id="reject_task_msg" class="text-danger"></span>的任务么? 如果确认，请描述清楚拒绝原因: <br><br>
+                  <textarea id="reject_reason" class="form-control" placeholder="请输入拒绝原因" rows="5" style="resize: vertical; width: 100%;"></textarea>
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="reject_confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="rejectConfirmButton" onclick="reject_task()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 详情模态框 -->
         <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -58,6 +86,14 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr id="tr-approver" style="display: none">
+                      <td>审批人</td>
+                      <td id="approver"></td>
+                    </tr>
+                    <tr>
+                      <td>审批结果</td>
+                      <td id="approve_result"></td>
+                    </tr>
                     <tr>
                       <td>执行命令</td>
                       <td id="execute_shell"></td>
@@ -146,7 +182,8 @@
                                 <td style="display: none;">{{ each_task.id }}</td>
                                 <td>
                                     {% if request.user.is_superuser %}
-                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-warning btn-sm" onclick="get_taskid(this)" id="{{ each_task.id }}">审批</button>
+                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-warning btn-sm" onclick="accept_taskid(this)" id="{{ each_task.id }}">同意</button>
+                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-danger btn-sm" onclick="reject_taskid(this)" id="r-{{ each_task.id }}">拒绝</button>
                                     {% endif %}
                                     <button type="button" class="btn btn-info btn-sm" onclick="get_task_info(this)" value="{{ each_task.id }}">详情</button>
                                 </td>
@@ -247,6 +284,12 @@
                 },
                 success: function (data) {
                     if (data.status === 0) {
+                        document.getElementById("tr-approver").style.display = 'none';
+                        if (data.approve_status === 0) {
+                            document.getElementById("tr-approver").style.display = '';
+                            document.getElementById("approver").innerText = data.superuser_list;
+                        }
+                        document.getElementById("approve_result").innerText = data.approve_result;
                         document.getElementById("execute_shell").innerText = data.shell;
                         document.getElementById("count_success").innerText = data.msg.count_success;
                         document.getElementById("count_fail").innerText = data.msg.count_fail;
@@ -267,8 +310,8 @@
             $('#detailModal').modal('show');
         }
 
-        // 点击审批按钮时设置确认按钮的
-        function get_taskid(button) {
+        // 点击同意按钮时设置确认按钮
+        function accept_taskid(button) {
             // 设置确认按钮的 data-id 属性
             document.querySelector('#approveConfirmButton').setAttribute('data-id', button.id);
             document.getElementById("task_msg").innerHTML = button.id;
@@ -278,7 +321,7 @@
             $('#approveConfirmModal').modal('show');
         }
 
-        // 审批任务
+        // 审批同意任务
         function approve_task() {
             var approve_confirm_msg = document.getElementById("approve_confirm_msg");
             $.ajax({
@@ -296,6 +339,44 @@
                         location.reload();
                     } else {
                         approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击拒绝按钮时设置确认按钮
+        function reject_taskid(button) {
+            // 设置确认按钮的 data-id 属性
+            document.querySelector('#rejectConfirmButton').setAttribute('data-id', button.id);
+            document.getElementById("reject_task_msg").innerHTML = button.id.slice(2);
+
+            // 显示确认框
+            reminder_remove();
+            $('#rejectConfirmModal').modal('show');
+        }
+
+        // 审批拒绝任务
+        function reject_task() {
+            var reject_confirm_msg = document.getElementById("reject_confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/reject_task/",
+                dataType: "json",
+                data: {
+                    task_id: document.querySelector('#rejectConfirmButton').getAttribute('data-id'),
+                    reject_reason: document.getElementById("reject_reason").value,
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reject_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        location.reload();
+                    } else {
+                        reject_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

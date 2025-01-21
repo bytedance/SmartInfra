@@ -40,7 +40,7 @@ def audit_action(func):
         'search_available_host': '查看当前用户可操作主机',
         'create_shell_task': '创建/修改执行任务',
         'list_tasks': '查看所有已创建任务信息',
-        'approve_task': '审批任务',
+        'approve_task': '审批同意任务执行',
         'get_task_info': '获取任务信息',
         'download_execute_result': '下载已执行完成任务结果',
         'show_message': '查看待审批任务信息',
@@ -50,6 +50,9 @@ def audit_action(func):
         'update_authn': '更新系统认证方式',
         'upload_transfer_file': '上传分发文件',
         'delete_transfer_file': '删除分发文件',
+        'get_audit_info': '审计日志条目分页显示',
+        'get_hosts': '主机管理条目分页显示',
+        'reject_task': '审批拒绝任务执行',
 
     }
     @wraps(func)

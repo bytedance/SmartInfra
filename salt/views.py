@@ -6,7 +6,7 @@ from .common.audit_action import audit_action
 
 import time, os, requests, base64
 
-from django.http import HttpResponse, Http404, FileResponse, HttpResponseRedirect
+from django.http import HttpResponse, Http404, FileResponse, HttpResponseRedirect, JsonResponse
 import json, logging, traceback
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 from croniter import croniter
 from django.utils import timezone
 from django.db.models.functions import TruncDate
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Q
 
 from django.shortcuts import render, redirect
 from .models import *
@@ -25,7 +25,6 @@ from .common.salt_api import SaltAPI
 from .common.parse_shell import parse_content
 from django_q.tasks import async_task
 from .tasks.hosts_list import register_hosts
-from .tasks import exec_task
 from django_q.models import Task, Schedule
 from storages.backends.sftpstorage import SFTPStorage
 import paramiko
@@ -636,6 +635,38 @@ def del_user(request):
 @login_required()
 @audit_action
 @csrf_exempt
+def get_hosts(request):
+    """
+    分页展示所有受管服务器相关信息
+    :param request:
+    :return:
+    """
+    start = int(request.GET.get('start', 0))
+    length = int(request.GET.get('length', 10))
+    search_value = request.GET.get('search[value]', '')
+    reverse_host_status_choices = {rhsc_v:rhsc_k for rhsc_k, rhsc_v in dict(hosts.host_status_choices).items()}
+
+    query = hosts.objects.select_related("salt")
+    if search_value:
+        query = query.filter(Q(name__icontains=search_value) | Q(status__icontains=reverse_host_status_choices.get(search_value, 100))
+                             | Q(salt__name__icontains=search_value) | Q(update_time__icontains=search_value))
+
+    total_count = query.count()
+    data = list(query[start:start + length].values("id", "name", "status", "salt__name", "update_time"))
+    for each_data in data:
+        # 获取每个对象的显示值
+        each_data['status_display'] = dict(hosts.host_status_choices).get(each_data['status'])
+
+    return JsonResponse({
+        "draw": int(request.GET.get('draw', 1)),
+        "recordsTotal": hosts.objects.count(),
+        "recordsFiltered": total_count,
+        "data": data
+    })
+
+@login_required()
+@audit_action
+@csrf_exempt
 def list_hosts(request):
     """
     展示所有受管服务器相关信息
@@ -645,7 +676,7 @@ def list_hosts(request):
     all_hosts = hosts.objects.select_related("salt")
     refrsh_interval = settings.FRESH_INTERVAL
 
-    return render(request, "hosts.html", {"all_hosts": all_hosts, "refrsh_interval": refrsh_interval})
+    return render(request, "hosts.html", {"refrsh_interval": refrsh_interval})
 
 @login_required()
 @audit_action
@@ -1157,7 +1188,7 @@ def list_tasks(request):
 @csrf_exempt
 def approve_task(request):
     """
-    审批任务工单
+    审批同意任务工单
     :param request:
     :return:
     """
@@ -1167,6 +1198,7 @@ def approve_task(request):
     try:
         task_info = task_list.objects.get(id=int(task_id))
         task_info.status = 1
+        task_info.approve_result = "同意"
         task_info.save()
         update_time = task_info.update_time
         execute_policy = task_info.execute_policy
@@ -1190,6 +1222,36 @@ def approve_task(request):
 @login_required()
 @audit_action
 @csrf_exempt
+def reject_task(request):
+    """
+    审批拒绝任务工单
+    :param request:
+    :return:
+    """
+    task_id = request.POST.get("task_id")
+    reject_reason = request.POST.get("reject_reason")
+
+    reject_result = {"status": 0, "msg": "ok"}
+    if len(reject_reason) == 0:
+        reject_result["status"] = 1
+        reject_result["msg"] = "拒绝原因不可为空"
+    else:
+        try:
+            task_info = task_list.objects.get(id=int(task_id[2:]))
+            task_info.status = 4
+            task_info.approve_result = reject_reason
+            task_info.save()
+
+        except Exception as e:
+            logger.error(traceback.format_exc())
+            reject_result["status"] = 1
+            reject_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(reject_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
 def get_task_info(request):
     """
     获取任务工单信息
@@ -1203,6 +1265,12 @@ def get_task_info(request):
         task_info = task_list.objects.get(id=task_id)
         get_task_result["msg"] = json.loads(task_info.execute_result.replace("'", '"') if task_info.execute_result else '{}')
         get_task_result["shell"] = task_info.execute_content
+        get_task_result["approve_result"] = task_info.approve_result
+        get_task_result["approve_status"] = task_info.status
+        superuser_list = []
+        for each_superuser in User.objects.filter(is_superuser=True):
+            superuser_list.append(each_superuser.username)
+        get_task_result["superuser_list"] = str(superuser_list)
 
     except Exception as e:
         logger.error(traceback.format_exc())
@@ -1232,10 +1300,36 @@ def download_execute_result(request):
 @login_required()
 @audit_action
 @csrf_exempt
-def audit_info(request):
-    audit_log = general_audit.objects.all()
+def get_audit_info(request):
+    """
+    分页显示所有审计信息
+    :param request:
+    :return:
+    """
+    start = int(request.GET.get('start', 0))
+    length = int(request.GET.get('length', 10))
+    search_value = request.GET.get('search[value]', '')
 
-    return render(request, "audit_action.html", {"audit_log": audit_log})
+    query = general_audit.objects.all()
+    if search_value:
+        query = query.filter(Q(user__username__icontains=search_value) | Q(action__icontains=search_value) | Q(extra_content__icontains=search_value) | Q(create_time__icontains=search_value))
+
+    total_count = query.count()
+    data = list(query[start:start + length].values("id", "user__username", "action", "extra_content", "create_time"))
+
+    return JsonResponse({
+        "draw": int(request.GET.get('draw', 1)),
+        "recordsTotal": general_audit.objects.count(),
+        "recordsFiltered": total_count,
+        "data": data
+    })
+
+@login_required()
+@audit_action
+@csrf_exempt
+def audit_info(request):
+
+    return render(request, "audit_action.html")
 
 @login_required()
 @audit_action

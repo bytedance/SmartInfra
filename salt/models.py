@@ -88,20 +88,19 @@ class user_relationship(models.Model):
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
-host_status_choices = {
-    (0, "up"),
-    (1, "down"),
-    (2, "unknown"),
-    (3, "pending"),
-    (4, "denied"),
-    (5, "rejected"),
-
-}
-
 class hosts(models.Model):
     """
     受管主机管理
     """
+    host_status_choices = {
+        (0, "up"),
+        (1, "down"),
+        (2, "unknown"),
+        (3, "pending"),
+        (4, "denied"),
+        (5, "rejected"),
+
+    }
     name = models.CharField(max_length=300)
     salt = models.ForeignKey(salt_master, on_delete=models.CASCADE, null=True, default="")
     status = models.IntegerField(choices=host_status_choices)
@@ -135,6 +134,7 @@ task_status_choices = {
     (1, "待执行"),
     (2, "已完成"),
     (3, "执行中"),
+    (4, "被拒绝"),
 
 }
 
@@ -150,6 +150,7 @@ class task_list(models.Model):
     status = models.IntegerField(choices=task_status_choices, default=0)
     execute_result = models.CharField(max_length=600, default="")
     related_schedule = models.IntegerField(default=0)
+    approve_result = models.TextField(default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
