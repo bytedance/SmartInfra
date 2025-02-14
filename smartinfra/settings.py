@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 SECRET_KEY = 'django-insecure-c+ozv-7yx^#y_0fcj0v+g2v#^jzi0c$+iit_cpys4+r#*g6xkx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
