@@ -69,7 +69,7 @@ def exec_remote_shell(*args, **kwargs):
             else:
                 each_minion = each_minion["name"]
 
-            # Check whether the current user has permission to operate this node and whether the node is in the up state
+            # Check whether the current user has permission to operate this node and the node is in the up state
             if (not hosts.objects.filter(name=each_minion, salt__in=current_user_salt_object)
                     or hosts.objects.filter(name=each_minion).values("status").first()["status"] != 0):
                 count_fail += 1
