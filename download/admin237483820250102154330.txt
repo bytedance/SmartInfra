@@ -1,8 +1,0 @@
-10.0.104.100-CNFP008:
-{'cmd_|-my-windows-script_|-my-windows-script_|-script': {'name': 'my-windows-script', 'changes': {'pid': 8152, 'retcode': 0, 'stdout': 'User: Administrator, Status: Disabled
-User: DefaultAccount, Status: Disabled
-User: fp_admin, Status: Enabled
-User: Guest, Status: Disabled
-User: juger, Status: Enabled
-User: opsadmin, Status: Enabled
-User: WDAGUtilityAccount, Status: Disabled', 'stderr': ''}, 'result': True, 'comment': "Command 'my-windows-script' run", '__sls__': 'smartinfra_state/luwanlong_388715020241227024534151', '__run_num__': 0, 'start_time': '11:29:27.470078', 'duration': 1277.682, '__id__': 'my-windows-script'}}
