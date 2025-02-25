@@ -187,8 +187,8 @@ def logout_user(request):
         # oauth authentication
         pass
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def list_masters(request):
@@ -200,8 +200,8 @@ def list_masters(request):
     all_masters = salt_master.objects.all()
     return render(request, "salt_masters.html", {"all_masters": all_masters})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def create_salt(request):
@@ -239,8 +239,8 @@ def create_salt(request):
 
     return HttpResponse(json.dumps(create_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def del_salt(request):
@@ -257,8 +257,8 @@ def del_salt(request):
 
     return HttpResponse(json.dumps(del_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def check_salt_master(request):
@@ -279,8 +279,8 @@ def check_salt_master(request):
 
     return HttpResponse(json.dumps(check_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def check_sftp(request):
@@ -408,8 +408,8 @@ def del_shell_template(request):
 
     return HttpResponse(json.dumps(del_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def list_resource_group(request):
@@ -446,8 +446,8 @@ def list_resource_group(request):
 
     return render(request, "resource_group.html", {"rg_acl": rg_acl, "all_masters_dic": all_masters_dic, "all_masters": all_masters, "all_rg": all_rg, "rg_saltname": rg_saltname})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def create_resource_group(request):
@@ -483,8 +483,8 @@ def create_resource_group(request):
 
     return HttpResponse(json.dumps(create_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def del_resource_group(request):
@@ -504,8 +504,8 @@ def del_resource_group(request):
 
     return HttpResponse(json.dumps(del_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def list_ro_setup(request):
@@ -520,15 +520,14 @@ def list_ro_setup(request):
 
     return render(request, "ro_setup.html", {"all_acl": all_acl})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def create_acl(request):
     acl_desp = request.POST.get("input2")
     acl_id = request.POST.get("input6")
     acl_content = request.POST.get("input3")
-    print(acl_content)
 
     create_result = {"status":0, "msg":"ok"}
     try:
@@ -548,8 +547,8 @@ def create_acl(request):
 
     return HttpResponse(json.dumps(create_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def list_users(request):
@@ -581,8 +580,8 @@ def list_users(request):
 
     return render(request, "user_manage.html", {"user_relationship_dic": user_relationship_dic, "all_users_dic": all_users_dic, "all_users": all_users, "all_rg": all_rg, "all_rg_dic": all_rg_dic})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def create_user_relationship(request):
@@ -627,8 +626,8 @@ def create_user_relationship(request):
 
     return HttpResponse(json.dumps(create_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def del_user(request):
@@ -692,8 +691,8 @@ def list_hosts(request):
 
     return render(request, "hosts.html", {"refrsh_interval": refrsh_interval})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def setup_host(request):
@@ -1198,8 +1197,8 @@ def list_tasks(request):
 
     return render(request, "task_list.html", {"all_tasks": all_tasks})
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def approve_task(request):
@@ -1235,8 +1234,8 @@ def approve_task(request):
 
     return HttpResponse(json.dumps(approve_result), content_type="application/json")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def reject_task(request):
@@ -1314,8 +1313,8 @@ def download_execute_result(request):
             filename=filename
         )
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def get_audit_info(request):
@@ -1342,16 +1341,16 @@ def get_audit_info(request):
         "data": data
     })
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def audit_info(request):
 
     return render(request, "audit_action.html")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def authenticate_mgmt(request):
@@ -1400,8 +1399,8 @@ def callback_oauth(request):
     else:
         logger.error("incomplete parameters")
 
-@superuser_required
 @login_required()
+@superuser_required
 @audit_action
 @csrf_exempt
 def update_authn(request):
