@@ -2,7 +2,7 @@
 
 import urllib.request
 import urllib.parse
-import json, ssl, logging
+import json, ssl, logging, traceback
 
 logger = logging.getLogger("default")
 
@@ -29,7 +29,7 @@ class SaltAPI():
             content = json.loads(opener.read())
             token_id = content['return'][0]['token']
         except Exception as e:
-            logger.error(e)
+            logger.error(traceback.format_exc())
             token_id = None
         return token_id
 
@@ -49,7 +49,7 @@ class SaltAPI():
             opener = urllib.request.urlopen(req, timeout=60, context=context)
             content = json.loads(opener.read())
         except Exception as e:
-            logger.error(e)
+            logger.error(traceback.format_exc())
             return str(e)
         return content
 
