@@ -54,6 +54,10 @@ class SaltAPI():
         return content
 
     def list_all_key(self):
+        """
+        list all keys
+        :return:
+        """
         params = {'client': 'wheel', 'fun': 'key.list_all'}
         content = self.send_req(params)
         if isinstance(content, dict):
@@ -62,6 +66,11 @@ class SaltAPI():
             return {"status": 1, "msg": content}
 
     def delete_key(self, node_name):
+        """
+        delete the specified key
+        :param node_name:
+        :return:
+        """
         params = {'client': 'wheel', 'fun': 'key.delete', 'match': node_name}
         content = self.send_req(params)
         if isinstance(content, dict):
@@ -70,6 +79,11 @@ class SaltAPI():
             return {"status": 1, "msg": content}
 
     def accept_key(self, node_name):
+        """
+        accept the specified key
+        :param node_name:
+        :return:
+        """
         params = {'client': 'wheel', 'fun': 'key.accept', 'match': node_name}
         content = self.send_req(params)
         if isinstance(content, dict):
@@ -78,6 +92,11 @@ class SaltAPI():
             return {"status": 1, "msg": content}
 
     def reject_key(self, node_name):
+        """
+        reject the specified key
+        :param node_name:
+        :return:
+        """
         params = {'client': 'wheel', 'fun': 'key.reject', 'match': node_name}
         content = self.send_req(params)
         if isinstance(content, dict):
@@ -102,6 +121,12 @@ class SaltAPI():
             return {"status": 1, "msg": content}
 
     def execute_grain(self, tgt, arg):
+        """
+        get the specified arg of one node
+        :param tgt:
+        :param arg:
+        :return:
+        """
         params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.item', 'arg': arg}
         content = self.send_req(params)
         if isinstance(content, dict):
@@ -110,41 +135,17 @@ class SaltAPI():
             return {"status": 1, "msg": content}
 
     def execute_grains(self, tgt):
+        """
+        get all args of one node
+        :param tgt:
+        :return:
+        """
         params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.items'}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]}
         else:
             return {"status": 1, "msg": content}
-
-    # def target_remote_execution(self, tgt, fun, arg):
-    #     # Use targeting for remote execution
-    #     params = {'client': 'local', 'tgt': tgt, 'fun': fun, 'arg': arg, 'expr_form': 'nodegroup'}
-    #     content = self.send_req(params)
-    #     if isinstance(content, dict):
-    #         jid = content['return'][0]['jid']
-    #         return jid
-    #     else:
-    #         return {"status": False, "message": "Salt API Error : " + content}
-
-    # def execute_deploy(self, tgt, arg):
-    #     # Module deployment
-    #     params = {'client': 'local', 'tgt': tgt, 'fun': 'state.sls', 'arg': arg}
-    #     return self.send_req(params)
-    #
-    # def execute_async_deploy(self, tgt, arg):
-    #     """
-    #     send a sls request asynchronously, and return a job id
-    #     :param tgt:
-    #     :param arg:
-    #     :return:
-    #     """
-    #     params = {'client': 'local_async', 'tgt': tgt, 'fun': 'state.sls', 'arg': arg}
-    #     content = self.send_req(params)
-    #     if isinstance(content, dict):
-    #         return content['return'][0]['jid']
-    #     else:
-    #         return {"status": 1, "message": content}
 
     def execute_remote_state(self, tgt, arg):
         """
@@ -161,60 +162,6 @@ class SaltAPI():
             return {"status": 0, "msg": ret}
         else:
             return {"status": 1, "msg": content}
-
-    def get_jobs_list(self):
-        url = self.__url + '/jobs/'
-        headers = {'X-Auth-Token': self.__token_id}
-        req = urllib.request.Request(url, headers=headers)
-        context = ssl._create_unverified_context()
-        try:
-            opener = urllib.request.urlopen(req, context=context)
-            content = json.loads(opener.read())
-        except Exception as e:
-            logger.error(e)
-            return str(e)
-        if isinstance(content, dict):
-            jid = content['return'][0]
-            return jid
-        else:
-            return {"status": 1, "message": content}
-
-    def get_job_info(self, arg):
-        url = self.__url + '/jobs/' + arg
-        headers = {'X-Auth-Token': self.__token_id}
-        req = urllib.request.Request(url, headers=headers)
-        context = ssl._create_unverified_context()
-        try:
-            opener = urllib.request.urlopen(req, context=context)
-            content = json.loads(opener.read())
-            if isinstance(content, dict):
-                jid = content['return'][0]
-                return {"status": 0, "msg": jid}
-            else:
-                return {"status": 1, "msg": content}
-        except Exception as e:
-            logger.error(e)
-            return {"status": 1, "msg": str(e)}
-
-    def get_stats(self):
-        """
-        expose statistics about the running CherryPy server
-        :return:
-        """
-        url = self.__url + '/stats'
-        headers = {'X-Auth-Token': self.__token_id}
-        req = urllib.request.Request(url, headers=headers)
-        context = ssl._create_unverified_context()
-        try:
-            opener = urllib.request.urlopen(req, context=context)
-            content = json.loads(opener.read())
-        except Exception as e:
-            logger.error(e)
-            return str(e)
-        if isinstance(content, dict):
-            return content
-        else:
-            return {"status": 1, "message": content}
 
     def runner_status(self, arg):
         """
