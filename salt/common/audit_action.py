@@ -53,6 +53,7 @@ def audit_action(func):
         'get_audit_info': '审计日志条目分页显示',
         'get_hosts': '主机管理条目分页显示',
         'reject_task': '审批拒绝任务执行',
+        'check_ldap': 'Ldap正确性验证测试',
 
     }
     @wraps(func)

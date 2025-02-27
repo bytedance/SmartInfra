@@ -112,6 +112,41 @@
                 </div>
             </div>
 
+            <div style="display: none" id="ldap_setup">
+                <div class="row mb-3">
+                    <!-- Label 和 输入框在一行 -->
+                    <label for="ldap_addr" class="col-sm-1 col-form-label"><span class="text-danger">*</span> LDAP Server</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="ldap_addr" class="form-control" placeholder="请输入内容, 例: ldap://myldap.domain.tld:389">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <!-- Label 和 输入框在一行 -->
+                    <label for="dn_addr" class="col-sm-1 col-form-label"><span class="text-danger">*</span> Reader DN</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="dn_addr" class="form-control" placeholder="请输入内容, 例: ou=users,dc=domain,dc=tld">
+                    </div>
+                </div>
+                <hr>
+                <label for="clientSecret" class="col-sm-0 col-form-label" style="font-weight: bold;">Test Login</label>
+                <br><br>
+                <div class="row mb-3">
+                    <!-- Label 和 输入框在一行 -->
+                    <label for="ldap_user" class="col-sm-0.3 col-form-label">&nbsp;&nbsp;&nbsp;用户名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="col-sm-1.5">
+                        <input type="text" id="ldap_user" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="ldap_passwd" class="col-sm-0.3 col-form-label"><span class="text-danger">&nbsp;</span> 密码:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="col-sm-1.5">
+                        <input type="text" id="ldap_passwd" class="form-control" placeholder="请输入密码">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="test_ldap()">测试</button>
+                </div>
+
+            </div>
+
             <!-- 密码长度拖拽条 -->
             <div id="passwd_range">
                  <label for="lengthSlider" class="form-label col-sm-0"><span class="text-danger">*</span> 设置密码长度: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -136,12 +171,29 @@
 
     </div>
     <!-- /.container-fluid -->
-    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+    <div id="load" class="position-fixed w-100 h-100"
+     style="top: 0; left: 0; background: rgba(255, 255, 255, 0.2); z-index: 1000; display: none;
+            justify-content: center;
+            align-items: center;">
+        <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem; position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem;">
+        <span class="sr-only">加载中...</span>
+    </div>
+</div>
  <!-- 引入 Bootstrap 4 和 jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 {% endblock content %}
 {% block js %}
     <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            document.getElementById('load').style.display = 'flex';
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            document.getElementById('load').style.display = 'none';
+        };
+
         // 点击卡片也可选择认证方式
         function click_internal() {
             const internal = document.getElementById("internal");
@@ -150,6 +202,7 @@
             internal.checked = true;
             passwd_range.style.display = "block";
             oauth_setup.style.display = "none";
+            ldap_setup.style.display = "none";
         }
 
         // 点击卡片也可选择认证方式
@@ -160,6 +213,7 @@
             oauth.checked = true;
             oauth_setup.style.display = "block";
             passwd_range.style.display = "none";
+            ldap_setup.style.display = "none";
         }
 
         // 点击卡片也可选择认证方式
@@ -170,6 +224,7 @@
             ldap.checked = true;
             oauth_setup.style.display = "none";
             passwd_range.style.display = "none";
+            ldap_setup.style.display = "block";
 
         }
 
@@ -200,11 +255,17 @@
                         internal.checked = true;
                         passwd_range.style.display = "block";
                         oauth_setup.style.display = "none";
+                        ldap_setup.style.display = "none";
                     } else if (data.authenticate_tag === 1) {
                         const internal = document.getElementById("internal");
                         const ldap = document.getElementById("ldap");
                         const oauth = document.getElementById("oauth");
                         ldap.checked = true;
+                        oauth_setup.style.display = "none";
+                        passwd_range.style.display = "none";
+                        ldap_setup.style.display = "block";
+                        document.querySelector('#ldap_addr').value=data.authorization_url;
+                        document.querySelector('#dn_addr').value=data.resource_url;
                     } else if (data.authenticate_tag === 2) {
                         const oauth_setup = document.getElementById("oauth_setup");
                         const passwd_range = document.getElementById("passwd_range");
@@ -212,6 +273,7 @@
                         oauth.checked = true;
                         oauth_setup.style.display = "block";
                         passwd_range.style.display = "none";
+                        ldap_setup.style.display = "none";
                         document.querySelector('#clientID').value=data.client_id;
                         document.querySelector('#clientSecret').value=data.client_secret;
                         document.querySelector('#redirectURL').value=data.redirect_url;
@@ -246,11 +308,12 @@
                     access_token_url: $("#accessTokenURL").val(),
                     resource_url: $("#resourceURL").val(),
                     grant_type: $("#grantType").val(),
+                    ldap_addr: $("#ldap_addr").val(),
+                    dn_addr: $("#dn_addr").val(),
                 },
                 complete: function () {
                 },
                 success: function (data) {
-                    console.log(data);
                     if (data.status === 0) {
                         location.reload();
                     } else {
@@ -259,6 +322,34 @@
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // ldap认证测试
+        function test_ldap() {
+            loading()
+            var reminder_msg = document.getElementById("msg");
+            $.ajax({
+                type: "post",
+                url: "/check_ldap/",
+                dataType: "json",
+                data: {
+                    ldap_addr: $("#ldap_addr").val(),
+                    dn_addr: $("#dn_addr").val(),
+                    ldap_user: $("#ldap_user").val(),
+                    ldap_passwd: $("#ldap_passwd").val(),
+                },
+                complete: function () {
+                    loading_remove()
+                },
+                success: function (data) {
+                    loading_remove()
+                    reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                    loading_remove();
                 }
             });
         }
