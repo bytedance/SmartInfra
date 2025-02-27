@@ -29,6 +29,7 @@ from .tasks.hosts_list import register_hosts
 from django_q.models import Task, Schedule
 from storages.backends.sftpstorage import SFTPStorage
 import paramiko
+from ldap3 import Server, Connection, ALL
 
 # Create your views here.
 logger = logging.getLogger("default")
@@ -146,7 +147,7 @@ def login(request):
             return render(request, "login.html")
         # use ldap to authenticate
         elif authenticate_ins.type == 1:
-            pass
+            return render(request, "login.html")
         # use oauth to authenticate
         elif authenticate_ins.type == 2:
             client_id = authenticate_ins.client_id
@@ -164,12 +165,39 @@ def authenticate_user(request):
 
     authenticate_result = {"status": 0, "msg": "ok"}
     if input_email and input_password:
-        user = authenticate(request, username=input_email, password=input_password)
-        if user is not None and user.is_active:
-            dj_login(request, user)
-        else:
-            authenticate_result["status"] = 1
-            authenticate_result["msg"] = "错误的用户名或密码，请重新输入"
+        authenticate_ins = authenticate_type.objects.get(name="authentication")
+
+        # use internal to authenticate
+        if authenticate_ins.type == 0:
+            user = authenticate(request, username=input_email, password=input_password)
+            if user is not None and user.is_active:
+                dj_login(request, user)
+            else:
+                authenticate_result["status"] = 1
+                authenticate_result["msg"] = "用户名或密码错误，请重新输入"
+
+        # use ldap to authenticate
+        elif authenticate_ins.type == 1:
+            try:
+                ldap_server = Server(authenticate_ins.authorization_url, get_info=ALL, connect_timeout=10)
+                user_dn = "uid=%s,%s" %(input_email, authenticate_ins.resource_url)
+                ldap_conn = Connection(ldap_server, user=user_dn, password=input_password, receive_timeout=10)
+
+                if ldap_conn.bind():
+                    # make current user who are from ldap to login automatically
+                    if not User.objects.filter(username=input_email):
+                        User.objects.create_user(username=input_email, password="", is_superuser=0, is_active=1, is_staff=1)
+                    user = authenticate(request, username=input_email, password="")
+                    if user is not None and user.is_active:
+                        dj_login(request, user)
+                else:
+                    authenticate_result["status"] = 1
+                    authenticate_result["msg"] = "用户名或密码错误, 请重新输入"
+            except Exception as e:
+                logger.error(traceback.format_exc())
+                authenticate_result["status"] = 1
+                authenticate_result["msg"] = "连接Ldap服务器超时, 请检查"
+
     else:
         authenticate_result["status"] = 1
         authenticate_result["msg"] = "请输入完整的用户名和密码"
@@ -1417,6 +1445,8 @@ def update_authn(request):
         redirect_url = request.POST.get("redirect_url")
         resource_url = request.POST.get("resource_url")
         grant_type = request.POST.get("grant_type")
+        ldap_addr = request.POST.get("ldap_addr")
+        dn_addr = request.POST.get("dn_addr")
 
         update_result = {"status": 0, "msg": "ok"}
 
@@ -1425,7 +1455,19 @@ def update_authn(request):
             authenticate_ins.type = authenticate_tag
             authenticate_ins.save()
         elif authenticate_tag == 1:
-            pass
+            if ldap_addr and dn_addr:
+                authenticate_ins.type = authenticate_tag
+                authenticate_ins.authorization_url = ldap_addr
+                authenticate_ins.access_token_url = ""
+                authenticate_ins.client_id = ""
+                authenticate_ins.client_secret = ""
+                authenticate_ins.redirect_url = ""
+                authenticate_ins.resource_url = dn_addr
+                authenticate_ins.grant_type = ""
+                authenticate_ins.save()
+            else:
+                update_result["status"] = 1
+                update_result["msg"] = "请输入完整参数"
         elif authenticate_tag == 2:
             if authorization_url and access_token_url and client_id and client_secret and redirect_url and resource_url:
                 authenticate_ins.type = authenticate_tag
@@ -1527,3 +1569,35 @@ def delete_transfer_file(request):
     file_id = request.POST.get("tf_id")
     transfer_file.objects.get(id=file_id).delete()
     return HttpResponse(json.dumps(delete_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def check_ldap(request):
+    ldap_addr = request.POST.get("ldap_addr")
+    dn_addr = request.POST.get("dn_addr")
+    ldap_user = request.POST.get("ldap_user")
+    ldap_passwd = request.POST.get("ldap_passwd")
+
+    check_result = {"status": 0, "msg": "ok"}
+
+    if ldap_addr and dn_addr and ldap_user and ldap_passwd:
+        try:
+            ldap_server = Server(ldap_addr, get_info=ALL, connect_timeout=10)
+            user_dn = "uid=%s,%s" %(ldap_user, dn_addr)
+            ldap_conn = Connection(ldap_server, user=user_dn, password=ldap_passwd, receive_timeout=10)
+
+            if ldap_conn.bind():
+                check_result["msg"] = "用户验证成功"
+            else:
+                check_result["msg"] = "用户验证失败"
+        except Exception as e:
+            logger.error(traceback.format_exc())
+            check_result["status"] = 1
+            check_result["msg"] = "用户验证异常, 请检查"
+
+    else:
+        check_result["status"] = 1
+        check_result["msg"] = "请输入完整的验证信息"
+
+    return HttpResponse(json.dumps(check_result), content_type="application/json")

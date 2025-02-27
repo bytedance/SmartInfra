@@ -39,8 +39,8 @@
                         <div>
                             <img src="{% static 'img/smartsalt-logo.jpeg' %}" alt="Brand Icon" style="width: 80px; height: 70px;">
                             <p class="text-muted"></p>
-                            <h4 class="text-primary">SmartSalt自动化配置平台</h4>
-                            <p class="text-muted">基于SaltStack，实现服务器全生命周期的配置管理</p>
+                            <h4 class="text-primary">SmartSalt自动化变更平台</h4>
+                            <p class="text-muted">基于SaltStack，实现标准、多样、流程可控的的变更管理</p>
                         </div>
                     </div>
                             <div class="col-lg-6">
@@ -95,7 +95,12 @@
         </div>
 
     </div>
-    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
+
+    <div id="load" class="position-absolute w-100 h-100 justify-content-center align-items-center" style="top: 0; left: 0; background: rgba(255,255,255,0.2); z-index: 1000; display: none;">
+        <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem;">
+            <span class="sr-only">加载中...</span>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -113,12 +118,12 @@
 <script type="text/javascript">
     // 设置加载图片
     function loading() {
-        $("#load").show();
+        document.getElementById('load').style.display = 'flex';
     };
 
     // 移除加载图片
     function loading_remove() {
-        $("#load").hide();
+        document.getElementById('load').style.display = 'none';
     };
 
     // 移除reminder
@@ -136,6 +141,7 @@
     //用户认证
     function authenticate_user() {
         reminder_remove()
+        loading()
         var reminder_msg = document.getElementById("msg");
         const urlParams = new URLSearchParams(window.location.search);
         const nextParam = urlParams.get('next');  // 获取 'next' 参数的值
@@ -154,9 +160,10 @@
                 input_password: $("#input_password").val(),
             },
             complete: function () {
+                loading_remove()
             },
             success: function (data) {
-
+                loading_remove()
                 if (data.status === 0) {
                     reminder_msg.innerHTML = 'Reminder: ' + data.msg;
                     const urlParams = new URLSearchParams(window.location.search);
@@ -173,6 +180,7 @@
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                loading_remove()
             }
         });
     }
