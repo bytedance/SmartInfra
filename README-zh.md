@@ -83,8 +83,3 @@ http://127.0.0.1
 - 新功能提交
 - 代码优化
 - 测试用例完善
-
-交流反馈
-===============
-- 使用咨询、需求沟通：[Discussions](https://github.com/hhyo/Archery/discussions)
-- Bug提交：[Issues](https://github.com/hhyo/archery/issues)
