@@ -1,6 +1,6 @@
 # SmartInfra
 
-[English](README) | [简体中文](README-zh)
+[English](README.md) | [简体中文](README-zh.md)
 
 SmartInfra is a comprehensive cloud platform that includes a series of functions such as computing and storage, database management, white-box switch management, and automated changes. Specifically, it includes the following:
 1. SmartInfra can provide resource allocation and tool management for computing, storage, load balancing, and CICD at the IaaS and PaaS layers.
