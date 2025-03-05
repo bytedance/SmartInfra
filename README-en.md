@@ -1,7 +1,6 @@
 # SmartInfra
 
-- [中文文档](README.md)
-- [English Documentation](README-en.md)
+[中文文档](README.md) | [English Documentation](README-en.md)
 
 SmartInfra是一个综合性云平台，涵盖计算存储、数据库管理、白盒交换机管理和自动化变更等一系列功能。具体包含以下：
 1. SmartInfra作为云平台，可以提供IaaS和PaaS层的计算、存储、负载均衡和持续集成持续发布等资源分配与工具管理
@@ -10,7 +9,7 @@ SmartInfra是一个综合性云平台，涵盖计算存储、数据库管理、�
 
 3. SmartInfra平台兼具整个Infra层的统一运维功能，包括系统和网络的CMDB、自动化变更、批量配置等
 
-目前开源的**SmartSalt**是一个基于 SaltStack进行任务自动化配置和执行的系统。该平台能够标准化、流程化的执行变更配置，支持命令、state剧本、文件分发等操作以异步方式定时或立即执行。执行目标适用于所有开放操作系统的运维和批量操作场景。
+目前开源的**SmartSalt**是SmartInfra的一个模块，基于 SaltStack进行任务自动化配置和执行的系统。该平台能够标准化、流程化的执行变更配置，支持命令、state剧本、文件分发等操作以异步方式定时或立即执行。执行目标适用于所有开放操作系统的运维和批量操作场景。
 
 平台系统架构如图:
 
