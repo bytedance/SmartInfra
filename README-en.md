@@ -1,5 +1,8 @@
 # SmartInfra
 
+- [中文文档](README.md)
+- [English Documentation](README-en.md)
+
 SmartInfra是一个综合性云平台，涵盖计算存储、数据库管理、白盒交换机管理和自动化变更等一系列功能。具体包含以下：
 1. SmartInfra作为云平台，可以提供IaaS和PaaS层的计算、存储、负载均衡和持续集成持续发布等资源分配与工具管理
 
