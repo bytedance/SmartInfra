@@ -242,6 +242,9 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                {% if request.user.is_superuser %}
+                                    <th>创建人</th>
+                                {% endif %}
                                 <th>创建时间</th>
                                 <th>更新时间</th>
                                 <th>操作</th>
@@ -252,6 +255,9 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                {% if request.user.is_superuser %}
+                                    <th>创建人</th>
+                                {% endif %}
                                 <th>创建时间</th>
                                 <th>更新时间</th>
                                 <th>操作</th>
@@ -262,6 +268,9 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                {% if request.user.is_superuser %}
+                                    <td></td>
+                                {% endif %}
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -271,6 +280,9 @@
                                 <td>{{ each_host_group.name }}</td>
                                 <td>{{ each_host_group.description }}</td>
                                 <td>{{ each_host_group.host_num }}</td>
+                                {% if request.user.is_superuser %}
+                                    <td>{{ each_host_group.user.username }}</td>
+                                {% endif %}
                                 <td>{{ each_host_group.create_time }}</td>
                                 <td>{{ each_host_group.update_time }}</td>
                                 <td style="display: none;">{{ each_host_group.id }}</td>

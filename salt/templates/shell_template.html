@@ -117,6 +117,9 @@
                                 <th>内容类型</th>
                                 <th>入口内容</th>
                                 <th>执行内容</th>
+                                {% if request.user.is_superuser %}
+                                    <th>创建人</th>
+                                {% endif %}
                                 <th>更新时间</th>
                                 <th>操作</th>
                             </tr>
@@ -128,6 +131,9 @@
                                 <th>内容类型</th>
                                 <th>入口内容</th>
                                 <th>执行内容</th>
+                                {% if request.user.is_superuser %}
+                                    <th>创建人</th>
+                                {% endif %}
                                 <th>更新时间</th>
                                 <th>操作</th>
                             </tr>
@@ -139,6 +145,9 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                {% if request.user.is_superuser %}
+                                    <td></td>
+                                {% endif %}
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -149,6 +158,9 @@
                                 <td>{{ each_shell.get_type_display }}</td>
                                 <td style="white-space: pre-wrap;">{{ each_shell.main_content|linebreaksbr }}</td>
                                 <td style="white-space: pre-wrap;">{{ each_shell.func_content|linebreaksbr }}</td>
+                                {% if request.user.is_superuser %}
+                                    <td>{{ each_shell.user.username }}</td>
+                                {% endif %}
                                 <td>{{ each_shell.update_time }}</td>
                                 <td style="display: none;">{{ each_shell.id }}</td>
                                 <td>

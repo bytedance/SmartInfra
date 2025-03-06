@@ -146,11 +146,12 @@ class task_list(models.Model):
     execute_content = models.TextField(default="")
     execute_policy = models.CharField(max_length=50, default="")
     host_group_name = models.ForeignKey(host_group, on_delete=models.CASCADE, null=True, default="")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="", related_name="user_task_list")
     status = models.IntegerField(choices=task_status_choices, default=0)
     execute_result = models.CharField(max_length=600, default="")
     related_schedule = models.IntegerField(default=0)
     approve_result = models.TextField(default="")
+    approver = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="", related_name="approver_task_list")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
