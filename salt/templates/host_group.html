@@ -301,12 +301,28 @@
 
     </div>
     <!-- /.container-fluid -->
-    <div id="load" style="display:none; text-align:center; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1200; background:url(/static/img/loading.gif) center center no-repeat;"></div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <div id="load" class="position-fixed w-100 h-100"
+     style="top: 0; left: 0; background: rgba(255, 255, 255, 0.2); z-index: 1100; display: none;
+            justify-content: center;
+            align-items: center;">
+        <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem; position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem;">
+        <span class="sr-only">加载中...</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 {% endblock content %}
 {% block js %}
     <script type="text/javascript">
-          $(document).ready(function() {
+        // 设置加载图片
+        function loading() {
+            document.getElementById('load').style.display = 'flex';
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            document.getElementById('load').style.display = 'none';
+        };
+
+        $(document).ready(function() {
             // 移动右侧按钮事件：将选中的项从左侧移动到右侧
             $('#moveRight').click(function() {
               $('#availableOptions option:selected').each(function() {
@@ -332,11 +348,6 @@
             });
           });
 
-        // 设置加载图片
-        function loading() {
-            $("#load").show();
-        };
-
         window.addEventListener('load', function () {
             // 检查 DataTable 是否已经初始化
             if ($.fn.DataTable.isDataTable('#dataTable')) {
@@ -347,11 +358,6 @@
                 "order": [[3, 'desc']]
             });
         });
-
-        // 移除加载图片
-        function loading_remove() {
-            $("#load").hide();
-        };
 
         // 移除reminder
         function reminder_remove() {
