@@ -13,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
 
   smartsalt:
-    image: it-harbor.bytedance.net/probe/smartsalt:v3
+    image: docker.com/probe/smartsalt:v3
     container_name: smartsalt
     restart: always
     ports:
