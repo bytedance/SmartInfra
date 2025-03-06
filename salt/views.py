@@ -1165,7 +1165,7 @@ def create_shell_task(request):
                                                 hook="salt.tasks.q_task.remote_shell_task",
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
-                        task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                        task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id, approver=request.user)
 
                 elif (exec_content or exec_shell_template) and not exec_transfer_file:
                     with transaction.atomic():
@@ -1242,6 +1242,7 @@ def approve_task(request):
         task_info = task_list.objects.get(id=int(task_id))
         task_info.status = 1
         task_info.approve_result = "同意"
+        task_info.approver = request.user
         task_info.save()
         update_time = task_info.update_time
         execute_policy = task_info.execute_policy
@@ -1284,6 +1285,7 @@ def reject_task(request):
             task_info = task_list.objects.get(id=int(task_id[2:]))
             task_info.status = 4
             task_info.approve_result = reject_reason
+            task_info.approver = request.user
             task_info.save()
 
         except Exception as e:
