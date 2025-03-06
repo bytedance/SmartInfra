@@ -9,7 +9,7 @@ SmartInfra is a comprehensive cloud platform that includes a series of functions
 
 3. The SmartInfra platform also has the unified operation and maintenance function for the entire Infra layer, including CMDB for the system and network, automated changes, batch configuration, etc.
 
-Currently, the open-source **SmartSalt** is a part of SmartInfra, a system for automated task configuration and execution based on SaltStack. This platform can execute change configurations in a standardized and process-oriented manner, supporting operations such as commands, state playbooks, and transferring file to be executed either periodically or immediately in an asynchronous manner. The execution targets are applicable to the operation and maintenance and batch operation scenarios of all open operating systems.
+Currently, the open-source **SmartSalt** is a part of SmartInfra, a system for automated task configuration and execution based on **SaltStack**. This platform can execute change configurations in a standardized and process-oriented manner, supporting operations such as commands, state playbooks, and transferring file to be executed either periodically or immediately in an asynchronous manner. The execution targets are applicable to the operation and maintenance and batch operation scenarios of all open operating systems.
 
 The architecture is shown:
 
