@@ -310,7 +310,7 @@
                 const type = row.querySelector('td:nth-child(3)').textContent;
                 const main = row.querySelector('td:nth-child(4)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
                 const func = row.querySelector('td:nth-child(5)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
-                const id = row.querySelector('td:nth-child(7)').textContent;
+                const id = rowId.slice(3,);
                 // 对前两行赋值
                 document.querySelector('#input1').value=name;
                 document.querySelector('#input2').value=description;
