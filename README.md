@@ -57,7 +57,7 @@ python3 manage.py createsuperuser
 exit
 ```
 
-## access the site
+## Access the site
 http://127.0.0.1
 
 
