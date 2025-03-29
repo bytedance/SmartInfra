@@ -26,7 +26,7 @@ SOFTWARE.
 """
 
 import datetime
-import random
+import random, re
 from datetime import timedelta
 from .common.audit_action import audit_action
 from .common.permission_ctrl import superuser_required
@@ -272,8 +272,12 @@ def create_salt(request):
     sftp_password = request.POST.get("input11")
 
     create_result = {"status":0, "msg":"ok"}
+    file_roots_pattern = r'^[a-zA-Z0-9/_-]+$'
+
     try:
-        if salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots and sftp_port and sftp_user and salt_password:
+
+        if (salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots
+                and sftp_port and sftp_user and salt_password and bool(re.match(file_roots_pattern, file_roots))):
             if salt_id:
                 salt_master.objects.filter(id=salt_id).update(name=salt_name, description=salt_desp,
                                                               host=salt_host, user=salt_user, password=salt_password,
@@ -283,9 +287,15 @@ def create_salt(request):
                 salt_master.objects.create(name=salt_name, description=salt_desp, host=salt_host, user=salt_user,
                                            password=salt_password, minion_name=minion_name, file_roots=file_roots,
                                            sftp_port=sftp_port, sftp_user=sftp_user, sftp_password=sftp_password)
+
+        elif file_roots and not bool(re.match(file_roots_pattern, file_roots)):
+            create_result["status"] = 1
+            create_result["msg"] = "file_roots路径参数非法，请修正"
+
         else:
             create_result["status"]=1
             create_result["msg"]="不完整的输入参数，请补全"
+
     except Exception as e:
         logger.error(traceback.format_exc())
         create_result["status"]=1
