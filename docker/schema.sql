@@ -219,7 +219,7 @@ CREATE TABLE `auth_user` (
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
 INSERT INTO `auth_user` VALUES
-(1,'pbkdf2_sha256$870000$HZ39jOJ8ZE7gUHHV6YY1Xn$n2LVoWf8zMbLokpYK+ORNQ/xqj8feYbE+EzBdMwHt6I=','2025-02-26 09:24:13.512656',1,'admin','','','luwanlong@bytedance.com',1,1,'2024-12-27 02:06:55.048078');
+(1,'pbkdf2_sha256$870000$HZ39jOJ8ZE7gUHHV6YY1Xn$n2LVoWf8zMbLokpYK+ORNQ/xqj8feYbE+EzBdMwHt6I=','2025-02-26 09:24:13.512656',1,'admin','','','lwl@bytedance.com',1,1,'2024-12-27 02:06:55.048078');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
