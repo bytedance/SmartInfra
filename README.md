@@ -32,7 +32,8 @@ Features
 Get Started
 ------------------------
 ### Have a try
-https://github.com/Dinosaur-Park/heyelb/wiki/Parasaus-Installation-Guide
+http://101.3.3.3
+
 | user | password |
 | --- | --- |
 | admin | admin |
@@ -41,21 +42,16 @@ https://github.com/Dinosaur-Park/heyelb/wiki/Parasaus-Installation-Guide
 - [install Docker](https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/) 
 
 ### Deploying
-download [docker](docker · smartinfra/smartsalt)，and open "docker" directory
+download [docker](docker) directory，and change into the "docker" directory
 
 ```bash
 # start SmartSalt
 docker-compose -f docker-compose.yml up -d
 
-# initialize the database
-create table...
-
-# create a superuser
-python3 manage.py createsuperuser
-
 # exit
 exit
 ```
+Yes, it is ready for you now!
 
 ## Access the site
 http://127.0.0.1
