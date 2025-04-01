@@ -32,7 +32,8 @@ SmartInfra是一个综合性云平台，涵盖计算存储、数据库管理、�
 快速开始
 ------------------------
 ### 系统体验
-https://github.com/Dinosaur-Park/heyelb/wiki/Parasaus-Installation-Guide
+http://101.3.3.3
+
 | 账号 | 密码 |
 | --- | --- |
 | admin | admin |
@@ -41,21 +42,16 @@ https://github.com/Dinosaur-Park/heyelb/wiki/Parasaus-Installation-Guide
 - [安装 Docker](https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/) 
 
 ### 平台部署
-下载 [docker](docker · smartinfra/smartsalt)目录，进入docker文件夹
+下载 [docker](docker)目录，进入docker文件夹
 
 ```bash
-# 启动
+# start SmartSalt
 docker-compose -f docker-compose.yml up -d
 
-# 表结构初始化
-create table...
-
-# 创建管理用户
-python3 manage.py createsuperuser
-
-# 退出容器
+# exit
 exit
 ```
+Yes, it is ready for you now!
 
 ## 访问
 http://127.0.0.1

@@ -8,15 +8,16 @@ services:
       - "3306:3306"
     volumes:
       - "./mysql:/var/lib/mysql"
+      - "./schema.sql:/docker-entrypoint-initdb.d/schema.sql"
     environment:
       MYSQL_DATABASE: smartinfra
       MYSQL_ROOT_PASSWORD: 123456
 
   smartsalt:
-    image: docker.com/probe/smartsalt:v3
+    image: 349317925/smartinfra:v1.1
     container_name: smartsalt
     restart: always
     ports:
       - "80:80"
     env_file:
-      - .env
+      - ../.env
