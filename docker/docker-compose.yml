@@ -11,7 +11,7 @@ services:
       - "./schema.sql:/docker-entrypoint-initdb.d/schema.sql"
     environment:
       MYSQL_DATABASE: smartinfra
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: At8)Cm3-Cd5=Gy0
 
   smartsalt:
     image: 349317925/smartinfra:v1.1
