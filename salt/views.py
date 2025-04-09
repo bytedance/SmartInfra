@@ -364,6 +364,12 @@ def check_sftp(request):
         check_result["msg"] = "无效的Master API地址, 请检查协议和端口号"
         return HttpResponse(json.dumps(check_result), content_type="application/json")
 
+    file_roots_pattern = r'^[a-zA-Z0-9/_-]+$'
+    if not bool(re.match(file_roots_pattern, file_roots)):
+        check_result["status"] = 1
+        check_result["msg"] = "file_roots路径参数非法，请修正"
+        return HttpResponse(json.dumps(check_result), content_type="application/json")
+
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:

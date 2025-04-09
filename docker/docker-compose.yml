@@ -22,3 +22,5 @@ services:
       - "80:80"
     env_file:
       - ../.env
+    depends_on:
+        - mariadb
