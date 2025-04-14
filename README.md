@@ -75,11 +75,7 @@ Contribution
 Reply and claim the relevant tasks in the corresponding issues, or directly submit a Pull Request (PR). Thank you for your contributions to SmartInfra.
 
 Contributions include but are not limited to the following ways:
-
-Bug fixes
-
-Submission of new features
-
-Code optimization
-
-Improvement of test cases
+- Bug fixes
+- Submission of new features
+- Code optimization
+- Improvement of test cases
