@@ -1,10 +1,9 @@
-贡献代码
+Contribute code
 
-可查阅主页的开发计划以及依赖清单，在对应Issues中回复认领，或者直接提交PR，感谢你对SmartInfra的贡献
+You can check the development plan and the dependency list on the homepage. Reply in the corresponding Issues to claim the task, or directly submit a Pull Request (PR). Thank you for your contribution to SmartInfra.
 
-贡献包括但不限于以下方式：
-
-Bug修复
-新功能提交
-代码优化
-测试用例完善
+Contributions include but are not limited to the following ways:
+Bug fixing
+Submission of new features
+Code optimization
+Improvement of test cases
