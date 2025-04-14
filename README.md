@@ -32,7 +32,7 @@ Features
 Get Started
 ------------------------
 ### Have a try
-http://101.3.3.3
+http://119.13.95.124
 
 | user | password |
 | --- | --- |

@@ -12,7 +12,7 @@ services:
       - "./download:/workdir/smartinfra/download"
     environment:
       MYSQL_DATABASE: smartinfra
-      MYSQL_ROOT_PASSWORD: At8)Cm3-Cd5=Gy0
+      MYSQL_ROOT_PASSWORD: PASSWORD
 
   smartsalt:
     image: 349317925/smartinfra:v1.1
