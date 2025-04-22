@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <div class="row">
                       <div class="col">
-                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;可选Salt Master: </label>
+                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;可选 Master: </label>
                         <select id="availableOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           {% for each_master in all_masters %}
                             <option value="{{ each_master.id }}">{{ each_master.name }}</option>
@@ -55,7 +55,7 @@
                           <button type="button" class="btn btn-primary w-100 mt-2" id="moveLeft">←</button>
                         </div>
                       <div class="col">
-                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;已选Salt Master: </label>
+                          <label class="mr-5"><span class="text-danger">*</span>&nbsp;已选 Master: </label>
                         <select id="selectedOptions" multiple class="form-control" style="height: 200px; background-color: white; color: black; text-align: left; border: 1px solid #ced4da;">
                           <!-- 已选择的项会显示在这里 -->
                         </select>

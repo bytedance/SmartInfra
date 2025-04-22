@@ -26,7 +26,8 @@ SOFTWARE.
 """
 import logging, datetime
 from django_q.models import Task
-from salt.models import task_list
+from salt.models import task_list, User
+from salt.common.notify_lark import create_lark_group
 
 # Create your views here.
 logger = logging.getLogger("default")
@@ -46,3 +47,7 @@ def remote_shell_task(task_result):
     """
     if task_result.success:
         task_list.objects.filter(id=task_result.kwargs["new_task_id"]).update(status=2, update_time=datetime.datetime.now(), execute_result=str(task_result.result))
+
+        # send message to current user
+        task_info = task_list.objects.get(id=task_result.kwargs["new_task_id"])
+        create_lark_group(group_name=task_info.name, current_user=User.objects.get(id=task_info.user_id).username)

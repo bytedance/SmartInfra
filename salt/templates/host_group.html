@@ -120,6 +120,23 @@
 
                     <!-- 文件上传框 -->
                     <div id="fileUploadDiv" style="display: none;">
+                        <label for="inputType1"><span class="text-danger">*</span>&nbsp;执行方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios1" id="salt_hg" value="option1" checked onchange="switchType()">
+                            <label class="form-check-label" for="salt_hg">SaltStack</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios1" id="an_hg" value="option2" onchange="switchType()">
+                            <label class="form-check-label" for="an_hg">Ansible</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="an_master" class="form-control mt-6" style="width: 300px; height: auto; display: none;">
+                                <option>请选择Ansible Master</option>
+                                {% for each_user_an_info in user_an_info %}
+                                <option value="{{ each_user_an_info.id }}">{{ each_user_an_info.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        <br>
                         <div class="form-group row align-items-center">
                             <!-- 文件选择区域 -->
                             <div class="col-md-9">
@@ -242,6 +259,7 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                <th>执行方式</th>
                                 {% if request.user.is_superuser %}
                                     <th>创建人</th>
                                 {% endif %}
@@ -255,6 +273,7 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                <th>执行方式</th>
                                 {% if request.user.is_superuser %}
                                     <th>创建人</th>
                                 {% endif %}
@@ -268,8 +287,9 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                                 {% if request.user.is_superuser %}
-                                    <td></td>
+                                <td></td>
                                 {% endif %}
                                 <td></td>
                                 <td></td>
@@ -280,6 +300,7 @@
                                 <td>{{ each_host_group.name }}</td>
                                 <td>{{ each_host_group.description }}</td>
                                 <td>{{ each_host_group.host_num }}</td>
+                                <td>{{ each_host_group.get_type_display }}</td>
                                 {% if request.user.is_superuser %}
                                     <td>{{ each_host_group.user.username }}</td>
                                 {% endif %}
@@ -365,6 +386,17 @@
             reminder_msg.innerHTML = '';
         };
 
+        // 是否隐藏选择Ansible Master
+        function switchType() {
+            const salt_hg = document.getElementById("salt_hg");
+
+            if (salt_hg.checked) {
+                an_master.style.display = "none";
+            } else {
+                an_master.style.display = "block";
+            }
+        }
+
         function switchInput() {
             const radio1 = document.getElementById("radio1");
             const multiHostSelect = document.getElementById("multiHostSelect");
@@ -444,9 +476,15 @@
             const uploadStatus = document.getElementById("uploadStatus");
             const statusMessage = document.getElementById("statusMessage");
 
+            var upload_hg_executed = "0";
+            if (an_hg.checked) {
+              upload_hg_executed = "1";
+            }
+
             let fileInput = $('#fileUpload')[0].files[0];  // 获取文件
             let formData = new FormData();
             formData.append('file', fileInput);
+            formData.append('upload_hg_executed', upload_hg_executed);
 
             $.ajax({
                 url: '/read_file/',
@@ -483,6 +521,10 @@
 
           var reminder_msg = document.getElementById("msg");
           var upload_label = "0";
+          var upload_hg_executed = "0";
+
+          var an_master = document.getElementById("an_master").value;
+
           if (radio1.checked) {
               var selectedHostValues = [];
               // 遍历所有的 option 元素，提取它们的值
@@ -501,6 +543,10 @@
               upload_label = document.querySelector('#hg_file').getAttribute('data-value');
             }
 
+          if (an_hg.checked) {
+              upload_hg_executed = "1";
+            }
+
             $.ajax({
                 type: "post",
                 url: "/create_host_group/",
@@ -512,7 +558,8 @@
                     selectedValues: selectedValues,
                     selectedHostValues: selectedHostValues,
                     upload_label: upload_label,
-
+                    upload_hg_executed: upload_hg_executed,
+                    an_master: an_master,
                 },
                 complete: function () {
                 },
@@ -631,6 +678,9 @@
             document.querySelector('#input6').value=rowId;
             document.getElementById('radio2').style.display="none";
             document.getElementById('radio2Label').style.display="none";
+            document.getElementById('fileUploadDiv').style.display="none";
+            reminder_remove();
+            document.getElementById("hg_file").innerHTML = "";
 
             $.ajax({
                 type: "post",
@@ -646,18 +696,32 @@
                     const radio3 = document.getElementById("radio3");
                     const multiSelect = document.getElementById("multiSelect");
                     if (data.selected_minions_salts_list.type === 1) {
-                            radio1.checked=true;
-                            radio3.checked=false;
-                            multiHostSelect.style.display = "block";
-                            multiSelect.style.display = "none";
-                            populateSelectedOptions(data.selected_minions_salts_list.content, "selectedHostOptions", "availableHostOptions");
-                        } else {
-                            radio3.checked=true;
-                            radio1.checked=false;
-                            multiSelect.style.display = "block";
-                            multiHostSelect.style.display = "none";
-                            populateSelectedOptions(data.selected_minions_salts_list.content, "selectedOptions", "availableOptions");
-                        }
+                        $('#availableHostOptions option').show();
+                        radio1.checked=true;
+                        radio3.checked=false;
+                        radio1.disabled = false;
+                        radio3.disabled = false;
+                        multiHostSelect.style.display = "block";
+                        multiSelect.style.display = "none";
+                        populateSelectedOptions(data.selected_minions_salts_list.content, "selectedHostOptions", "availableHostOptions");
+                    } else if (data.selected_minions_salts_list.type === 2) {
+                        $('#availableHostOptions option').hide();
+                        radio1.checked=true;
+                        radio3.checked=false;
+                        radio1.disabled = true;
+                        radio3.disabled = true;
+                        multiHostSelect.style.display = "block";
+                        multiSelect.style.display = "none";
+                        populateSelectedOptions(data.selected_minions_salts_list.content, "selectedHostOptions", "availableHostOptions");
+                    } else {
+                        radio3.checked=true;
+                        radio1.checked=false;
+                        radio1.disabled = false;
+                        radio3.disabled = false;
+                        multiSelect.style.display = "block";
+                        multiHostSelect.style.display = "none";
+                        populateSelectedOptions(data.selected_minions_salts_list.content, "selectedOptions", "availableOptions");
+                    }
                 },
             });
 

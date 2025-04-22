@@ -8,5 +8,6 @@ python-decouple==3.8
 django-storages==1.14.4
 paramiko==3.5.0
 ldap3==2.9.1
+ansible-runner==2.4.1
 
 

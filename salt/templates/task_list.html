@@ -39,8 +39,37 @@
           </div>
         </div>
 
+        <!-- 撤回模态框 -->
+        <div class="modal fade" id="withdrawConfirmModal" tabindex="-1" role="dialog" aria-labelledby="withdrawConfirmModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="withdrawConfirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定撤回ID = <span id="task_id" class="text-danger"></span>的任务么? 请注意: <br><br>
+                  1. 撤回任务不可重新编辑<br><br>
+                  2. 撤回任务内容需重新填写后再提交
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="withdraw_confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="withdrawConfirmButton" onclick="withdraw_task()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 审批拒绝模态框 -->
-        <div class="modal fade" id="rejectConfirmModal" tabindex="-1" role="dialog" aria-labelledby="approveConfirmModal" aria-hidden="true">
+        <div class="modal fade" id="rejectConfirmModal" tabindex="-1" role="dialog" aria-labelledby="rejectConfirmModal" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <!-- 模态框头部 -->
@@ -190,6 +219,9 @@
                                     <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-danger btn-sm" onclick="reject_taskid(this)" id="r-{{ each_task.id }}">拒绝</button>
                                     {% endif %}
                                     <button type="button" class="btn btn-info btn-sm" onclick="get_task_info(this)" value="{{ each_task.id }}">详情</button>
+                                    {% if not request.user.is_superuser %}
+                                    <button type="button" class="btn btn-warning btn-sm" onclick="withdraw_taskid(this)" value="{{ each_task.id }}">撤回</button>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
@@ -340,6 +372,43 @@
                 dataType: "json",
                 data: {
                     task_id: document.querySelector('#approveConfirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        location.reload();
+                    } else {
+                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击撤回按钮时设置确认按钮
+        function withdraw_taskid(button) {
+            // 设置确认按钮的 data-id 属性
+            document.querySelector('#withdrawConfirmButton').setAttribute('data-id', button.value);
+            document.getElementById("task_id").innerHTML = button.value;
+
+            // 显示确认框
+            reminder_remove();
+            $('#withdrawConfirmModal').modal('show');
+        }
+
+        // 撤回任务
+        function withdraw_task() {
+            var withdraw_confirm_msg = document.getElementById("withdraw_confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/withdraw_task/",
+                dataType: "json",
+                data: {
+                    task_id: document.querySelector('#withdrawConfirmButton').getAttribute('data-id'),
                 },
                 complete: function () {
                 },

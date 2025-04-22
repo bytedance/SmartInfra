@@ -5,12 +5,19 @@ from mirage import fields
 from django.contrib.auth.models import User
 # Create your models here.
 
+master_type_choices = {
+    (0, "saltstack"),
+    (1, "ansible"),
+
+}
+
 class salt_master(models.Model):
     """
     SaltMaster配置
     """
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=300)
+    type = models.IntegerField(choices=master_type_choices, default=0)
     host = models.CharField("Salt Master", max_length=200)
     user = fields.EncryptedCharField(
         max_length=200, default="", blank=True
@@ -33,6 +40,7 @@ class salt_master(models.Model):
 template_type_choices = {
     (0, "state"),
     (1, "shell"),
+    (2, "playbook"),
 
 }
 
@@ -115,6 +123,7 @@ class host_group(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=300)
     host_num = models.IntegerField(default=0)
+    type = models.IntegerField(choices=master_type_choices, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
@@ -135,6 +144,7 @@ task_status_choices = {
     (2, "已完成"),
     (3, "执行中"),
     (4, "被拒绝"),
+    (5, "已撤回"),
 
 }
 
@@ -194,5 +204,6 @@ class transfer_file(models.Model):
     name = models.CharField(max_length=300, default="", unique=True)
     dest_dir = models.JSONField(default=dict)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    type = models.IntegerField(choices=master_type_choices, default=0)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)

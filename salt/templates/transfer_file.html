@@ -75,6 +75,18 @@
                     <input type="text" class="form-control" style="width: 40.5%;" id="dest_dir" placeholder='请按照标准格式输入, 例如 {"Linux":"/tmp","Windows":"C:\\\\Windows\\\\"}'>
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="inputType1"><span class="text-danger">*</span>&nbsp;分发方式:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios1" id="salt_transfer" value="option1" checked>
+                        <label class="form-check-label" for="salt_transfer">SaltStack</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios1" id="an_transfer" value="option2">
+                        <label class="form-check-label" for="an_transfer">Ansible</label>
+                    </div>
+                </div>
+                <br>
 
                 <label for="inputType2"> <span class="text-danger">*</span> 已上传文件, 仅保留最近7天 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <br>
@@ -86,6 +98,7 @@
                                 <th>ID</th>
                                 <th>文件名称</th>
                                 <th>分发目录</th>
+                                <th>分发方式</th>
                                 <th>用户</th>
                                 <th>创建时间</th>
                                 <th>操作</th>
@@ -96,6 +109,7 @@
                                 <th>ID</th>
                                 <th>文件名称</th>
                                 <th>分发目录</th>
+                                <th>分发方式</th>
                                 <th>用户</th>
                                 <th>创建时间</th>
                                 <th>操作</th>
@@ -109,12 +123,14 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             {% for each_transfer_file in all_transfer_files %}
                             <tr>
                                 <td>{{ each_transfer_file.id }}</td>
                                 <td>{{ each_transfer_file.name }}</td>
                                 <td>{{ each_transfer_file.dest_dir }}</td>
+                                <td>{{ each_transfer_file.get_type_display }}</td>
                                 <td>{{ each_transfer_file.user }}</td>
                                 <td>{{ each_transfer_file.create_time }}</td>
                                 <td>
@@ -188,6 +204,15 @@
             const uploadStatus = document.getElementById("uploadStatus");
             const statusMessage = document.getElementById("statusMessage");
 
+            const salt_transfer = document.getElementById('salt_transfer');
+            const an_transfer = document.getElementById('an_transfer');
+            var transfer_type = "0";
+            if (salt_transfer.checked) {
+                transfer_type = "0";
+            } else {
+                transfer_type = "1";
+            }
+
             let fileInput = $('#fileUpload')[0].files[0];  // 获取文件
             let dest_dir_content = $('#dest_dir').val().trim();  // 获取文本并去除空格
             // 检查文本输入是否为空
@@ -198,6 +223,7 @@
             let formData = new FormData();
             formData.append('file', fileInput);
             formData.append('dest_dir', dest_dir_content);
+            formData.append('transfer_type', transfer_type);
 
             $.ajax({
                 url: '/upload_transfer_file/',

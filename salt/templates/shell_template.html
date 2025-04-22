@@ -37,20 +37,24 @@
                         <label class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="option1" checked onchange="switchInput()">
-                            <label class="form-check-label" for="radio1">命令</label>
+                            <label class="form-check-label" for="radio1">shell</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2" onchange="switchInput()">
                             <label class="form-check-label" for="radio2">state</label>
                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="option2" onchange="switchInput()">
+                            <label class="form-check-label" for="radio3">playbook</label>
+                        </div>
                     </div>
                     <hr>
-                    <div id="file_name_comment_div" class="form-group d-flex align-items-center">
+                    <div id="file_name_comment_div" class="form-group d-flex align-items-center" style="display: none;">
                         <label id="file_name_comment" class="mr-3 w-100" style="display: none;"><span class="text-danger">* 为防止名称重复，所以预生成 salt://{{ state_home }}*.sls&ps1 文件名称。请务必在内容中填写正确</span></label>
                     </div>
                     <div id="editor_shell_div" class="form-group d-flex align-items-center">
                         <label id="editor_shell_label" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;shell内容</label>
-                        <div id="editor_shell" class="w-75" style="height: 400px; border: 1px solid #ccc;"></div>
+                        <div id="editor_shell" class="w-75" style="height: 500px; border: 1px solid #ccc;"></div>
                     </div>
                     <div id="editor_sls_div" class="form-group d-flex align-items-center" style="display: none;">
                         <label id="editor_sls_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;sls内容</label>
@@ -59,6 +63,10 @@
                     <div id="editor_ps1_div" class="form-group d-flex align-items-center" style="display: none;">
                         <label id="editor_ps1_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25">&nbsp;ps1内容</label>
                         <div id="editor_ps1" class="w-75" style="height: 300px; border: 1px solid #ccc;display: none;"></div>
+                    </div>
+                    <div id="editor_pb_div" class="form-group d-flex align-items-center" style="display: none;">
+                        <label id="editor_pb_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;playbook内容</label>
+                        <div id="editor_pb" class="w-75" style="height: 500px; border: 1px solid #ccc;display: none;"></div>
                     </div>
 
                   <div style="display: none;">
@@ -230,10 +238,18 @@
                         fontSize: "14px",
                         wrap: true,
                     });
+                    editor_pb = ace.edit("editor_pb");
+                    editor_pb.setTheme("ace/theme/textmate");
+                    editor_pb.session.setMode("ace/mode/yaml");
+                    editor_pb.setOptions({
+                        fontSize: "14px",
+                        wrap: true,
+                    });
                 }
                 editor_shell.resize(); // 重新计算布局
                 editor_sls.resize(); // 重新计算布局
                 editor_ps1.resize(); // 重新计算布局
+                editor_pb.resize(); // 重新计算布局
             }
 
             //创建shell template
@@ -244,12 +260,16 @@
                 var editor_shell_content = "";
                 var editor_sls_content = "";
                 var editor_ps1_content = "";
+                var editor_pb_content = "";
                 if (radio1.checked) {
                   editor_shell_content = editor_shell.getValue();
                 }
                 if (radio2.checked) {
                   editor_sls_content = editor_sls.getValue();
                   editor_ps1_content = editor_ps1.getValue();
+                }
+                if (radio3.checked) {
+                  editor_pb_content = editor_pb.getValue();
                 }
 
                 $.ajax({
@@ -262,6 +282,7 @@
                         editor_shell_content: editor_shell_content,
                         editor_sls_content: editor_sls_content,
                         editor_ps1_content: editor_ps1_content,
+                        editor_pb_content: editor_pb_content,
                         input6: $("#input6").val(),
                         file_name: document.querySelector('#file_name_comment').getAttribute('data-value'),
                     },
@@ -301,6 +322,7 @@
                 editor_shell.setValue("");
                 editor_sls.setValue("");
                 editor_ps1.setValue("");
+                editor_pb.setValue("");
                 // 获取当前编辑行的所有列
                 const rowId = button.getAttribute('data-row-id');
                 const rowFileName = button.getAttribute('data-file-name');
@@ -326,9 +348,13 @@
                 const editor_ps1_label1 = document.getElementById("editor_ps1_label");
                 const file_name_comment1 = document.getElementById("file_name_comment");
                 document.querySelector('#file_name_comment').setAttribute('data-value', rowFileName);
+                const editor_pb1 = document.getElementById("editor_pb");
+                const editor_pb_div1 = document.getElementById("editor_pb_div");
+                const editor_pb_label1 = document.getElementById("editor_pb_label");
                 if (type === "shell") {
                     document.getElementById("radio1").checked = true;
                     document.getElementById("radio2").checked = false;
+                    document.getElementById("radio3").checked = false;
                     // 触发隐藏和显示动作
                     editor_shell1.style.display = "block";
                     editor_shell_div1.style.display = "block";
@@ -340,11 +366,17 @@
                     editor_ps1_div1.style.display = "none";
                     editor_ps1_label1.style.display = "none";
                     file_name_comment1.style.display = "none";
+                    editor_pb1.style.display = "none";
+                    editor_pb_div1.style.display = "none";
+                    editor_pb_label1.style.display = "none";
                     editor_shell.setValue(decodeHTML(main));
+                    editor_sls.setValue("");
                     editor_ps1.setValue("");
-                } else {
+                    editor_pb.setValue("");
+                } else if (type === "state") {
                     document.getElementById("radio1").checked = false;
                     document.getElementById("radio2").checked = true;
+                    document.getElementById("radio3").checked = false;
                     // 触发隐藏和显示动作
                     editor_shell1.style.display = "none";
                     editor_shell_div1.style.display = "none";
@@ -358,8 +390,35 @@
                     file_name_comment1.style.display = "block";
                     document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
                     document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
+                    editor_pb1.style.display = "none";
+                    editor_pb_div1.style.display = "none";
+                    editor_pb_label1.style.display = "none";
+                    editor_shell.setValue("");
                     editor_sls.setValue(decodeHTML(main));
                     editor_ps1.setValue(decodeHTML(func));
+                    editor_pb.setValue("");
+                } else {
+                    document.getElementById("radio1").checked = false;
+                    document.getElementById("radio2").checked = false;
+                    document.getElementById("radio3").checked = true;
+                    // 触发隐藏和显示动作
+                    editor_shell1.style.display = "none";
+                    editor_shell_div1.style.display = "none";
+                    editor_shell_label1.style.display = "none";
+                    editor_sls1.style.display = "none";
+                    editor_sls_div1.style.display = "none";
+                    editor_sls_label1.style.display = "none";
+                    editor_ps11.style.display = "none";
+                    editor_ps1_div1.style.display = "none";
+                    editor_ps1_label1.style.display = "none";
+                    file_name_comment1.style.display = "none";
+                    editor_pb1.style.display = "block";
+                    editor_pb_div1.style.display = "block";
+                    editor_pb_label1.style.display = "block";
+                    editor_shell.setValue("");
+                    editor_sls.setValue("");
+                    editor_ps1.setValue("");
+                    editor_pb.setValue(decodeHTML(main));
                 }
                 document.querySelector('#input6').value=id;
 
@@ -378,6 +437,7 @@
             function switchInput() {
                 const radio1 = document.getElementById("radio1");
                 const radio2 = document.getElementById("radio2");
+                const radio3 = document.getElementById("radio3");
                 const editor_shell = document.getElementById("editor_shell");
                 const editor_shell_div = document.getElementById("editor_shell_div");
                 const editor_shell_label = document.getElementById("editor_shell_label");
@@ -388,6 +448,10 @@
                 const editor_ps1_div = document.getElementById("editor_ps1_div");
                 const editor_ps1_label = document.getElementById("editor_ps1_label");
                 const file_name_comment = document.getElementById("file_name_comment");
+                const file_name_comment_div = document.getElementById("file_name_comment_div");
+                const editor_pb = document.getElementById("editor_pb");
+                const editor_pb_div = document.getElementById("editor_pb_div");
+                const editor_pb_label = document.getElementById("editor_pb_label");
 
                 // 如果 radio1 被选中，显示 div；否则隐藏
                 if (radio1.checked) {
@@ -401,7 +465,11 @@
                     editor_ps1_div.style.display = "none";
                     editor_ps1_label.style.display = "none";
                     file_name_comment.style.display = "none";
-                } else {
+                    file_name_comment_div.style.display = "none";
+                    editor_pb.style.display = "none";
+                    editor_pb_div.style.display = "none";
+                    editor_pb_label.style.display = "none";
+                } else if (radio2.checked) {
                     editor_shell.style.display = "none";
                     editor_shell_div.style.display = "none";
                     editor_shell_label.style.display = "none";
@@ -412,9 +480,28 @@
                     editor_ps1_div.style.display = "block";
                     editor_ps1_label.style.display = "block";
                     file_name_comment.style.display = "block";
+                    file_name_comment_div.style.display = "block";
                     const rowFileName = document.querySelector('#file_name_comment').getAttribute('data-value');
                     document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
                     document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
+                    editor_pb.style.display = "none";
+                    editor_pb_div.style.display = "none";
+                    editor_pb_label.style.display = "none";
+                } else {
+                    editor_shell.style.display = "none";
+                    editor_shell_div.style.display = "none";
+                    editor_shell_label.style.display = "none";
+                    editor_sls.style.display = "none";
+                    editor_sls_div.style.display = "none";
+                    editor_sls_label.style.display = "none";
+                    editor_ps1.style.display = "none";
+                    editor_ps1_div.style.display = "none";
+                    editor_ps1_label.style.display = "none";
+                    file_name_comment.style.display = "none";
+                    file_name_comment_div.style.display = "none";
+                    editor_pb.style.display = "block";
+                    editor_pb_div.style.display = "block";
+                    editor_pb_label.style.display = "block";
                 }
             }
 
