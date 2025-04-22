@@ -19,12 +19,8 @@ class salt_master(models.Model):
     description = models.CharField(max_length=300)
     type = models.IntegerField(choices=master_type_choices, default=0)
     host = models.CharField("Salt Master", max_length=200)
-    user = fields.EncryptedCharField(
-        max_length=200, default="", blank=True
-    )
-    password = fields.EncryptedCharField(
-        max_length=300, default="", blank=True
-    )
+    user = fields.EncryptedCharField(max_length=200, default="")
+    password = fields.EncryptedTextField(default="")
     minion_name = models.CharField(max_length=300, default="")
     file_roots = models.CharField(max_length=300, default="")
     sftp_port = models.IntegerField(default=22)
