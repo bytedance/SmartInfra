@@ -238,7 +238,8 @@
 
         //创建 shell task
         function create_shell_task() {
-          reminder_remove()
+          reminder_remove();
+          loading();
           var reminder_msg = document.getElementById("msg");
           const hg_id = document.getElementById('execute_shell').getAttribute('data-id');
           var radio1_checked = "0";
@@ -276,6 +277,7 @@
                 complete: function () {
                 },
                 success: function (data) {
+                    loading_remove();
                     if (data.status === 0) {
                         window.location.href = "/list_tasks";
                     } else {
@@ -283,6 +285,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
                     reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
                 }
             });
