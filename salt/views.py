@@ -1313,7 +1313,7 @@ def create_shell_task(request):
                                                                )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
 
-                send_lark_msg(task_name=task_name, current_user=request.user, message="已成功创建，请及时关注任务状态变化")
+                send_lark_msg(task_name=task_name, current_user=str(request.user), message="已成功创建，请及时关注任务状态变化")
             else:
                 create_result["status"] = 1
                 create_result["msg"] = "请输入完整参数"
@@ -1372,7 +1372,7 @@ def approve_task(request):
             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
             Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=1, cron=execute_policy)
 
-        send_lark_msg(task_name=task_info.name, current_user=request.user, message="已被审批通过，请及时关注任务状态变化")
+        send_lark_msg(task_name=task_info.name, current_user=str(request.user), message="已被审批通过，请及时关注任务状态变化")
     except Exception as e:
         logger.error(traceback.format_exc())
         approve_result["status"] = 1
@@ -1397,7 +1397,7 @@ def withdraw_task(request):
         task_info.status = 5
         task_info.save()
 
-        send_lark_msg(task_name=task_info.name, current_user=request.user,
+        send_lark_msg(task_name=task_info.name, current_user=str(request.user),
                       message="已被撤回")
     except Exception as e:
         logger.error(traceback.format_exc())
@@ -1431,7 +1431,7 @@ def reject_task(request):
             task_info.approver = request.user
             task_info.save()
 
-            send_lark_msg(task_name=task_info.name, current_user=request.user,
+            send_lark_msg(task_name=task_info.name, current_user=str(request.user),
                           message="已被拒绝，请及时联系管理员")
         except Exception as e:
             logger.error(traceback.format_exc())
