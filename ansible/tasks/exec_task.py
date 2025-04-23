@@ -159,7 +159,10 @@ def correct_file(host_group_id, template_id=-1):
                     phdh.write(each_host+"\n")
             with open(pb_yaml_dir+pb_name+'.yaml', "w") as pydpn:
                 pydpn.write(pb_content)
-            with open(an_login_key_dir, "w") as abdpn:
+            # with open(an_login_key_dir, "w") as abdpn:
+            #     abdpn.write(an_login_key)
+            fd = os.open(an_login_key_dir, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+            with os.fdopen(fd, 'w') as abdpn:
                 abdpn.write(an_login_key)
 
         correct_result["private_data_dir"] = an_base_dir+"/"+pb_name
