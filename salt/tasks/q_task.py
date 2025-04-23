@@ -27,7 +27,7 @@ SOFTWARE.
 import logging, datetime
 from django_q.models import Task
 from salt.models import task_list, User
-from salt.common.notify_lark import create_lark_group
+from salt.common.notify_lark import send_lark_msg
 
 # Create your views here.
 logger = logging.getLogger("default")
@@ -50,4 +50,4 @@ def remote_shell_task(task_result):
 
         # send message to current user
         task_info = task_list.objects.get(id=task_result.kwargs["new_task_id"])
-        create_lark_group(group_name=task_info.name, current_user=User.objects.get(id=task_info.user_id).username)
+        send_lark_msg(task_name=task_info.name, current_user=User.objects.get(id=task_info.user_id).username, message="已执行完成，请及时检查结果")

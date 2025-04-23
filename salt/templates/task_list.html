@@ -365,6 +365,7 @@
 
         // 审批同意任务
         function approve_task() {
+            loading();
             var approve_confirm_msg = document.getElementById("approve_confirm_msg");
             $.ajax({
                 type: "post",
@@ -376,6 +377,7 @@
                 complete: function () {
                 },
                 success: function (data) {
+                    loading_remove();
                     if (data.status === 0) {
                         approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                         location.reload();
@@ -384,6 +386,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
                     approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
                 }
             });
@@ -402,6 +405,7 @@
 
         // 撤回任务
         function withdraw_task() {
+            loading();
             var withdraw_confirm_msg = document.getElementById("withdraw_confirm_msg");
             $.ajax({
                 type: "post",
@@ -413,6 +417,7 @@
                 complete: function () {
                 },
                 success: function (data) {
+                    loading_remove();
                     if (data.status === 0) {
                         approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                         location.reload();
@@ -421,6 +426,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
                     approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
                 }
             });
@@ -439,6 +445,7 @@
 
         // 审批拒绝任务
         function reject_task() {
+            loading();
             var reject_confirm_msg = document.getElementById("reject_confirm_msg");
             $.ajax({
                 type: "post",
@@ -451,6 +458,7 @@
                 complete: function () {
                 },
                 success: function (data) {
+                    loading_remove();
                     if (data.status === 0) {
                         reject_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                         location.reload();
@@ -459,6 +467,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
                     approve_confirm_msg.innerHTML = 'Reminder: ' + errorThrown;
                 }
             });

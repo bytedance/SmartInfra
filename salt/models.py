@@ -203,3 +203,12 @@ class transfer_file(models.Model):
     type = models.IntegerField(choices=master_type_choices, default=0)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
+
+class chat_group(models.Model):
+    """
+    工单任务状态更新群
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    chat_id = models.CharField(max_length=200, default="")
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    update_time = models.DateTimeField("更新时间", auto_now=True)
