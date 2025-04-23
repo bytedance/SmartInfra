@@ -33,7 +33,8 @@ from salt.models import host_group, host_group_minion, hosts, salt_master, task_
 from salt.common.salt_api import SaltAPI
 import logging, traceback, time, random
 from django.conf import settings
-import datetime, os
+import datetime
+from salt.common.notify_lark import send_lark_msg
 
 logger = logging.getLogger("default")
 
@@ -52,6 +53,8 @@ def exec_remote_shell(*args, **kwargs):
     exec_remote_shell_result_filename = str(current_user) + "-" + ''.join(random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
+    send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
+                  message="进行执行状态，请及时关注任务状态变化")
 
     # confirm that exec_content is command or template
     encap_exec_content = json.loads(encap_exec_content)
@@ -192,6 +195,8 @@ def exec_transfer_file(*args, **kwargs):
         random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
+    send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
+                  message="进行执行状态，请及时关注任务状态变化")
 
     # get all salt for current user who owned
     current_user_salt = []

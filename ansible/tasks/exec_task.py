@@ -26,10 +26,8 @@ SOFTWARE.
 """
 
 import json, base64
-from distutils.core import extension_keywords
-
 from django.db import transaction
-
+from salt.common.notify_lark import send_lark_msg
 from salt.models import host_group, host_group_minion, salt_master, task_list, shell_template, user_relationship, \
     resource_group, rg_relationship, User, transfer_file
 from ansible.common.an_api import AnsibleAPI
@@ -52,6 +50,8 @@ def exec_remote_shell(*args, **kwargs):
     exec_remote_shell_result_filename = str(current_user) + "-" + ''.join(random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
+    send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
+                  message="进行执行状态，请及时关注任务状态变化")
 
     # confirm that exec_content is command(1) or template(0)
     encap_exec_content = json.loads(encap_exec_content)
@@ -190,6 +190,8 @@ def exec_transfer_file(*args, **kwargs):
         random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
+    send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
+                  message="进行执行状态，请及时关注任务状态变化")
 
     # get all for current user who owned
     current_user_salt = []
