@@ -1269,7 +1269,6 @@ def create_shell_task(request):
                         else:
                             cron_format = croniter(schedule_checked, timezone.now())
                             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
-
                         new_schedule = Schedule.objects.create(func=run_command_func,
                                                 args="(%d, '%s', '%s')" %(int(hg_id), json.dumps(encap_exec_content), str(request.user)),
                                                 schedule_type=Schedule.CRON,
@@ -1279,9 +1278,9 @@ def create_shell_task(request):
                                                 hook="salt.tasks.q_task.remote_shell_task",
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
-
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id, approver=request.user, approve_result = "自动通过")
-
+                    send_lark_msg(task_name=task_name, current_user=str(request.user),
+                                  message="已成功创建, 自动审批通过, 进入待执行状态, 请及时关注任务状态变化")
                 elif (exec_content or exec_shell_template) and not exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
@@ -1295,6 +1294,8 @@ def create_shell_task(request):
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                    send_lark_msg(task_name=task_name, current_user=str(request.user),
+                                  message="已成功创建, 等待被审批, 请及时关注任务状态变化")
                 elif not (exec_content and exec_shell_template) and exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content='transfer file: '+transfer_file.objects.get(id=exec_transfer_file).name,
@@ -1312,8 +1313,8 @@ def create_shell_task(request):
                                                                kwargs=json.dumps({"new_task_id": new_task.id})
                                                                )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                    send_lark_msg(task_name=task_name, current_user=str(request.user), message="已成功创建, 等待被审批, 请及时关注任务状态变化")
 
-                send_lark_msg(task_name=task_name, current_user=str(request.user), message="已成功创建, 等待被审批, 请及时关注任务状态变化")
             else:
                 create_result["status"] = 1
                 create_result["msg"] = "请输入完整参数"
