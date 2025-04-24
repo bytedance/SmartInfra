@@ -96,7 +96,7 @@ def exec_remote_shell(*args, **kwargs):
             else:
                 correct_result = correct_file(host_group_id=host_group_id)
                 an_instance = AnsibleAPI(correct_result["private_data_dir"], correct_result["login_key"])
-                run_result = an_instance.run_command(module='command', arg=exec_content)
+                run_result = an_instance.run_command(module='shell', arg=exec_content)
 
             if an_instance.last_event.get("event_data", None):
                 count_success = len(an_instance.last_event["event_data"]["ok"])

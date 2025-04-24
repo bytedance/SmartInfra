@@ -36,7 +36,7 @@ class AnsibleAPI():
 
     def run_command(self, module, arg):
         """
-        run a command
+        run a shell
         :param module:
         :param arg:
         :return:
@@ -53,13 +53,6 @@ class AnsibleAPI():
             }
         )
         return r_content
-
-# rr = AnsibleAPI('/workdir/ansible/', '/workdir/login_key')
-# pp = rr.run_command('command', 'ls -l')
-# print(pp.result.status)
-# print(pp.result.rc)
-# print(pp.result.stats)
-# print(rr.last_event)
 
     def run_playbook(self, pb_name):
         """
