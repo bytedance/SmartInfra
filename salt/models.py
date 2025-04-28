@@ -141,6 +141,7 @@ task_status_choices = {
     (3, "执行中"),
     (4, "被拒绝"),
     (5, "已撤回"),
+    (6, "被终止"),
 
 }
 
@@ -158,6 +159,7 @@ class task_list(models.Model):
     related_schedule = models.IntegerField(default=0)
     approve_result = models.TextField(default="")
     approver = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="", related_name="approver_task_list")
+    repeat_num = models.IntegerField(default=1)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 

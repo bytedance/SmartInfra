@@ -1226,11 +1226,19 @@ def create_shell_task(request):
         exec_shell_template = request.POST.get("exec_shell_template")
         exec_transfer_file = request.POST.get("exec_transfer_file")
         task_name = request.POST.get("task_name")
+        repeat_num = request.POST.get("repeat_num")
 
         try:
-            if (exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0") and hg_id and task_name:
+            if ((exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0")
+                    and hg_id and task_name and repeat_num):
                 # Encapsulate exec_content to dict, and 0 stands for int, 1 stands for str
                 encap_exec_content = {"content": base64.b64encode(exec_content.encode()).decode() if exec_content is not None else exec_content, "type": 1}
+
+                # check if the repeat_num is an integer
+                if not bool(re.match(r'^[-+]?\d+$', repeat_num)):
+                    create_result["status"] = 1
+                    create_result["msg"] = "执行频率选项必须是整数, 请重新输入"
+                    raise ValueError(create_result["msg"])
 
                 # confirm execute type, include immediate and schedule
                 if immediate_checked == "0":
@@ -1261,7 +1269,8 @@ def create_shell_task(request):
                 if parse_result["status"] == 0:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
-                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user), status=1)
+                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user),
+                                                            status=1, repeat_num=int(repeat_num))
 
                         if exec_type == "1":
                             next_run_time = new_task.update_time + timedelta(minutes=2)
@@ -1273,7 +1282,7 @@ def create_shell_task(request):
                                                 args="(%d, '%s', '%s')" %(int(hg_id), json.dumps(encap_exec_content), str(request.user)),
                                                 schedule_type=Schedule.CRON,
                                                 cron=schedule_checked,
-                                                repeats=1,
+                                                repeats=int(repeat_num),
                                                 next_run=next_run_time,
                                                 hook="salt.tasks.q_task.remote_shell_task",
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
@@ -1284,7 +1293,8 @@ def create_shell_task(request):
                 elif (exec_content or exec_shell_template) and not exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
-                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user), status=0)
+                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user),
+                                                            status=0, repeat_num=int(repeat_num))
                         new_schedule = Schedule.objects.create(func=run_command_func,
                                                 args="(%d, '%s', '%s')" %(int(hg_id), json.dumps(encap_exec_content), str(request.user)),
                                                 schedule_type=Schedule.CRON,
@@ -1301,7 +1311,7 @@ def create_shell_task(request):
                         new_task = task_list.objects.create(name=task_name, execute_content='transfer file: '+transfer_file.objects.get(id=exec_transfer_file).name,
                                                             execute_policy=exec_type,
                                                             host_group_name=host_group.objects.get(id=hg_id),
-                                                            user=User.objects.get(username=request.user), status=0)
+                                                            user=User.objects.get(username=request.user), status=0, repeat_num=int(repeat_num))
                         new_schedule = Schedule.objects.create(func=copy_file_func,
                                                                args="(%d, '%s', '%s')" % (
                                                                int(hg_id), int(exec_transfer_file),
@@ -1364,14 +1374,15 @@ def approve_task(request):
         update_time = task_info.update_time
         execute_policy = task_info.execute_policy
         schedule_id = task_info.related_schedule
+        repeat_num = task_info.repeat_num
 
         if execute_policy == "1":
             execute_time = update_time + timedelta(minutes=2)
-            Schedule.objects.filter(id=schedule_id).update(next_run=execute_time, repeats=1, cron="* * * * *")
+            Schedule.objects.filter(id=schedule_id).update(next_run=execute_time, repeats=repeat_num, cron="* * * * *")
         else:
             cron_format = croniter(execute_policy, timezone.now())
             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
-            Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=1, cron=execute_policy)
+            Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=repeat_num, cron=execute_policy)
 
         send_lark_msg(task_name=task_info.name, current_user=str(request.user), message="已被审批通过, 进入待执行状态")
     except Exception as e:
@@ -1406,6 +1417,35 @@ def withdraw_task(request):
         withdraw_result["msg"] = str(e)
 
     return HttpResponse(json.dumps(withdraw_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def stop_task(request):
+    """
+    终止任务工单
+    :param request:
+    :return:
+    """
+    task_id = request.POST.get("task_id")
+
+    stop_result = {"status": 0, "msg": "ok"}
+    try:
+        with transaction.atomic():
+            task_info = task_list.objects.get(id=int(task_id))
+            task_info.status = 6
+            task_info.save()
+
+            Schedule.objects.filter(id=task_info.related_schedule).update(repeats=0)
+
+        send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                      message="已被终止")
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        stop_result["status"] = 1
+        stop_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(stop_result), content_type="application/json")
 
 @login_required()
 @superuser_required

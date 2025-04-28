@@ -67,6 +67,7 @@ def audit_action(func):
         'list_tasks': '查看所有已创建任务信息',
         'approve_task': '审批同意任务执行',
         'withdraw_task': '撤回任务',
+        'stop_task': '终止任务',
         'get_task_info': '获取任务信息',
         'download_execute_result': '下载已执行完成任务结果',
         'show_message': '查看待审批任务信息',

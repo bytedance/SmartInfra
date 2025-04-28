@@ -24,6 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import ast
 import logging, datetime
 from django_q.models import Task
 from salt.models import task_list, User
@@ -46,8 +47,13 @@ def remote_shell_task(task_result):
     :return:
     """
     if task_result.success:
-        task_list.objects.filter(id=task_result.kwargs["new_task_id"]).update(status=2, update_time=datetime.datetime.now(), execute_result=str(task_result.result))
+        if task_list.objects.get(id=task_result.kwargs["new_task_id"]).status == 6:
+            task_status = 6
+        else:
+            task_status = 2
+        task_list.objects.filter(id=task_result.kwargs["new_task_id"]).update(status=task_status, update_time=datetime.datetime.now(), execute_result=str(task_result.result))
 
         # send message to current user
         task_info = task_list.objects.get(id=task_result.kwargs["new_task_id"])
-        send_lark_msg(task_name=task_info.name, current_user=User.objects.get(id=task_info.user_id).username, message="已执行完成，请及时检查结果")
+        display_result = ast.literal_eval(task_info.execute_result)
+        send_lark_msg(task_name=task_info.name, current_user=User.objects.get(id=task_info.user_id).username, message="已执行完成, 执行结果{'成功数量': %d, '失败数量': %d}, 请及时登录平台(https://smartinfra.bytedance.net/list_tasks/)检查结果" %(display_result["count_success"], display_result["count_fail"]))

@@ -28,13 +28,14 @@ SOFTWARE.
 import json, base64
 from django.db import transaction
 
-from salt.models import host_group, host_group_minion, hosts, salt_master, task_list, shell_template, user_relationship, \
+from salt.models import host_group_minion, hosts, salt_master, task_list, shell_template, user_relationship, \
     resource_group, rg_relationship, User, transfer_file
 from salt.common.salt_api import SaltAPI
 import logging, traceback, time, random
 from django.conf import settings
 import datetime
 from salt.common.notify_lark import send_lark_msg
+from salt.tasks.repeat_tasks import create_repeat_task
 
 logger = logging.getLogger("default")
 
@@ -52,9 +53,13 @@ def exec_remote_shell(*args, **kwargs):
     count_success = count_fail = 0
     exec_remote_shell_result_filename = str(current_user) + "-" + ''.join(random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
+
+    if not task_list.objects.filter(id=kwargs.get("new_task_id"), status=1):
+        logger.info("无有效任务信息, 定时任务停止执行")
+        return
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
     send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
-                  message="进行执行状态，请及时关注任务状态变化")
+                  message="进入执行状态，请及时关注任务状态变化")
 
     # confirm that exec_content is command or template
     encap_exec_content = json.loads(encap_exec_content)
@@ -132,6 +137,7 @@ def exec_remote_shell(*args, **kwargs):
     except Exception as e:
         logger.error(traceback.format_exc())
 
+    create_repeat_task(old_id=kwargs.get("new_task_id"))
     return {"count_success": count_success, "count_fail": count_fail,
             "exec_remote_shell_result_filename": exec_remote_shell_result_filename}
 
@@ -194,9 +200,13 @@ def exec_transfer_file(*args, **kwargs):
     exec_transfer_file_result_filename = str(current_user) + "-" + ''.join(
         random.choices('0123456789', k=9)) + time.strftime(
         "%Y%m%d%H%M%S", time.localtime()) + '.txt'
+
+    if not task_list.objects.filter(id=kwargs.get("new_task_id"), status=1):
+        logger.info("无有效任务信息, 定时任务停止执行")
+        return
     task_list.objects.filter(id=kwargs.get("new_task_id")).update(status=3, update_time=datetime.datetime.now())
     send_lark_msg(task_name=task_list.objects.get(id=kwargs.get("new_task_id")).name, current_user=current_user,
-                  message="进行执行状态，请及时关注任务状态变化")
+                  message="进入执行状态，请及时关注任务状态变化")
 
     # get all salt for current user who owned
     current_user_salt = []
@@ -276,5 +286,6 @@ def exec_transfer_file(*args, **kwargs):
     except Exception as e:
         logger.error(traceback.format_exc())
 
+    create_repeat_task(old_id=kwargs.get("new_task_id"))
     return {"count_success": count_success, "count_fail": count_fail,
             "exec_remote_shell_result_filename": exec_transfer_file_result_filename}

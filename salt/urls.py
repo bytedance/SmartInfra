@@ -54,6 +54,7 @@ urlpatterns = [
     path('list_tasks/', views.list_tasks, name='list_tasks'),
     path('approve_task/', views.approve_task, name='approve_task'),
     path('withdraw_task/', views.withdraw_task, name='withdraw_task'),
+    path('stop_task/', views.stop_task, name='stop_task'),
     path('get_task_info/', views.get_task_info, name='get_task_info'),
     path('download_execute_result/', views.download_execute_result, name='download_execute_result'),
     path('show_message/', views.show_message, name='show_message'),
