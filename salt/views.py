@@ -1286,10 +1286,10 @@ def create_shell_task(request):
         user_salt_info = salt_master.objects.filter(id__in=set(current_user_salt))
 
         if request.user.is_superuser:
-            all_shell = shell_template.objects.all().values("id", "name")
+            all_shell = shell_template.objects.filter(history=0).values("id", "name")
             all_transfer_file = transfer_file.objects.all().values("id", "name")
         else:
-            all_shell = shell_template.objects.filter(user=request.user).values("id", "name")
+            all_shell = shell_template.objects.filter(user=request.user, history=0).values("id", "name")
             all_transfer_file = transfer_file.objects.filter(user=request.user).values("id", "name")
 
         return render(request, "remote_shell.html", {"user_salt_info": user_salt_info, "all_host_group": all_host_group,
