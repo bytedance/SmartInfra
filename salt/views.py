@@ -454,7 +454,6 @@ def create_shell_template(request):
     if editor_sls_content or editor_ps1_content or main_content:
         try:
             yaml.safe_load(editor_sls_content)
-            yaml.safe_load(editor_ps1_content)
             yaml.safe_load(main_content)
         except Exception as e:
             logger.error(traceback.format_exc())
