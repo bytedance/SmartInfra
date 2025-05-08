@@ -46,7 +46,7 @@ def st_access_required(func):
     @wraps(func)
     def _wrapped_view(request, *args, **kwargs):
         try:
-            if shell_template.objects.get(id=kwargs.get("id", None)).user != request.user:
+            if shell_template.objects.get(id=kwargs.get("id", None)).user != request.user and not request.user.is_superuser:
                 return HttpResponseForbidden("You have no permission to access this template")
         except Exception as e:
             logger.error(traceback.format_exc())
