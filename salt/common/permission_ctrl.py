@@ -26,8 +26,11 @@ SOFTWARE.
 """
 
 import logging
+import traceback
+
 from django.http import HttpResponseForbidden
 from functools import wraps
+from salt.models import shell_template
 
 logger = logging.getLogger("default")
 
@@ -35,6 +38,18 @@ def superuser_required(func):
     @wraps(func)
     def _wrapped_view(request):
         if not request.user.is_superuser:
-            return HttpResponseForbidden("You do not have permission to access this page")
+            return HttpResponseForbidden("You have no permission to access this page")
         return func(request)
+    return _wrapped_view
+
+def st_access_required(func):
+    @wraps(func)
+    def _wrapped_view(request, *args, **kwargs):
+        try:
+            if shell_template.objects.get(id=kwargs.get("id", None)).user != request.user:
+                return HttpResponseForbidden("You have no permission to access this template")
+        except Exception as e:
+            logger.error(traceback.format_exc())
+            return HttpResponseForbidden("You have no permission to access this template")
+        return func(request, *args, **kwargs)
     return _wrapped_view

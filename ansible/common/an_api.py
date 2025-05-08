@@ -47,6 +47,7 @@ class AnsibleAPI():
             module_args=arg,
             host_pattern='all',
             event_handler=self.handle_event,
+            forks=10,
             envvars={
                 'ANSIBLE_PRIVATE_KEY_FILE': self.login_key,
                 'ANSIBLE_CONNECTION_TIMEOUT': 5
@@ -64,6 +65,7 @@ class AnsibleAPI():
             private_data_dir=self.private_data_dir,
             playbook=pb_name,
             event_handler=self.handle_event,
+            forks=10,
             envvars={
                 'ANSIBLE_PRIVATE_KEY_FILE': self.login_key,
                 'ANSIBLE_CONNECTION_TIMEOUT': 5
@@ -84,6 +86,7 @@ class AnsibleAPI():
             module_args=arg,
             host_pattern='all',
             event_handler=self.handle_event,
+            forks=10,
             envvars={
                 'ANSIBLE_PRIVATE_KEY_FILE': self.login_key,
                 'ANSIBLE_CONNECTION_TIMEOUT': 5

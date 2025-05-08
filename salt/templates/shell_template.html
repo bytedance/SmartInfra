@@ -2,13 +2,84 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
-    <div id="content">
+ <style>
+    /* 多选搜索框样式 */
+    .tag-input-container {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 38px;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #6e707e;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #d1d3e2;
+        border-radius: 0.35rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        cursor: text;
+    }
+
+    .tag-input-container:focus-within {
+        border-color: #bac8f3;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+
+    .tag {
+        display: flex;
+        align-items: center;
+        margin: 2px 4px 2px 0;
+        padding: 3px 8px;
+        background-color: #4e73df;
+        color: white;
+        border-radius: 3px;
+        font-size: 0.85rem;
+    }
+
+    .tag-close {
+        margin-left: 5px;
+        cursor: pointer;
+    }
+
+    .tag-input {
+        flex: 1;
+        min-width: 60px;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 0;
+        margin: 2px 0;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: #4e73df;
+    }
+
+    .dropdown-item:hover {
+        background-color: #eaecf4;
+        cursor: pointer;
+    }
+
+    .no-results {
+        padding: 0.5rem 1rem;
+        color: #858796;
+        font-style: italic;
+    }
+</style>
+
+<div id="content" xmlns="http://www.w3.org/1999/html">
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">执行模板</h1>
+        <h1 class="h3 mb-2 text-gray-800">入口内容</h1>
 
         <!-- 模态框 -->
         <div class="modal fade" id="shellModal" tabindex="-1" role="dialog" aria-labelledby="shellModalLabel" aria-hidden="true">
@@ -25,12 +96,12 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group d-flex align-items-center">
-                    <label for="input1" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;名称</label>
-                    <input type="text" class="form-control w-75" id="input1" placeholder="请输入内容">
+                    <label for="st_name" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;名称</label>
+                    <input type="text" class="form-control w-75" id="st_name" placeholder="请输入名称">
                   </div>
                   <div class="form-group d-flex align-items-center">
-                    <label for="input2" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;描述</label>
-                    <input type="text" class="form-control w-75" id="input2" placeholder="请输入内容">
+                    <label for="st_des" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;描述</label>
+                    <input type="text" class="form-control w-75" id="st_des" placeholder="请输入描述">
                   </div>
 
                     <div class="form-group">
@@ -40,33 +111,52 @@
                             <label class="form-check-label" for="radio1">shell</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2" onchange="switchInput()">
-                            <label class="form-check-label" for="radio2">state</label>
-                        </div>
-                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="option2" onchange="switchInput()">
                             <label class="form-check-label" for="radio3">playbook</label>
                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2" onchange="switchInput()">
+                            <label class="form-check-label" for="radio2">state</label>
+                        </div>
+
                     </div>
                     <hr>
-                    <div id="file_name_comment_div" class="form-group d-flex align-items-center" style="display: none;">
-                        <label id="file_name_comment" class="mr-3 w-100" style="display: none;"><span class="text-danger">* 为防止名称重复，所以预生成 salt://{{ state_home }}*.sls&ps1 文件名称。请务必在内容中填写正确</span></label>
+
+                    <div id="shell_div">
+                        <div id="editor_shell_div" class="form-group d-flex align-items-center">
+                            <label id="editor_shell_label" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;shell内容</label>
+                            <div id="editor_shell" class="w-75" style="height: 500px; border: 1px solid #ccc;"></div>
+                        </div>
                     </div>
-                    <div id="editor_shell_div" class="form-group d-flex align-items-center">
-                        <label id="editor_shell_label" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;shell内容</label>
-                        <div id="editor_shell" class="w-75" style="height: 500px; border: 1px solid #ccc;"></div>
+
+                    <div id="pb_div" style="display: none">
+                        <div id="main_dir_div" class="form-group d-flex align-items-center">
+                            <label id="main_dir_label" for="main_dir" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;路径</label>
+                            <div id="main_dir_div2" class="font-weight-bold">&nbsp;/&nbsp;{{ fileName }}</div>
+                            <input type="text" class="form-control w-85" id="main_dir" placeholder="请输入目录或文件名">
+                        </div>
+                        <div id="main_content_div" class="form-group d-flex align-items-center">
+                            <label id="main_content_label" style="word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;入口内容</label>
+                            <div id="main_content" class="w-100" style="height: 450px; border: 1px solid #ccc;"></div>
+                        </div>
+                        <div id="extra_vars_div" class="form-group flex d-flex align-items-center">
+                            <label id="extra_vars_label" style="word-wrap: break-word;" class="mr-3 w-25">&nbsp;额外变量</label>
+                            <div id="extra_vars" class="w-100" style="height: 200px; border: 1px solid #ccc;"></div>
+                        </div>
                     </div>
-                    <div id="editor_sls_div" class="form-group d-flex align-items-center" style="display: none;">
-                        <label id="editor_sls_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;sls内容</label>
-                        <div id="editor_sls" class="w-75" style="height: 300px; border: 1px solid #ccc;display: none;"></div>
-                    </div>
-                    <div id="editor_ps1_div" class="form-group d-flex align-items-center" style="display: none;">
-                        <label id="editor_ps1_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25">&nbsp;ps1内容</label>
-                        <div id="editor_ps1" class="w-75" style="height: 300px; border: 1px solid #ccc;display: none;"></div>
-                    </div>
-                    <div id="editor_pb_div" class="form-group d-flex align-items-center" style="display: none;">
-                        <label id="editor_pb_label" style="display: none;word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;playbook内容</label>
-                        <div id="editor_pb" class="w-75" style="height: 500px; border: 1px solid #ccc;display: none;"></div>
+
+                    <div id="state_div" style="display: none">
+                        <div id="file_name_comment_div" class="form-group d-flex align-items-center">
+                            <label id="file_name_comment" class="mr-3 w-100"><span class="text-danger">* 为防止名称重复，所以预生成 salt://{{ state_home }}*.sls&ps1 文件名称。请务必在内容中填写正确</span></label>
+                        </div>
+                        <div id="editor_sls_div" class="form-group d-flex align-items-center">
+                            <label id="editor_sls_label" style="word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;sls内容</label>
+                            <div id="editor_sls" class="w-75" style="height: 400px; border: 1px solid #ccc;"></div>
+                        </div>
+                        <div id="editor_ps1_div" class="form-group d-flex align-items-center">
+                            <label id="editor_ps1_label" style="word-wrap: break-word;" class="mr-3 w-25">&nbsp;ps1内容</label>
+                            <div id="editor_ps1" class="w-75" style="height: 400px; border: 1px solid #ccc;"></div>
+                        </div>
                     </div>
 
                   <div style="display: none;">
@@ -110,6 +200,39 @@
             </div>
           </div>
         </div>
+
+        <!-- 授权模态框 -->
+        <div class="modal fade" id="grantModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="grantModalLabel">授权信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+                <div class="modal-body">
+                    <label for="tagInput" class="form-label"><span class="text-danger">* </span>请输入用户名</label>
+                    <div class="position-relative">
+                        <div class="tag-input-container" id="tagContainer">
+                            <input type="text" class="tag-input" id="tagInput" placeholder="">
+                        </div>
+                        <div class="dropdown-menu" id="searchResults"></div>
+                    </div>
+                    <label class="mr-3 w-100"><span id="grant_msg" class="text-danger"></span></label>
+                </div>
+
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="grantButton">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -123,8 +246,10 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>内容类型</th>
+                                <th>路径</th>
                                 <th>入口内容</th>
-                                <th>执行内容</th>
+                                <th style="display: none"></th>
+                                <th>额外变量</th>
                                 {% if request.user.is_superuser %}
                                     <th>创建人</th>
                                 {% endif %}
@@ -137,8 +262,10 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>内容类型</th>
+                                <th>路径</th>
                                 <th>入口内容</th>
-                                <th>执行内容</th>
+                                <th style="display: none"></th>
+                                <th>额外变量</th>
                                 {% if request.user.is_superuser %}
                                     <th>创建人</th>
                                 {% endif %}
@@ -153,6 +280,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <th style="display: none"></th>
+                                <td></td>
                                 {% if request.user.is_superuser %}
                                     <td></td>
                                 {% endif %}
@@ -161,11 +290,19 @@
                             </tr>
                             {% for each_shell in all_shell %}
                             <tr id="tr-{{ each_shell.id }}">
-                                <td>{{ each_shell.name }}</td>
+                                <td>
+                                    {% if each_shell.type == 2 %}
+                                        <a href="{% url 'salt:list_sub_st' each_shell.id %}" style="text-decoration: underline;">{{ each_shell.name }}</a>
+                                    {% else %}
+                                        {{ each_shell.name }}
+                                    {% endif %}
+                                </td>
                                 <td>{{ each_shell.description }}</td>
                                 <td>{{ each_shell.get_type_display }}</td>
+                                <td>{{ each_shell.main_dir }}</td>
                                 <td style="white-space: pre-wrap;">{{ each_shell.main_content|linebreaksbr }}</td>
-                                <td style="white-space: pre-wrap;">{{ each_shell.func_content|linebreaksbr }}</td>
+                                <td style="white-space: pre-wrap;display: none;">{{ each_shell.func_content|linebreaksbr }}</td>
+                                <td style="white-space: pre-wrap;">{{ each_shell.extra_vars|linebreaksbr }}</td>
                                 {% if request.user.is_superuser %}
                                     <td>{{ each_shell.user.username }}</td>
                                 {% endif %}
@@ -173,6 +310,7 @@
                                 <td style="display: none;">{{ each_shell.id }}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" onclick="get_rowText(this)" data-file-name="{{ each_shell.file_name }}" data-row-id="tr-{{ each_shell.id }}">编辑</button>
+                                    <button type="button" class="btn btn-warning btn-sm" onclick="grant_user(this)" data-file-name="{{ each_shell.file_name }}" value="{{ each_shell.id }}">授权</button>
                                     <button type="button" class="btn btn-danger btn-sm" onclick="get_rowid(this)" id="{{ each_shell.id }}">删除</button>
                                 </td>
                             </tr>
@@ -196,364 +334,488 @@
 
 {% endblock content %}
 {% block js %}
-        <script type="text/javascript">
-            // 设置加载图片
-            function loading() {
-                document.getElementById('load').style.display = 'flex';
-            };
+    <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            document.getElementById('load').style.display = 'flex';
+        };
 
-            // 移除加载图片
-            function loading_remove() {
-                document.getElementById('load').style.display = 'none';
-            };
+        // 移除加载图片
+        function loading_remove() {
+            document.getElementById('load').style.display = 'none';
+        };
 
-            // 移除reminder
-            function reminder_remove() {
-                var reminder_msg = document.getElementById("msg");
-                reminder_msg.innerHTML = '';
-            };
+        // 移除reminder
+        function reminder_remove() {
+            var reminder_msg = document.getElementById("msg");
+            reminder_msg.innerHTML = '';
+        };
 
+        // 初始化ace编辑器
+        let editor;
+        function init_ace() {
+            if (!editor) {
+                editor_shell = ace.edit("editor_shell");
+                editor_shell.setTheme("ace/theme/textmate");
+                editor_shell.session.setMode("ace/mode/sh");
+                editor_shell.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+                editor_sls = ace.edit("editor_sls");
+                editor_sls.setTheme("ace/theme/textmate");
+                editor_sls.session.setMode("ace/mode/yaml");
+                editor_sls.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+                editor_ps1 = ace.edit("editor_ps1");
+                editor_ps1.setTheme("ace/theme/textmate");
+                editor_ps1.session.setMode("ace/mode/yaml");
+                editor_ps1.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+
+                main_content = ace.edit("main_content");
+                main_content.setTheme("ace/theme/textmate");
+                main_content.session.setMode("ace/mode/yaml");
+                main_content.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+                extra_vars = ace.edit("extra_vars");
+                extra_vars.setTheme("ace/theme/textmate");
+                extra_vars.session.setMode("ace/mode/yaml");
+                extra_vars.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+            }
+
+            editor_shell.resize(); // 重新计算布局
+            editor_sls.resize(); // 重新计算布局
+            editor_ps1.resize(); // 重新计算布局
+            main_content.resize(); // 重新计算布局
+            extra_vars.resize(); // 重新计算布局
+        }
+
+        //创建shell template
+        function create_shell_template() {
+            reminder_remove()
+            var reminder_msg = document.getElementById("msg");
+            var editor_shell_content = "";
+            var editor_sls_content = "";
+            var editor_ps1_content = "";
+            var editor_pb_content = "";
+            var editor_extra_content = "";
+            let check_type = 0;
+            if (radio1.checked) {
+                editor_shell_content = editor_shell.getValue();
+                check_type = 1;
+            } else if (radio2.checked) {
+                editor_sls_content = editor_sls.getValue();
+                editor_ps1_content = editor_ps1.getValue();
+                check_type = 0;
+            } else if (radio3.checked) {
+                editor_pb_content = main_content.getValue();
+                editor_extra_content = extra_vars.getValue();
+                check_type = 2;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/create_shell_template/",
+                dataType: "json",
+                data: {
+                    st_name: $("#st_name").val(),
+                    st_des: $("#st_des").val(),
+                    main_dir: $("#main_dir").val(),
+                    editor_shell_content: editor_shell_content,
+                    editor_sls_content: editor_sls_content,
+                    editor_ps1_content: editor_ps1_content,
+                    main_content: editor_pb_content,
+                    extra_vars: editor_extra_content,
+                    input6: $("#input6").val(),
+                    file_name: document.querySelector('#file_name_comment').getAttribute('data-value'),
+                    check_type: check_type,
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#shellModal').modal('hide');
+                        location.reload();
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击删除按钮时设置确认按钮的
+        function get_rowid(button) {
+            reminder_remove();
+            // 设置确认按钮的 data-id 属性
+            document.querySelector('#confirmButton').setAttribute('data-id', button.id);
+
+            // 显示确认框
+            $('#confirmModal').modal('show');
+        }
+
+        // 点击授权按钮时设置用户
+        function grant_user(button) {
+            $(document).ready(function() {
+                $.ajax({
+                    type: "post",
+                    url: "/get_all_users/",
+                    dataType: "json",
+                    data: {
+
+                    },
+                    complete: function () {
+                    },
+                    success: function (data) {
+                        const users = data
+                        const tagContainer = $('#tagContainer');
+                        const tagInput = $('#tagInput');
+                        const searchResults = $('#searchResults');
+                        const selectedValues = $('#selectedValues');
+                        const grantButton = $('#grantButton');
+
+                        // 保存已选择的标签
+                        let selectedTags = [];
+
+                        // 输入框事件处理
+                        tagInput.on('input', function() {
+                            const searchTerm = $(this).val().trim().toLowerCase();
+
+                            if (searchTerm) {
+                                // 过滤搜索结果
+                                const filteredUsers = users.filter(user => {
+                                    // 检查用户是否已被选择
+                                    const isSelected = selectedTags.some(tag => tag.id === user.id);
+                                    if (isSelected) return false;
+
+                                    return user.name.toLowerCase().includes(searchTerm) ||
+                                           user.email.toLowerCase().includes(searchTerm);
+                                });
+
+                                // 显示搜索结果
+                                renderSearchResults(filteredUsers);
+                                searchResults.addClass('show');
+                            } else {
+                                searchResults.removeClass('show');
+                            }
+                        });
+
+                        // 点击容器时聚焦到输入框
+                        tagContainer.on('click', function(e) {
+                            if (e.target === this) {
+                                tagInput.focus();
+                            }
+                        });
+
+                        // 渲染搜索结果
+                        function renderSearchResults(results) {
+                            searchResults.empty();
+
+                            if (results.length === 0) {
+                                searchResults.append(`<div class="no-results">无匹配结果</div>`);
+                                return;
+                            }
+
+                            results.forEach(user => {
+                                const item = $(`
+                                    <a class="dropdown-item" data-id="${user.id}" data-name="${user.name}" data-email="${user.email}">
+                                        <div class="font-weight-bold">${user.name}</div>
+                                        <div class="small text-gray-600">${user.email}</div>
+                                    </a>
+                                `);
+
+                                item.on('click', function() {
+                                    addTag(user);
+                                    searchResults.removeClass('show');
+                                    tagInput.val('').focus();
+                                });
+
+                                searchResults.append(item);
+                            });
+                        }
+
+                        // 添加标签
+                        function addTag(user) {
+                            // 检查是否已经添加了该标签
+                            if (selectedTags.some(tag => tag.id === user.id)) {
+                                return;
+                            }
+
+                            selectedTags.push(user);
+
+                            const tag = $(`
+                                <div class="tag" data-id="${user.id}">
+                                    <span>${user.name}</span>
+                                    <span class="tag-close"><i class="fas fa-times"></i></span>
+                                </div>
+                            `);
+
+                            // 点击删除按钮移除标签
+                            tag.find('.tag-close').on('click', function() {
+                                removeTag(user.id);
+                                tag.remove();
+                            });
+
+                            // 将标签插入到输入框前面
+                            tagInput.before(tag);
+                        }
+
+                        // 移除标签
+                        function removeTag(id) {
+                            selectedTags = selectedTags.filter(tag => tag.id !== id);
+                        }
+
+                        // 处理键盘事件
+                        tagInput.on('keydown', function(e) {
+                            // 按下退格键且输入框为空时，删除最后一个标签
+                            if (e.keyCode === 8 && $(this).val() === '' && selectedTags.length > 0) {
+                                const lastTag = selectedTags[selectedTags.length - 1];
+                                removeTag(lastTag.id);
+                                tagContainer.find('.tag').last().remove();
+                            }
+
+                            // 按下Enter键时，选择第一个搜索结果（如果有）
+                            if (e.keyCode === 13) {
+                                e.preventDefault();
+                                const firstResult = searchResults.find('.dropdown-item').first();
+                                if (firstResult.length) {
+                                    firstResult.trigger('click');
+                                }
+                            }
+
+                            // ESC键关闭下拉菜单
+                            if (e.keyCode === 27) {
+                                searchResults.removeClass('show');
+                            }
+                        });
+
+                        // 点击文档其他地方关闭下拉菜单
+                        $(document).on('click', function(e) {
+                            if (!$(e.target).closest('.tag-input-container, .dropdown-menu').length) {
+                                searchResults.removeClass('show');
+                            }
+                        });
+
+                        // 点击授权确认按钮时设置
+                        grantButton.on('click', function() {
+                            loading();
+                            $.ajax({
+                                type: "post",
+                                url: "/grant_st/",
+                                dataType: "json",
+                                data: {
+                                    st_id: document.querySelector('#grantButton').getAttribute('data-id'),
+                                    grant_users: JSON.stringify(selectedTags, null, 2),
+
+                                },
+                                complete: function () {
+                                },
+                                success: function (data) {
+                                    loading_remove();
+                                    if (data.status === 0) {
+                                        window.location.href = "/shell_template";
+                                    } else {
+                                        document.getElementById("grant_msg").innerHTML = 'Reminder: ' + data.msg;
+                                    }
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    loading_remove();
+                                    document.getElementById("grant_msg").innerHTML = 'Reminder: ' + errorThrown;
+                                }
+                            });
+
+                        });
+
+                        // 初始聚焦
+                        tagInput.focus();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        document.getElementById("grant_msg").innerHTML = 'Reminder: ' + errorThrown;
+                    }
+                });
+
+            });
+
+            // 设置确认按钮的 data-id 属性
+            document.querySelector('#grantButton').setAttribute('data-id', button.value);
+            // 显示确认框
+            $('#grantModal').modal('show');
+        }
+
+        // 编辑按钮时填充内容
+        function get_rowText(button) {
+            // 清除可能的提示信息
+            reminder_remove();
             // 初始化ace编辑器
-            let editor;
-            function init_ace() {
-                if (!editor) {
-                    editor_shell = ace.edit("editor_shell");
-                    editor_shell.setTheme("ace/theme/textmate");
-                    editor_shell.session.setMode("ace/mode/sh");
-                    editor_shell.setOptions({
-                        fontSize: "14px",
-                        wrap: true,
-                    });
-                    editor_sls = ace.edit("editor_sls");
-                    editor_sls.setTheme("ace/theme/textmate");
-                    editor_sls.session.setMode("ace/mode/yaml");
-                    editor_sls.setOptions({
-                        fontSize: "14px",
-                        wrap: true,
-                    });
-                    editor_ps1 = ace.edit("editor_ps1");
-                    editor_ps1.setTheme("ace/theme/textmate");
-                    editor_ps1.session.setMode("ace/mode/yaml");
-                    editor_ps1.setOptions({
-                        fontSize: "14px",
-                        wrap: true,
-                    });
-                    editor_pb = ace.edit("editor_pb");
-                    editor_pb.setTheme("ace/theme/textmate");
-                    editor_pb.session.setMode("ace/mode/yaml");
-                    editor_pb.setOptions({
-                        fontSize: "14px",
-                        wrap: true,
-                    });
-                }
-                editor_shell.resize(); // 重新计算布局
-                editor_sls.resize(); // 重新计算布局
-                editor_ps1.resize(); // 重新计算布局
-                editor_pb.resize(); // 重新计算布局
+            init_ace()
+            editor_shell.setValue("");
+            editor_sls.setValue("");
+            editor_ps1.setValue("");
+            document.querySelector('#main_dir').value="";
+            main_content.setValue("");
+            extra_vars.setValue("");
+            // 获取当前编辑行的所有列
+            const rowId = button.getAttribute('data-row-id');
+            const rowFileName = button.getAttribute('data-file-name');
+            const row = document.getElementById(rowId);
+            const name = row.querySelector('td:nth-child(1)').textContent;
+            const description = row.querySelector('td:nth-child(2)').textContent;
+            const type = row.querySelector('td:nth-child(3)').textContent;
+            const dir = row.querySelector('td:nth-child(4)').textContent;
+            const main = row.querySelector('td:nth-child(5)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
+            const func = row.querySelector('td:nth-child(6)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
+            const extra_env = row.querySelector('td:nth-child(7)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
+            const id = rowId.slice(3,);
+            // 对前两行赋值
+            document.querySelector('#st_name').value=name.trim();
+            document.querySelector('#st_des').value=description;
+            // 获取所有隐藏的组件id
+            document.querySelector('#input6').setAttribute('data-value', rowFileName);
+            const pb_div = document.getElementById("pb_div");
+            const state_div = document.getElementById("state_div");
+            const shell_div = document.getElementById("shell_div");
+            document.querySelector('#file_name_comment').setAttribute('data-value', rowFileName);
+            if (type === "shell") {
+                document.getElementById("radio1").checked = true;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio3").checked = false;
+                // 触发隐藏和显示动作
+                pb_div.style.display = "none";
+                state_div.style.display = "none";
+                shell_div.style.display = "block";
+                editor_shell.setValue(decodeHTML(main));
+            } else if (type === "state") {
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio2").checked = true;
+                document.getElementById("radio3").checked = false;
+                // 触发隐藏和显示动作
+                document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
+                document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
+                pb_div.style.display = "none";
+                state_div.style.display = "block";
+                shell_div.style.display = "none";
+                editor_sls.setValue(decodeHTML(main));
+                editor_ps1.setValue(decodeHTML(main));
+            } else {
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio3").checked = true;
+                // 触发隐藏和显示动作
+                pb_div.style.display = "block";
+                state_div.style.display = "none";
+                shell_div.style.display = "none";
+                document.querySelector('#main_dir').value=dir;
+                main_content.setValue(decodeHTML(main));
+                extra_vars.setValue(decodeHTML(extra_env));
             }
+            document.querySelector('#input6').value=id;
 
-            //创建shell template
-            function create_shell_template() {
-                reminder_remove()
-                var reminder_msg = document.getElementById("msg");
-
-                var editor_shell_content = "";
-                var editor_sls_content = "";
-                var editor_ps1_content = "";
-                var editor_pb_content = "";
-                if (radio1.checked) {
-                  editor_shell_content = editor_shell.getValue();
-                }
-                if (radio2.checked) {
-                  editor_sls_content = editor_sls.getValue();
-                  editor_ps1_content = editor_ps1.getValue();
-                }
-                if (radio3.checked) {
-                  editor_pb_content = editor_pb.getValue();
-                }
-
-                $.ajax({
-                    type: "post",
-                    url: "/create_shell_template/",
-                    dataType: "json",
-                    data: {
-                        input1: $("#input1").val(),
-                        input2: $("#input2").val(),
-                        editor_shell_content: editor_shell_content,
-                        editor_sls_content: editor_sls_content,
-                        editor_ps1_content: editor_ps1_content,
-                        editor_pb_content: editor_pb_content,
-                        input6: $("#input6").val(),
-                        file_name: document.querySelector('#file_name_comment').getAttribute('data-value'),
-                    },
-                    complete: function () {
-                    },
-                    success: function (data) {
-                        if (data.status === 0) {
-                            reminder_msg.innerHTML = 'Reminder: ' + data.msg;
-                            $('#shellModal').modal('hide');
-                            location.reload();
-                        } else {
-                            reminder_msg.innerHTML = 'Reminder: ' + data.msg;
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
-                    }
-                });
-            }
-
-            // 点击删除按钮时设置确认按钮的
-            function get_rowid(button) {
-                    reminder_remove();
-                    // 设置确认按钮的 data-id 属性
-                    document.querySelector('#confirmButton').setAttribute('data-id', button.id);
-
-                    // 显示确认框
-                    $('#confirmModal').modal('show');
-            }
-
-            // 编辑按钮时填充内容
-            function get_rowText(button) {
-                // 清除可能的提示信息
-                reminder_remove();
-                // 初始化ace编辑器
-                init_ace()
-                editor_shell.setValue("");
-                editor_sls.setValue("");
-                editor_ps1.setValue("");
-                editor_pb.setValue("");
-                // 获取当前编辑行的所有列
-                const rowId = button.getAttribute('data-row-id');
-                const rowFileName = button.getAttribute('data-file-name');
-                const row = document.getElementById(rowId);
-                const name = row.querySelector('td:nth-child(1)').textContent;
-                const description = row.querySelector('td:nth-child(2)').textContent;
-                const type = row.querySelector('td:nth-child(3)').textContent;
-                const main = row.querySelector('td:nth-child(4)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
-                const func = row.querySelector('td:nth-child(5)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
-                const id = rowId.slice(3,);
-                // 对前两行赋值
-                document.querySelector('#input1').value=name;
-                document.querySelector('#input2').value=description;
-                // 获取所有隐藏的组件id
-                const editor_shell1 = document.getElementById("editor_shell");
-                const editor_shell_div1 = document.getElementById("editor_shell_div");
-                const editor_shell_label1 = document.getElementById("editor_shell_label");
-                const editor_sls1 = document.getElementById("editor_sls");
-                const editor_sls_div1 = document.getElementById("editor_sls_div");
-                const editor_sls_label1 = document.getElementById("editor_sls_label");
-                const editor_ps11 = document.getElementById("editor_ps1");
-                const editor_ps1_div1 = document.getElementById("editor_ps1_div");
-                const editor_ps1_label1 = document.getElementById("editor_ps1_label");
-                const file_name_comment1 = document.getElementById("file_name_comment");
-                document.querySelector('#file_name_comment').setAttribute('data-value', rowFileName);
-                const editor_pb1 = document.getElementById("editor_pb");
-                const editor_pb_div1 = document.getElementById("editor_pb_div");
-                const editor_pb_label1 = document.getElementById("editor_pb_label");
-                if (type === "shell") {
-                    document.getElementById("radio1").checked = true;
-                    document.getElementById("radio2").checked = false;
-                    document.getElementById("radio3").checked = false;
-                    // 触发隐藏和显示动作
-                    editor_shell1.style.display = "block";
-                    editor_shell_div1.style.display = "block";
-                    editor_shell_label1.style.display = "block";
-                    editor_sls1.style.display = "none";
-                    editor_sls_div1.style.display = "none";
-                    editor_sls_label1.style.display = "none";
-                    editor_ps11.style.display = "none";
-                    editor_ps1_div1.style.display = "none";
-                    editor_ps1_label1.style.display = "none";
-                    file_name_comment1.style.display = "none";
-                    editor_pb1.style.display = "none";
-                    editor_pb_div1.style.display = "none";
-                    editor_pb_label1.style.display = "none";
-                    editor_shell.setValue(decodeHTML(main));
-                    editor_sls.setValue("");
-                    editor_ps1.setValue("");
-                    editor_pb.setValue("");
-                } else if (type === "state") {
-                    document.getElementById("radio1").checked = false;
-                    document.getElementById("radio2").checked = true;
-                    document.getElementById("radio3").checked = false;
-                    // 触发隐藏和显示动作
-                    editor_shell1.style.display = "none";
-                    editor_shell_div1.style.display = "none";
-                    editor_shell_label1.style.display = "none";
-                    editor_sls1.style.display = "block";
-                    editor_sls_div1.style.display = "block";
-                    editor_sls_label1.style.display = "block";
-                    editor_ps11.style.display = "block";
-                    editor_ps1_div1.style.display = "block";
-                    editor_ps1_label1.style.display = "block";
-                    file_name_comment1.style.display = "block";
-                    document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
-                    document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
-                    editor_pb1.style.display = "none";
-                    editor_pb_div1.style.display = "none";
-                    editor_pb_label1.style.display = "none";
-                    editor_shell.setValue("");
-                    editor_sls.setValue(decodeHTML(main));
-                    editor_ps1.setValue(decodeHTML(func));
-                    editor_pb.setValue("");
-                } else {
-                    document.getElementById("radio1").checked = false;
-                    document.getElementById("radio2").checked = false;
-                    document.getElementById("radio3").checked = true;
-                    // 触发隐藏和显示动作
-                    editor_shell1.style.display = "none";
-                    editor_shell_div1.style.display = "none";
-                    editor_shell_label1.style.display = "none";
-                    editor_sls1.style.display = "none";
-                    editor_sls_div1.style.display = "none";
-                    editor_sls_label1.style.display = "none";
-                    editor_ps11.style.display = "none";
-                    editor_ps1_div1.style.display = "none";
-                    editor_ps1_label1.style.display = "none";
-                    file_name_comment1.style.display = "none";
-                    editor_pb1.style.display = "block";
-                    editor_pb_div1.style.display = "block";
-                    editor_pb_label1.style.display = "block";
-                    editor_shell.setValue("");
-                    editor_sls.setValue("");
-                    editor_ps1.setValue("");
-                    editor_pb.setValue(decodeHTML(main));
-                }
-                document.querySelector('#input6').value=id;
-
-                setTimeout(() => {
-                    $('#shellModal').modal('show');
-                }, 200);
-            };
-
-            // 避免特殊字符被转译html
-            function decodeHTML(html) {
-                var textArea = document.createElement("textarea");
-                textArea.innerHTML = html;
-                return textArea.value;
-            }
-
-            function switchInput() {
-                const radio1 = document.getElementById("radio1");
-                const radio2 = document.getElementById("radio2");
-                const radio3 = document.getElementById("radio3");
-                const editor_shell = document.getElementById("editor_shell");
-                const editor_shell_div = document.getElementById("editor_shell_div");
-                const editor_shell_label = document.getElementById("editor_shell_label");
-                const editor_sls = document.getElementById("editor_sls");
-                const editor_sls_div = document.getElementById("editor_sls_div");
-                const editor_sls_label = document.getElementById("editor_sls_label");
-                const editor_ps1 = document.getElementById("editor_ps1");
-                const editor_ps1_div = document.getElementById("editor_ps1_div");
-                const editor_ps1_label = document.getElementById("editor_ps1_label");
-                const file_name_comment = document.getElementById("file_name_comment");
-                const file_name_comment_div = document.getElementById("file_name_comment_div");
-                const editor_pb = document.getElementById("editor_pb");
-                const editor_pb_div = document.getElementById("editor_pb_div");
-                const editor_pb_label = document.getElementById("editor_pb_label");
-
-                // 如果 radio1 被选中，显示 div；否则隐藏
-                if (radio1.checked) {
-                    editor_shell.style.display = "block";
-                    editor_shell_div.style.display = "block";
-                    editor_shell_label.style.display = "block";
-                    editor_sls.style.display = "none";
-                    editor_sls_div.style.display = "none";
-                    editor_sls_label.style.display = "none";
-                    editor_ps1.style.display = "none";
-                    editor_ps1_div.style.display = "none";
-                    editor_ps1_label.style.display = "none";
-                    file_name_comment.style.display = "none";
-                    file_name_comment_div.style.display = "none";
-                    editor_pb.style.display = "none";
-                    editor_pb_div.style.display = "none";
-                    editor_pb_label.style.display = "none";
-                } else if (radio2.checked) {
-                    editor_shell.style.display = "none";
-                    editor_shell_div.style.display = "none";
-                    editor_shell_label.style.display = "none";
-                    editor_sls.style.display = "block";
-                    editor_sls_div.style.display = "block";
-                    editor_sls_label.style.display = "block";
-                    editor_ps1.style.display = "block";
-                    editor_ps1_div.style.display = "block";
-                    editor_ps1_label.style.display = "block";
-                    file_name_comment.style.display = "block";
-                    file_name_comment_div.style.display = "block";
-                    const rowFileName = document.querySelector('#file_name_comment').getAttribute('data-value');
-                    document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
-                    document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
-                    editor_pb.style.display = "none";
-                    editor_pb_div.style.display = "none";
-                    editor_pb_label.style.display = "none";
-                } else {
-                    editor_shell.style.display = "none";
-                    editor_shell_div.style.display = "none";
-                    editor_shell_label.style.display = "none";
-                    editor_sls.style.display = "none";
-                    editor_sls_div.style.display = "none";
-                    editor_sls_label.style.display = "none";
-                    editor_ps1.style.display = "none";
-                    editor_ps1_div.style.display = "none";
-                    editor_ps1_label.style.display = "none";
-                    file_name_comment.style.display = "none";
-                    file_name_comment_div.style.display = "none";
-                    editor_pb.style.display = "block";
-                    editor_pb_div.style.display = "block";
-                    editor_pb_label.style.display = "block";
-                }
-            }
-
-            // 添加时清空内容
-            function clear_rowText() {
-                reminder_remove();
-
-                document.querySelector('#input1').value="";
-                document.querySelector('#input2').value="";
-                document.querySelector('#input6').value="";
-
-                const currentUser = "{{ request.user.username }}"
-                const randomDigits = Math.floor(1000000 + Math.random() * 9000000);
-                const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '');
-                const fileName = `${currentUser}_${randomDigits}${timestamp}`;
-                document.getElementById("editor_ps1_label").innerHTML = fileName+'.ps1 内容';
-                document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+fileName+'.sls 内容';
-                document.querySelector('#file_name_comment').setAttribute('data-value', fileName);
-
-                init_ace()
-
-                // 显示确认框
+            setTimeout(() => {
                 $('#shellModal').modal('show');
-            };
+            }, 200);
+        };
 
-            //删除shell template
-            function del_shell_template() {
-                reminder_remove()
-                var reminder_msg = document.getElementById("confirm_msg");
-                $.ajax({
-                    type: "post",
-                    url: "/del_shell_template/",
-                    dataType: "json",
-                    data: {
-                        st_id: document.querySelector('#confirmButton').getAttribute('data-id'),
-                    },
-                    complete: function () {
-                    },
-                    success: function (data) {
-                        if (data.status === 0) {
-                            reminder_msg.innerHTML = 'Reminder: ' + data.msg;
-                            $('#confirmModal').modal('hide');
-                            location.reload();
-                        } else {
+        // 避免特殊字符被转译html
+        function decodeHTML(html) {
+            var textArea = document.createElement("textarea");
+            textArea.innerHTML = html;
+            return textArea.value;
+        }
 
-                            reminder_msg.innerHTML = 'Reminder: ' + data.msg;
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
-                    }
-                });
+        function switchInput() {
+            const radio1 = document.getElementById("radio1");
+            const radio2 = document.getElementById("radio2");
+            const radio3 = document.getElementById("radio3");
+            const pb_div = document.getElementById("pb_div");
+            const state_div = document.getElementById("state_div");
+            const shell_div = document.getElementById("shell_div");
+
+            // 如果 radio1 被选中，显示 div；否则隐藏
+            if (radio1.checked) {
+                shell_div.style.display = "block";
+                pb_div.style.display = "none";
+                state_div.style.display = "none";
+            } else if (radio2.checked) {
+                pb_div.style.display = "none";
+                state_div.style.display = "block";
+                shell_div.style.display = "none";
+                const rowFileName = document.querySelector('#file_name_comment').getAttribute('data-value');
+                document.getElementById("editor_ps1_label").innerHTML = rowFileName+'.ps1 内容';
+                document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+rowFileName+'.sls 内容';
+            } else if (radio3.checked) {
+                shell_div.style.display = "none";
+                pb_div.style.display = "block";
+                state_div.style.display = "none";
             }
-        </script>
+        }
+
+        // 添加时清空内容
+        function clear_rowText() {
+            reminder_remove();
+
+            init_ace();
+            document.querySelector('#st_name').value="";
+            document.querySelector('#st_des').value="";
+            document.querySelector('#main_dir').value="";
+            editor_shell.setValue("");
+            editor_sls.setValue("");
+            editor_ps1.setValue("");
+            main_content.setValue("");
+            extra_vars.setValue("");
+
+            const currentUser = "{{ request.user.username }}"
+            const randomDigits = Math.floor(1000000 + Math.random() * 9000000);
+            const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '');
+            const fileName = `${currentUser}_${randomDigits}${timestamp}`;
+            document.getElementById("editor_ps1_label").innerHTML = fileName+'.ps1 内容';
+            document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+fileName+'.sls 内容';
+            document.querySelector('#file_name_comment').setAttribute('data-value', fileName);
+
+            // 显示确认框
+            $('#shellModal').modal('show');
+        };
+
+        //删除shell template
+        function del_shell_template() {
+            reminder_remove()
+            var reminder_msg = document.getElementById("confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/del_shell_template/",
+                dataType: "json",
+                data: {
+                    st_id: document.querySelector('#confirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#confirmModal').modal('hide');
+                        location.reload();
+                    } else {
+
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+    </script>
 {% endblock %}

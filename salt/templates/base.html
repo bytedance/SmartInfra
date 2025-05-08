@@ -103,7 +103,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item {% if request.resolver_match.view_name == 'salt:shell_template' %}active{% endif %}">
+            <li class="nav-item {% if request.resolver_match.view_name == 'salt:shell_template' or request.resolver_match.view_name == 'salt:list_sub_st' %}active{% endif %}">
                 <a class="nav-link" href="/shell_template">
                     <i class="fas fa-fw fa-file"></i>
                     <span>执行模板</span></a>

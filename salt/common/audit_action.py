@@ -83,10 +83,15 @@ def audit_action(func):
         'check_ldap': 'Ldap正确性验证测试',
         'an_masters': '查看所有AnsibleMaster',
         'check_dir_perm': '检查分发文件路径读写权限是否正常',
+        'sub_template': '查看相关子模板',
+        'create_sub_st': '创建/编辑子模板',
+        'del_sub_st': '删除子模板',
+        'get_all_users': '授权模板时查询用户',
+        'grant_st': '模板授权相关用户',
 
     }
     @wraps(func)
-    def wrapper(request):
+    def wrapper(request, *args, **kwargs):
         user = request.user if request.user.is_authenticated else None
         action = URL_DESCRIPTIONS.get(request.resolver_match.url_name, "unknown page")
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -97,6 +102,6 @@ def audit_action(func):
 
         general_audit.objects.create(user=user, action=action, extra_content=user_ip)
 
-        return func(request)
+        return func(request, *args, **kwargs)
 
     return wrapper

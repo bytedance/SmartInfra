@@ -68,5 +68,10 @@ urlpatterns = [
     path('get_hosts/', views.get_hosts, name='get_hosts'),
     path('reject_task/', views.reject_task, name='reject_task'),
     path('check_ldap/', views.check_ldap, name='check_ldap'),
+    path('sub_template/<int:id>/', views.list_sub_st, name='list_sub_st'),
+    path('create_sub_st/', views.create_sub_st, name='create_sub_st'),
+    path('del_sub_st/', views.del_sub_st, name='del_sub_st'),
+    path('get_all_users/', views.get_all_users, name='get_all_users'),
+    path('grant_st/', views.grant_st, name='grant_st'),
 
 ]

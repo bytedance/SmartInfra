@@ -29,12 +29,12 @@ import json, base64
 from django.db import transaction
 from salt.common.notify_lark import send_lark_msg
 from salt.models import host_group, host_group_minion, salt_master, task_list, shell_template, user_relationship, \
-    resource_group, rg_relationship, User, transfer_file
+    resource_group, rg_relationship, User, transfer_file, sub_template
 from ansible.common.an_api import AnsibleAPI
 from salt.tasks.repeat_tasks import create_repeat_task
 import logging, traceback, time, random
 from django.conf import settings
-import datetime, os
+import datetime, os, re
 
 logger = logging.getLogger("default")
 
@@ -65,13 +65,14 @@ def exec_remote_shell(*args, **kwargs):
     elif encap_exec_content["type"] == 0:
         current_st = shell_template.objects.get(id=encap_exec_content["content"])
         if current_st.type == 2:
-            correct_result = correct_file(host_group_id, encap_exec_content["content"])
-            if correct_result["status"] == 0:
-                exec_content = correct_result["playbook_name"] # playbook
-            else:
-                logger.error(correct_result["msg"])
-                return {"count_success": count_success, "count_fail": count_fail,
-                        "exec_remote_shell_result_filename": exec_remote_shell_result_filename}
+            exec_content = current_st.main_dir  # playbook
+            # correct_result = correct_file(host_group_id, encap_exec_content["content"])
+            # if correct_result["status"] == 0:
+            #     exec_content = correct_result["playbook_name"] # playbook
+            # else:
+            #     logger.error(correct_result["msg"])
+            #     return {"count_success": count_success, "count_fail": count_fail,
+            #             "exec_remote_shell_result_filename": exec_remote_shell_result_filename}
         else:
             exec_content = current_st.main_content # shell template
 
@@ -111,10 +112,10 @@ def exec_remote_shell(*args, **kwargs):
                 while each_line:
                     cleaned_content = cleaned_content+each_line
                     each_line = rrcad.readline()
-
         else:
             cleaned_content = "no permission to do this operation"
 
+        cleaned_content = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', cleaned_content)
         with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrfa:
                 ersrfa.write(f"{an_master_name}:\n{cleaned_content}\n")
 
@@ -125,6 +126,25 @@ def exec_remote_shell(*args, **kwargs):
     return {"count_success": count_success, "count_fail": count_fail,
             "exec_remote_shell_result_filename": exec_remote_shell_result_filename}
 
+def resolve_path(file_path):
+    """
+    解析路径和文件名
+    :param file_path:
+    :return:
+    """
+    resolve_result = {"path_name": "", "file_name": ""}
+
+    if file_path.startswith("/"):
+        file_path = file_path[1:]
+    if "/" in file_path:
+        resolve_rule = file_path.rsplit('/', 1)
+        resolve_result["path_name"] = resolve_rule[0]
+        resolve_result["file_name"] = resolve_rule[1]
+    else:
+        resolve_result["file_name"] = file_path
+        resolve_result["path_name"] = ""
+    return resolve_result
+
 def correct_file(host_group_id, template_id=-1):
     """
     放置所有hosts & playbook文件到local
@@ -133,12 +153,16 @@ def correct_file(host_group_id, template_id=-1):
     :return:
     """
     if template_id == -1:
-        pb_content = ""
+        main_content = ""
+        main_dir = ""
+        extra_vars = ""
         pb_name = ''.join(random.choices('0123456789', k=9)) + time.strftime("%Y%m%d%H%M%S", time.localtime())
     else:
         st_info = shell_template.objects.get(id=template_id)
-        pb_content = st_info.main_content
+        main_content = st_info.main_content
         pb_name = st_info.file_name
+        main_dir = st_info.main_dir
+        extra_vars = st_info.extra_vars
     correct_result = {"status": 0, "msg": "ok"}
 
     try:
@@ -148,13 +172,15 @@ def correct_file(host_group_id, template_id=-1):
         an_user = salt_master.objects.get(id=current_an_id).user
         an_port = salt_master.objects.get(id=current_an_id).sftp_port
         pb_hosts_dir = os.path.join(an_base_dir, pb_name, "inventory/")
-        pb_yaml_dir = os.path.join(an_base_dir, pb_name, "project/")
+        main_pb_yaml_dir = os.path.join(an_base_dir, pb_name, "project/", resolve_path(main_dir)["path_name"])
         an_login_key_dir = os.path.join(an_base_dir, pb_name, 'login_key')
+        pb_env_dir = os.path.join(an_base_dir, pb_name, "env/")
 
         with transaction.atomic():
-            os.makedirs(pb_yaml_dir, exist_ok=True, mode=0o755)
+            os.makedirs(main_pb_yaml_dir, exist_ok=True, mode=0o755)
             os.makedirs(pb_hosts_dir, exist_ok=True, mode=0o755)
-
+            os.makedirs(pb_env_dir, exist_ok=True, mode=0o755)
+            # record all target hosts
             with open(pb_hosts_dir+'hosts', "w") as phdh:
                 phdh.write("[all]\n")
                 for each_host in host_group_minion.objects.filter(host_group_name=host_group.objects.get(id=host_group_id)).values("minion_name"):
@@ -163,15 +189,25 @@ def correct_file(host_group_id, template_id=-1):
                     else:
                         each_host = each_host["minion_name"]
                     phdh.write(each_host+"\n")
-            with open(pb_yaml_dir+pb_name+'.yaml', "w") as pydpn:
-                pydpn.write(pb_content)
+            # record all playbooks
+            if template_id != -1:
+                with open(main_pb_yaml_dir + "/" + resolve_path(main_dir)["file_name"], "w") as mpyd:
+                    mpyd.write(main_content)
+                with open(pb_env_dir + "extravars", "w") as ped:
+                    ped.write(extra_vars)
+                for each_sub_st in sub_template.objects.filter(name=shell_template.objects.get(id=template_id), history=0).values():
+                    sub_pb_yaml_dir = os.path.join(an_base_dir, pb_name, "project/", resolve_path(each_sub_st["func_dir"])["path_name"])
+                    os.makedirs(sub_pb_yaml_dir, exist_ok=True, mode=0o755)
+                    with open(sub_pb_yaml_dir+"/"+resolve_path(each_sub_st["func_dir"])["file_name"], "w") as spyd:
+                        spyd.write(each_sub_st["func_content"])
+            # record private key
             fd = os.open(an_login_key_dir, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
             with os.fdopen(fd, 'w') as abdpn:
                 abdpn.write(an_login_key+"\n")
 
         correct_result["private_data_dir"] = an_base_dir+"/"+pb_name
-        correct_result["playbook_name"] = pb_name+'.yaml'
-        correct_result["login_key"] = an_base_dir+"/"+pb_name+"/"+'login_key'
+        correct_result["playbook_name"] = main_dir
+        correct_result["login_key"] = an_login_key_dir
 
     except Exception as e:
         logger.error(traceback.format_exc())
@@ -247,10 +283,10 @@ def exec_transfer_file(*args, **kwargs):
                 while each_line:
                     cleaned_content = cleaned_content + each_line
                     each_line = rrcad.readline()
-
         else:
             cleaned_content = "no permission to do this operation"
 
+        cleaned_content = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', cleaned_content)
         with open(settings.DOWNLOAD_ROOT + exec_transfer_file_result_filename, 'a+', encoding="utf-8") as etfrf:
             etfrf.write(f"{an_master_name}:\n{cleaned_content}\n")
 

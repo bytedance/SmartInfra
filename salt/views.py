@@ -32,7 +32,7 @@ from datetime import timedelta
 import yaml
 
 from .common.audit_action import audit_action
-from .common.permission_ctrl import superuser_required
+from .common.permission_ctrl import superuser_required, st_access_required
 
 import time, os, requests, base64
 
@@ -420,9 +420,9 @@ def list_shell_template(request):
     :return:
     """
     if request.user.is_superuser:
-        all_shell = shell_template.objects.all()
+        all_shell = shell_template.objects.filter(history=0).all()
     else:
-        all_shell = shell_template.objects.filter(user=request.user)
+        all_shell = shell_template.objects.filter(user=request.user, history=0)
 
     state_home = settings.STATE_HOME
 
@@ -437,57 +437,75 @@ def create_shell_template(request):
     :param request:
     :return:
     """
-    st_name = request.POST.get("input1")
-    st_desp = request.POST.get("input2")
+    st_name = request.POST.get("st_name")
+    st_des = request.POST.get("st_des")
+    main_dir = request.POST.get("main_dir")
     editor_shell_content = request.POST.get("editor_shell_content")
     editor_sls_content = request.POST.get("editor_sls_content")
     editor_ps1_content = request.POST.get("editor_ps1_content")
-    editor_pb_content = request.POST.get("editor_pb_content")
+    main_content = request.POST.get("main_content")
+    extra_vars = request.POST.get("extra_vars")
     st_id = request.POST.get("input6")
     file_name = request.POST.get("file_name")
+    check_type = int(request.POST.get("check_type"))
 
     # check playbook pattern
     check_result = {"status": 0, "msg": "ok"}
-    if editor_pb_content:
+    if editor_sls_content or editor_ps1_content or main_content:
         try:
-            yaml.safe_load(editor_pb_content)
+            yaml.safe_load(editor_sls_content)
+            yaml.safe_load(editor_ps1_content)
+            yaml.safe_load(main_content)
         except Exception as e:
             logger.error(traceback.format_exc())
             check_result["status"] = 1
-            check_result["msg"] = "执行内容不符合playbook格式要求，请检查"
+            check_result["msg"] = "执行内容不符合yaml格式要求，请检查"
             return HttpResponse(json.dumps(check_result), content_type="application/json")
 
     create_result = {"status":0, "msg":"ok"}
     try:
-        # file_name = str(request.user) + ''.join(random.choices('0123456789', k=7)) + time.strftime(
-        #         "%Y%m%d%H%M%S", time.localtime())
-        if st_name and st_desp and file_name and (editor_shell_content or editor_sls_content or editor_pb_content):
+        if st_name and st_des and (editor_shell_content or (editor_sls_content and file_name) or (main_dir and main_content)):
             if st_id:
-                if editor_shell_content:
-                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_desp, main_content=editor_shell_content,
-                                                                   type=1, file_name=file_name, update_time=datetime.datetime.now(),
-                                                                   func_content="")
-                elif editor_pb_content:
-                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_desp,
-                                                                   main_content=editor_pb_content,
-                                                                   type=2, file_name=file_name,
-                                                                   update_time=datetime.datetime.now(),
-                                                                   func_content="")
+                current_st = shell_template.objects.get(id=st_id)
+                current_st.id = None
+                current_st.name = st_name+"-"+datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                current_st.history = 1
+                current_st.save()
+
+                if check_type == 0:
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir="",
+                                                                   main_content=editor_sls_content,
+                                                                   func_content=editor_ps1_content, extra_vars="",
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
+                elif check_type == 1:
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir="",
+                                                                   main_content=editor_shell_content,
+                                                                   func_content="", extra_vars="",
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
                 else:
-                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_desp,
-                                                                   main_content=editor_sls_content, func_content=editor_ps1_content,
-                                                                   type=0, file_name=file_name, update_time=datetime.datetime.now())
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir=main_dir,
+                                                                   main_content=main_content,
+                                                                   func_content="", extra_vars=extra_vars,
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
             else:
-                if editor_shell_content:
-                    shell_template.objects.create(name=st_name, description=st_desp, main_content=editor_shell_content,
-                                                                   type=1, file_name=file_name, func_content="", user=request.user)
-                elif editor_pb_content:
-                    shell_template.objects.create(name=st_name, description=st_desp, main_content=editor_pb_content,
-                                                  type=2, file_name=file_name, func_content="", user=request.user)
+                if check_type == 0:
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir="",
+                                                  main_content=editor_sls_content,
+                                                  func_content=editor_ps1_content, extra_vars="",
+                                                  type=int(check_type), file_name=file_name, user=request.user)
+                elif check_type == 1:
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir="",
+                                                  main_content=editor_shell_content,
+                                                  func_content="", extra_vars="",
+                                                  type=int(check_type), file_name=file_name, user=request.user)
                 else:
-                    shell_template.objects.create(name=st_name, description=st_desp,
-                                                                   main_content=editor_sls_content, func_content=editor_ps1_content,
-                                                                   type=0, file_name=file_name, user=request.user)
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir=main_dir,
+                                                  main_content=main_content,
+                                                  func_content="", extra_vars=extra_vars,
+                                                  type=int(check_type), file_name=file_name, user=request.user)
         else:
             create_result["status"]=1
             create_result["msg"]="不完整的输入参数，请补全"
@@ -514,6 +532,66 @@ def del_shell_template(request):
         del_result["msg"]=str(e)
 
     return HttpResponse(json.dumps(del_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@st_access_required
+@csrf_exempt
+def list_sub_st(request, id):
+
+    sub_st = sub_template.objects.filter(name=shell_template.objects.get(id=id), history=0)
+    main_name = shell_template.objects.get(id=id).name
+    return render(request, "sub_template.html", {"sub_st": sub_st, "main_name": main_name})
+
+
+@login_required()
+@audit_action
+@csrf_exempt
+def create_sub_st(request):
+    st_id = request.POST.get("st_id")
+    func_dir = request.POST.get("func_dir")
+    func_content = request.POST.get("func_content")
+    edit_st_id = request.POST.get("input6")
+    create_result = {"status": 0, "msg": "ok"}
+    try:
+        if st_id and func_dir and func_content:
+            if edit_st_id:
+                current_st = sub_template.objects.get(id=edit_st_id)
+                current_st.id = None
+                current_st.history = 1
+                current_st.save()
+
+                sub_template.objects.filter(id=edit_st_id).update(name=shell_template.objects.get(id=st_id), func_dir=func_dir,
+                                                             func_content=func_content, update_time=datetime.datetime.now())
+            else:
+                sub_template.objects.create(name=shell_template.objects.get(id=st_id), func_dir=func_dir, func_content=func_content)
+        else:
+            create_result["status"] = 1
+            create_result["msg"] = "不完整的输入参数，请补全"
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        create_result["status"] = 1
+        create_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(create_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def del_sub_st(request):
+    st_id = request.POST.get("st_id")
+
+    del_result = {"status":0, "msg":"ok"}
+    try:
+        sub_template.objects.get(id=st_id).delete()
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        del_result["status"]=1
+        del_result["msg"]=str(e)
+
+    return HttpResponse(json.dumps(del_result), content_type="application/json")
+
 
 @login_required()
 @superuser_required
@@ -1792,7 +1870,6 @@ def check_ldap(request):
     ldap_passwd = request.POST.get("ldap_passwd")
 
     check_result = {"status": 0, "msg": "ok"}
-
     if ldap_addr and dn_addr and ldap_user and ldap_passwd:
         try:
             ldap_server = Server(ldap_addr, get_info=ALL, connect_timeout=10)
@@ -1813,3 +1890,42 @@ def check_ldap(request):
         check_result["msg"] = "请输入完整的验证信息"
 
     return HttpResponse(json.dumps(check_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def get_all_users(request):
+    all_users = []
+    for each_user in User.objects.all().values():
+        all_users.append({"id": each_user["id"], "name": each_user["username"], "email": ""})
+    return HttpResponse(json.dumps(all_users), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def grant_st(request):
+    st_id = request.POST.get("st_id")
+    grant_users = request.POST.get("grant_users")
+
+    grant_result = {"status": 0, "msg": "ok"}
+    try:
+        for each_user in json.loads(grant_users):
+            with transaction.atomic():
+                current_st = shell_template.objects.get(id=int(st_id))
+                current_st.id = None
+                current_st.name = current_st.name+"-"+each_user["name"]+datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                current_st.user = User.objects.get(id=each_user["id"])
+                current_st.save()
+                if sub_template.objects.filter(name=shell_template.objects.get(id=int(st_id))):
+                    for each_sub_st in sub_template.objects.filter(name=shell_template.objects.get(id=int(st_id))).values("id"):
+                        current_sub_st = sub_template.objects.get(id=each_sub_st["id"])
+                        current_sub_st.id = None
+                        current_sub_st.name = current_st
+                        current_sub_st.save()
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        grant_result["status"] = 1
+        grant_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(grant_result), content_type="application/json")

@@ -27,6 +27,8 @@ SOFTWARE.
 
 import traceback
 import requests, json
+from datetime import datetime
+
 from salt.models import authenticate_type, chat_group, User
 import logging
 
@@ -89,8 +91,9 @@ def send_lark_msg(task_name, current_user, message):
             # send message to current user
             send_message_data = {
                 "receive_id": chat_id,
-                "msg_type": "text",
-                "content": "{\"text\":\"<at user_id=\\\"%s\\\">用户名</at> 您发起的任务 - %s - %s\"}" %(current_user_id, task_name, message)
+                "msg_type": "interactive",
+                "content": "{\"type\":\"template\",\"data\":{\"template_id\":\"AAq4BSu9nf9Tv\",\"template_version_name\":\"1.0.0\",\"template_variable\":{\"task_name\":\"%s\",\"task_status\":\"%s\",\"open_id\":\"%s\",\"complete_time\":\"%s\"}}}"
+                           % (task_name, message, current_user_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             }
             send_message_raw = requests.post("https://open.larkoffice.com/open-apis/im/v1/messages?receive_id_type=chat_id",
                                     json=send_message_data, headers=auth_common_headers, timeout=10)

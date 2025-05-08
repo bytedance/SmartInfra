@@ -46,11 +46,25 @@ class shell_template(models.Model):
     """
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=500)
+    main_dir = models.CharField(max_length=300, default="")
     main_content = models.TextField(default="")
+    extra_vars = models.TextField(default="")
     func_content = models.TextField(default="")
     type = models.IntegerField(choices=template_type_choices, default=1)
     file_name = models.CharField(max_length=100, default="")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    history = models.IntegerField(default=0)
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    update_time = models.DateTimeField("更新时间", auto_now=True)
+
+class sub_template(models.Model):
+    """
+    入口内容相关的子模板
+    """
+    name = models.ForeignKey(shell_template, on_delete=models.CASCADE, null=True, default="")
+    func_dir = models.CharField(max_length=300, default="")
+    func_content = models.TextField(default="")
+    history = models.IntegerField(default=0)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
