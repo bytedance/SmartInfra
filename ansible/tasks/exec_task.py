@@ -34,7 +34,7 @@ from ansible.common.an_api import AnsibleAPI
 from salt.tasks.repeat_tasks import create_repeat_task
 import logging, traceback, time, random
 from django.conf import settings
-import datetime, os, re
+import datetime, os, re, shutil
 
 logger = logging.getLogger("default")
 
@@ -175,8 +175,11 @@ def correct_file(host_group_id, template_id=-1):
         main_pb_yaml_dir = os.path.join(an_base_dir, pb_name, "project/", resolve_path(main_dir)["path_name"])
         an_login_key_dir = os.path.join(an_base_dir, pb_name, 'login_key')
         pb_env_dir = os.path.join(an_base_dir, pb_name, "env/")
+        pb_base_dir = os.path.join(an_base_dir, pb_name)
 
         with transaction.atomic():
+            if os.path.exists(pb_base_dir):
+                shutil.rmtree(pb_base_dir)
             os.makedirs(main_pb_yaml_dir, exist_ok=True, mode=0o755)
             os.makedirs(pb_hosts_dir, exist_ok=True, mode=0o755)
             os.makedirs(pb_env_dir, exist_ok=True, mode=0o755)
@@ -193,8 +196,9 @@ def correct_file(host_group_id, template_id=-1):
             if template_id != -1:
                 with open(main_pb_yaml_dir + "/" + resolve_path(main_dir)["file_name"], "w") as mpyd:
                     mpyd.write(main_content)
-                with open(pb_env_dir + "extravars", "w") as ped:
-                    ped.write(extra_vars)
+                if extra_vars:
+                    with open(pb_env_dir + "extravars", "w") as ped:
+                        ped.write(extra_vars)
                 for each_sub_st in sub_template.objects.filter(name=shell_template.objects.get(id=template_id), history=0).values():
                     sub_pb_yaml_dir = os.path.join(an_base_dir, pb_name, "project/", resolve_path(each_sub_st["func_dir"])["path_name"])
                     os.makedirs(sub_pb_yaml_dir, exist_ok=True, mode=0o755)
