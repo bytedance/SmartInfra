@@ -90,7 +90,7 @@ def exec_remote_shell(*args, **kwargs):
     try:
         an_master_id = host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()["salt_name"]
         an_master_name = salt_master.objects.get(id=an_master_id).name
-        cleaned_content = ""
+        cleaned_content = [""]
 
         if host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()["salt_name"] in current_user_salt_object:
 
@@ -107,17 +107,16 @@ def exec_remote_shell(*args, **kwargs):
             if an_instance.last_event.get("event_data", None):
                 count_success = len(an_instance.last_event["event_data"]["ok"])
                 count_fail = len(an_instance.last_event["event_data"]["processed"]) - count_success
-            with open(run_result.config.artifact_dir+'/stdout', 'r') as rrcad:
-                each_line = rrcad.readline()
-                while each_line:
-                    cleaned_content = cleaned_content+each_line
-                    each_line = rrcad.readline()
-        else:
-            cleaned_content = "no permission to do this operation"
+            cleaned_content = an_instance.log_lines
 
-        cleaned_content = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', cleaned_content)
+        else:
+            cleaned_content = ["no permission to do this operation"]
+
         with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrfa:
-                ersrfa.write(f"{an_master_name}:\n{cleaned_content}\n")
+            ersrfa.write(f"{an_master_name}:\n")
+            for each_line in cleaned_content:
+                each_line = each_line.replace('\r', '').rstrip('\n')
+                ersrfa.write(re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', each_line) + '\n')
 
     except Exception as e:
         logger.error(traceback.format_exc())

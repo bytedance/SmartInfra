@@ -15,7 +15,7 @@
 // limitations under the License.
 """
 
-import ansible_runner, logging
+import ansible_runner, logging, json
 
 logger = logging.getLogger("default")
 
@@ -25,14 +25,32 @@ class AnsibleAPI():
         self.private_data_dir = private_data_dir
         self.login_key = login_key_dir
         self.last_event = None
+        self.log_lines = []
 
-    def handle_event(self, event_data):
+    def handle_event(self, event):
         """
         catch the last event
-        :param event_data:
+        :param event:
         :return:
         """
-        self.last_event = event_data
+        self.last_event = event
+        stdout_line = event.get('stdout')
+        if stdout_line:
+            self.log_lines.append("[STDOUT] {}\n".format(stdout_line))
+
+        res = event.get('event_data', {}).get('res', {})
+        res_stdout = res.get('stdout')
+        if res_stdout:
+            self.log_lines.append("[RES_STDOUT] {}\n".format(res_stdout))
+        elif res:
+            res_pretty = json.dumps(res, ensure_ascii=False, indent=2)
+            self.log_lines.append("[RES_OBJECT]\n")
+            for line in res_pretty.splitlines():
+                self.log_lines.append("    " + line + "\n")
+
+        res_stderr = res.get('stderr')
+        if res_stderr:
+            self.log_lines.append("[RES_STDERR] {}\n".format(res_stderr))
 
     def run_command(self, module, arg):
         """
