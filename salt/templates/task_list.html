@@ -455,10 +455,10 @@
                 success: function (data) {
                     loading_remove();
                     if (data.status === 0) {
-                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        withdraw_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                         location.reload();
                     } else {
-                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        withdraw_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -495,10 +495,10 @@
                 success: function (data) {
                     loading_remove();
                     if (data.status === 0) {
-                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        stop_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                         location.reload();
                     } else {
-                        approve_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
+                        stop_confirm_msg.innerHTML = 'Reminder: ' + data.msg;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
