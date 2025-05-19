@@ -37,20 +37,24 @@ class AnsibleAPI():
         stdout_line = event.get('stdout')
         if stdout_line:
             self.log_lines.append("[STDOUT] {}\n".format(stdout_line))
+            self.log_lines.append("\n")
 
         res = event.get('event_data', {}).get('res', {})
         res_stdout = res.get('stdout')
         if res_stdout:
             self.log_lines.append("[RES_STDOUT] {}\n".format(res_stdout))
+            self.log_lines.append("\n")
         elif res:
             res_pretty = json.dumps(res, ensure_ascii=False, indent=2)
             self.log_lines.append("[RES_OBJECT]\n")
             for line in res_pretty.splitlines():
                 self.log_lines.append("    " + line + "\n")
+            self.log_lines.append("\n")
 
         res_stderr = res.get('stderr')
         if res_stderr:
             self.log_lines.append("[RES_STDERR] {}\n".format(res_stderr))
+            self.log_lines.append("\n")
 
     def run_command(self, module, arg):
         """

@@ -96,8 +96,8 @@
                 <div id="collapseUtilities" class="collapse {% if request.resolver_match.view_name == 'salt:create_shell_task' %}show{% elif request.resolver_match.view_name == 'salt:list_tasks' %}show{% elif request.resolver_match.view_name == 'salt:qqq' %}show{% endif %}"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:list_tasks' %}active{% endif %}" href="/list_tasks">任务列表</a>
-                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">Shell / State / 分发文件 </a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:list_tasks' %}active{% endif %}" href="/list_tasks">已创建任务清单</a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">创建任务 </a>
                     </div>
                 </div>
             </li>

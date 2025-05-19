@@ -88,9 +88,7 @@ def exec_remote_shell(*args, **kwargs):
         current_user_salt_object.append(salt_master.objects.get(id=each_user_salt).id)
 
     try:
-        an_master_id = host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()["salt_name"]
-        an_master_name = salt_master.objects.get(id=an_master_id).name
-        cleaned_content = [""]
+        run_result = ""
 
         if host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()["salt_name"] in current_user_salt_object:
 
@@ -113,7 +111,16 @@ def exec_remote_shell(*args, **kwargs):
             cleaned_content = ["no permission to do this operation"]
 
         with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrfa:
-            ersrfa.write(f"{an_master_name}:\n")
+            # record the stdout at first
+            for each_rr in run_result.stdout:
+                each_rr = each_rr.replace('\r', '').rstrip('\n')
+                ersrfa.write(re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', each_rr) + '\n')
+            ersrfa.write("\n")
+            ersrfa.write("-----------------------------------------------------------------------------------------------------------------------------\n")
+            ersrfa.write("\n")
+            ersrfa.write("########################## Detailed Information ##########################\n")
+            ersrfa.write("\n")
+            # record the detailed result
             for each_line in cleaned_content:
                 each_line = each_line.replace('\r', '').rstrip('\n')
                 ersrfa.write(re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', each_line) + '\n')
@@ -263,9 +270,6 @@ def exec_transfer_file(*args, **kwargs):
                 "exec_remote_shell_result_filename": exec_transfer_file_result_filename}
 
     try:
-        an_master_id = host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()[
-            "salt_name"]
-        an_master_name = salt_master.objects.get(id=an_master_id).name
         cleaned_content = ""
 
         if host_group_minion.objects.filter(host_group_name=host_group_id).values("salt_name").first()["salt_name"] in current_user_salt_object:
@@ -291,7 +295,7 @@ def exec_transfer_file(*args, **kwargs):
 
         cleaned_content = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', cleaned_content)
         with open(settings.DOWNLOAD_ROOT + exec_transfer_file_result_filename, 'a+', encoding="utf-8") as etfrf:
-            etfrf.write(f"{an_master_name}:\n{cleaned_content}\n")
+            etfrf.write(f"{cleaned_content}\n")
 
     except Exception as e:
         logger.error(traceback.format_exc())

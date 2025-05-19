@@ -1483,8 +1483,12 @@ def withdraw_task(request):
     withdraw_result = {"status": 0, "msg": "ok"}
     try:
         task_info = task_list.objects.get(id=int(task_id))
-        task_info.status = 5
-        task_info.save()
+        if task_info.status == 0:
+            task_info.status = 5
+            task_info.save()
+        else:
+            withdraw_result["status"] = 1
+            withdraw_result["msg"] = "当前工单状态不支持被撤回"
 
         send_lark_msg(task_name=task_info.name, current_user=str(request.user),
                       message="已被撤回")
@@ -1510,8 +1514,12 @@ def stop_task(request):
     try:
         with transaction.atomic():
             task_info = task_list.objects.get(id=int(task_id))
-            task_info.status = 6
-            task_info.save()
+            if task_info.status == 1 or task_info.status == 3:
+                task_info.status = 6
+                task_info.save()
+            else:
+                stop_result["status"] = 1
+                stop_result["msg"] = "当前工单状态不支持被终止"
 
             Schedule.objects.filter(id=task_info.related_schedule).update(repeats=0)
 
