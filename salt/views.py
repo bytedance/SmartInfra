@@ -1486,12 +1486,13 @@ def withdraw_task(request):
         if task_info.status == 0:
             task_info.status = 5
             task_info.save()
+
+            send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                          message="已被撤回")
         else:
             withdraw_result["status"] = 1
             withdraw_result["msg"] = "当前工单状态不支持被撤回"
 
-        send_lark_msg(task_name=task_info.name, current_user=str(request.user),
-                      message="已被撤回")
     except Exception as e:
         logger.error(traceback.format_exc())
         withdraw_result["status"] = 1
@@ -1517,14 +1518,15 @@ def stop_task(request):
             if task_info.status == 1 or task_info.status == 3:
                 task_info.status = 6
                 task_info.save()
+
+                send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                              message="已被终止")
             else:
                 stop_result["status"] = 1
                 stop_result["msg"] = "当前工单状态不支持被终止"
 
             Schedule.objects.filter(id=task_info.related_schedule).update(repeats=0)
 
-        send_lark_msg(task_name=task_info.name, current_user=str(request.user),
-                      message="已被终止")
     except Exception as e:
         logger.error(traceback.format_exc())
         stop_result["status"] = 1
