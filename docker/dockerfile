@@ -1,5 +1,42 @@
 # 基于 Debian 12 镜像
-FROM ??
+FROM debian:12
+
+# 更新包管理器并安装必要软件
+RUN apt-get update && apt-get install -y \
+    nginx \
+    python3-pip \
+    python3-dev \
+    build-essential \
+    pkg-config \
+    python3.11-venv \
+    vim \
+    telnet \
+    ansible \
+    sshpass \
+    default-libmysqlclient-dev
 
 # 复制项目文件
+RUN mkdir -p /workdir/smartinfra
 COPY smartinfra/ /workdir/smartinfra
+
+# 创建venv环境
+RUN python3.11 -m venv /workdir/salt
+
+# 在venv环境安装gunicorn
+RUN /workdir/salt/bin/pip install gunicorn
+
+# 安装 项目 依赖
+RUN /workdir/salt/bin/pip install -r /workdir/smartinfra/requirements.txt
+
+# 复制 nginx 配置文件
+COPY default /etc/nginx/sites-enabled/
+COPY nginx.conf /etc/nginx/
+
+
+# 配置工作目录
+WORKDIR /workdir/smartinfra/
+
+# 配置执行文件
+COPY start_gunicorn.sh /workdir/
+RUN chmod 755 /workdir/start_gunicorn.sh
+ENTRYPOINT ["/bin/bash", "/workdir/start_gunicorn.sh"]
