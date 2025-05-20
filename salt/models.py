@@ -5,19 +5,22 @@ from mirage import fields
 from django.contrib.auth.models import User
 # Create your models here.
 
+master_type_choices = {
+    (0, "saltstack"),
+    (1, "ansible"),
+
+}
+
 class salt_master(models.Model):
     """
     SaltMaster配置
     """
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=300)
+    type = models.IntegerField(choices=master_type_choices, default=0)
     host = models.CharField("Salt Master", max_length=200)
-    user = fields.EncryptedCharField(
-        max_length=200, default="", blank=True
-    )
-    password = fields.EncryptedCharField(
-        max_length=300, default="", blank=True
-    )
+    user = fields.EncryptedCharField(max_length=200, default="")
+    password = fields.EncryptedTextField(default="")
     minion_name = models.CharField(max_length=300, default="")
     file_roots = models.CharField(max_length=300, default="")
     sftp_port = models.IntegerField(default=22)
@@ -33,6 +36,7 @@ class salt_master(models.Model):
 template_type_choices = {
     (0, "state"),
     (1, "shell"),
+    (2, "playbook"),
 
 }
 
@@ -42,11 +46,25 @@ class shell_template(models.Model):
     """
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=500)
+    main_dir = models.CharField(max_length=300, default="")
     main_content = models.TextField(default="")
+    extra_vars = models.TextField(default="")
     func_content = models.TextField(default="")
     type = models.IntegerField(choices=template_type_choices, default=1)
     file_name = models.CharField(max_length=100, default="")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    history = models.IntegerField(default=0)
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    update_time = models.DateTimeField("更新时间", auto_now=True)
+
+class sub_template(models.Model):
+    """
+    入口内容相关的子模板
+    """
+    name = models.ForeignKey(shell_template, on_delete=models.CASCADE, null=True, default="")
+    func_dir = models.CharField(max_length=300, default="")
+    func_content = models.TextField(default="")
+    history = models.IntegerField(default=0)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
@@ -115,6 +133,7 @@ class host_group(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=300)
     host_num = models.IntegerField(default=0)
+    type = models.IntegerField(choices=master_type_choices, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
@@ -135,6 +154,8 @@ task_status_choices = {
     (2, "已完成"),
     (3, "执行中"),
     (4, "被拒绝"),
+    (5, "已撤回"),
+    (6, "被终止"),
 
 }
 
@@ -152,6 +173,7 @@ class task_list(models.Model):
     related_schedule = models.IntegerField(default=0)
     approve_result = models.TextField(default="")
     approver = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="", related_name="approver_task_list")
+    repeat_num = models.IntegerField(default=1)
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)
 
@@ -194,5 +216,15 @@ class transfer_file(models.Model):
     name = models.CharField(max_length=300, default="", unique=True)
     dest_dir = models.JSONField(default=dict)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    type = models.IntegerField(choices=master_type_choices, default=0)
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    update_time = models.DateTimeField("更新时间", auto_now=True)
+
+class chat_group(models.Model):
+    """
+    工单任务状态更新群
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
+    chat_id = models.CharField(max_length=200, default="")
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     update_time = models.DateTimeField("更新时间", auto_now=True)

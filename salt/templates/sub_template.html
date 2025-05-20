@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div id="content" xmlns="http://www.w3.org/1999/html">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">关联子内容</h1>
+
+        <!-- 模态框 -->
+        <div class="modal fade" id="shellModal" tabindex="-1" role="dialog" aria-labelledby="shellModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="shellModalLabel">填写内容</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                <form>
+                    <div class="form-group d-flex align-items-center">
+                        <label for="func_dir" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;路径</label>
+                        <div class="font-weight-bold">&nbsp;/&nbsp;</div>
+                        <input type="text" class="form-control w-85" id="func_dir" placeholder="请输入目录或文件名">
+                    </div>
+                    <br>
+                    <div class="form-group d-flex align-items-center">
+                        <label style="word-wrap: break-word;" class="mr-3 w-25"><span class="text-danger">*</span>&nbsp;内容</label>
+                        <div id="func_content" class="w-100" style="height: 650px; border: 1px solid #ccc;"></div>
+                    </div>
+
+                  <div style="display: none;">
+                    <label for="input6" class="mr-3 w-25"></label>
+                    <input type="text" class="form-control w-75" id="input6" placeholder="">
+                  </div>
+                </form>
+                  <label class="mr-3 w-100"><span id="msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="create_sub_st()">提交</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 确认模态框 -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!-- 模态框头部 -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">确认操作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- 模态框主体内容 -->
+              <div class="modal-body">
+                您确定要进行此操作吗？该操作无法撤销
+              </div>
+              <div class="modal-body">
+                <label class="mr-3 w-100"><span id="confirm_msg" class="text-danger"></span></label>
+              </div>
+              <!-- 模态框底部 -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmButton" onclick="del_sub_st()">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <button id="add_salt" class="btn btn-info btn-sm mr-2" onclick="clear_rowText()"> &nbsp;添&nbsp;加&nbsp; </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>入口主文件名称</th>
+                                <th>关联子文件名称</th>
+                                <th style="display: none">内容</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>入口主文件名称</th>
+                                <th>关联子文件名称</th>
+                                <th style="display: none">内容</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td></td>
+                                <td style="display: none"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% for each_sub_st in sub_st %}
+                            <tr id="tr-{{ each_sub_st.id }}">
+                                <td>{{ main_name }}</td>
+                                <td>{{ each_sub_st.func_dir }}</td>
+                                <td style="display: none">{{ each_sub_st.func_content }}</td>
+                                <td>{{ each_sub_st.update_time }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm" onclick="get_rowText(this)" data-file-name="{{ each_sub_st.file_name }}" data-row-id="tr-{{ each_sub_st.id }}">编辑</button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="get_rowid(this)" id="{{ each_sub_st.id }}">删除</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <div id="load" class="position-fixed w-100 h-100"
+     style="top: 0; left: 0; background: rgba(255, 255, 255, 0.2); z-index: 1100; display: none;
+            justify-content: center;
+            align-items: center;">
+        <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem; position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem;">
+        <span class="sr-only">加载中...</span>
+    </div>
+<script src="{% static 'js/ace.js' %}"></script>
+
+{% endblock content %}
+{% block js %}
+    <script type="text/javascript">
+        // 设置加载图片
+        function loading() {
+            document.getElementById('load').style.display = 'flex';
+        };
+
+        // 移除加载图片
+        function loading_remove() {
+            document.getElementById('load').style.display = 'none';
+        };
+
+        // 移除reminder
+        function reminder_remove() {
+            var reminder_msg = document.getElementById("msg");
+            reminder_msg.innerHTML = '';
+        };
+
+        // 初始化ace编辑器
+        let editor;
+        function init_ace() {
+            if (!editor) {
+                func_content = ace.edit("func_content");
+                func_content.setTheme("ace/theme/textmate");
+                func_content.session.setMode("ace/mode/yaml");
+                func_content.setOptions({
+                    fontSize: "14px",
+                    wrap: true,
+                });
+
+            }
+            func_content.resize(); // 重新计算布局
+        }
+
+        //创建sub template
+        function create_sub_st() {
+            reminder_remove()
+            var reminder_msg = document.getElementById("msg");
+
+            $.ajax({
+                type: "post",
+                url: "/create_sub_st/",
+                dataType: "json",
+                data: {
+                    st_id: (window.location.href.match(/\/(\d+)\/$/) || [])[1],
+                    func_dir: $("#func_dir").val(),
+                    func_content: func_content.getValue(),
+                    input6: $("#input6").val(),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#shellModal').modal('hide');
+                        location.reload();
+                    } else {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+
+        // 点击删除按钮时设置确认按钮的
+        function get_rowid(button) {
+                reminder_remove();
+                // 设置确认按钮的 data-id 属性
+                document.querySelector('#confirmButton').setAttribute('data-id', button.id);
+
+                // 显示确认框
+                $('#confirmModal').modal('show');
+        }
+
+        // 编辑按钮时填充内容
+        function get_rowText(button) {
+            // 清除可能的提示信息
+            reminder_remove();
+            // 初始化ace编辑器
+            init_ace();
+            func_content.setValue("");
+            // 获取当前编辑行的所有列
+            const rowId = button.getAttribute('data-row-id');
+            const row = document.getElementById(rowId);
+            const dir = row.querySelector('td:nth-child(2)').textContent;
+            const func = row.querySelector('td:nth-child(3)').innerHTML.trim().replace(/<br\s*\/?>/g, '\n');
+            const id = rowId.slice(3,);
+            // 对前两行赋值
+            document.querySelector('#func_dir').value=dir;
+            func_content.setValue(decodeHTML(func));
+
+            document.querySelector('#input6').value=id;
+
+            setTimeout(() => {
+                $('#shellModal').modal('show');
+            }, 200);
+        };
+
+        // 避免特殊字符被转译html
+        function decodeHTML(html) {
+            var textArea = document.createElement("textarea");
+            textArea.innerHTML = html;
+            return textArea.value;
+        }
+
+        // 添加时清空内容
+        function clear_rowText() {
+            reminder_remove();
+
+            document.querySelector('#func_dir').value="";
+            init_ace();
+            func_content.setValue("");
+            document.querySelector('#input6').value="";
+            init_ace()
+
+            // 显示确认框
+            $('#shellModal').modal('show');
+        };
+
+        //删除sub template
+        function del_sub_st() {
+            reminder_remove();
+            var reminder_msg = document.getElementById("confirm_msg");
+            $.ajax({
+                type: "post",
+                url: "/del_sub_st/",
+                dataType: "json",
+                data: {
+                    st_id: document.querySelector('#confirmButton').getAttribute('data-id'),
+                },
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.status === 0) {
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                        $('#confirmModal').modal('hide');
+                        location.reload();
+                    } else {
+
+                        reminder_msg.innerHTML = 'Reminder: ' + data.msg;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
+                }
+            });
+        }
+    </script>
+{% endblock %}

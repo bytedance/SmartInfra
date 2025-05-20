@@ -9,17 +9,18 @@ services:
     volumes:
       - "./mysql:/var/lib/mysql"
       - "./schema.sql:/docker-entrypoint-initdb.d/schema.sql"
-      - "./download:/workdir/smartinfra/download"
     environment:
       MYSQL_DATABASE: smartinfra
       MYSQL_ROOT_PASSWORD: PASSWORD
 
-  smartsalt:
-    image: 349317925/smartinfra:v1.1
-    container_name: smartsalt
+  smartinfra:
+    image: 349317925/smartinfra:latest
+    container_name: smartinfra
     restart: always
     ports:
       - "80:80"
+    volumes:
+      - "./download:/workdir/smartinfra/download"
     env_file:
       - ../.env
     depends_on:

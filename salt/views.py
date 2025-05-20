@@ -28,8 +28,11 @@ SOFTWARE.
 import datetime
 import random, re
 from datetime import timedelta
+
+import yaml
+
 from .common.audit_action import audit_action
-from .common.permission_ctrl import superuser_required
+from .common.permission_ctrl import superuser_required, st_access_required
 
 import time, os, requests, base64
 
@@ -49,6 +52,7 @@ from django.db.models import Count, Sum, Q
 from django.shortcuts import render, redirect
 from .models import *
 from .common.salt_api import SaltAPI
+from .common.notify_lark import send_lark_msg
 from .common.parse_shell import parse_content
 from django_q.tasks import async_task
 from .tasks.hosts_list import register_hosts
@@ -251,7 +255,7 @@ def list_masters(request):
     :param request:
     :return:
     """
-    all_masters = salt_master.objects.all()
+    all_masters = salt_master.objects.filter(type=0)
     return render(request, "salt_masters.html", {"all_masters": all_masters})
 
 @login_required()
@@ -270,14 +274,15 @@ def create_salt(request):
     sftp_port = request.POST.get("input9")
     sftp_user = request.POST.get("input10")
     sftp_password = request.POST.get("input11")
+    master_type = int(request.POST.get("master_type"))
 
     create_result = {"status":0, "msg":"ok"}
     file_roots_pattern = r'^[a-zA-Z0-9/_-]+$'
 
     try:
 
-        if (salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots
-                and sftp_port and sftp_user and salt_password and bool(re.match(file_roots_pattern, file_roots))):
+        if (master_type==0 and salt_name and salt_desp and salt_host and salt_user and salt_password and minion_name and file_roots
+                and sftp_port and sftp_user and bool(re.match(file_roots_pattern, file_roots))):
             if salt_id:
                 salt_master.objects.filter(id=salt_id).update(name=salt_name, description=salt_desp,
                                                               host=salt_host, user=salt_user, password=salt_password,
@@ -286,7 +291,18 @@ def create_salt(request):
             else:
                 salt_master.objects.create(name=salt_name, description=salt_desp, host=salt_host, user=salt_user,
                                            password=salt_password, minion_name=minion_name, file_roots=file_roots,
-                                           sftp_port=sftp_port, sftp_user=sftp_user, sftp_password=sftp_password)
+                                           sftp_port=sftp_port, sftp_user=sftp_user, sftp_password=sftp_password, type=master_type)
+
+        elif (master_type==1 and salt_name and salt_desp and salt_user and file_roots
+                and salt_password and sftp_port and bool(re.match(file_roots_pattern, file_roots))):
+            if salt_id:
+                salt_master.objects.filter(id=salt_id).update(name=salt_name, description=salt_desp,
+                                                              user=salt_user, password=salt_password,
+                                                              file_roots=file_roots, sftp_port=sftp_port)
+            else:
+                salt_master.objects.create(name=salt_name, description=salt_desp, host="", user=salt_user,
+                                           password=salt_password, minion_name="", file_roots=file_roots,
+                                           sftp_port=sftp_port, sftp_user="", sftp_password="", type=master_type)
 
         elif file_roots and not bool(re.match(file_roots_pattern, file_roots)):
             create_result["status"] = 1
@@ -404,9 +420,9 @@ def list_shell_template(request):
     :return:
     """
     if request.user.is_superuser:
-        all_shell = shell_template.objects.all()
+        all_shell = shell_template.objects.filter(history=0).all()
     else:
-        all_shell = shell_template.objects.filter(user=request.user)
+        all_shell = shell_template.objects.filter(user=request.user, history=0)
 
     state_home = settings.STATE_HOME
 
@@ -421,36 +437,74 @@ def create_shell_template(request):
     :param request:
     :return:
     """
-    st_name = request.POST.get("input1")
-    st_desp = request.POST.get("input2")
+    st_name = request.POST.get("st_name")
+    st_des = request.POST.get("st_des")
+    main_dir = request.POST.get("main_dir")
     editor_shell_content = request.POST.get("editor_shell_content")
     editor_sls_content = request.POST.get("editor_sls_content")
     editor_ps1_content = request.POST.get("editor_ps1_content")
+    main_content = request.POST.get("main_content")
+    extra_vars = request.POST.get("extra_vars")
     st_id = request.POST.get("input6")
     file_name = request.POST.get("file_name")
+    check_type = int(request.POST.get("check_type"))
+
+    # check playbook pattern
+    check_result = {"status": 0, "msg": "ok"}
+    if editor_sls_content or editor_ps1_content or main_content:
+        try:
+            yaml.safe_load(editor_sls_content)
+            yaml.safe_load(main_content)
+        except Exception as e:
+            logger.error(traceback.format_exc())
+            check_result["status"] = 1
+            check_result["msg"] = "执行内容不符合yaml格式要求，请检查"
+            return HttpResponse(json.dumps(check_result), content_type="application/json")
 
     create_result = {"status":0, "msg":"ok"}
     try:
-        # file_name = str(request.user) + ''.join(random.choices('0123456789', k=7)) + time.strftime(
-        #         "%Y%m%d%H%M%S", time.localtime())
-        if st_name and st_desp and file_name and (editor_shell_content or editor_sls_content):
+        if st_name and st_des and (editor_shell_content or (editor_sls_content and file_name) or (main_dir and main_content)):
             if st_id:
-                if editor_shell_content:
-                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_desp, main_content=editor_shell_content,
-                                                                   type=1, file_name=file_name, update_time=datetime.datetime.now(),
-                                                                   func_content="")
+                current_st = shell_template.objects.get(id=st_id)
+                current_st.id = None
+                current_st.name = st_name+"-"+datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                current_st.history = 1
+                current_st.save()
+
+                if check_type == 0:
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir="",
+                                                                   main_content=editor_sls_content,
+                                                                   func_content=editor_ps1_content, extra_vars="",
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
+                elif check_type == 1:
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir="",
+                                                                   main_content=editor_shell_content,
+                                                                   func_content="", extra_vars="",
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
                 else:
-                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_desp,
-                                                                   main_content=editor_sls_content, func_content=editor_ps1_content,
-                                                                   type=0, file_name=file_name, update_time=datetime.datetime.now())
+                    shell_template.objects.filter(id=st_id).update(name=st_name, description=st_des, main_dir=main_dir,
+                                                                   main_content=main_content,
+                                                                   func_content="", extra_vars=extra_vars,
+                                                                   type=int(check_type), file_name=file_name,
+                                                                   update_time=datetime.datetime.now())
             else:
-                if editor_shell_content:
-                    shell_template.objects.create(name=st_name, description=st_desp, main_content=editor_shell_content,
-                                                                   type=1, file_name=file_name, func_content="", user=request.user)
+                if check_type == 0:
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir="",
+                                                  main_content=editor_sls_content,
+                                                  func_content=editor_ps1_content, extra_vars="",
+                                                  type=int(check_type), file_name=file_name, user=request.user)
+                elif check_type == 1:
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir="",
+                                                  main_content=editor_shell_content,
+                                                  func_content="", extra_vars="",
+                                                  type=int(check_type), file_name=file_name, user=request.user)
                 else:
-                    shell_template.objects.create(name=st_name, description=st_desp,
-                                                                   main_content=editor_sls_content, func_content=editor_ps1_content,
-                                                                   type=0, file_name=file_name, user=request.user)
+                    shell_template.objects.create(name=st_name, description=st_des, main_dir=main_dir,
+                                                  main_content=main_content,
+                                                  func_content="", extra_vars=extra_vars,
+                                                  type=int(check_type), file_name=file_name, user=request.user)
         else:
             create_result["status"]=1
             create_result["msg"]="不完整的输入参数，请补全"
@@ -477,6 +531,66 @@ def del_shell_template(request):
         del_result["msg"]=str(e)
 
     return HttpResponse(json.dumps(del_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@st_access_required
+@csrf_exempt
+def list_sub_st(request, id):
+
+    sub_st = sub_template.objects.filter(name=shell_template.objects.get(id=id), history=0)
+    main_name = shell_template.objects.get(id=id).name
+    return render(request, "sub_template.html", {"sub_st": sub_st, "main_name": main_name})
+
+
+@login_required()
+@audit_action
+@csrf_exempt
+def create_sub_st(request):
+    st_id = request.POST.get("st_id")
+    func_dir = request.POST.get("func_dir")
+    func_content = request.POST.get("func_content")
+    edit_st_id = request.POST.get("input6")
+    create_result = {"status": 0, "msg": "ok"}
+    try:
+        if st_id and func_dir and func_content:
+            if edit_st_id:
+                current_st = sub_template.objects.get(id=edit_st_id)
+                current_st.id = None
+                current_st.history = 1
+                current_st.save()
+
+                sub_template.objects.filter(id=edit_st_id).update(name=shell_template.objects.get(id=st_id), func_dir=func_dir,
+                                                             func_content=func_content, update_time=datetime.datetime.now())
+            else:
+                sub_template.objects.create(name=shell_template.objects.get(id=st_id), func_dir=func_dir, func_content=func_content)
+        else:
+            create_result["status"] = 1
+            create_result["msg"] = "不完整的输入参数，请补全"
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        create_result["status"] = 1
+        create_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(create_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def del_sub_st(request):
+    st_id = request.POST.get("st_id")
+
+    del_result = {"status":0, "msg":"ok"}
+    try:
+        sub_template.objects.get(id=st_id).delete()
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        del_result["status"]=1
+        del_result["msg"]=str(e)
+
+    return HttpResponse(json.dumps(del_result), content_type="application/json")
+
 
 @login_required()
 @superuser_required
@@ -854,21 +968,27 @@ def list_host_group(request):
     """
     current_user_salt = []
     current_user_salt_object = []
-    if request.user.is_superuser:
-        all_host_group = host_group.objects.all()
-    else:
-        all_host_group = host_group.objects.filter(user=User.objects.get(username=request.user)).all()
-    current_user_rgs = user_relationship.objects.filter(user=User.objects.get(username=request.user)).values("rg")
-    for each_user_rg in current_user_rgs:
-        rg_salt = rg_relationship.objects.filter(rg=resource_group.objects.get(id=each_user_rg["rg"])).values("salt")
-        for each_rg_salt in rg_salt:
-            current_user_salt.append(each_rg_salt["salt"])
-    for each_user_salt in set(current_user_salt):
-        current_user_salt_object.append(salt_master.objects.get(id=each_user_salt))
-    hosts_limited = hosts.objects.filter(salt__in=current_user_salt_object)
-    user_salt_info = salt_master.objects.filter(id__in=set(current_user_salt))
 
-    return render(request, "host_group.html", {"user_salt_info": user_salt_info, "all_host_group": all_host_group, "hosts_limited": hosts_limited})
+    try:
+        if request.user.is_superuser:
+            all_host_group = host_group.objects.all()
+        else:
+            all_host_group = host_group.objects.filter(user=User.objects.get(username=request.user)).all()
+        current_user_rgs = user_relationship.objects.filter(user=User.objects.get(username=request.user)).values("rg")
+        for each_user_rg in current_user_rgs:
+            rg_salt = rg_relationship.objects.filter(rg=resource_group.objects.get(id=each_user_rg["rg"])).values("salt")
+            for each_rg_salt in rg_salt:
+                current_user_salt.append(each_rg_salt["salt"])
+        for each_user_salt in set(current_user_salt):
+            current_user_salt_object.append(salt_master.objects.get(id=each_user_salt))
+        hosts_limited = hosts.objects.filter(salt__in=current_user_salt_object)
+        user_salt_info = salt_master.objects.filter(id__in=set(current_user_salt), type=0)
+        user_an_info = salt_master.objects.filter(id__in=set(current_user_salt), type=1)
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+
+    return render(request, "host_group.html", {"user_salt_info": user_salt_info, "user_an_info": user_an_info, "all_host_group": all_host_group, "hosts_limited": hosts_limited})
 
 @login_required()
 @audit_action
@@ -880,6 +1000,8 @@ def create_host_group(request):
     selected_salt = set(request.POST.getlist("selectedValues[]"))
     selected_host = set(request.POST.getlist("selectedHostValues[]"))
     selected_host_with_upload = request.POST.getlist("upload_label")
+    upload_hg_executed = int(request.POST.get("upload_hg_executed"))
+    an_master = request.POST.get("an_master")
 
     create_result = {"status":0, "msg":"ok"}
     include_num = 0
@@ -932,10 +1054,16 @@ def create_host_group(request):
                 with open(settings.DOWNLOAD_ROOT+"up-"+selected_host_with_upload[0], 'r') as file:
                     content = file.readlines()
                 with transaction.atomic():
-                    host_group.objects.create(name=name, description=description, host_num=len(content), user=User.objects.get(username=request.user))
-                    for each_host in content:
-                        host_group_minion.objects.create(host_group_name=host_group.objects.get(name=name),
-                                                         minion_name=hosts.objects.get(name=each_host[:-1], status=0).name)
+                    if upload_hg_executed == 0:
+                        host_group.objects.create(name=name, description=description, host_num=len(content), user=User.objects.get(username=request.user))
+                        for each_host in content:
+                            host_group_minion.objects.create(host_group_name=host_group.objects.get(name=name),
+                                                             minion_name=hosts.objects.get(name=each_host.strip(), status=0).name)
+                    else:
+                        host_group.objects.create(name=name, description=description, host_num=len(content), type=1, user=User.objects.get(username=request.user))
+                        for each_host in content:
+                            host_group_minion.objects.create(host_group_name=host_group.objects.get(name=name),
+                                                                 minion_name=each_host.strip(), salt_name=salt_master.objects.get(id=an_master))
 
         else:
             create_result["status"]=1
@@ -966,6 +1094,7 @@ def read_file(request):
     try:
         if request.method == 'POST':
             file = request.FILES.get('file')
+            upload_hg_executed = int(request.POST.get("upload_hg_executed"))
             up_hosts = 0
             non_up_hosts = 0
             host_group_filename = str(request.user) + ''.join(random.choices('0123456789', k=7)) + time.strftime(
@@ -977,11 +1106,19 @@ def read_file(request):
                     if not each_minion:
                         break
 
-                    filter_host = hosts.objects.filter(name__icontains=each_minion, status=0, salt__in=current_user_salt_object)
+                    if upload_hg_executed == 0:
+                        filter_host = hosts.objects.filter(name__icontains=each_minion, status=0, salt__in=current_user_salt_object)
+                    else:
+                        filter_host = each_minion
+
                     if filter_host:
                         up_hosts = up_hosts+1
-                        with open(settings.DOWNLOAD_ROOT+"up-"+host_group_filename, 'a+') as up_hgf:
-                            up_hgf.write(filter_host.first().name+'\n')
+                        if upload_hg_executed == 0:
+                            with open(settings.DOWNLOAD_ROOT+"up-"+host_group_filename, 'a+') as up_hgf:
+                                up_hgf.write(filter_host.first().name+'\n')
+                        else:
+                            with open(settings.DOWNLOAD_ROOT+"up-"+host_group_filename, 'a+') as up_hgf:
+                                up_hgf.write(filter_host+'\n')
                     else:
                         non_up_hosts = non_up_hosts+1
                         with open(settings.DOWNLOAD_ROOT+host_group_filename, 'a+') as hgf:
@@ -1052,7 +1189,7 @@ def show_selected_host_group(request):
 
     try:
         if host_group_minion.objects.filter(
-            host_group_name=host_group.objects.get(name=host_group_name)).values("salt_name").first()["salt_name"]:
+            host_group_name=host_group.objects.get(name=host_group_name), minion_name=""):
             selected_host_group = host_group_minion.objects.filter(
                 host_group_name=host_group.objects.get(name=host_group_name)).values("host_group_name__name",
                                                                                      "salt_name__name")
@@ -1072,9 +1209,12 @@ def show_selected_host_group(request):
             # put all minions in list
             selected_minions_salts = host_group_minion.objects.filter(
                 host_group_name=host_group.objects.get(name=host_group_name)).values("minion_name")
+            selected_minions_salts_list["type"] = 1
+            # confirm that these nodes are from salt or ansible
+            if host_group.objects.get(name=host_group_name).type == 1:
+                selected_minions_salts_list["type"] = 2
+
             for each_selected_minions_salts in selected_minions_salts:
-                selected_minions_salts_list["type"] = 1
-                # minion_info = hosts.objects.get(name=each_selected_minions_salts["minion_name"])
                 selected_minions_salts_list["content"].append({"id": each_selected_minions_salts["minion_name"],
                                                                "name": each_selected_minions_salts["minion_name"]})
 
@@ -1145,10 +1285,10 @@ def create_shell_task(request):
         user_salt_info = salt_master.objects.filter(id__in=set(current_user_salt))
 
         if request.user.is_superuser:
-            all_shell = shell_template.objects.all().values("id", "name")
+            all_shell = shell_template.objects.filter(history=0).values("id", "name")
             all_transfer_file = transfer_file.objects.all().values("id", "name")
         else:
-            all_shell = shell_template.objects.filter(user=request.user).values("id", "name")
+            all_shell = shell_template.objects.filter(user=request.user, history=0).values("id", "name")
             all_transfer_file = transfer_file.objects.filter(user=request.user).values("id", "name")
 
         return render(request, "remote_shell.html", {"user_salt_info": user_salt_info, "all_host_group": all_host_group,
@@ -1163,11 +1303,19 @@ def create_shell_task(request):
         exec_shell_template = request.POST.get("exec_shell_template")
         exec_transfer_file = request.POST.get("exec_transfer_file")
         task_name = request.POST.get("task_name")
+        repeat_num = request.POST.get("repeat_num")
 
         try:
-            if (exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0") and hg_id and task_name:
+            if ((exec_content or exec_shell_template or exec_transfer_file) and (immediate_checked!="0" or schedule_checked!="0")
+                    and hg_id and task_name and repeat_num):
                 # Encapsulate exec_content to dict, and 0 stands for int, 1 stands for str
                 encap_exec_content = {"content": base64.b64encode(exec_content.encode()).decode() if exec_content is not None else exec_content, "type": 1}
+
+                # check if the repeat_num is an integer
+                # if not bool(re.match(r'^[-+]?\d+$', repeat_num)):
+                #     create_result["status"] = 1
+                #     create_result["msg"] = "执行频率选项必须是整数, 请重新输入"
+                #     raise ValueError(create_result["msg"])
 
                 # confirm execute type, include immediate and schedule
                 if immediate_checked == "0":
@@ -1185,12 +1333,21 @@ def create_shell_task(request):
                     encap_exec_content["type"] = 0
                     exec_content = shell_template.objects.get(id=exec_shell_template).main_content
 
+                # check the type(salt or ansible) of host group
+                if host_group.objects.get(id=hg_id).type == 0:
+                    run_command_func = "salt.tasks.exec_task.exec_remote_shell"
+                    copy_file_func = "salt.tasks.exec_task.exec_transfer_file"
+                else:
+                    run_command_func = "ansible.tasks.exec_task.exec_remote_shell"
+                    copy_file_func = "ansible.tasks.exec_task.exec_transfer_file"
+
                 # parse exe_content to confirm that if it matched read-only policy
                 parse_result = parse_content(exec_content)
                 if parse_result["status"] == 0:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
-                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user), status=1)
+                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user),
+                                                            status=1, repeat_num=int(repeat_num))
 
                         if exec_type == "1":
                             next_run_time = new_task.update_time + timedelta(minutes=2)
@@ -1198,22 +1355,24 @@ def create_shell_task(request):
                         else:
                             cron_format = croniter(schedule_checked, timezone.now())
                             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
-                        new_schedule = Schedule.objects.create(func="salt.tasks.exec_task.exec_remote_shell",
+                        new_schedule = Schedule.objects.create(func=run_command_func,
                                                 args="(%d, '%s', '%s')" %(int(hg_id), json.dumps(encap_exec_content), str(request.user)),
                                                 schedule_type=Schedule.CRON,
                                                 cron=schedule_checked,
-                                                repeats=1,
+                                                repeats=int(repeat_num),
                                                 next_run=next_run_time,
                                                 hook="salt.tasks.q_task.remote_shell_task",
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
-                        task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id, approver=request.user)
-
+                        task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id, approver=request.user, approve_result = "自动通过")
+                    send_lark_msg(task_name=task_name, current_user=str(request.user),
+                                  message="已成功创建, 自动审批通过, 进入待执行状态, 请及时关注任务状态变化")
                 elif (exec_content or exec_shell_template) and not exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content=exec_content, execute_policy=exec_type,
-                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user), status=0)
-                        new_schedule = Schedule.objects.create(func="salt.tasks.exec_task.exec_remote_shell",
+                                                 host_group_name=host_group.objects.get(id=hg_id), user=User.objects.get(username=request.user),
+                                                            status=0, repeat_num=int(repeat_num))
+                        new_schedule = Schedule.objects.create(func=run_command_func,
                                                 args="(%d, '%s', '%s')" %(int(hg_id), json.dumps(encap_exec_content), str(request.user)),
                                                 schedule_type=Schedule.CRON,
                                                 cron="",
@@ -1222,13 +1381,15 @@ def create_shell_task(request):
                                                 kwargs=json.dumps({"new_task_id": new_task.id})
                                                 )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                    send_lark_msg(task_name=task_name, current_user=str(request.user),
+                                  message="已成功创建, 等待被审批, 请及时关注任务状态变化")
                 elif not (exec_content and exec_shell_template) and exec_transfer_file:
                     with transaction.atomic():
                         new_task = task_list.objects.create(name=task_name, execute_content='transfer file: '+transfer_file.objects.get(id=exec_transfer_file).name,
                                                             execute_policy=exec_type,
                                                             host_group_name=host_group.objects.get(id=hg_id),
-                                                            user=User.objects.get(username=request.user), status=0)
-                        new_schedule = Schedule.objects.create(func="salt.tasks.exec_task.exec_transfer_file",
+                                                            user=User.objects.get(username=request.user), status=0, repeat_num=int(repeat_num))
+                        new_schedule = Schedule.objects.create(func=copy_file_func,
                                                                args="(%d, '%s', '%s')" % (
                                                                int(hg_id), int(exec_transfer_file),
                                                                str(request.user)),
@@ -1239,6 +1400,7 @@ def create_shell_task(request):
                                                                kwargs=json.dumps({"new_task_id": new_task.id})
                                                                )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
+                    send_lark_msg(task_name=task_name, current_user=str(request.user), message="已成功创建, 等待被审批, 请及时关注任务状态变化")
 
             else:
                 create_result["status"] = 1
@@ -1289,21 +1451,88 @@ def approve_task(request):
         update_time = task_info.update_time
         execute_policy = task_info.execute_policy
         schedule_id = task_info.related_schedule
+        repeat_num = task_info.repeat_num
 
         if execute_policy == "1":
             execute_time = update_time + timedelta(minutes=2)
-            Schedule.objects.filter(id=schedule_id).update(next_run=execute_time, repeats=1, cron="* * * * *")
+            Schedule.objects.filter(id=schedule_id).update(next_run=execute_time, repeats=repeat_num, cron="* * * * *")
         else:
             cron_format = croniter(execute_policy, timezone.now())
             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
-            Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=1, cron=execute_policy)
+            Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=repeat_num, cron=execute_policy)
 
+        send_lark_msg(task_name=task_info.name, current_user=str(request.user), message="已被审批通过, 进入待执行状态")
     except Exception as e:
         logger.error(traceback.format_exc())
         approve_result["status"] = 1
         approve_result["msg"] = str(e)
 
     return HttpResponse(json.dumps(approve_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def withdraw_task(request):
+    """
+    撤回任务工单
+    :param request:
+    :return:
+    """
+    task_id = request.POST.get("task_id")
+
+    withdraw_result = {"status": 0, "msg": "ok"}
+    try:
+        task_info = task_list.objects.get(id=int(task_id))
+        if task_info.status == 0:
+            task_info.status = 5
+            task_info.save()
+
+            send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                          message="已被撤回")
+        else:
+            withdraw_result["status"] = 1
+            withdraw_result["msg"] = "当前工单状态不支持被撤回"
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        withdraw_result["status"] = 1
+        withdraw_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(withdraw_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def stop_task(request):
+    """
+    终止任务工单
+    :param request:
+    :return:
+    """
+    task_id = request.POST.get("task_id")
+
+    stop_result = {"status": 0, "msg": "ok"}
+    try:
+        with transaction.atomic():
+            task_info = task_list.objects.get(id=int(task_id))
+            if task_info.status == 1 or task_info.status == 3:
+                task_info.status = 6
+                task_info.save()
+
+                send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                              message="已被终止")
+            else:
+                stop_result["status"] = 1
+                stop_result["msg"] = "当前工单状态不支持被终止"
+
+            Schedule.objects.filter(id=task_info.related_schedule).update(repeats=0)
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        stop_result["status"] = 1
+        stop_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(stop_result), content_type="application/json")
 
 @login_required()
 @superuser_required
@@ -1330,6 +1559,8 @@ def reject_task(request):
             task_info.approver = request.user
             task_info.save()
 
+            send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                          message="已被拒绝，请及时联系管理员")
         except Exception as e:
             logger.error(traceback.format_exc())
             reject_result["status"] = 1
@@ -1561,6 +1792,7 @@ def upload_transfer_file(request):
     if request.method == 'POST':
         upload_file = request.FILES.get('file')
         dest_dir = request.POST.get('dest_dir')
+        transfer_type = int(request.POST.get('transfer_type'))
 
         try:
             json.loads(dest_dir)
@@ -1572,35 +1804,58 @@ def upload_transfer_file(request):
 
         if upload_file.size > int(settings.UPLOAD_FILE_SIZE) * 1024 * 1024:
             upload_result["status"] = 1
-            upload_result["msg"] = "文件大小不能超过3Mb, 请检查"
+            upload_result["msg"] = "文件大小不能超过 %d MB, 请检查" %int(settings.UPLOAD_FILE_SIZE)
         else:
-            try:
-                file_name = upload_file.name
-                file_name = ''.join(random.choices('0123456789', k=7)) + time.strftime(
-                "%Y%m%d%H%M%S", time.localtime())+'_'+file_name
-                with transaction.atomic():
-                    transfer_file.objects.create(name=file_name, dest_dir=dest_dir, user=User.objects.get(username=request.user))
+            if transfer_type == 0:
+                try:
+                    file_name = upload_file.name
+                    file_name = ''.join(random.choices('0123456789', k=7)) + time.strftime(
+                    "%Y%m%d%H%M%S", time.localtime())+'_'+file_name
+                    with transaction.atomic():
+                        transfer_file.objects.create(name=file_name, dest_dir=dest_dir, user=User.objects.get(username=request.user), type=0)
 
-                    for each_sftp in salt_master.objects.all().values("host", "sftp_port", "sftp_user", "sftp_password", "file_roots"):
-                        sftp_storage = SFTPStorage(
-                            host = each_sftp["host"].split("//")[1].split(":")[0],
-                            root_path = each_sftp["file_roots"]+'/'+settings.SFTP_STORAGE_ROOT,
-                            params ={
-                                'username': each_sftp["sftp_user"],
-                                'password': each_sftp["sftp_password"],
-                                'port': each_sftp["sftp_port"],
-                                'timeout': 60,
-                            },
-                            interactive = settings.SFTP_STORAGE_INTERACTIVE,
+                        for each_sftp in salt_master.objects.filter(type=0).values("host", "sftp_port", "sftp_user", "sftp_password", "file_roots"):
+                            sftp_storage = SFTPStorage(
+                                host = each_sftp["host"].split("//")[1].split(":")[0],
+                                root_path = each_sftp["file_roots"]+'/'+settings.SFTP_STORAGE_ROOT,
+                                params ={
+                                    'username': each_sftp["sftp_user"],
+                                    'password': each_sftp["sftp_password"],
+                                    'port': each_sftp["sftp_port"],
+                                    'timeout': 60,
+                                },
+                                interactive = settings.SFTP_STORAGE_INTERACTIVE,
 
-                        )
-                        sftp_storage.save(file_name, upload_file)
-                        upload_result["msg"] = "文件上传成功"
+                            )
+                            sftp_storage.save(file_name, upload_file)
+                    upload_result["msg"] = "文件上传成功"
 
-            except Exception as e:
-                logger.error(traceback.format_exc())
-                upload_result["status"] = 1
-                upload_result["msg"] = str(each_sftp["host"].split("//")[1].split(":")[0])+" SaltMaster主机上传文件发生异常: "+str(e)
+                except Exception as e:
+                    logger.error(traceback.format_exc())
+                    upload_result["status"] = 1
+                    upload_result["msg"] = str(each_sftp["host"].split("//")[1].split(":")[0])+" SaltMaster主机上传文件发生异常: "+str(e)
+            else:
+                try:
+                    file_name = upload_file.name
+                    file_name = ''.join(random.choices('0123456789', k=7)) + time.strftime(
+                        "%Y%m%d%H%M%S", time.localtime()) + '_' + file_name
+                    with transaction.atomic():
+                        transfer_file.objects.create(name=file_name, dest_dir=dest_dir,
+                                                     user=User.objects.get(username=request.user), type=1)
+
+                        for each_master in salt_master.objects.filter(type=1).values("file_roots"):
+                            os.makedirs(each_master["file_roots"], exist_ok=True)
+                            save_path = os.path.join(each_master["file_roots"], file_name)
+                            with open(save_path, 'wb+') as save_file:
+                                for chunk in upload_file.chunks():
+                                    save_file.write(chunk)
+
+                    upload_result["msg"] = "文件上传成功"
+
+                except Exception as e:
+                    logger.error(traceback.format_exc())
+                    upload_result["status"] = 1
+                    upload_result["msg"] = "Ansible主机上传文件发生异常: " + str(e)
 
         return HttpResponse(json.dumps(upload_result), content_type="application/json")
 
@@ -1624,7 +1879,6 @@ def check_ldap(request):
     ldap_passwd = request.POST.get("ldap_passwd")
 
     check_result = {"status": 0, "msg": "ok"}
-
     if ldap_addr and dn_addr and ldap_user and ldap_passwd:
         try:
             ldap_server = Server(ldap_addr, get_info=ALL, connect_timeout=10)
@@ -1645,3 +1899,42 @@ def check_ldap(request):
         check_result["msg"] = "请输入完整的验证信息"
 
     return HttpResponse(json.dumps(check_result), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def get_all_users(request):
+    all_users = []
+    for each_user in User.objects.all().values():
+        all_users.append({"id": each_user["id"], "name": each_user["username"], "email": ""})
+    return HttpResponse(json.dumps(all_users), content_type="application/json")
+
+@login_required()
+@audit_action
+@csrf_exempt
+def grant_st(request):
+    st_id = request.POST.get("st_id")
+    grant_users = request.POST.get("grant_users")
+
+    grant_result = {"status": 0, "msg": "ok"}
+    try:
+        for each_user in json.loads(grant_users):
+            with transaction.atomic():
+                current_st = shell_template.objects.get(id=int(st_id))
+                current_st.id = None
+                current_st.name = current_st.name+"-"+each_user["name"]+datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                current_st.user = User.objects.get(id=each_user["id"])
+                current_st.save()
+                if sub_template.objects.filter(name=shell_template.objects.get(id=int(st_id))):
+                    for each_sub_st in sub_template.objects.filter(name=shell_template.objects.get(id=int(st_id))).values("id"):
+                        current_sub_st = sub_template.objects.get(id=each_sub_st["id"])
+                        current_sub_st.id = None
+                        current_sub_st.name = current_st
+                        current_sub_st.save()
+
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        grant_result["status"] = 1
+        grant_result["msg"] = str(e)
+
+    return HttpResponse(json.dumps(grant_result), content_type="application/json")

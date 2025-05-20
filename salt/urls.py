@@ -53,6 +53,8 @@ urlpatterns = [
     path('create_shell_task/', views.create_shell_task, name='create_shell_task'),
     path('list_tasks/', views.list_tasks, name='list_tasks'),
     path('approve_task/', views.approve_task, name='approve_task'),
+    path('withdraw_task/', views.withdraw_task, name='withdraw_task'),
+    path('stop_task/', views.stop_task, name='stop_task'),
     path('get_task_info/', views.get_task_info, name='get_task_info'),
     path('download_execute_result/', views.download_execute_result, name='download_execute_result'),
     path('show_message/', views.show_message, name='show_message'),
@@ -66,5 +68,10 @@ urlpatterns = [
     path('get_hosts/', views.get_hosts, name='get_hosts'),
     path('reject_task/', views.reject_task, name='reject_task'),
     path('check_ldap/', views.check_ldap, name='check_ldap'),
+    path('sub_template/<int:id>/', views.list_sub_st, name='list_sub_st'),
+    path('create_sub_st/', views.create_sub_st, name='create_sub_st'),
+    path('del_sub_st/', views.del_sub_st, name='del_sub_st'),
+    path('get_all_users/', views.get_all_users, name='get_all_users'),
+    path('grant_st/', views.grant_st, name='grant_st'),
 
 ]

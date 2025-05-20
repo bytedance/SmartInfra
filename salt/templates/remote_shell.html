@@ -8,7 +8,8 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800"> 创建任务</h1>
+        <h1 class="h3 mb-2 text-gray-800" style="display: inline-block;">创建任务</h1>
+        <h3 class="h6 mb-2 text-success" style="display: inline-block;">(支持SaltStack和Ansible两种任务类型)</h3>
 
         <!-- 分组主机模态框 -->
         <div class="modal fade" id="minionModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -113,6 +114,11 @@
                     <input style="width: 50%;" id="schedule_content" type="text" class="form-control" placeholder="请按照Linux crontab格式的内容，例如:2 3 2 2 2">
                 </div>
                 <br>
+                <div class="form-group d-flex align-items-center">
+                    <label for="task_name" class="mr-4"><span class="text-danger">*</span>&nbsp;执行次数:</label>
+                    <input type="number" class="form-control" style="width: 25%;" id="repeat_num" min="-1" step="1" value="1" placeholder="请输入执行次数. -1 代表无限循环执行">
+                </div>
+                <br>
 
                 <label for="inputType2"><span class="text-danger">*</span>&nbsp;选择主机组:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <br>
@@ -125,6 +131,7 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                <th>执行方式</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -134,6 +141,7 @@
                                 <th>名称</th>
                                 <th>描述</th>
                                 <th>主机数量</th>
+                                <th>执行方式</th>
                                 <th>操作</th>
                             </tr>
                         </tfoot>
@@ -144,13 +152,15 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             {% for each_host_group in all_host_group %}
                             <tr id="tr-{{ each_host_group.id }}">
-                                <td class="text-center"><input class="form-check-input" type="radio" name="hostgroup1" id="{{ each_host_group.id }}" onclick="get_rowid(this)"></td>
+                                <td class="text-center"><input class="form-check-input" type="radio" name="hostgroup1" data-name="{{ each_host_group.type }}" id="{{ each_host_group.id }}" onclick="get_rowid(this)"></td>
                                 <td>{{ each_host_group.name }}</td>
                                 <td>{{ each_host_group.description }}</td>
                                 <td>{{ each_host_group.host_num }}</td>
+                                <td>{{ each_host_group.get_type_display }}</td>
                                 <td style="display: none;">{{ each_host_group.id }}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" onclick="show_minions(this)" value="{{ each_host_group.name }}">详情</button>
@@ -233,7 +243,8 @@
 
         //创建 shell task
         function create_shell_task() {
-          reminder_remove()
+          reminder_remove();
+          loading();
           var reminder_msg = document.getElementById("msg");
           const hg_id = document.getElementById('execute_shell').getAttribute('data-id');
           var radio1_checked = "0";
@@ -266,11 +277,13 @@
                     exec_shell_template: exec_shell_template,
                     exec_transfer_file: exec_transfer_file,
                     task_name: $("#task_name").val(),
+                    repeat_num: $("#repeat_num").val(),
 
                 },
                 complete: function () {
                 },
                 success: function (data) {
+                    loading_remove();
                     if (data.status === 0) {
                         window.location.href = "/list_tasks";
                     } else {
@@ -278,6 +291,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    loading_remove();
                     reminder_msg.innerHTML = 'Reminder: ' + errorThrown;
                 }
             });

@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', include(("salt.urls", "salt"), namespace="salt")),
+    path('', include(("ansible.urls", "ansible"), namespace="ansible")),
+
 ]

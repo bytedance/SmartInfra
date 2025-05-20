@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <title>SmartInfra</title>
-    <link rel="shortcut icon" href="{% static 'img/smartsalt-logo.jpeg' %}"/>
+    <link rel="shortcut icon" href="{% static 'img/smartinfra-logo.jpeg' %}"/>
     <!-- Custom fonts for this template -->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link
@@ -40,7 +40,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img src="{% static 'img/sqlpara_logo.1f1186910ff7.jpg' %}" alt="Brand Icon" style="width: 30px; height: 30px;">
                 </div>
-                <div class="sidebar-brand-text mx-3" style="text-transform: none;">SmartSalt</div>
+                <div class="sidebar-brand-text mx-3" style="text-transform: none;">SmartInfra</div>
             </a>
 
             <!-- Divider -->
@@ -96,14 +96,14 @@
                 <div id="collapseUtilities" class="collapse {% if request.resolver_match.view_name == 'salt:create_shell_task' %}show{% elif request.resolver_match.view_name == 'salt:list_tasks' %}show{% elif request.resolver_match.view_name == 'salt:qqq' %}show{% endif %}"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:list_tasks' %}active{% endif %}" href="/list_tasks">任务列表</a>
-                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">Shell / State / 分发文件 </a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:list_tasks' %}active{% endif %}" href="/list_tasks">已创建任务清单</a>
+                        <a class="collapse-item {% if request.resolver_match.view_name == 'salt:create_shell_task' %}active{% endif %}" href="/create_shell_task">创建任务 </a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item {% if request.resolver_match.view_name == 'salt:shell_template' %}active{% endif %}">
+            <li class="nav-item {% if request.resolver_match.view_name == 'salt:shell_template' or request.resolver_match.view_name == 'salt:list_sub_st' %}active{% endif %}">
                 <a class="nav-link" href="/shell_template">
                     <i class="fas fa-fw fa-file"></i>
                     <span>执行模板</span></a>
@@ -131,6 +131,11 @@
                 <a class="nav-link" href="/salt_masters">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Salt服务端管理</span></a>
+            </li>
+            <li class="nav-item {% if request.resolver_match.view_name == 'ansible:an_masters' %}active{% endif %}">
+                <a class="nav-link" href="/an_masters">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ansible服务端管理</span></a>
             </li>
             {% endif %}
             <!-- Nav Item - Pages Collapse Menu -->

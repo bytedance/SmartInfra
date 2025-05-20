@@ -1,4 +1,29 @@
 # -*- coding: UTF-8 -*-
+"""
+This is the MIT license: http://www.opensource.org/licenses/mit-license.php
+
+Copyright (c) 2017 by Konstantin Lebedev.
+
+Copyright 2022- 2023 Bytedance Ltd. and/or its affiliates
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 
 from salt.models import general_audit
 import logging
@@ -41,6 +66,8 @@ def audit_action(func):
         'create_shell_task': '创建/修改执行任务',
         'list_tasks': '查看所有已创建任务信息',
         'approve_task': '审批同意任务执行',
+        'withdraw_task': '撤回任务',
+        'stop_task': '终止任务',
         'get_task_info': '获取任务信息',
         'download_execute_result': '下载已执行完成任务结果',
         'show_message': '查看待审批任务信息',
@@ -54,10 +81,17 @@ def audit_action(func):
         'get_hosts': '主机管理条目分页显示',
         'reject_task': '审批拒绝任务执行',
         'check_ldap': 'Ldap正确性验证测试',
+        'an_masters': '查看所有AnsibleMaster',
+        'check_dir_perm': '检查分发文件路径读写权限是否正常',
+        'sub_template': '查看相关子模板',
+        'create_sub_st': '创建/编辑子模板',
+        'del_sub_st': '删除子模板',
+        'get_all_users': '授权模板时查询用户',
+        'grant_st': '模板授权相关用户',
 
     }
     @wraps(func)
-    def wrapper(request):
+    def wrapper(request, *args, **kwargs):
         user = request.user if request.user.is_authenticated else None
         action = URL_DESCRIPTIONS.get(request.resolver_match.url_name, "unknown page")
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -68,6 +102,6 @@ def audit_action(func):
 
         general_audit.objects.create(user=user, action=action, extra_content=user_ip)
 
-        return func(request)
+        return func(request, *args, **kwargs)
 
     return wrapper
