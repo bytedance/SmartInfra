@@ -1312,10 +1312,10 @@ def create_shell_task(request):
                 encap_exec_content = {"content": base64.b64encode(exec_content.encode()).decode() if exec_content is not None else exec_content, "type": 1}
 
                 # check if the repeat_num is an integer
-                if not bool(re.match(r'^[-+]?\d+$', repeat_num)):
-                    create_result["status"] = 1
-                    create_result["msg"] = "执行频率选项必须是整数, 请重新输入"
-                    raise ValueError(create_result["msg"])
+                # if not bool(re.match(r'^[-+]?\d+$', repeat_num)):
+                #     create_result["status"] = 1
+                #     create_result["msg"] = "执行频率选项必须是整数, 请重新输入"
+                #     raise ValueError(create_result["msg"])
 
                 # confirm execute type, include immediate and schedule
                 if immediate_checked == "0":
