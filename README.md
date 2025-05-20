@@ -5,11 +5,11 @@
 SmartInfra is a comprehensive cloud platform that includes a series of functions such as computing and storage, database management, white-box switch management, and automated changes. Specifically, it includes the following:
 1. SmartInfra can provide resource allocation and tool management for computing, storage, load balancing, and CICD at the IaaS and PaaS layers.
 
-2. **As the intelligent brain of our self-developed hardware network switches and network solutions, the SmartInfra platform can achieve automatic initialization, automated configuration, and automated operation and maintenance of the entire underlying network, greatly reducing the burden on IT leaders and engineer. At the same time, we have pioneered the cooperation mode of leasing equipment and using the service quality output to users as an indicator. We truly put the customer first, believing that good user experience is the real measure of success. The entire solution also includes supporting services such as DNS and network disks, aiming to provide the ultimate service to customers.**
+2. **As the intelligent brain of our self-developed network switches and network solutions, the SmartInfra platform can achieve automatic initialization, automated configuration, and automated operation and maintenance of the entire underlying network, greatly reducing the burden on IT leaders and engineer. At the same time, we have pioneered the cooperation mode of leasing equipment and using the service quality output to users as an indicator. We truly put the customer first, believing that good user experience is the real measure of success. The entire solution also includes supporting services such as DNS and network disks, aiming to provide the ultimate service to customers.**
 
 3. The SmartInfra platform also has the unified operation and maintenance function for the entire Infra layer, including CMDB for the system and network, automated changes, batch configuration, etc.
 
-Currently, the open-source **SmartSalt** is a part of SmartInfra, a system for automated task configuration and execution based on **SaltStack**. This platform can execute change configurations in a standardized and process-oriented manner, supporting operations such as commands, state playbooks, and transferring file to be executed either periodically or immediately in an asynchronous manner. The execution targets are applicable to the operation and maintenance and batch operation scenarios of all open operating systems.
+Currently, the module which will be open is a part of SmartInfra, a system for automated task configuration and execution based on **SaltStack&Ansible**. This platform supports change configurations in a standardized and process-oriented manner. It will be available on all standard operating systems.
 
 The architecture is shown:
 
@@ -17,17 +17,17 @@ The architecture is shown:
 
 Features
 ------------------------
-1. Host Management: It displays in detail the information of the managed host nodes. It provides two methods, scheduled and manual, to refresh the node information and record it into the database. The refresh interval can be customized, with the default being 60 minutes. At the same time, it provides operation functions (delete/accept/reject) to manage the nodes.
+1. Host Management: It displays the information of the managed host nodes. These nodes information will be refreshed and recorded into the database. The refresh interval Support customization, and the default value is 60 minutes. At the same time, you can manage these nodes through some options(delete/accept/reject).
 
-2. System Management: The system designs a virtual role - resource-group, which clearly establishes a many - to - many association among users, resource groups, and Salt resources. This enables a good balance between operational convenience and strict permission control.
+2. System Management: The system designs a virtual role - resource-group, which clearly builds a relationship among users, resource groups, and Salt resources. This enables a good balance between operational convenience and strict permission control.
 
-3. The authentication method supports three modes, internal system authentication, LDAP authentication, and OAuth authentication, which allows users to conveniently choose the mode that suits them.
+3. The authentication method supports three types, such as internal, LDAP, and OAuth, which allows users to conveniently choose the mode that they favorite.
 
-4. Host-Group: When creating host-groups, three modes are supported, including selecting all hosts once, selecting single hosts multiple times, and selecting hosts at once by uploading a file.
+4. Host-Group: When creating host-groups, three modes are supported, including selecting all hosts once, selecting single host multiple times, and selecting hosts at once by uploading a file.
 
-5. Task Execution: It supports three execution modes, command execution, state playbook execution, and file distribution. Meanwhile, in terms of execution methods, it supports both scheduled execution and immediate execution. The system has read-only policy function, Through rule matching, only query commands can be executed without approval, which improves both efficiency and stability.
+5. Task Execution: It supports four types, including shell, state, playbook, and transferring files. Meanwhile, in terms of execution methods, it supports both scheduled execution and immediate execution. The system supports read-only policy function, when rules are matched, it will be executed without approval, which improves both efficiency and stability.
 
-6. Audit log recording fully meets the security and compliance requirements within the enterprise.
+6. Audit function fully meets the security and compliance requirements within the enterprise.
 
 Get Started
 ------------------------
