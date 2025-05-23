@@ -1,3 +1,4 @@
+import ast
 import datetime
 import json
 from datetime import timezone, datetime
@@ -9,6 +10,8 @@ from django.test import TestCase
 
 # Create your tests here.
 from pathlib import Path
+
+from setuptools.command.easy_install import current_umask
 
 from ansible.tests import pb_hosts_dir
 
@@ -61,20 +64,20 @@ password = "salt2022@ByteDance"
 #
 # next_run_time.append(datetime.datetime.now().strftime("%Y"))
 # print(next_run_time)
-
-from common.salt_api import SaltAPI
-
-sa=SaltAPI(url="https://10.0.77.41:8888/", user="saltapi", passwd="salt2022@ByteDance")
-# print(datetime.datetime.now())
-# # time.sleep(60)
-# print(datetime.datetime.now())
-
-iiii = "ls /tmp"
-uuuu = "/tmp/5566"
-# xx = sa.execute_remote_state("10.0.85.141-www111", "smartinfra/admin-000000-2024122444444")
-# xx = sa.execute_remote_shell("10.0.85.141-www111", "echo %s > %s" %(iiii, uuuu))
-yy = sa.transfer_file("10.0.85.53-luwanlong", "salt://smartinfra/111", "C:\\Users")
-print(yy)
+#
+# from common.salt_api import SaltAPI
+#
+# sa=SaltAPI(url="https://10.0.77.41:8888/", user="saltapi", passwd="salt2022@ByteDance")
+# # print(datetime.datetime.now())
+# # # time.sleep(60)
+# # print(datetime.datetime.now())
+#
+# iiii = "ls /tmp"
+# uuuu = "/tmp/5566"
+# # xx = sa.execute_remote_state("10.0.85.141-www111", "smartinfra/admin-000000-2024122444444")
+# # xx = sa.execute_remote_shell("10.0.85.141-www111", "echo %s > %s" %(iiii, uuuu))
+# yy = sa.transfer_file("10.0.85.53-luwanlong", "salt://smartinfra/111", "C:\\Users")
+# print(yy)
 # print(sa.get_job_info("20250103111256682314"))
 # if sa.get_job_info("20250103111256682314")["msg"]:
 #     print(1111)
@@ -91,8 +94,8 @@ print(yy)
 # print(yy)
 # key = "100.94.64.2-CNDAT06-F09-M-R450-GW01"
 # value1 = xx["msg"][key]
-# with open("111.txt", 'a+', encoding="utf-8") as ersrf:
-#     ersrf.write(f"{key}:\n{value1}\n" + '\n')
+xxxx = '172.21.0.7'
+print(xxxx.replace('0.7','0.6'))
 # import random
 # print(type(''.join(random.choices('0123456789', k=7))))
 #
@@ -128,7 +131,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smartinfra.settings')
 
 django.setup()
 
-from salt.models import host_group, host_group_minion
+from salt.models import host_group, host_group_minion, salt_master
 # import requests
 #
 # uu = "https://open.larkoffice.com/open-apis/auth/v3/tenant_access_token/internal"
@@ -168,11 +171,13 @@ from salt.models import host_group, host_group_minion
 # }
 #
 # zz = xx = requests.post("https://open.larkoffice.com/open-apis/im/v1/messages?receive_id_type=chat_id", json=send_data, headers=token, timeout=10)
-from salt.models import User, task_list
-task_info = task_list.objects.get(id=338)
-print(type(User.objects.get(id=task_info.user_id).username))
+print(str(int(datetime.now().timestamp())))
+# time_format = "%Y%m%d %H:%M:%S.%f"
+# utc_time = datetime.strptime(str(datetime.now()), time_format)
+# print(utc_time)
 
 
+# chat_group.objects.create(user=User.objects.get(username="luwanlong"), chat_id="chat_id")
 # sa=SaltAPI(url="https://10.0.77.41:8888/", user="saltapi", passwd="salt2022@ByteDance")
 # # print(datetime.datetime.now())
 # # # time.sleep(60)
@@ -200,16 +205,14 @@ print(type(User.objects.get(id=task_info.user_id).username))
 # xx = sa.execute_remote_shell("10.0.85.141-www111", 'cat /etc/passwd')
 # print(str(yy['msg'][each_minion]))
 # print(xx)
+# from salt.models import User
+# all_users = []
+# for each_user in User.objects.all().values():
+#     all_users.append({"id": each_user["id"], "name": each_user["username"], "email": ""})
+# print(json.dumps(all_users))
+from salt.models import shell_template
 
-# with open("xxxxx.log", 'a+', encoding="utf-8") as ersrf:
-#     # 替换掉 \r，并确保使用统一的换行符 \n
-#     cleaned_content = str(yy['msg'][each_minion]).replace('\\r\\n', '\n')
-#     # ui = "\\r\\n"
-#     # if ui in cleaned_content:
-#     print(cleaned_content)
-#     # 写入文件，确保每个内容后面只有一个换行符
-#     ersrf.write(f"{each_minion}:\n{cleaned_content}\n")
-# end_date = datetime.now()
+# end_date = datetime.now())
 # start_date = end_date - timedelta(days=7)
 #
 # # 查询最近7天的数据，按用户分组统计行数
