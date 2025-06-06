@@ -1255,6 +1255,7 @@ def create_shell_task(request):
     :param request:
     :return:
     """
+    custom_url = request.scheme+"://"+request.get_host()+"/list_tasks/"
     create_result = {"status": 0, "msg": "ok"}
     # show all host group of user
     if request.method == 'GET':
@@ -1352,7 +1353,7 @@ def create_shell_task(request):
                                                 repeats=int(repeat_num),
                                                 next_run=next_run_time,
                                                 hook="salt.tasks.q_task.remote_shell_task",
-                                                kwargs=json.dumps({"new_task_id": new_task.id})
+                                                kwargs=json.dumps({"new_task_id": new_task.id, "custom_url": custom_url})
                                                 )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id, approver=request.user, approve_result = "自动通过")
                     send_lark_msg(task_name=task_name, current_user=str(request.user),
@@ -1368,7 +1369,7 @@ def create_shell_task(request):
                                                 cron="",
                                                 repeats=0,
                                                 hook="salt.tasks.q_task.remote_shell_task",
-                                                kwargs=json.dumps({"new_task_id": new_task.id})
+                                                kwargs=json.dumps({"new_task_id": new_task.id, "custom_url": custom_url})
                                                 )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
                     send_lark_msg(task_name=task_name, current_user=str(request.user),
@@ -1387,7 +1388,7 @@ def create_shell_task(request):
                                                                cron="",
                                                                repeats=0,
                                                                hook="salt.tasks.q_task.remote_shell_task",
-                                                               kwargs=json.dumps({"new_task_id": new_task.id})
+                                                               kwargs=json.dumps({"new_task_id": new_task.id, "custom_url": custom_url})
                                                                )
                         task_list.objects.filter(id=new_task.id).update(related_schedule=new_schedule.id)
                     send_lark_msg(task_name=task_name, current_user=str(request.user), message="已成功创建, 等待被审批, 请及时关注任务状态变化")
