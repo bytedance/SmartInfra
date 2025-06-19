@@ -1452,7 +1452,7 @@ def approve_task(request):
             next_run_time = datetime.datetime.fromtimestamp(cron_format.get_next())
             Schedule.objects.filter(id=schedule_id).update(next_run=next_run_time, repeats=repeat_num, cron=execute_policy)
 
-        send_lark_msg(task_name=task_info.name, current_user=str(request.user), message="已被审批通过, 进入待执行状态")
+        send_lark_msg(task_name=task_info.name, current_user=str(task_info.user), message="已被审批通过, 进入待执行状态")
     except Exception as e:
         logger.error(traceback.format_exc())
         approve_result["status"] = 1
