@@ -779,7 +779,7 @@
             const currentUser = "{{ request.user.username }}"
             const randomDigits = Math.floor(1000000 + Math.random() * 9000000);
             const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '');
-            const fileName = `${currentUser}_${randomDigits}${timestamp}`;
+            const fileName = `${randomDigits}${timestamp}`;
             document.getElementById("editor_ps1_label").innerHTML = fileName+'.ps1 内容';
             document.getElementById("editor_sls_label").innerHTML = '<span style="color: red;">*</span>'+fileName+'.sls 内容';
             document.querySelector('#file_name_comment').setAttribute('data-value', fileName);
