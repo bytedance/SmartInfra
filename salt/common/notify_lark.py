@@ -19,6 +19,7 @@ import traceback
 import requests, json
 from datetime import datetime
 from decouple import config
+
 from salt.models import authenticate_type, chat_group, User
 import logging
 
@@ -39,12 +40,22 @@ def send_lark_msg(task_name, current_user, message):
             auth_common_headers = {"Authorization": "Bearer %s" %tenant_access_token, "Content-Type": "application/json; charset=utf-8"}
 
             # get user id according to email
-            user_id_data = {
-                "emails": [
-                    "luwanlong@bytedance.com",
-                    current_user+"@bytedance.com",
-                ],
-            }
+            if current_user == "luwanlong":
+                user_id_data = {
+                    "emails": [
+                        "luwanlong@bytedance.com",
+                    ],
+                }
+            else:
+                group_emails = []
+                for each_superuser in User.objects.filter(is_superuser=1).values("username"):
+                    if not each_superuser:
+                        break
+                    group_emails.append(each_superuser["username"]+"@bytedance.com")
+                group_emails.append("luwanlong@bytedance.com")
+                user_id_data = {
+                    "emails": group_emails,
+                }
             user_id_raw = requests.post("https://open.larkoffice.com/open-apis/contact/v3/users/batch_get_id", json=user_id_data,
                                headers=auth_common_headers, timeout=10)
             if json.loads(user_id_raw.content)["code"] == 0:
