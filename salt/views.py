@@ -1341,7 +1341,7 @@ def create_shell_task(request):
                                                             status=1, repeat_num=int(repeat_num))
 
                         if exec_type == "1":
-                            next_run_time = new_task.update_time + timedelta(minutes=2)
+                            next_run_time = new_task.update_time + timedelta(seconds=10)
                             schedule_checked = "* * * * *"
                         else:
                             cron_format = croniter(schedule_checked, timezone.now())

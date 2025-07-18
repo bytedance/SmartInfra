@@ -102,9 +102,10 @@ def exec_remote_shell(*args, **kwargs):
 
         with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrfa:
             # record the stdout at first
-            for each_rr in run_result.stdout:
-                each_rr = each_rr.replace('\r', '').rstrip('\n')
-                ersrfa.write(re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', each_rr) + '\n')
+            if not isinstance(run_result, str):
+                for each_rr in run_result.stdout:
+                    each_rr = each_rr.replace('\r', '').rstrip('\n')
+                    ersrfa.write(re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub('', each_rr) + '\n')
             ersrfa.write("\n")
             ersrfa.write("-----------------------------------------------------------------------------------------------------------------------------\n")
             ersrfa.write("\n")
