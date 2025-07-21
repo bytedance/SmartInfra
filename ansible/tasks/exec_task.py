@@ -157,7 +157,7 @@ def correct_file(host_group_id, template_id=-1):
     else:
         st_info = shell_template.objects.get(id=template_id)
         main_content = st_info.main_content
-        pb_name = st_info.file_name
+        pb_name = st_info.file_name + "_" + ''.join(random.choices('0123456789', k=9))
         main_dir = st_info.main_dir
         extra_vars = st_info.extra_vars
     correct_result = {"status": 0, "msg": "ok"}
@@ -175,8 +175,6 @@ def correct_file(host_group_id, template_id=-1):
         pb_base_dir = os.path.join(an_base_dir, pb_name)
 
         with transaction.atomic():
-            if os.path.exists(pb_base_dir):
-                shutil.rmtree(pb_base_dir)
             os.makedirs(main_pb_yaml_dir, exist_ok=True, mode=0o755)
             os.makedirs(pb_hosts_dir, exist_ok=True, mode=0o755)
             os.makedirs(pb_env_dir, exist_ok=True, mode=0o755)
