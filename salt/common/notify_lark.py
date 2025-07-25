@@ -39,12 +39,20 @@ def send_lark_msg(task_name, current_user, message):
             auth_common_headers = {"Authorization": "Bearer %s" %tenant_access_token, "Content-Type": "application/json; charset=utf-8"}
 
             # get user id according to email
-            user_id_data = {
-                "emails": [
-                    "luwanlong@bytedance.com",
-                    current_user+"@bytedance.com",
-                ],
-            }
+            if current_user == "luwanlong":
+                user_id_data = {
+                    "emails": [
+                        "luwanlong@bytedance.com",
+                    ],
+                }
+            else:
+                group_emails = []
+                for each_superuser in User.objects.filter(is_superuser=1).values("username"):
+                    group_emails.append(each_superuser["username"]+"@bytedance.com")
+                user_id_data = {
+                    "emails": group_emails,
+                }
+
             user_id_raw = requests.post("https://open.larkoffice.com/open-apis/contact/v3/users/batch_get_id", json=user_id_data,
                                headers=auth_common_headers, timeout=10)
             if json.loads(user_id_raw.content)["code"] == 0:
@@ -60,7 +68,8 @@ def send_lark_msg(task_name, current_user, message):
             for each_user_id in user_id_list:
                 if each_user_id["email"] == current_user + "@bytedance.com":
                     current_user_id = each_user_id["user_id"]
-                new_user_id_list.append(each_user_id["user_id"])
+                if each_user_id.get("user_id", ""):
+                    new_user_id_list.append(each_user_id["user_id"])
 
             if cg_ins:
                 chat_id = cg_ins.values("chat_id").first()["chat_id"]
