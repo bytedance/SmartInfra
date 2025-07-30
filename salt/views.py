@@ -441,9 +441,8 @@ def create_shell_template(request):
 
     # check playbook pattern
     check_result = {"status": 0, "msg": "ok"}
-    if editor_sls_content or editor_ps1_content or main_content:
+    if main_content:
         try:
-            yaml.safe_load(editor_sls_content)
             yaml.safe_load(main_content)
         except Exception as e:
             logger.error(traceback.format_exc())
