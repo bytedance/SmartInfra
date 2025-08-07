@@ -1509,7 +1509,7 @@ def stop_task(request):
                 task_info.status = 6
                 task_info.save()
 
-                send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+                send_lark_msg(task_name=task_info.name, current_user=str(task_info.user),
                               message="已被终止")
             else:
                 stop_result["status"] = 1
@@ -1549,7 +1549,7 @@ def reject_task(request):
             task_info.approver = request.user
             task_info.save()
 
-            send_lark_msg(task_name=task_info.name, current_user=str(request.user),
+            send_lark_msg(task_name=task_info.name, current_user=str(task_info.user),
                           message="已被拒绝，请及时联系管理员")
         except Exception as e:
             logger.error(traceback.format_exc())
