@@ -49,6 +49,7 @@ def send_lark_msg(task_name, current_user, message):
                 group_emails = []
                 for each_superuser in User.objects.filter(is_superuser=1).values("username"):
                     group_emails.append(each_superuser["username"]+"@bytedance.com")
+                group_emails.append(current_user+"@bytedance.com")
                 user_id_data = {
                     "emails": group_emails,
                 }
