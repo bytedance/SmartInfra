@@ -19,7 +19,7 @@ Features
 ------------------------
 1. Host Management: It displays the information of the managed host nodes. These nodes information will be refreshed and recorded into the database. The refresh interval Support customization, and the default value is 60 minutes. At the same time, you can manage these nodes through some options(delete/accept/reject).
 
-2. System Management: The system designs a virtual role - resource-group, which clearly builds a relationship among users, resource groups, and Salt resources. This enables a good balance between operational convenience and strict permission control.
+2. System Management: The system designs a virtual role - resource-group, which clearly builds a relationship among users, resource groups, and Salt/Ansible resources. This enables a good balance between operational convenience and strict permission control.
 
 3. The authentication method supports three types, such as internal, LDAP, and OAuth, which allows users to conveniently choose the mode that they favorite.
 
@@ -45,7 +45,7 @@ http://119.13.95.124
 download [docker](docker) directory，and change into the "docker" directory
 
 ```bash
-# start SmartSalt
+# start SmartInfra
 docker-compose -f docker-compose.yml up -d
 
 # exit

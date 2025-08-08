@@ -45,7 +45,7 @@ http://119.13.95.124
 下载 [docker](docker)目录，进入docker文件夹
 
 ```bash
-# start SmartSalt
+# start SmartInfra
 docker-compose -f docker-compose.yml up -d
 
 # exit
