@@ -72,5 +72,6 @@ urlpatterns = [
     path('del_sub_st/', views.del_sub_st, name='del_sub_st'),
     path('get_all_users/', views.get_all_users, name='get_all_users'),
     path('grant_st/', views.grant_st, name='grant_st'),
+    path('get_tasks/', views.get_tasks, name='get_tasks'),
 
 ]

@@ -1406,18 +1406,56 @@ def create_shell_task(request):
 @login_required()
 @audit_action
 @csrf_exempt
+def get_tasks(request):
+    """
+    分页展示所有任务相关信息
+    :param request:
+    :return:
+    """
+    start = int(request.GET.get('start', 0))
+    length = int(request.GET.get('length', 10))
+    search_value = request.GET.get('search[value]', '')
+    reverse_task_status_choices = {rhsc_v:rhsc_k for rhsc_k, rhsc_v in dict(task_status_choices).items()}
+
+    if request.user.is_superuser:
+        query = task_list.objects.all().order_by('-id')
+    else:
+        query = task_list.objects.filter(user=User.objects.get(username=request.user)).all().order_by('-id')
+    if search_value:
+        query = query.filter(Q(id__icontains=search_value) | \
+                             Q(name__icontains=search_value) | \
+                             Q(status__icontains=reverse_task_status_choices.get(search_value, 100)) | \
+                             Q(host_group_name__name__icontains=search_value) | \
+                             Q(user__username__icontains=search_value) | \
+                             Q(approver__username__icontains=search_value) | \
+                             Q(create_time__icontains=search_value) | \
+                             Q(update_time__icontains=search_value))
+
+    total_count = query.count()
+    data = list(query[start:start + length].values("id", "name", "execute_content", "execute_policy", "host_group_name__name",
+                                                   "user__username", "execute_result", "approve_result", "approver__username",
+                                                   "repeat_num", "create_time", "status", "update_time"))
+    for each_data in data:
+        # 获取每个对象的显示值
+        each_data['status_display'] = dict(task_status_choices).get(each_data['status'])
+
+    return JsonResponse({
+        "draw": int(request.GET.get('draw', 1)),
+        "recordsTotal": task_list.objects.count(),
+        "recordsFiltered": total_count,
+        "data": data
+    })
+
+@login_required()
+@audit_action
+@csrf_exempt
 def list_tasks(request):
     """
     展示用户相关任务
     :param request:
     :return:
     """
-    if request.user.is_superuser:
-        all_tasks = task_list.objects.all()
-    else:
-        all_tasks = task_list.objects.filter(user=User.objects.get(username=request.user)).all()
-
-    return render(request, "task_list.html", {"all_tasks": all_tasks})
+    return render(request, "task_list.html")
 
 @login_required()
 @superuser_required
@@ -1620,7 +1658,7 @@ def get_audit_info(request):
     length = int(request.GET.get('length', 10))
     search_value = request.GET.get('search[value]', '')
 
-    query = general_audit.objects.all()
+    query = general_audit.objects.all().order_by('-id')
     if search_value:
         query = query.filter(Q(user__username__icontains=search_value) | Q(action__icontains=search_value) | Q(extra_content__icontains=search_value) | Q(create_time__icontains=search_value))
 

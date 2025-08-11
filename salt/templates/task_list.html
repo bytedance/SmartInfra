@@ -214,54 +214,7 @@
                                 <th>操作</th>
                             </tr>
                         </tfoot>
-                        <tbody>
-                            <tr style="display: none;">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            {% for each_task in all_tasks %}
-                            <tr id="tr-{{ each_task.id }}">
-                                <td>{{ each_task.id }}</td>
-                                <td>{{ each_task.name }}</td>
-                                <td>{{ each_task.host_group_name.name }}</td>
-                                <td>
-                                    {% if each_task.execute_policy == "1" %}
-                                        立即执行
-                                    {% else %}
-                                        定时执行: {{ each_task.execute_policy }}
-                                    {% endif %}
-                                </td>
-                                <td>{{ each_task.repeat_num }}</td>
-                                <td class="{% if each_task.status == 2 %}text-success{% elif each_task.status == 3 %}text-primary{% elif each_task.status == 0 %}text-warning{% elif each_task.status == 1 %}text-danger{% endif %}">{{ each_task.get_status_display }}</td>
-                                <td>{{ each_task.user.username }}</td>
-                                <td>{{ each_task.approver.username }}</td>
-                                <td>{{ each_task.create_time }}</td>
-                                <td>{{ each_task.update_time }}</td>
-                                <td style="display: none;">{{ each_task.id }}</td>
-                                <td>
-                                    {% if request.user.is_superuser %}
-                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-warning btn-sm" onclick="accept_taskid(this)" id="{{ each_task.id }}">同意</button>
-                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-danger btn-sm" onclick="reject_taskid(this)" id="r-{{ each_task.id }}">拒绝</button>
-                                    {% endif %}
-                                    {% if not request.user.is_superuser %}
-                                    <button type="button" style="{% if each_task.status != 0 %}display: none;{% endif %}" class="btn btn-warning btn-sm" onclick="withdraw_taskid(this)" value="{{ each_task.id }}">撤回</button>
-                                    {% endif %}
-                                    <button type="button" style="{% if each_task.status != 1 and each_task.status != 3 %}display: none;{% endif %}" class="btn btn-danger btn-sm" onclick="stop_taskid(this)" value="{{ each_task.id }}">终止</button>
-                                    <button type="button" class="btn btn-info btn-sm" onclick="get_task_info(this)" value="{{ each_task.id }}">详情</button>
 
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -279,15 +232,119 @@
 {% endblock content %}
 {% block js %}
     <script type="text/javascript">
-        window.addEventListener('load', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             // 检查 DataTable 是否已经初始化
             if ($.fn.DataTable.isDataTable('#dataTable')) {
                 $('#dataTable').DataTable().destroy(); // 销毁已有实例
             }
+
+            // 定义 DataTable 的基础列
+            var columns = [
+                { "data": "id" },
+                { "data": "name" },
+                { "data": "host_group_name__name" },
+                {
+                    "data": "execute_policy",
+                    "render": function(data, type, row) {
+                        if (data == "1") {
+                            return "立即执行";
+                        } else {
+                            return "定时执行: " + data;
+                        }
+                    }
+                },
+                { "data": "repeat_num" },
+                {
+                    "data": "status",
+                    "render": function(data, type, row) {
+                        var statusClass = "";
+                        var statusText = row.status_display;
+
+                        switch(data) {
+                            case 2:
+                                statusClass = "text-success";
+                                break;
+                            case 3:
+                                statusClass = "text-primary";
+                                break;
+                            case 0:
+                                statusClass = "text-warning";
+                                break;
+                            case 1:
+                                statusClass = "text-danger";
+                                break;
+                        }
+
+                        return `<span class="${statusClass}">${statusText}</span>`;
+                    }
+                },
+                { "data": "user__username" },
+                { "data": "approver__username" },
+                { "data": "create_time" },
+                { "data": "update_time" }
+            ];
+
+            // 从Django模板获取用户权限信息
+            var is_superuser = {{ request.user.is_superuser|yesno:"true,false" }};
+
+            // 添加操作按钮列
+            columns.push({
+                "data": "id",
+                "orderable": false,
+                "searchable": false,
+                "render": function(data, type, row) {
+                    var buttons = '';
+
+                    if (is_superuser) {
+                        // 超级用户可以看到同意/拒绝按钮
+                        buttons += `
+                            <button type="button"
+                                style="${row.status != 0 ? 'display: none;' : ''}"
+                                class="btn btn-warning btn-sm"
+                                onclick="accept_taskid(this)"
+                                id="${row.id}">同意</button>
+                            <button type="button"
+                                style="${row.status != 0 ? 'display: none;' : ''}"
+                                class="btn btn-danger btn-sm"
+                                onclick="reject_taskid(this)"
+                                id="r-${row.id}">拒绝</button>
+                        `;
+                    } else {
+                        // 普通用户可以看到撤回按钮
+                        buttons += `
+                            <button type="button"
+                                style="${row.status != 0 ? 'display: none;' : ''}"
+                                class="btn btn-warning btn-sm"
+                                onclick="withdraw_taskid(this)"
+                                value="${row.id}">撤回</button>
+                        `;
+                    }
+
+                    // 所有用户都可以看到终止和详情按钮
+                    buttons += `
+                        <button type="button"
+                            style="${(row.status != 1 && row.status != 3) ? 'display: none;' : ''}"
+                            class="btn btn-danger btn-sm"
+                            onclick="stop_taskid(this)"
+                            value="${row.id}">终止</button>
+                        <button type="button"
+                            class="btn btn-info btn-sm"
+                            onclick="get_task_info(this)"
+                            value="${row.id}">详情</button>
+                    `;
+
+                    return buttons;
+                }
+            });
+
             // 初始化 DataTable
             $('#dataTable').DataTable({
-                "order": [[0, 'desc']],
                 "pageLength": 50,
+                "processing": true,
+                "serverSide": true,
+                "ajax": "/get_tasks/",
+                "columns": columns,
+                "order": [[ 0, "desc" ]], // 按ID降序排列
             });
         });
 
