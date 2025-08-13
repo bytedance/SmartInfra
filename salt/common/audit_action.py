@@ -78,6 +78,7 @@ def audit_action(func):
         'del_sub_st': '删除子模板',
         'get_all_users': '授权模板时查询用户',
         'grant_st': '模板授权相关用户',
+        'get_tasks': '执行任务条目分页显示',
 
     }
     @wraps(func)
