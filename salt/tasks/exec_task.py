@@ -114,13 +114,12 @@ def exec_remote_shell(*args, **kwargs):
 
             if each_result["status"] == 0:
                 count_success += 1
-                cleaned_content = str(each_result['msg'][each_minion])
+                cleaned_content = json.dumps(each_result['msg'][each_minion], indent=2, ensure_ascii=False)
             else:
                 count_fail += 1
-                cleaned_content = str(each_result['msg'])
+                cleaned_content = json.dumps(each_result['msg'], indent=2, ensure_ascii=False)
 
-            if '\\r\\n' in cleaned_content:
-                cleaned_content = cleaned_content.replace('\\r\\n', '\n')
+            cleaned_content = cleaned_content.replace('\\r\\n', '\n').replace('\\n', '\n')
             with open(settings.DOWNLOAD_ROOT + exec_remote_shell_result_filename, 'a+', encoding="utf-8") as ersrf:
                 ersrf.write(f"{each_minion}:\n{cleaned_content}\n" + '\n')
 
