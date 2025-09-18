@@ -40,7 +40,7 @@ class SaltAPI():
             url = str(self.__url) + '/login'
             req = urllib.request.Request(url, obj)
             context = ssl._create_unverified_context()
-            opener = urllib.request.urlopen(req, timeout=10, context=context)
+            opener = urllib.request.urlopen(req, timeout=120, context=context)
             content = json.loads(opener.read())
             token_id = content['return'][0]['token']
         except Exception as e:
@@ -61,7 +61,7 @@ class SaltAPI():
         try:
             data = bytes(json.dumps(data), 'utf8')
             req = urllib.request.Request(url, data, headers)
-            opener = urllib.request.urlopen(req, timeout=60, context=context)
+            opener = urllib.request.urlopen(req, timeout=120, context=context)
             content = json.loads(opener.read())
         except Exception as e:
             logger.error(traceback.format_exc())
@@ -73,7 +73,7 @@ class SaltAPI():
         list all keys
         :return:
         """
-        params = {'client': 'wheel', 'fun': 'key.list_all'}
+        params = {'client': 'wheel', 'fun': 'key.list_all', 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]['data']['return']}
@@ -86,7 +86,7 @@ class SaltAPI():
         :param node_name:
         :return:
         """
-        params = {'client': 'wheel', 'fun': 'key.delete', 'match': node_name}
+        params = {'client': 'wheel', 'fun': 'key.delete', 'match': node_name, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]['data']['success']}
@@ -99,7 +99,7 @@ class SaltAPI():
         :param node_name:
         :return:
         """
-        params = {'client': 'wheel', 'fun': 'key.accept', 'match': node_name}
+        params = {'client': 'wheel', 'fun': 'key.accept', 'match': node_name, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]['data']['success']}
@@ -112,7 +112,7 @@ class SaltAPI():
         :param node_name:
         :return:
         """
-        params = {'client': 'wheel', 'fun': 'key.reject', 'match': node_name}
+        params = {'client': 'wheel', 'fun': 'key.reject', 'match': node_name, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]['data']['success']}
@@ -127,7 +127,7 @@ class SaltAPI():
         :param types:
         :return:
         """
-        params = {'client': 'local', 'tgt': tgt, 'fun': 'cmd.run', 'arg': arg}
+        params = {'client': 'local', 'tgt': tgt, 'fun': 'cmd.run', 'arg': arg, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             ret = content['return'][0]
@@ -142,7 +142,7 @@ class SaltAPI():
         :param arg:
         :return:
         """
-        params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.item', 'arg': arg}
+        params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.item', 'arg': arg, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]}
@@ -155,7 +155,7 @@ class SaltAPI():
         :param tgt:
         :return:
         """
-        params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.items'}
+        params = {'client': 'local', 'tgt': tgt, 'fun': 'grains.items', 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             return {"status": 0, "msg": content['return'][0]}
@@ -170,7 +170,7 @@ class SaltAPI():
         :param types:
         :return:
         """
-        params = {'client': 'local', 'tgt': tgt, 'fun': 'state.sls', 'arg': arg}
+        params = {'client': 'local', 'tgt': tgt, 'fun': 'state.sls', 'arg': arg, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             ret = content.get("return")[0]
@@ -184,7 +184,7 @@ class SaltAPI():
         :param arg:
         :return:
         """
-        params = {'client': 'runner', 'fun': 'manage.' + arg}
+        params = {'client': 'runner', 'fun': 'manage.' + arg, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             jid = content['return'][0]
@@ -198,7 +198,7 @@ class SaltAPI():
         :param arg:
         :return:
         """
-        params = {'client': 'runner', 'fun': 'manage.' + arg, 'tgt': node_name}
+        params = {'client': 'runner', 'fun': 'manage.' + arg, 'tgt': node_name, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             jid = content['return'][0]
@@ -229,7 +229,7 @@ class SaltAPI():
         :param arg:
         :return:
         """
-        params = {'client': 'local', 'fun': 'cp.push', 'tgt': node_name, 'arg': arg}
+        params = {'client': 'local', 'fun': 'cp.push', 'tgt': node_name, 'arg': arg, 'timeout': 120}
         content = self.send_req(params)
         if isinstance(content, dict):
             push_result = content['return'][0]
