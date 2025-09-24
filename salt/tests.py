@@ -77,4 +77,3 @@ while True:
 
     # 添加 AI 回复到对话历史
     conversation.append({"role": "assistant", "content": assistant_reply})
-
