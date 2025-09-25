@@ -77,3 +77,26 @@ while True:
 
     # 添加 AI 回复到对话历史
     conversation.append({"role": "assistant", "content": assistant_reply})
+
+---
+LInux下策略路由配置：
+
+期望：
+实现网卡流量的分离，原进原出
+有托底路由设置。当从本机主动访问外部时可联通
+因为是容器环境，存在多个网桥，每个网桥又关联一个物理网卡，实现互联互通
+
+原理：
+iface bond4 inet static
+    address 10.9.3.1
+    netmask 255.255.255.224
+    gateway 10.9.3.9	#托底路由。非匹配路由策略流量
+    post-up ip rule add from 10.9.13.8/27 table 101    #根据来源ip分配流量到指定路由表中
+    post-up ip rule add from 172.17.0.0/16 table 101       #根据来源ip分配流量到指定路由表中
+    post-up ip route add default via 10.9.83.9 dev bond4 table 101    #在指定路由表中使用缺省路由
+
+流量路径：（容器流量是首先路由再nat）
+进流量所经过端点： 客户端 -路由- 服务器ip -nat- 容器         #路由是由广域网提供。nat是在桥接模式下由容器实现
+回程流量： 容器 -nat- 服务器ip -路由- 客户端               #选择从那个路由表回，客户端看到的ip就是哪个服务器ip。但是在本机上看到是容器ip地址
+
+
